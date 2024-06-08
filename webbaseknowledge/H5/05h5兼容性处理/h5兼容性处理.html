@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 让ie浏览器处于最优的渲染模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对国产的“双核”浏览器的设置，让浏览器优先使用webkit内核去渲染网页 -->
+    <meta name="render" content="webkit">
+
+    <title>h5兼容性处理</title>
+    <!--[if lt ie 9]>
+    <script src="html5shiv.js"></script>
+    <![endif]-->
+    <style>
+        header {
+            background-color: orange;
+        }
+
+        nav a {
+
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: green;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        li {
+            list-style-type: none;
+        }
+        pre{
+        background-color: black; color: white; font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 头部 -->
+    <header>
+        <h1>尚品汇</h1>
+    </header>
+    <hr>
+    <!-- 主导航 -->
+    <nav>
+        <a href="">首页</a>
+        <a href="">订单</a>
+        <a href="">我的</a>
+    </nav>
+    <!-- 主要内容 whatwg不支持-->
+    <main>
+        <!-- 侧边栏 -->
+        <aside style="float: right;">
+            <nav>
+                <ul>
+                    <li><a href="#">秒杀</a></li>
+                    <li><a href="#">秒杀</a></li>
+                    <li><a href="#">秒杀</a></li>
+                    <li><a href="#">秒杀</a></li>
+                    <li><a href="#">秒杀</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <article>
+            <h2>《如何一夜暴富》</h2>
+            <section>
+                <h3>做梦</h3>
+                <p>梦里啥都有</p>
+
+            </section>
+            <Section>
+                <h3>吃毒蘑菇</h3>
+                <p>幻觉也是不错的</p>
+            </Section>
+            <section>
+                <h3>学习</h3>
+                <p>好好学习，天天向上</p>
+            </section>
+        </article>
+
+        <hr>
+        <footer>
+            <nav>
+                <a href="">1</a>
+                <a href="">2</a>
+                <a href="">3</a>
+                <a href="">4</a>
+            </nav>
+        </footer>
+        <hr>
+        <p>html5兼容性处理</p>
+        <ul>
+            <li>添加元信息，让浏览器处于最优渲染模式<br>
+                <div>
+                    <p>设置ie宗师使用最新的文档模式进行渲染
+                        <code>
+                            <pre>
+                &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+                            </pre>
+                        </code>
+                    </p>
+                    <p>使用html5shiv让低版本浏览器认识h5的语义化标签
+                        <code>
+                            <pre>
+                &lt;--[if lt ie 9]&gt;
+                &lt;script src="../sources/js/html5shiv.js"&gt;&lt;/script&gt;
+                &lt;[endif]--&gt;
+                            </pre>
+                        </code>
+                    </p>
+                </div>
+            </li>
+            <li>
+                扩展<br>
+                <div>
+                    <p style="background-color: orangered;">
+                        lt 小于<br>
+                        lte 小于等于 <br>
+                        gt 大于 <br>
+                        gte 大于等于 <br>
+                        ! 逻辑非 <br>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </main>
+</body>
+
+</html>
