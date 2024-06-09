@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box-shadow</title>
+    <style>
+        .box1{
+            width: 400px;
+            height: 400px;
+            background-color: orangered;
+            margin: 100px auto;
+            /* 第一种，写两个值  含义:水平位置 垂直位置*/
+            /* box-shadow: 20px 10px ; */
+            /* 第二种 三个值 水平位置 垂直位置 shadow颜色 */
+            /* box-shadow: 20px 10px  aqua; */
+            /* 第三种 三个值 水平位置 垂直位置 shadow模糊程度*/
+            /* box-shadow: 20px 10px 10px ; */
+            /* 第四种 四个值 水平位置 垂直位置 shadow模糊程度 shadow颜色*/
+            /* box-shadow: 20px 10px 50px aqua; */
+            /* 第五种 五个值 水平位置 垂直位置 shadow模糊程度 阴影外延 shadow颜色*/
+            /* box-shadow: 20px 10px 50px 30px aqua; */
+            /* 第6种 6个值 水平位置 垂直位置 shadow模糊程度 阴影外延 shadow颜色 内阴影*/
+            /* box-shadow: 0px 0px 50px 30px aqua inset; */
+            border-radius: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+            transition: linear 0.2s all;
+        }
+        .box1:hover{
+            position: relative;
+            top: 10px;
+            right: 10px;
+            box-shadow: 0px 0px 50px 30px aqua inset;
+            
+        }
+        .box2{
+            width: 300px;
+            height: 300px;
+            background-color: blueviolet;
+            position: relative;
+            top: 0;
+            left: 0;
+            transition: linear 0.2s all;
+        }
+        .box2:hover{
+            box-shadow: 10px 30px 20px 20px aquamarine ;
+            position: relative;
+            top: -10px;
+            /* left: px; */
+
+        }
+        table{
+            background-color: brown;
+            color: white;
+            font-size: 16px;
+            border-collapse: collapse;
+            table-layout: auto;
+            text-align: center;
+        }
+        thead{
+            background-color: tomato;
+            font-size: 20px;
+        }
+        td{
+            border: 0.1px solid beige;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <hr>
+    <p>语法
+        <pre style="background-color: blueviolet; color: white;">
+    box-shadow: h-shadow v-shadow blur spread color (inset);
+        </pre>
+    </p>
+    <table>
+        <thead>
+            <td>值</td>
+            <td>含义</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>h-shadow</td>
+                <td>水平阴影的位置，必须填写，可以为负值</td>
+            </tr>
+            <tr>
+                <td>v-shadow</td>
+                <td>垂直阴影的位置，必须填写，可以为负值</td>
+            </tr>
+            <tr>
+                <td>blur</td>
+                <td>可选，模糊距离</td>
+            </tr>
+            <tr>
+                <td>spread</td>
+                <td>可选，阴影的外延</td>
+            </tr>
+            <tr>
+                <td>color</td>
+                <td>可选，阴影的颜色</td>
+            </tr>
+            <tr>
+                <td>inset</td>
+                <td>可选，将外部阴影改为内部阴影</td>
+            </tr>
+        </tbody>
+        <p>默认值:box-shadow:none 没有阴影</p>
+    </table>
+</body>
+</html>

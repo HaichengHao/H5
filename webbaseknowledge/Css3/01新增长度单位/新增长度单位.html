@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增长度单位</title>
+    <style>
+        :root{
+            color: white;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: orangered;
+        }
+        .box2{
+            width: 50vw;
+            height: 50vh;
+            background-color: green;
+            margin: 0 auto;
+        }
+        .box3{
+            width: 20vmax;
+            height: 20vmax;
+            background-color: orange;
+        }
+        .box4{
+            width: 20vmin;
+            height: 20vmin;
+            background-color: tomato;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box1">像素</div>
+    <div class="box2">vw(viewport width) 50vw就表示视口宽度的百分之50,20vw就表示是视口宽度的百分之20</div>
+    <div class="box3">vh(viewport height) 50vh就表示视口高度的百分之50</div>
+    <div class="box4">vmax可能是宽的百分之20，也可能是高的百分20,找到视口宽和高中最大的那个作为基准</div>
+    <div class="box5">vmin可能是宽的百分之20，也可能是高的百分20,找到视口宽和高中最小的那个作为基准</div>
+</body>
+
+</html>

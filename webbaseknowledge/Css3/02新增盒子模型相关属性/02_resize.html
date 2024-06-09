@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resize</title>
+    <style>
+        .box1{
+            width: 400px;
+            height: 400px;
+            background-color: orange;
+            resize: horizontal;
+            overflow: hidden;
+        }
+        .box2{
+            width: 800px;
+            height: 800px;
+            background-color: tomato;
+            overflow: hidden;
+            resize: vertical;
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+            overflow: hidden;
+            resize: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1" contenteditable="true">
+        盒子1
+    </div>
+    <div class="box2">
+        盒子2
+    </div>
+    <div class="box3">
+        盒子3
+    </div>
+    <hr>
+    <p>设置resize必须设置overflow</p>
+</body>
+</html>

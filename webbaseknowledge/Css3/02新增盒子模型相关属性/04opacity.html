@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opacity</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            /* font-size: 40px; */
+            opacity: 0.5; /*不透明度:0-1之间的小数,0为透明，1为完全不透明*/
+        }
+        .box2{
+            position: relative;
+        }
+        h1{
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 100px;
+            font-size: 30px;
+            text-align: center;
+            background-color: black;
+            color: white;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">hello</div>
+    <div class="box2">
+        <img src="/webbaseknowledge/others/spring.jpg" alt="">
+        <h1>春天！</h1>
+    </div>
+    <hr>
+    <p>opacity是不透明度，数值为0-1,0为透明，1为完全不透明</p>
+</body>
+</html>

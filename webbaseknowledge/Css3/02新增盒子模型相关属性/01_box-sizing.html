@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>box-sizing</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            border: 5px solid orangered;
+            padding: 5px;
+            box-sizing: content-box; /*写或不写都行，这个是默认值*/
+            margin-bottom: 10px;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+            padding: 5px; 
+            box-sizing: border-box;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        标准盒模型
+    </div>
+    <div class="box2">
+        怪异盒模型
+    </div>
+    <hr>
+    <table>
+        <caption>box-sizing怪异盒模型</caption>
+        <thead>
+            <td>可选值</td>
+            <td>含义</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>content-box</td>
+                <td>width和height设置的是盒子内容区的大小(默认值)</td>
+            </tr>
+            <tr>
+                <td>border-box</td>
+                <td>width和height设置的是盒子总的大小(怪异盒模型)</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
