@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多背景图</title>
+    <style>
+        .box1 {
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            margin: 0 auto;
+            background-color: white;
+            background: url('/webbaseknowledge/others/bg-lt.png') no-repeat left 20px top 20px,
+                        url('/webbaseknowledge/others/bg-rt.png') no-repeat right 20px top 20px,
+                        url('/webbaseknowledge/others/bg-lb.png') no-repeat left 20px bottom 20px,
+                        url('/webbaseknowledge/others/bg-rb.png') no-repeat right 20px bottom 20px;
+            border-radius: 20%;
+
+        }
+        pre{
+            background-color: blueviolet;
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <hr>
+    <pre>
+.box1 {
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+    margin: 0 auto;
+    background-color: white;
+    background: url('/webbaseknowledge/others/bg-lt.png') no-repeat left 20px top 20px,
+                url('/webbaseknowledge/others/bg-rt.png') no-repeat right 20px top 20px,
+                url('/webbaseknowledge/others/bg-lb.png') no-repeat left 20px bottom 20px,
+                url('/webbaseknowledge/others/bg-rb.png') no-repeat right 20px bottom 20px;
+    border-radius: 20%;
+
+}
+    </pre>
+</body>
+
+</html>

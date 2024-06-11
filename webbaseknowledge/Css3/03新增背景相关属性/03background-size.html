@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background-size</title>
+    <style>
+        .box1 {
+            width: 400px;
+            height: 400px;
+            padding: 50px;
+            border: 50px dashed purple;
+            background-color: orange;
+            background-image: url(/webbaseknowledge/others/spring.jpg);
+            background-repeat: no-repeat;
+            background-clip: border-box;
+            background-size: 500px 500px;
+            box-shadow: 0px 0px 80px 57px blueviolet inset;
+            /* border-radius: 100%; */
+        }
+        pre{
+            background-color: blueviolet;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <hr>
+    <ul>background-size
+        <li>作用:设置背景图的尺寸</li>
+        <li>语法:
+            <ol>
+                <li>用长度值指定背景图片的大小，不允许负值<br>
+                <div>
+                    <pre>
+        background-size:300px 300px;
+                    </pre>
+                </div>
+            </li>
+                <li>用百分比指定背景图片大小，不允许负值
+                    <div>
+                        <pre>
+        background-size:100% 100%;
+                        </pre>
+                    </div>
+                   </li>
+                <li>
+                    auto:背景图片的真实大小。--默认值
+                    <div>
+                        <pre>
+        background-size:auto;
+                        </pre>
+                    </div>
+                </li>
+                <li>
+                    contain:将背景图片等比缩放，使背景图片的宽或高与容器的宽或高相等，再将完整背景图片包含<br>
+                    在容器内，但要注意:可能会造成容器里部分区域没有背景图片。
+                    <div>
+                        <pre>
+        background-size:contain;
+                        </pre>
+                    </div>
+                </li>
+                <li>
+                    cover:将背景图片等比缩放，直到完全覆盖，图片会尽可能全的显示在元素上，但要注意:背景图片有可能显示不完整--相对比较好的选择。
+                    <div>
+                        <pre>
+        background-size:cover;
+                        </pre>
+                    </div>
+                </li>
+            </ol>
+        </li>
+
+    </ul>
+</body>
+
+</html>
