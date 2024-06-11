@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>边框圆角</title>
+    <style>
+        .box1 {
+            width: 400px;
+            height: 400px;
+            background-color: orangered;
+            transition: linear 0.35s all;
+            margin: 0 auto;
+            border-radius: 20%;
+            /* 也可以写像素的数值 */
+        }
+
+        .box1:hover {
+            border-radius: 100%;
+            box-shadow: 0px 0px 30px 40px blueviolet inset;
+        }
+
+        .box2 {
+            width: 400px;
+            height: 400px;
+            background-color: tomato;
+            /* 对border-radius也可以分别指定 */
+            border-top-right-radius: 30%;
+            border-top-left-radius: 40%;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 40%;
+
+            margin: 30px auto;
+        }
+
+        .box3 {
+            width: 400px;
+            height: 400px;
+            background-color: tomato;
+            /* 对border-radius也可以分别指定两个值 */
+            border-top-left-radius: 100px 50px;
+            border-top-right-radius: 100px 80px;
+            border-bottom-right-radius: 200px 150px;
+            border-bottom-left-radius: 120px 40px;
+
+            margin: 30px auto;
+        }
+
+        .box4 {
+            width: 400px;
+            height: 400px;
+            background-color: aquamarine;
+            border-radius: 100px 100px 200px 120px / 50px 80px 150px 40px;
+            margin: 0 auto;
+
+        }
+
+        #pre1 {
+            color: white;
+            padding-top: 100px;
+            font-size: 20px;
+        }
+
+        #pre2 {
+            padding-top: 30px;
+            font-size: 20px;
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2">
+  
+    </div>
+    <div class="box3">
+      <pre id="pre1">
+ border-top-left-radius:100px 50px ;
+ border-top-right-radius: 100px 80px;
+ border-bottom-right-radius: 200px 150px;
+ border-bottom-left-radius: 120px 40px; 
+        </pre>
+    </div>
+    <div class="box4">
+        <pre id="pre2">
+与box3的效果一样，只是写法不一样，先按顺时针写第一个像素参数，再用'/'分开写第二个像素参数
+border-radius: 100px 100px 200px 120px / 50px 80px 150px 40px;           
+        </pre>
+    </div>
+    <hr>
+    <img src="/webbaseknowledge/others/borradi.png" alt="">
+</body>
+
+</html>

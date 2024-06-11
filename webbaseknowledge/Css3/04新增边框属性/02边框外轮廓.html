@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外边框轮廓</title>
+    <style>
+        .box1 {
+            width: 400px;
+            height: 400px;
+            background-color: orangered;
+            padding: 10px;
+            border: 10px solid blueviolet;
+            margin: 10em auto;
+
+            /* 外轮廓 */
+            outline-width:20px ;
+            outline-color: aquamarine;
+            outline-style: dashed;
+            outline-offset:-40px; /*外轮廓偏移量*/
+
+            /* 复合属性,唯独outline-offset不可以写进去 */
+            outline: 20px aquamarine dashed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+
+    </div>
+<hr>
+<p>新增外轮廓，在border之外，且不参与盒子模型大小的计算，不占位置</p>
+<img src="/webbaseknowledge/others/offset0.png" alt="">
+<img src="/webbaseknowledge/others/offset100.png" alt="">
+<img src="/webbaseknowledge/others/offsetminus40.png" alt="">
+</body>
+
+</html>
