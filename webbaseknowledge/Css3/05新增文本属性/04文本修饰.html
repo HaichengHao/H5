@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本修饰</title>
+    <style>
+        h1{
+            font-size: 100px;
+            text-decoration: underline;
+            text-decoration: overline;
+            text-decoration: line-through;
+            
+            /* 以下c3 */
+            text-decoration-line:overline ;
+            text-decoration-style:dashed ;
+            text-decoration-color: blueviolet;
+
+            /* 复合属性 */
+            text-decoration: overline dashed blueviolet;
+        }
+        p{
+            background-color: blueviolet;
+            font-size: 30px;
+            color: white;
+            white-space: pre;
+        }
+        ul{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>hello world</h1>
+    <hr>
+    <p>
+        text-decoration: underline;
+        text-decoration: overline;
+        text-decoration: line-through;
+        
+        /* 以下c3 */
+        text-decoration-line:overline ;
+        text-decoration-style:dashed ;
+        text-decoration-color: blueviolet;
+
+        /* 复合属性 */
+        text-decoration: overline dashed blueviolet;
+</p>
+<ul>
+    文本修饰
+    <li>css3升级了text-decoration属性，让其变成了复合属性
+        <p>text-decoration:text-decoration-line||text-decoration-style||text-decoration-color</p>
+    </li>
+    <li>子属性及其含义
+        <ul>
+            <li>text-decoration-line 设置文本装饰线的位置
+                <ul>
+                    <li>none:指定文字无装饰</li>
+                    <li>underline:指定文字的装饰是下划线</li>
+                    <li>overline:指定文字的装饰是上划线</li>
+                    <li>line-through:指定文字的装饰是贯穿线</li>
+                </ul>
+            </li>
+            <li>text-decoration-style 文本装饰线条的形状
+                <ul>
+                    <li>solid:实线（默认）</li>
+                    <li>double:双线</li>
+                    <li>dotted:点状线条</li>
+                    <li>dashed:虚线</li>
+                    <li>wavy:波浪线</li>
+                </ul>
+            </li>
+            <li>text-decoration-color 文本装饰线条的颜色
+
+            </li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

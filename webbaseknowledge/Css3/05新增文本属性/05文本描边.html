@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本描边</title>
+    <style>
+        h1 {
+            font-size: 100px;
+            /* text-shadow: 7px 7px 7px blueviolet; */
+            /* 文本描边 */
+            -webkit-text-stroke-color: orangered;
+            -webkit-text-stroke-width: 3px;
+
+            /* 复合属性 */
+            -webkit-text-stroke: orange 3px;
+            color: transparent;
+            
+            
+        }
+    </style>
+</head>
+
+<body>
+    <h1 contenteditable="true">hello world</h1>
+    <hr>
+    <ul>
+        注意:文本描边功能仅webkit内核浏览器支持。
+        <li>-webkit-text-stroke-width:设置文字描边的宽度，写长度值</li>
+        <li>-webkit-text-stroke-color:设置文字描边的颜色，写颜色值</li>
+        <li>-webkit-text-stroke: width color;复合属性设置文字描边的宽度和颜色</li>
+    </ul>
+</body>
+
+</html>
