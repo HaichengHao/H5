@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>线性渐变</title>
+    <style>
+        #tst{
+            float:left;
+            margin-right: 40px;
+        }
+        .box{
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            /* float: left; */
+            margin-left: 50px;
+            transition: linear 0.2s all;
+            float: left;
+            box-sizing: border-box;
+
+        }
+        body{
+            clear: both;
+        }
+        img{
+            width: 300px;
+            height: 300px;
+            margin-left: 50px;
+        }
+        .box:hover{
+            border-radius: 100%;
+            box-shadow: 0px 0px 50px 20px aquamarine inset;
+        }
+        .box1{
+            background-image: linear-gradient(red,yellow,green);
+        }
+        .box2{
+            background-image: linear-gradient(to right,red,green,yellow);
+        }
+        .box3{
+            background-image: linear-gradient(to left,red,green,yellow);
+        }
+        .box4{
+            background-image: linear-gradient(to top,red,green,yellow);
+        }
+        .box5{
+            background-image: linear-gradient(to top left,red,green,yellow);
+        }
+        .box6{
+            background-image: linear-gradient(to top right,red,green,yellow);
+        }
+        .box7{
+            background-image: linear-gradient(to bottom left,red,green,yellow);
+        }
+        .box8{
+            background-image: linear-gradient(to bottom right,red,green,yellow);
+        }
+        .box9{
+            background-image: linear-gradient(20deg,red,green,yellow);
+        }
+        .box10{
+            background-image: linear-gradient(45deg,red 50px ,green 100px,yellow 150px);
+        }
+        .box11{
+            background-image: linear-gradient(45deg,red 100px ,green 150px,yellow 250px);
+            font-size: 120px;
+            -webkit-text-stroke: 4px rebeccapurple;
+            font-weight: bold;
+            color: transparent;
+            line-height: 300px;
+            text-align: center;
+            background-clip: text;
+            
+           
+        }
+        .box12{
+            background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),url(https://interactive-examples.mdn.mozilla.net/media/examples/lizard.png);
+            
+        }
+        #info{
+            margin-top: 0;
+            float: left;
+            background-color: aquamarine;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body >
+    <div id="tst">
+        <div class="box box1">to bottom(从上到下)默认情况</div>
+        <div class="box box2">to right(从左往右)</div>
+        <div class="box box3">to left(从右往左)</div>
+        <div class="box box4">to top(从下往上)</div>
+        <div class="box box5">to top left(从右下往左上)</div>
+        <div class="box box6">to top right(从左下往右上)</div>
+        <div class="box box7">to bottom left(从右上往左下)</div>
+        <div class="box box8">to bottom right(从左上往右下)</div>
+        <div class="box box9">20deg 自己用调试工具试试看</div>
+        <div class="box box10">调整颜色位置(自己用调试工具试试看)</div>
+        <div class="box box11">hello</div>
+        <div class="box box12"></div>
+        
+    </div>
+    <hr>
+    <div>
+        <p>linear-gradient</p>
+    </div>
+</body>
+</html>
