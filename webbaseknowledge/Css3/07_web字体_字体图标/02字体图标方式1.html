@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字体图标</title>
+    <style>
+        @font-face {
+            font-family: 'iconfont';
+            src: url('./字体图标/iconfont.woff2') format('woff2'),
+                url('./字体图标/iconfont.woff') format('woff'),
+                url('./字体图标/iconfont.ttf') format('truetype');
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+
+<body>
+    <p>方式1unicode引用</p>
+    <span class="iconfont">&#xe605;</span>
+    <span class="iconfont">&#xe610;</span>
+    <span class="iconfont">&#xe608;</span>
+    <span class="iconfont">&#xe67b;</span>
+
+</body>
+
+</html>
