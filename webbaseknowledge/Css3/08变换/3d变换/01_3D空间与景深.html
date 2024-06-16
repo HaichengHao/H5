@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d空间与景深</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border:1px solid black;
+            margin: 0 auto;
+            margin-top: 30px;
+            /* 1给要用3d效果的元素的父元素开启3d空间 */
+            transform-style:preserve-3d ;
+            /* 2 设置景深 */
+            perspective: 500px;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: deepskyblue;
+            transform: rotatex(30deg);
+            transform: rotateY(30deg);
+        }
+        ol{
+            background-color: blueviolet;
+            color: white;
+        }
+        .detail{
+            background-color: bisque;
+            color: black;
+
+        }
+        span{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">aloha</div>
+    </div>
+    <div>
+        <ol>
+            <li>开启3d空间<br>
+                重要原则:元素进行3d变换的首要操作:<span>父元素必须开启3d空间(transform-style:preserve-3d)</span><br>
+                <div class="detail">
+                    
+                    <ul>使用transform-style开启3d空间可选值如下:
+                        <li>flat:让子元素位于此元素的二维平面内(2d空间)--默认值</li>
+                        <li>preserve-3d:让子元素位于此元素的三维平面内(3d空间)</li>
+                    </ul>
+                </div>
+            </li>
+            <li>设置景深<br>
+            何为景深？--制定观察者与z=0平面的距离，能让发生3d变换的元素，产生透视效果，看起来更立体<br>
+            <div class="detail">
+                <ul>使用prespective设置景深，可选值如下:
+                    <li>none: 不指定透视 --默认值</li>
+                    <li>长度值:指定观察者距离z=0平面的距离，不允许负值。</li>
+                    注意:perspective设置给发生3d变换元素的<span>父元素!</span>
+                </ul>
+            </div>
+        </li>
+        </ol>
+        <p style="white-space: pre; background-color: blueviolet; color: white;">
+            /* 1给要用3d效果的元素的父元素开启3d空间 */
+            transform-style:preserve-3d ;
+            /* 2 设置景深 */
+            perspective: 500px;
+        
+
+        </p>
+    </div>
+</body>
+</html>

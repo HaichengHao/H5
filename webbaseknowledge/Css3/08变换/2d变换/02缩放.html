@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缩放</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .inner{
+            background-color: skyblue;
+            width: 200px;
+            height: 200px;
+            transform: scalex(0.5);
+        }
+        .inner2{
+            width: 200px;
+            height: 200px;
+            background-color: orangered;
+            transform: scaley(0.5);
+        }
+        p{
+            font-size: 30px;
+            background-color: blueviolet;
+            color: white;
+            white-space: pre;
+        }
+        .inner3{
+            background-color: aquamarine;
+            width: 200px;
+            height: 200px;
+            transform: scale(1.5);
+        }
+        span{
+            display: block;
+            font-size: 20px;
+            transform:scale(0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">aloha</div>
+    </div>
+    <div class="outer">
+        <div class="inner2">hello</div>
+    </div>
+    <div class="outer">
+        <div class="inner3">你好</div>
+    </div>
+    <span>你好</span>
+    <hr>
+    <p>
+    scalex(0.5) 宽度变换transform,缩小至自己本身宽度的0.5
+    scaley(0.5) 高度变换transform,缩小至自己本身宽度的0.5
+    缩放的应用:可以实现比12px更小的字体
+    缩放和位移一样对于行内元素不奏效!!!
+    </p>
+</body>
+</html>

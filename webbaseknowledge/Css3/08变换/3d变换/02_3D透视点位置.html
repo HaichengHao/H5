@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>透视点位置</title>
+    <style>
+         .outer{
+            width: 200px;
+            height: 200px;
+            border:1px solid black;
+            margin: 0 auto;
+            margin-top: 30px;
+            /* 1给要用3d效果的元素的父元素开启3d空间 */
+            transform-style:preserve-3d ;
+            /* 2 设置景深 */
+            perspective: 500px;
+
+            /* 设置透视点的位置 */
+            perspective-origin: 250px 10px;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: deepskyblue;
+            
+            transform: rotatex(45deg);
+            /* transform: rotateY(30deg); */
+        }
+        #note{
+            background-color: blueviolet;
+
+        }
+        .detail{
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">aloha</div>
+    </div>
+    <img src="/webbaseknowledge/others/perspecogn.png" alt="">
+    <p>perspective-origin第一个参数是距离父元素左边的位置，第二个是距离父元素上边的位置，结合3d空间思考并利用调试工具</p>
+    <p id="note">
+        透视点位置<br>
+        所谓透视点位置，就是观察者位置；默认的透视点在元素的中心<br>
+        <div class="detail">
+            使用prespective-origin设置观察者的位置，例如:<br>
+            /*相对坐标轴往右偏移400px,往下偏移300px(相当于人蹲下300px，然后向右移动400px看元素)*/
+            perspective-origin:400px 300px ;
+        </div>
+    </p>
+</body>
+</html>

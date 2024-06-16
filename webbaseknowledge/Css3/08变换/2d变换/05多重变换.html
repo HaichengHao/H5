@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多重变换</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            transform: scale(0.5) translate(100px,100px) rotate(30deg);
+        }
+        .inner2{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            transform:translate(100px,100px) scale(0.5) rotate(30deg);
+        }
+        #fc{
+            width: 0px;
+            height: 0px;
+            border: 100px solid blueviolet;
+            border-top: 100px solid transparent;
+            border-left: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+            border-right: 100px solid blueviolet;
+            transition: linear 2s all;
+            /* transform: ; */
+        }
+        #fc:hover{
+            transform: rotate(1000deg);
+        }
+        #imgbox{
+            margin-top: 100px;
+        }
+        p{
+            font-size: 30px;
+            white-space: pre;
+            background-color: blueviolet;
+            color: white;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">
+        </div>
+    </div>
+    <div class="outer">
+        <div class="inner2">
+
+        </div>
+    </div>
+    <div id="imgbox">
+        <img src="/webbaseknowledge/others/multitrs1.png" alt="">
+        <img src="/webbaseknowledge/others/multitrs2.png" alt="">
+    </div>
+    <div id="fc">
+
+    </div>
+    <hr>
+    <p>
+        多重变换即把多个transform的变换模式链式写
+        transform: translate(100px ,100px) scale(0.5) rotate(20deg);
+        注意translate()和scale()所在前后位置不同会有不同的结果，
+        因为translate是以其父容器为参考，而scale是以自身中心点为参考原点
+    </p>
+    
+</body>
+</html>

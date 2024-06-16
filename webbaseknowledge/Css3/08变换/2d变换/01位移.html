@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01位移</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+            position: relative;
+            
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: deepskyblue;
+            /* transform: translatey(50%); */
+            /* 复合写法 */
+            transform: translate(50% , 50%);
+
+        }
+        .inner2{
+            height: 100px;
+            width: 100px;
+            background-color: aquamarine;
+            position: absolute;
+            top:50px;
+            left:50px;
+        }
+        .inner3{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            /* 如何将其inner3居中与outer，因为是200宽高的outer,想要100宽高的inner3居中，
+            那么必须是translatex(50px) translatey(50px)
+            那么可以写成复合的translate(50px ,50px )
+            也可以写成根据inner自身宽高的50%,50%,其实也是100*0.5=50px */
+
+            transform: translate(50%,50%);
+        }
+        p{
+            white-space: pre;
+            font-size: 20px;
+            background-color: blueviolet;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">hello</div>
+    </div>
+    <div class="outer">
+        <div class="inner2">aloha</div>
+    </div>
+    <div class="outer">
+        <div class="inner3">bonjour</div>
+    </div>
+    <hr>
+    <img src="/webbaseknowledge/others/tsf_tslx.png" alt="">
+    <img src="/webbaseknowledge/others/trans_tslx-50.png" alt="">
+    <img src="/webbaseknowledge/others/trans_tsly50.png" alt="">
+    <img src="/webbaseknowledge/others/trans_tsly-50.png" alt="">
+    <hr>
+    <p>不写像素值也是可以的，也可以写百分比
+        如transform:translatex(50%)
+        即向x正方向移动自身宽度的百分之50；即.inner的width(300px)*0.5=150px;
+        同理于transform:translatex(150px);
+
+        transform:translatey(50%)
+        即向y正方向移动自身高度的百分之50；即.inner的height(300px)*0.5=150px;
+        同理于transform:translatey(150px);
+
+        不脱离文档流
+        位移的效果和相对定位很像
+        但是位移的百分比是参考自身的，而相对定位的百分比是参考父元素的
+
+        ※位移对行内元素无效！！！！！！！！！
+
+        位移可以链式编写
+        transform: translatex() translatey()
+        复合写法
+        transform:translate(x,y);
+
+        位移的作用:实现元素的水平垂直居中
+        /* 如何将其inner3居中与outer，因为是200宽高的outer,想要100宽高的inner3居中，
+            那么必须是translatex(50px) translatey(50px)
+            那么可以写成复合的translate(50px ,50px )
+            也可以写成根据inner自身宽高的50%,50%,其实也是100*0.5=50px */
+
+            transform: translate(50%,50%);
+    </p>
+    
+</body>
+</html>

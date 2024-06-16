@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扭曲skew</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            transform: skewX(20deg);
+            transform: skewY(30deg);
+            transform: skew(20deg ,20deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">hello</div>
+    </div>
+</body>
+</html>
