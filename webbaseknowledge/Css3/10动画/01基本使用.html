@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画基本使用</title>
+    <style>
+        .outer {
+            width: 1000px;
+            height: 100px;
+            border: 1px solid black;
+            /* background-color: green; */
+            overflow: hidden;
+            /* animation-name: toright2; */
+            /* animation-duration:10s ; */
+        }
+
+        .inner {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+
+            /* 2使用定义的动画（自拟即可，但是不能重复）animation-name */
+            /* animation-name: toright ; */
+            animation-name: toright2;
+            /* 3设置动画持续时间aniation-duration */
+            animation-duration: 5s;
+            /* 还可以自定义延迟时间，让动画晚点开始 */
+            animation-delay: 2s;
+        }
+
+        /* 第一种方式--简单定义 */
+        /* 1定义一组关键帧  @keyframe 动画名*/
+        @keyframes toright {
+
+            /* 第一帧 如果没可以不写*/
+            from {}
+
+            /* 最后一帧 */
+            to {
+                transform: translatex(1000px);
+                /* background-color: yellow; */
+
+            }
+        }
+
+        /* 第二种方式--高级，细分帧 */
+        @keyframes toright2 {
+            0% {}
+
+            20% {
+                background-color: yellow;
+
+            }
+
+            40% {
+                background-color: yellowgreen;
+            }
+
+            60% {
+                background-color: greenyellow;
+            }
+
+            80% {
+                background-color: green;
+                /* transform: translatex(1000px); */
+            }
+
+            100% {
+                /* transform: translate(1000px); */
+                transform: translatex(900px) rotate(360deg);
+                border-radius: 100%;
+                background-color: blueviolet;
+            }
+
+        }
+
+        ul,
+        ol {
+            font-size: 30px;
+        }
+
+        .code {
+            background-color: blueviolet;
+            color: white;
+            font-size: 25px;
+            white-space: pre;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <ul>动画的基本使用
+        <li>第一步:定义关键帧<br>
+            <ol>
+                <li>简单方式定义:<br>
+                    <div class="code">
+                        @keyframes toright{
+                        /* 第一帧 如果没可以不写*/
+                        from{
+
+                        }
+                        /* 最后一帧 */
+                        to{
+                        transform: translatex(1000px);
+                        /* background-color: yellow; */
+
+                        }
+                        }
+                    </div>
+                </li>
+                <li>完整方式定义:<br>
+                    <div class="code">
+                        /* 第二种方式--高级，细分帧 ，百分数可以自己定义*/
+                        @keyframes toright2{
+                        0%{
+
+                        }
+                        20%{
+                        background-color: yellow;
+
+                        }
+                        40%{
+                        background-color: yellowgreen;
+                        }
+                        60%{
+                        background-color: greenyellow;
+                        }
+                        80%{
+                        background-color: green;
+                        /* transform: translatex(1000px); */
+                        }
+                        100%{
+                        /* transform: translate(1000px); */
+                        transform:translatex(900px) rotate(360deg);
+                        border-radius: 100%;
+                        background-color: blueviolet;
+                        }
+                    </div>
+                </li>
+            </ol>
+        </li>
+        <li>第二步:给元素应用动画，用到的属性如下:<br>
+        <ol>
+            <li>animation-name:给元素指定具体的动画(具体的关键帧)</li>
+            <li>animation-duration:设置动画持续的时间</li>
+            <li>animation-delay:设置动画的激活延迟
+                <div class="code">
+                    .box{
+                        animation-name:tstkframe;
+                        animation-duration:10s;
+                        animation-delay:3s;
+                    }
+                </div>
+            </li>
+        </ol></li>
+
+    </ul>
+</body>
+
+</html>

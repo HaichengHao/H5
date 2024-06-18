@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他属性</title>
+    <style>
+        :root{
+            font-size: 30px;
+        }
+        /* #region 外部开始 */
+        .outer{
+            width: 1000px;
+            height: 100px;
+            border: 1px solid black;
+            background-color: aqua;
+            animation-name: load_;
+            animation-duration: 5s;
+            /* animation-delay: 3s; */
+            animation-iteration-count: infinite;
+            overflow: hidden;
+
+        }
+        /* #endregion */
+
+        /* #region内部开始 */
+        .inner{
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            animation-name: load_1;
+            animation-duration: 5s;
+            /* animation-delay: 3s; */
+
+            /* -------其它属性开始-------- */
+            /* 设置动画的方式 */
+            animation-timing-function: ease-in-out;
+            /* 动画播放的次数 ,如果写infinite则无限播放*/
+            /* animation-iteration-count: infinite; */
+
+            /* 修改动画的方向 ,reverse则为反转，alternate则为往复运动,但是要写上动画播放次数为infinite */
+            animation-direction: alternate;
+            /* 还有一个alternate-reverse则为与reverse相反的效果，自己在浏览器的调试工具中打开尝试 */
+            /* animation-direction: alternate-reverse; */
+
+            /* 修改动画外的状态（不发生动画的时候在哪里，注意，需要这个则不能让动画无限次播放） */
+            animation-fill-mode: forwards; /*forward为保持到最后一帧的状态,backforward则为回到第一帧的状态*/
+            /* 动画的播放状态 paused为暂停 配合hover使用更佳*/
+            animation-play-state: paused;
+            
+        }
+        .inner:hover{
+            animation-play-state: running;
+        }
+        /* #endregion */
+
+        /* #region定义帧开始 */
+        @keyframes load_1{
+            from{}
+            to{
+
+                transform: translate(900px) rotate(360deg);
+                border-radius: 100%;
+                background-color: blueviolet;
+            }
+        }
+        @keyframes load_{
+            0%{
+
+            }
+            30%{
+                background-color: yellow;
+            }
+            60%{
+                background-color: yellowgreen;
+            }
+            90%{
+                background-color: greenyellow;
+            }
+            100%{
+                background-color: lightgreen;
+                
+            }
+        }
+        /* #endregion */
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <h2>动画的其他属性</h2>
+    <ul>
+        <li>animation-timing-function,设置动画的类型，和transition-timing-function很像
+            <ol>
+                <li>ease(慢快慢)--默认值，平滑过渡</li>
+                <li>ease-in(先慢后快)</li>
+                <li>ease-in-out(慢快慢，没有ease柔和)</li>
+                <li>ease-out(先快后慢)</li>
+                <li>step-end(考虑过渡时间，过渡时间结束后，一步到头)</li>
+                <li>step-start(不考虑过渡的时间,直接一步到头)</li>
+                <li>steps(步骤分解值，start(先冲刺)/end(后冲刺-默认))步进</li>
+                <li>liner(匀速)</li>
+                <li>cubic-bezier()贝塞尔</li>
+            </ol>
+        </li>
+        <li>animation-iteration-count,指定动画播放的次数，常用值如下:
+            <ol>
+                <li>animation-timing-function:2 给定循环次数为2，当然可以自己指定数字</li>
+                <li>animation-timing-function:infinite 无限循环</li>
+            </ol>
+        </li>
+        <li>animation-direction,指定动画方向，默认值如下:
+            <ol>
+                <li>normal:正常方向--默认</li>
+                <li>reverse:反方向</li>
+                <li>alternate: 动画先正常方向再反方向持续交替(但是要写上动画播放次数为infinite)</li>
+                <li>alternate-reverse:与alternate反过来</li>
+            </ol>
+        </li>
+        <li>animation-fill-mode:设置动画之外的状态
+            <ol>
+                <li>forward:设置对象状态为动画结束时的状态</li>
+                <li>backforward:设置对象的状态为动画开始时的状态</li>
+            </ol>
+        </li>
+        <li>animation-play-state,设置动画播放的状态，常用值如下:
+            <ol>
+                <li>running:播放(默认)</li>
+                <li>paused:暂停</li>
+            </ol>
+        </li>
+    </ul>
+</body>
+</html>
