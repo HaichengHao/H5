@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缩放</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-top: 30px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            perspective-origin: 30px 230px;
+            
+
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: deepskyblue;
+            
+            /* transform-origin: left top; */
+            transform: scalex(0.5);
+            transform: scaleY(0.5);
+            transform: scale(0.5);
+            transform: scale(0.5,0.2);
+            /* transform: scaleZ(1.5) rotatex(30deg); */
+            transform: scale3d(0.5,1,1);
+        }
+        table{
+            background-color: blueviolet;
+            font-size: 20px;
+            color: white;
+            border: 1px solid brown;
+            border-collapse: collapse;
+            table-layout: auto;
+            text-align: center;
+        }
+        thead{
+            background-color: brown;
+        }
+        td{
+            border: 0.1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <hr>
+    <div>
+        <p>3D缩放是在2D缩放的基础上，可以昂元素沿z轴缩放，具体使用方法如下:</p>
+        <ol>
+            <li>先给元素添加切换属性transform</li>
+            <li>编写transform的具体值，3D相关可选值如下:<br>
+                <table>
+                    <thead>
+                        <td>值</td>
+                        <td>含义</td>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>translateZ</td>
+                            <td>设置z轴方向的缩放比例，值为一个数字，1表示不缩放，大于1放大，小于1缩小</td>
+                        </tr>
+                        <tr>
+                            <td>translate3D</td>
+                            <td>第一个参数对应x轴，第二个参数对应y轴，第三个参数对应z轴，参数不允许省略</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
+        </ol>
+    </div>
+</body>
+</html>

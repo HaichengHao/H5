@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d旋转</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border:1px solid black;
+            margin: 0 auto;
+            margin-top: 30px;
+            transform-style: preserve-3d;
+            perspective: 300px;
+            /* 设置透视点的位置方便观察 */
+            /* perspective-origin: 250px 101px; */
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 191, 255, 0.708);
+            transform: rotatex(30deg);
+            transform: rotatey(30deg);
+            transform: rotate3d(1,1,1,30deg);
+        }
+        ul.detail{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">hello</div>
+    </div>
+    <div class="info">
+        <ul id="detail">
+            3d旋转是在2d旋转的基础上，可以让元素沿着x轴和y轴旋转，具体使用方法如下:
+            <ol>
+                <li>先给元素添加转换属性transform</li>
+                <li>编写transform的具体值，3d相关可选如下:<br>
+                    <table>
+                        <thead>
+                            <td>值</td>
+                            <td>含义</td>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>rotatex</td>
+                                <td>设置x轴旋转角度，需指定一个角度值deg,面对x轴正方向:正值顺时针，负值逆时针</td>
+                            </tr>
+                            <tr>
+                                <td>rotatey</td>
+                                <td>设置y轴旋转角度，需指定一个角度值deg,面对y轴正方向:正值顺时针，负值逆时针</td>
+                            </tr>
+                            <tr>
+                                <td>rotate3d</td>
+                                <td>前三个参数分别表示坐标轴x,y,z第四个参数表示旋转的角度，参数不允许省略。<br>
+                                    例如:transform:rotate3d(1,1,1,30deg),意思是:x,y,z分别旋转30度</td>
+                            </tr>
+                        </tbody>
+                    </table></li>
+            </ol>
+
+        </ul>
+    </div>
+</body>
+</html>

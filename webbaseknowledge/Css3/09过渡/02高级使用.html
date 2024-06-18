@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过渡的高级使用</title>
+    <style>
+        .outer{
+            border: 1px solid black;
+            width: 800px;
+        }
+        .outer:hover .box{
+           width: 800px ;
+        }
+        .box{
+            width: 200px;
+            height: 100px;
+            /* 激活可以过渡的对象 */
+            transition-property: all;
+            /* 过渡的持续时间 */
+            transition-duration: 3s;
+            /* 过渡的延迟 */
+            /* transition-delay: 2s ; */
+        }
+        .box1{
+            background-color: aqua;
+            transition-timing-function: ease;
+        }
+        .box2{
+            background-color: tomato;
+            transition-timing-function: ease-in;
+        }
+        .box3{
+            background-color: orange;
+            transition-timing-function: ease-in-out;
+        }
+        .box4{
+            background-color: chartreuse;
+            transition-timing-function: ease-out;
+        }
+        .box5{
+            background-color: blueviolet;
+            transition-timing-function: step-end;
+        }
+        .box6{
+            background-color: chocolate;
+            transition-timing-function: step-start;
+        }
+        .box7{
+            background-color: aquamarine;
+            transition-timing-function: steps(3);
+        }
+        .box8{
+            background-color: brown;
+            transition-timing-function: linear;
+        }
+        .box9{
+            background-color: bisque;
+            transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="box box1">ease(慢快慢)</div>
+        <div class="box box2">ease-in(先慢后快)</div>
+        <div class="box box3">ease-in-out(慢快慢，没有ease柔和)</div>
+        <div class="box box4">ease-out(先快后慢)</div>
+        <div class="box box5">step-end(考虑过渡时间，过渡时间结束后，一步到头)</div>
+        <div class="box box6">step-start(不考虑过渡的时间,直接一步到头)</div>
+        <div class="box box7">steps(步骤分解值，start(先冲刺)/end(后冲刺))步进</div>
+        <div class="box box8">liner(匀速)</div>
+        <div class="box box9">cubic-bezier()贝塞尔</div>
+    </div>
+
+    <a href="https://cubic-bezier.com" title="贝塞尔">贝塞尔曲线网站</a>
+
+    <ol>
+        <li>transition-delay:指定开始过渡的延迟时间，单位:s或ms</li>
+        <li>transition-timing-function<br>
+        <ul>
+            <li>作用:设置过渡的类型</li>
+            <li>常用值:<br>
+                <ol>
+                    <li>ease(慢快慢)--默认值，平滑过渡</li>
+                    <li>ease-in(先慢后快)</li>
+                    <li>ease-in-out(慢快慢，没有ease柔和)</li>
+                    <li>ease-out(先快后慢)</li>
+                    <li>step-end(考虑过渡时间，过渡时间结束后，一步到头)</li>
+                    <li>step-start(不考虑过渡的时间,直接一步到头)</li>
+                    <li>steps(步骤分解值，start(先冲刺)/end(后冲刺))步进</li>
+                    <li>liner(匀速)</li>
+                    <li>cubic-bezier()贝塞尔</li>
+                </ol></li>
+           
+        </ul>
+    </li>
+    </ol>
+</body>
+
+</html>

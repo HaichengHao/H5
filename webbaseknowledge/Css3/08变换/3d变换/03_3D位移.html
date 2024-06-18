@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d位移</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border:1px solid black;
+            margin: 0 auto;
+            margin-top: 30px;
+            transform-style: preserve-3d;
+            perspective: 300px;
+            /* 设置透视点的位置方便观察 */
+            perspective-origin: 250px 101px;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 191, 255, 0.708);
+            /* transform: translateZ(50px); */
+            transform: translate3d(100px,100px,50px);
+        }
+        table{
+            
+            table-layout: auto;
+            border-collapse: collapse;
+            background-color: blueviolet;
+            font-size: 20px;
+            color: white;
+        }
+        thead{
+            background-color: brown;
+        }
+        td{
+            border:0.1px solid white;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <ol>
+        3d位移是在2d位移的基础上，可以让元素沿z轴位移，具体方法如下:<br>
+        <li>先给元素添加转换属性transform</li>
+        <li>编写transform的具体值，3d相关可选值如下:
+            <table>
+                <thead>
+                    <td>值</td>
+                    <td>含义</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>translateZ</td>
+                        <td>设置z轴位移，需要指定长度值，正值向屏幕外，负值向屏幕里，且不能写百分比</td>
+                    </tr>
+                    <tr>
+                        <td>translate3d</td>
+                        <td>第一个参数对应x轴，第二个参数对应y轴，第三个参数对应z轴，且均不能省略</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+    </ol>
+</body>
+</html>

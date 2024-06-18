@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过渡的基本使用</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: tomato;
+            /* 设置哪个属性需要过渡的效果 */
+            transition-property:height,width,background-color;
+            /* 设置过渡的持续时间 */
+            transition-duration: 1s,5s,3s;
+            /* 如果不想一个一个写，就可以像下面这样写,让所有能过渡的属性都过渡 */
+            /* transition-property: all; */
+            /* 不过要设置成一个transition-duration让所有人用 */
+            /* transition-duration: 1s; */
+            
+            /* transition-timing-function: ; */
+            /* transition-delay: ; */
+            /* 复合属性 */
+            /* transition: ; */
+            opacity: 0.5;
+            overflow: hidden;
+        }
+        .box1:hover{
+            border-radius: 20%;
+            height: 400px;
+            width: 400px;
+            background-color: palevioletred;
+            padding: 20px;
+            opacity: 1;
+            transform: rotate(30deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione nihil adipisci nesciunt doloribus assumenda, saepe, facere cupiditate laborum eveniet culpa iure nemo soluta, molestias sequi dolor cumque. Quia et veritatis, quos ab ratione deserunt voluptas alias saepe quae perspiciatis deleniti excepturi tenetur aspernatur culpa velit odio laboriosam facilis ullam sint illo magni dolorum sed. Amet repellendus sint id, cupiditate, suscipit ut nostrum deleniti corrupti possimus fugiat eos sunt adipisci explicabo tempore quibusdam unde iure debitis alias non, aliquam facilis? Doloribus aut distinctio totam. Nemo soluta expedita nostrum neque beatae. Praesentium error hic alias in pariatur quo optio adipisci vel ipsa perspiciatis. Id possimus porro veritatis voluptas! Vitae recusandae distinctio vel, sequi, deleniti, quod tenetur at nesciunt voluptas suscipit dolorem molestiae asperiores harum ducimus quis porro dignissimos cum modi. Autem impedit, veniam quo, nobis, dignissimos dolores repellat unde laudantium beatae non dolor? Voluptatibus aliquam numquam nobis ipsam accusantium. Nobis libero veritatis, debitis magni iste, quod cupiditate officiis eaque accusamus vel consectetur odio. Consequatur veniam sint nesciunt voluptatibus delectus velit quo dignissimos, alias architecto rerum necessitatibus eos est tempore quibusdam consequuntur aliquam dolorum nobis numquam non, eligendi facilis ut possimus temporibus error! Voluptatem, dignissimos ratione voluptas maxime recusandae sunt voluptates. Officiis eveniet debitis quia ex nemo error. Quam, cupiditate deleniti aliquam, placeat cum quia consequuntur soluta inventore ratione, impedit fugiat? Ea fugiat quam dolorum optio, ad, laboriosam omnis hic rem cupiditate dignissimos dolorem eum. Pariatur, perferendis doloribus minus facere iure architecto. Nulla at tempora accusamus dolorum asperiores voluptas iusto illo distinctio deleniti officiis velit fugiat eos laudantium, magnam dicta. Sed unde suscipit illum in odio placeat quae, eaque sequi deserunt quo, iure, neque corporis magnam accusantium. Rerum mollitia nam eligendi libero magnam, ducimus aspernatur reprehenderit? Consectetur temporibus id saepe quod beatae, praesentium sit excepturi magni illum error! Provident autem voluptatibus ipsum quam. Dolore inventore perferendis, libero neque ipsum consectetur corrupti, dicta rem vitae distinctio laboriosam, quis excepturi. Iusto hic provident nemo incidunt nostrum aliquam quos maiores deserunt voluptatibus harum magni, voluptates illum at facere beatae ab adipisci velit quaerat eveniet dolor officiis sit doloribus. Quibusdam fugiat in ullam id aspernatur aliquam mollitia iure laborum, temporibus, consectetur sapiente reprehenderit nemo sequi. Illum similique hic impedit dolor, blanditiis dolore tenetur quis nobis. Tenetur, corporis quaerat numquam expedita earum consequatur? Magnam et quo debitis rerum dolorem minus accusantium maxime ut sequi, suscipit fugiat laboriosam laudantium deserunt provident saepe necessitatibus sapiente alias nesciunt, quisquam sed voluptas excepturi? Ipsum facilis nisi necessitatibus provident amet nobis. Eius sapiente a, quas ad tenetur culpa unde animi fuga in reprehenderit! Itaque enim aliquam facilis corrupti id atque tenetur possimus tempore quasi doloremque facere repellendus nam expedita fuga dolore perferendis, minus ducimus, quis velit beatae vitae adipisci officiis dolor? Reiciendis ea soluta similique ipsam explicabo eveniet repellat laudantium repellendus ad consequatur dolorum, velit ratione a harum quibusdam quasi excepturi consequuntur iure ex placeat fugiat aspernatur modi! Voluptates, deserunt error aut sequi totam sed iure facilis rerum inventore sint mollitia iusto, vero consectetur, officia fugiat quaerat dolorem necessitatibus. Ea fugiat molestias quisquam in eum iste dicta, sed fugit. Sint itaque vitae quo, ipsa corporis nobis rem, ratione quaerat quos laborum consequatur vel iste excepturi minima aliquam ad esse molestiae quia at est cumque eveniet sit optio non. Quam, soluta maiores laborum quaerat quisquam quidem dolores? Corporis aperiam ullam repudiandae minima ducimus autem, nam, consequuntur vitae voluptatum optio facilis libero eveniet natus eius, atque praesentium! Autem nesciunt doloremque consequuntur porro doloribus laborum quod vel amet excepturi soluta repellat, iusto, a tempora magni, quia culpa consequatur. Minima facere officia aperiam debitis, adipisci earum omnis saepe explicabo id voluptatum, commodi odio totam delectus veniam eaque sed nam accusantium dolorem corrupti accusamus impedit facilis ipsa quis nemo? Repellat esse distinctio quia voluptate dolorum deleniti et totam! Tenetur vero at commodi repellat dolorum ipsa fugit, blanditiis illo, alias maxime maiores harum nemo perspiciatis facere! Nobis, debitis modi dolore quod voluptate ad maxime dolores suscipit aut repellat itaque quaerat amet sed. Iusto quod blanditiis cumque sint provident ex facere! Aut beatae accusantium quod repellendus incidunt voluptatibus, illo ab delectus ut unde, error distinctio, numquam libero voluptas animi ducimus impedit fuga nemo nostrum repellat amet alias dolorem saepe. Voluptatum, cumque iure deleniti atque aliquid repellat explicabo similique eos dolorem laudantium qui enim tenetur numquam ea quod quas delectus sunt hic sapiente veniam necessitatibus eius. Amet deleniti, sed quibusdam obcaecati, nisi molestiae nesciunt nam praesentium vero incidunt expedita optio? Aut nesciunt consectetur eum, iste esse consequatur aliquam culpa et beatae iusto? Optio, atque laboriosam? Ducimus velit, magni magnam dolorem possimus perspiciatis tenetur! Sapiente commodi rem unde. Fugit delectus nemo sit porro dolorum repudiandae eaque excepturi quam! Asperiores labore mollitia, ea illum sapiente a enim nihil! Enim quia nisi optio et blanditiis sapiente fugit architecto, iusto doloribus, vitae illum sint ea, reprehenderit qui laboriosam pariatur! Earum fugit distinctio nemo, illo eligendi mollitia incidunt facilis aut facere, voluptate a quas quaerat quam aliquam deleniti, delectus rem voluptatum saepe ut voluptatibus hic commodi eum corporis! Eos esse ipsum natus quis impedit, fugiat totam ut quas iste, ab, odio error sequi assumenda amet sint maiores porro. Perspiciatis in culpa quis reprehenderit omnis, voluptatibus velit aperiam quia voluptate possimus animi assumenda dolores quae, minima repudiandae nisi nam corrupti consequuntur totam facilis voluptas, asperiores obcaecati praesentium similique. A harum eos rem incidunt ducimus dolore nam eius quisquam libero, tempore pariatur nemo, blanditiis at laboriosam ad distinctio impedit perferendis. Excepturi, dolores. Magnam ut nam sequi debitis aliquid incidunt modi eos nisi sunt voluptas rem quas assumenda dignissimos dolores, esse, dolor reiciendis quo ea, ab iste accusantium porro? Autem cupiditate non recusandae deserunt error consequuntur dicta aut, molestiae dolores impedit unde libero exercitationem minus nihil quo incidunt maxime, ea voluptate itaque! Vel similique nisi placeat illum laboriosam labore consequatur ducimus aperiam, sint culpa! Sapiente enim quod facere amet perspiciatis nesciunt hic vero adipisci! Veniam, at laudantium quibusdam delectus earum odio qui obcaecati nobis exercitationem minima aspernatur a ab quisquam natus, itaque consectetur, nisi magnam excepturi sapiente ipsum ipsa accusantium cum corporis voluptatum. Laborum libero commodi natus sunt mollitia.
+    </div>
+    <hr>
+    <ol>过渡可以在不使用falsh动画，不使用js的情况下，让元素从一种样式，平滑过渡为另一种样式
+
+        <li>transition-property<br>
+            <ul>
+                <li>作用:定义哪个属性需要过渡，只有在该属性中定义的属性(比如宽高色彩等)才会有过渡效果</li>
+                <li>常用值:<br>
+                    <ol>
+                        <li>none:不过渡任何属性</li>
+                        <li>all:过渡所有能过渡的属性</li>
+                        <li>具体某个属性名:例如:width、height、若有多个则用逗号分隔</li>
+                        <div class="tips">
+                            不是所有的属性都能过渡，值为数字，或者值能转为数字的属性，都支持过渡，否则不支持过渡。
+                            常见的支持过渡的属性有颜色、长度值、百分比、z-index、opacity、2D变换属性、3D变换属性、阴影
+                        </div>
+                    </ol>
+                </li>
+            </ul>
+        </li>
+        <li>transition-duration<br>
+            <ul>
+                <li>作用:设置过渡的持续时间，即:一个状态过渡到另一个状态耗时多久</li>
+                <li>常用值:
+                    <ol>
+                        <li>0:没有任何过渡时间--默认值</li>
+                        <li>s或ms:秒或毫秒</li>
+                        <li>列表:
+                            <ul>
+                                <li>如果想让所有的属性都持续一个时间，那就写一个值</li>
+                                <li>如果想让每个属性持续不同的时间那就写一个时间的列表</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+        </li>
+    </ol>
+</body>
+</html>

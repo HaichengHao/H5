@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d多重变换</title>
+    <link rel="icon" href="/webbaseknowledge/mypage.ico">
+</head>
+<style>
+     .outer{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-top: 30px;
+            transform-style: preserve-3d;
+            perspective: 300px;
+            
+            
+
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: deepskyblue;
+            /* transform-origin: left;
+            transform:  rotate3d(0,1,0,45deg); */
+            transition: linear 0.5s all;
+        }
+        .inner:hover{
+            box-shadow: 0px 0px 30px 20px purple inset;
+            /* transform-origin: 201px 201px; */
+            transform:  scale(0.5) rotate3d(0,1,0,45deg);
+        }
+</style>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <div>
+        <p>多个变换，可以同时用一个transform来写</p>
+        <pre>transform:translatez(100px) scalez(3) rotatey(40deg)</pre>
+        <p>注意！多重变换时，最后写旋转，因为旋转会改变坐标系</p>
+    </div>
+</body>
+</html>
