@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画小案例</title>
+    <style>
+        .outer{
+            width: 130px;
+            height:130px;
+            /* border: 1px solid black; */
+            overflow: hidden;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+        .inner{
+            width: 130px;
+            height: 4160px;
+            /* border: 1px solid black; */
+            background-image: url(/webbaseknowledge/others/bike.png) ;
+            background-repeat: no-repeat;
+            background-origin: border-box;
+            background-position: left top;
+            animation-name: bike;
+            animation-duration: 1s;
+            /* animation-delay: 1s; */
+            animation-fill-mode: forwards;
+            animation-timing-function: steps(31);
+            animation-iteration-count: infinite;
+            
+
+        }
+        @keyframes bike{
+            from{
+
+            }
+            to{
+                transform: translateY(-4030px);
+                /* transition-timing-function: steps(32); */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

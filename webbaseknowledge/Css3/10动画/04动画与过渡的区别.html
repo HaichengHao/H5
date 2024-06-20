@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画与过渡的区别</title>
+    <style>
+        .outer{
+            width: 1000px;
+            height: 200px;
+            border:1px solid black;
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+        }
+        .inner1{
+            background-color: orange;
+            
+        }
+        .outer:hover .inner1{
+            transform: translate(900px);
+            transition:  all 3s linear;
+        }
+        .inner2{
+            background-color: tomato;
+            animation-name: toright;
+            animation-duration: 3s;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;
+
+        }
+        @keyframes toright{
+            from{
+
+            }
+            to{
+                transform: translatex(900px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner inner1">过渡</div>
+        <div class="inner inner2">动画</div>
+    </div>
+    <p>动画不需要触发条件，而过渡需要，动画可以精细控制帧，而过渡不行</p>
+</body>
+</html>
