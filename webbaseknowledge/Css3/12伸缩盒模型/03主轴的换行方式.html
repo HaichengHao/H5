@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主轴换行方式</title>
+    <style>
+       
+        .outer {
+            width: 1000px;
+            height: 600px;
+            background-color: gray;
+            margin: 0 auto;
+            
+            /*#region 伸缩盒模型相关属性开始 */
+            /* 将元素变为了伸缩容器 */
+            display: flex;
+
+            /* 调整主轴方向，水平从左到右row--默认 */
+            flex-direction: row;
+            /* 调整主轴方向，水平从右至左row-reverse */
+            /* flex-direction: row-reverse; */
+            /* 调整主轴方向，垂直从上到下column */
+            /* flex-direction: column; */
+            /* 调整主轴方向，垂直从下到上 column-reverse*/
+            /* flex-direction: column-reverse; */
+
+            /* 主轴换行方式,默认nowrap不换行,wrap则为换行 */
+            flex-wrap: wrap ;
+            /* 主轴换行方式warp-reverse,反向换行，主轴方向不变 */
+            flex-wrap: wrap-reverse;
+
+            
+        }
+
+        .inner {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            background-color: skyblue;
+
+        }
+        .inner3{
+            display: flex;
+        }
+        ul{
+            /* background-color: aquamarine; */
+            font-size: 20px;
+        }
+        /* ol{
+            background-color: blueviolet;
+            
+        } */
+        .code_css{
+            color: yellow;
+            font-style: italic;
+        }
+        .info{
+            color: red;
+            font-weight: bold;
+        }
+        .info{
+            width: 1000px;
+            height: 200px;
+            background-color: orangered;
+            margin: auto;
+            margin-top: 30px;
+            display: flex;
+        }
+        .inners{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            color: white;
+            transition: 0.15s all linear;
+            text-align: center;
+            line-height: 100px;
+        }
+        .inners:hover{
+            box-shadow: 0px 0px 2px 5px blueviolet inset;
+            transform: scale(1.1);
+            background-color: orange;
+            color: seagreen;
+        }
+        .info1{
+            width: 1000px;
+            height: 200px;
+            background-color: orangered;
+            margin: auto;
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .info2{
+            width: 1000px;
+            height: 200px;
+            background-color: orangered;
+            margin: auto;
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap-reverse;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <span class="inner inner1">1</span>
+        <span class="inner inner2">2</span>
+        <span class="inner inner3">3</span>
+        <span class="inner">4</span>
+        <span class="inner">5</span>
+        <span class="inner">6</span>
+        <span class="inner">7</span>
+        <span class="inner">8</span>
+        <span class="inner">9</span>
+        <span class="inner">10</span>
+        <span class="inner">11</span>
+    </div>
+    
+    
+<hr>
+    <ul>
+        <li>属性名:flex-wrap</li>
+        <li>常用值如下:
+            <ol>
+                <li>nowarp,默认值，不换行,可写可不写
+                    <div class="info">
+                        <div class="inners">1</div>
+                        <div class="inners">2</div>
+                        <div class="inners">3</div>
+                        <div class="inners">4</div>
+                        <div class="inners">5</div>
+                        <div class="inners">6</div>
+                        <div class="inners">7</div>
+                        <div class="inners">8</div>
+                        <div class="inners">9</div>
+                        <div class="inners">10</div>
+                        <div class="inners">11</div>
+                        <div class="inners">12</div>
+                    </div>
+                </li>
+                <li>warp，换行
+                    <div class="info1">
+                        <div class="inners">1</div>
+                        <div class="inners">2</div>
+                        <div class="inners">3</div>
+                        <div class="inners">4</div>
+                        <div class="inners">5</div>
+                        <div class="inners">6</div>
+                        <div class="inners">7</div>
+                        <div class="inners">8</div>
+                        <div class="inners">9</div>
+                        <div class="inners">10</div>
+                        <div class="inners">11</div>
+                        <div class="inners">12</div>
+                    </div>
+                </li>
+                <li>wrap-reverse，反向换行
+                    <div class="info2">
+                        <div class="inners">1</div>
+                        <div class="inners">2</div>
+                        <div class="inners">3</div>
+                        <div class="inners">4</div>
+                        <div class="inners">5</div>
+                        <div class="inners">6</div>
+                        <div class="inners">7</div>
+                        <div class="inners">8</div>
+                        <div class="inners">9</div>
+                        <div class="inners">10</div>
+                        <div class="inners">11</div>
+                        <div class="inners">12</div>
+                    </div>
+                </li>
+            </ol>
+        </li>
+    </ul>
+    
+</body>
+
+</html>

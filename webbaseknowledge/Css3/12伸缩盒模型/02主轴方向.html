@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主轴方向</title>
+    <style>
+       
+        .outer {
+            width: 1000px;
+            height: 600px;
+            background-color: gray;
+            margin: 0 auto;
+            
+            /*#region 伸缩盒模型相关属性开始 */
+            /* 将元素变为了伸缩容器 */
+            display: flex;
+
+            /* 调整主轴方向，水平从左到右row--默认 */
+            flex-direction: row;
+            /* 调整主轴方向，水平从右至左row-reverse */
+            flex-direction: row-reverse;
+
+            /* 调整主轴方向，垂直从上到下column */
+            flex-direction: column;
+            /* 调整主轴方向，垂直从下到上 column-reverse*/
+            flex-direction: column-reverse;
+
+            
+        }
+
+        .inner {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            background-color: skyblue;
+
+        }
+        .inner3{
+            display: flex;
+        }
+        ul{
+            /* background-color: aquamarine; */
+            font-size: 20px;
+        }
+        ol{
+            background-color: blueviolet;
+            
+        }
+        .code_css{
+            color: yellow;
+            font-style: italic;
+        }
+        .info{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <span class="inner inner1">1</span>
+        <span class="inner inner2">2</span>
+        <span class="inner inner3">3</span>
+    </div>
+<hr>
+<ol>
+    
+    <li>主轴与侧轴
+        <ul>
+            <li>主轴:伸缩项目沿着主轴排列，主轴默认是水平的，默认方向是:从左到右(左边是起点，右边是终点)</li>
+            <li>侧轴:与主轴垂直的就是侧轴，侧轴默认是垂直的，默认方向是:从上到下(上边是起点，下边是终点)</li>
+        </ul>
+    </li>
+    <li>主轴方向
+        <ul>
+            <li>属性名:flex-direction</li>
+            <li>常用值如下:
+                <ol>
+                    <li>row:主轴方向水平从左到右</li>
+                    <li>row-reverse:主轴方向水平从右到左</li>
+                    <li>column:主轴方向垂直从上到下</li>
+                    <li>column-reverse:主轴方向垂直从下到上</li>
+                </ol>
+            </li>
+        </ul>
+    </li>
+    <p style="font-size: 30px; color: red;">注意，改变了主轴方向侧轴也会随之改变</p>
+</ol>
+
+</body>
+
+</html>

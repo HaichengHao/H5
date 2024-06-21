@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伸缩容器与项目</title>
+    <style>
+        body{
+            display: inline-flex;
+        }
+        .outer {
+            width: 600px;
+            height: 600px;
+            background-color: gray;
+            /* 将该元素变为了伸缩容器(开启了flex布局) */
+            display: flex;
+            /* 如果是inline-flex，则思考对比inline-block那样进行学习 */
+            /* display: inline-flex; */
+            
+        }
+
+        .inner {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            background-color: skyblue;
+
+        }
+
+        
+        /* span {
+            color: red;
+        } */
+
+        .inner3{
+            display: flex;
+        }
+        ul{
+            background-color: aquamarine;
+            font-size: 20px;
+        }
+        ol{
+            background-color: blueviolet;
+            color: white;
+        }
+        .code_css{
+            color: yellow;
+            font-style: italic;
+        }
+        .info{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <span class="inner inner1">1</span>
+        <span class="inner inner2">2</span>
+        <span class="inner inner3">
+            <div>a</div>
+            <div>b</div>
+            <div>c</div>
+        </span>
+    </div>
+    <!-- <div class="outer">
+        <div class="inner inner1">1</div>
+        <div class="inner inner2">2
+        </div>
+        <div class="inner inner3">
+            <div>a</div>
+            <div>b</div>
+            <div>c</div>
+        </div>
+    </div> -->
+    
+      <hr>
+    <ul>
+        <li>伸缩容器:开启了flex的元素，就是:伸缩容器
+            <ol>
+                <li>给元素设置:<span class="code_css">display:flex</span>或<span class="code_css">display:inline-flex</span>,钙元素就变成了伸缩容器</li>
+                <li><span class="code_css">display:inline-flex</span>很少使用，因为可以给多个伸缩容器的父容器设置为伸缩容器</li>
+                <li>一个元素可以同时为伸缩容器和伸缩项目</li>
+            </ol>
+        </li>
+        <li>伸缩项目:伸缩容器所有<span class="info">子元素</span>:成为了伸缩项目
+        <ol>
+            <li>仅伸缩容器的<span class="info">子元素</span>成为了伸缩项目，孙子元素、重孙子元素等后代，不是伸缩项目</li>
+            <li>无论原来是哪种元素(block inline-block inline),一旦成为了伸缩项目，全都会"<span class="info">块状化</span>"</li>
+        </ol></li>
+    </ul>
+</body>
+
+</html>
