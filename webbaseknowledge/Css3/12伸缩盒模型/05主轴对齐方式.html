@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主轴对齐方式</title>
+    <style>
+        .outer {
+            width: 1000px;
+            height: 600px;
+            margin: 0 auto;
+            background-color: slategray;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+
+            /* 主轴对齐方式 */
+            /* 主轴的对齐方式 ,默认值为flex-start,即主轴的起始位置*/
+            justify-content: flex-start;
+            /* 修改为向右对齐flex-end或right */
+            justify-content: flex-end;
+            justify-content: right;
+            /* 修改为居中对齐 */
+            justify-content: center;
+            /* 修改为space-around ,项目均匀分布在一行中，项目与项目之间的距离是项目距离边缘的二倍*/
+            justify-content: space-around;
+            /* 项目均匀分布在一行中，项目与项目之间的距离是相等的，项目与边缘没有距离 */
+            justify-content: space-between;
+            /* 项目均匀分布在一行中 ，项目与项目之间的距离是相等的，项目与边缘的距离与项目之间的距离也是相等的*/
+            justify-content: space-evenly;
+        }
+
+        .inner {
+            width: 200px;
+            height: 200px;
+            box-sizing: border-box;
+            border: 1px solid black;
+            background-color: skyblue;
+        }
+        .info{
+            width: 1000px;
+            height: 200px;
+            background-color: orangered;
+            margin: auto;
+            margin-top: 30px;
+            display: flex;
+        }
+        .info0{
+            justify-content: flex-start;
+        }
+        .info1{
+            justify-content: flex-end;
+        }
+        .info2{
+            justify-content: center;
+        }
+        .info3{
+            justify-content: space-between;
+        }
+        .info4{
+            justify-content: space-around;
+        }
+        .info5{
+            justify-content: space-evenly;
+        }
+        .inners{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            color: white;
+            transition: 0.15s all linear;
+            text-align: center;
+            line-height: 100px;
+        }
+        .inners:hover{
+            box-shadow: 0px 0px 2px 5px blueviolet inset;
+            transform: scale(1.1);
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+        <div class="inner">4</div>
+        <!-- <div class="inner">5</div>
+        <div class="inner">5</div>
+        <div class="inner">5</div> -->
+
+
+    </div>
+    <hr>
+    <ul>主轴对齐方式
+        <li>属性名:justify-content</li>
+        <li>常用值如下
+            <ol>
+                <li>flex-start:主轴起点对齐--默认值
+                    <div class="info info0">
+                        <div class="inners">1</div>
+                        <div class="inners">2</div>
+                        <div class="inners">3</div>
+                        <div class="inners">4</div>
+                        <div class="inners">5</div>
+                    </div>
+                </li>
+                <li>flex-end:主轴终点对齐
+                    <div class="info info1">
+                        <div class="inners">1</div>
+                        <div class="inners">2</div>
+                        <div class="inners">3</div>
+                        <div class="inners">4</div>
+                        <div class="inners">5</div>
+                    </div>
+                </li>
+                <li>centen:居中对齐
+                    <div class="info info2">
+                        <div class="inners">1</div>
+                        <div class="inners">2</div>
+                        <div class="inners">3</div>
+                        <div class="inners">4</div>
+                        <div class="inners">5</div>
+                    </div></li>
+                <li>space-between:均匀分布，两端对齐(最常用)
+                    <div class="info info3">
+                        <div class="inners">1</div>
+                        <div class="inners">2</div>
+                        <div class="inners">3</div>
+                        <div class="inners">4</div>
+                        <div class="inners">5</div>
+                    </div>
+                </li>
+                <li>space-around:均匀分布，两端距离是中间距离的一半
+                    <div class="info info4">
+                        <div class="inners">1</div>
+                        <div class="inners">2</div>
+                        <div class="inners">3</div>
+                        <div class="inners">4</div>
+                        <div class="inners">5</div>
+                    </div>
+                </li>
+                <li>space-evenly:均匀分布，两端距离和中间距离一致
+                    <div class="info info5">
+                        <div class="inners">1</div>
+                        <div class="inners">2</div>
+                        <div class="inners">3</div>
+                        <div class="inners">4</div>
+                        <div class="inners">5</div>
+                    </div>
+                </li>
+            </ol>
+        </li>
+    </ul>
+</body>
+
+</html>

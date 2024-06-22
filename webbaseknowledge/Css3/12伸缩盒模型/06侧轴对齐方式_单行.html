@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侧轴对齐方式</title>
+    <style>
+        .outer {
+            background-color: gray;
+            margin: 0 auto;
+            width: 1000px;
+            height: 600px;
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+
+            /* justify-content: flex-start; */
+
+
+            /*#region 单行侧轴对齐align-items */
+            /* flex-start侧轴的开始 */
+            align-items: flex-start;
+            /* flex-end侧轴的结束 */
+            align-items: flex-end;
+            /* center居中 */
+            align-items: center;
+            /* baseline 基线对齐几乎不用*/
+            align-items: baseline;
+            /* stretch 拉伸对齐(默认值)，仅在所有的伸缩项目都没有给高度的时候生效 */
+            align-items: stretch;
+
+        }
+
+        .inner {
+            width: 200px;
+            /* height: 200px; */
+            background-color: skyblue;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .inner2 {
+            /* height: 300px; */
+            font-size: 80px;
+        }
+
+        
+        span{
+            font-size: 20px;
+            font-style: bold;
+            color: red;
+        }
+        
+        .info{
+            width: 1000px;
+            height: 400px;
+            background-color: orangered;
+            margin: auto;
+            margin-top: 30px;
+            display: flex;
+        }
+        
+        .info1{
+            align-items: flex-start;
+        }
+        .info2{
+            align-items: flex-end;
+        }
+        .info3{
+            align-items: center;
+        }
+        .info4{
+            align-items: baseline;
+        }
+        .info5{
+            justify-content: space-evenly;
+        }
+        .info6{
+            justify-content: flex-start;
+        }
+        .inners{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            color: white;
+            transition: 0.15s all linear;
+            text-align: center;
+            line-height: 100px;
+            background-color: brown;
+        }
+        .inners:hover{
+            box-shadow: 0px 0px 2px 5px blueviolet inset;
+            transform: scale(1.1);
+            background-color: orange;
+        }
+        .inner_2{
+            width: 100px;
+            height: 200px;
+            line-height: 200px;
+            background-color: aqua;
+        }
+        .inner_3{
+            height: 50px;
+            line-height: 50px;
+            background-color: green;
+        }
+        .stc{
+            font-size: 20px;
+            color: white;
+            width: 200px;
+            
+        }
+        .stc1{
+            background-color: brown;
+        }
+        .stc2{
+            background-color: aqua;
+        }
+        .stc3{
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">1x</div>
+        <div class="inner inner2">2x</div>
+        <div class="inner inner3">3x</div>
+        <!-- <div class="inner">4</div>
+        <div class="inner">5</div>
+        <div class="inner">6</div>
+        <div class="inner">7</div>
+        <div class="inner">8</div> -->
+    </div>
+    <hr>
+    <h2>侧轴对齐方式</h2>
+    <h3>只适用于有一行的情况</h3>
+    <ul>
+        <li>所需属性:align-items</li>
+        <li>常用值如下
+            <ol>
+                <li>flex-start:侧轴的起点对齐
+                    <div class="info info1">
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        
+                    </div>
+                </li>
+                <li>flex-end:侧轴的终点对齐
+                    <div class="info info2">
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        
+                    </div>
+                </li>
+                <li>center:侧轴的居中对齐
+                    <div class="info info3">
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        
+                    </div>
+                </li>
+                <li>baseline:伸缩项目的第一行文字的基线对齐
+                    <div class="info info4">
+                        <div class="inners">1x</div>
+                        <div class="inners inner_2">2x</div>
+                        <div class="inners inner_3">3x</div>
+                        
+                    </div>
+                </li>
+                <li>stretch:如果伸缩项目未设置高度<span>(stretch激活的必要条件)</span>，将占满整个容器的高度。--默认值
+                <div class="info info5">
+                    <div class="stc stc1">1</div>
+                    <div class="stc stc2">2</div>
+                    <div class="stc stc3">3</div>
+                        
+                    </div></li>
+            </ol>
+        </li>
+    </ul>
+</body>
+
+</html>

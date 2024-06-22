@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目在主轴的基准长度</title>
+    <style>
+        .outer{
+            width: 1000px;
+            height: 800px;
+            background-color: gray;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: flex-start;
+
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border: 1px solid black;
+            
+        }
+        .inner2{
+            /* 设置伸缩项目在主轴上的基准长度，默认值为auto，若主轴是横向的，那么之前设置的宽度失效，若主轴为纵向，则之前设置的高度失效 */
+            flex-basis: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+        <div class="inner inner2"></div>
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

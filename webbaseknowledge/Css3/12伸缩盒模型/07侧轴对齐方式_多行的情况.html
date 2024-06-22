@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侧轴对齐方式多行的情况</title>
+    <style>
+        span {
+            font-size: 20px;
+            font-style: bold;
+            color: red;
+        }
+
+        .info {
+            box-sizing: border-box;
+            width: 800px;
+            height: 700px;
+            background-color: orangered;
+            margin: auto;
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .info1 {
+            align-content: flex-start;
+        }
+
+        .info2 {
+            align-content: flex-end;
+        }
+
+        .info3 {
+            align-content: center;
+        }
+
+        .info4 {
+            align-content:space-around;
+        }
+
+        .info5 {
+            align-content: space-between;
+        }
+
+        .info6 {
+            align-content: space-evenly;
+        }
+        .info7{
+            align-content: stretch;
+        }
+        .inners {
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            color: white;
+            transition: 0.15s all linear;
+            text-align: center;
+            line-height: 100px;
+            background-color: brown;
+        }
+
+        .inners:hover {
+            box-shadow: 0px 0px 2px 5px blueviolet inset;
+            transform: scale(1.1);
+            background-color: orange;
+        }
+
+        .inner_2 {
+            width: 100px;
+            height: 200px;
+            line-height: 200px;
+            background-color: aqua;
+        }
+
+        .inner_3 {
+            height: 50px;
+            line-height: 50px;
+            background-color: green;
+        }
+
+        .stc {
+            font-size: 20px;
+            color: white;
+            width: 200px;
+
+        }
+        .stc1{
+            background-color: brown;
+        }
+        .stc2{
+            background-color: aqua;
+        }
+        .stc3{
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <hr>
+    <h2>侧轴对齐方式(和主轴对齐方式的值一样，且多了一个stretch)</h2>
+    <h3>只适用于有多行的情况</h3>
+    <ul>
+        <li>所需属性:align-content</li>
+        <li>常用值如下
+            <ol>
+                <li>flex-start:侧轴的起点对齐
+                    <div class="info info1">
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                       
+
+                    </div>
+                </li>
+                <li>flex-end:侧轴的终点对齐
+                    <div class="info info2">
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                      
+
+                    </div>
+                </li>
+                <li>center:侧轴的居中对齐
+                    <div class="info info3">
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+
+                    </div>
+                </li>
+                <li>space-around:均匀分布，两端距离是中间距离的一半
+                    <div class="info info4">
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+
+                    </div>
+                </li>
+                <li>space-between:均匀分布，两端对齐
+                    <div class="info info5">
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+
+                    </div>
+                </li>
+                <li>space-evenly:均匀分布，两端距离和中间距离一致
+                    <div class="info info6">
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+                        <div class="inners">1</div>
+                        <div class="inners inner_2">2</div>
+                        <div class="inners inner_3">3</div>
+
+                    </div>
+                </li>
+                <li>stretch:如果伸缩项目未设置高度<span>(stretch激活的必要条件)</span>，将占满整个容器的高度。--默认值
+                    <div class="info info7">
+                        <div class="stc stc1">1</div>
+                        <div class="stc stc2">2</div>
+                        <div class="stc stc3">3</div>
+                        <div class="stc stc1">1</div>
+                        <div class="stc stc2">2</div>
+                        <div class="stc stc3">3</div>
+                        <div class="stc stc1">1</div>
+                        <div class="stc stc2">2</div>
+                        <div class="stc stc3">3</div>
+                        <div class="stc stc1">1</div>
+                        <div class="stc stc2">2</div>
+                        <div class="stc stc3">3</div>
+                            
+                        </div></li>
+            </ol>
+        </li>
+    </ul>
+</body>
+
+</html>

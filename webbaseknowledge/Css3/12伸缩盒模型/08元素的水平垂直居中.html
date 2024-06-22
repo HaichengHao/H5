@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用flex实现水平垂直居中</title>
+    <style>
+        .outer{
+            width: 400px;
+            height: 400px;
+            background-color: gray;
+            margin: 0 auto;
+            border: 1px solid black;
+            display: flex;
+
+            /* 方案1 */
+            /* justify-content: center;
+            align-items: center; */        
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+
+            /* 方案2 */
+            margin: auto;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>
