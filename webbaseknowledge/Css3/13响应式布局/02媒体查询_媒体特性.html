@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体特性</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            height: 200px;
+            background-color: gray;
+            line-height: 200px;
+            text-align: center;
+            font-size: 100px;
+        }
+        table{
+            table-layout: auto;
+            border-collapse: collapse;
+            font-size: 30px;
+            background-color: blueviolet;
+            margin: 0 auto;
+            color: white;
+            text-align: center;
+
+        }
+        td{
+            border: 0.1px solid white;
+        }
+        /* 检测到视口的宽度为800px时，应用如下样式 */
+        @media(width:800px){
+            h1{
+                background-color: hotpink;
+            }
+        }
+
+        /* 宽度小于700时背景色是粉色 */
+        /* @media(max-width:700px){
+            h1{
+                background-color: hotpink;
+            }
+        } */
+
+        /* 宽度大于900时是蓝色 */
+        @media(min-width:900px){
+            h1{
+                background-color: blue;
+            }
+        }
+
+        /* 高度小于800时呈现紫色  */
+        @media(max-height:800px){
+            h1{
+                background-color: blueviolet;
+            }
+        }
+
+
+        /* 设备宽度 ,注意系统级别的缩放，如缩放125%,显示器1920px*1080px,则实际设备宽度应该设置为1920/1.25*/
+        /* 检测到屏幕宽度为1536px时，背景发生变化 */
+        @media(device-width:1536px) {
+            h1{
+                background-image: radial-gradient(at left top,red,green,yellow);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>hello</h1>
+    <hr>
+    <table>
+        <thead>
+            <td>值</td>
+            <td>含义</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>width</td>
+                <td>检测视口宽度</td>
+            </tr>
+            <tr>
+                <td>max-width</td>
+                <td>检测视口最大宽度</td>
+            </tr>
+            <tr>
+                <td>min-width</td>
+                <td>检测视口最小宽度</td>
+            </tr>
+            <tr>
+                <td>height</td>
+                <td>检测视口高度</td>
+            </tr>
+            <tr>
+                <td>max-height</td>
+                <td>检测视口最大高度</td>
+            </tr>
+            <tr>
+                <td>min-height</td>
+                <td>检测视口最小高度</td>
+            </tr>
+            <tr>
+                <td>device-width</td>
+                <td>检测设备屏幕的宽度</td>
+            </tr>
+            <tr>
+                <td>max-device-width</td>
+                <td>检测设备的最大宽度</td>
+            </tr>
+            <tr>
+                <td>min-device-width</td>
+                <td>检测设备的最小宽度</td>
+            </tr>
+            <tr>
+                <td>orientation</td>
+                <td>
+                    <p>检查视口的旋转方向</p>
+                    <ol>
+                        <li>portrait:视口处于纵向，即高度带等于宽度</li>
+                        <li>landscape:视口处于横向，即宽度大于高度</li>
+                    </ol>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

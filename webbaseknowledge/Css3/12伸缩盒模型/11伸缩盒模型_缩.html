@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伸缩项目_缩</title>
+    <style>
+        :root{
+            font-size: 20px;
+        }
+        .outer{
+            width: 600px;
+            height: 600px;
+            border: 1px solid black;
+            background-color: gray;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            justify-content: flex-start;
+            box-sizing: border-box;
+        }
+        .inner{
+            background-color: skyblue;
+            width: 200px;
+            height: 200px;
+            box-sizing: border-box;
+            border: 1px solid black;
+            flex-grow: 1;
+
+            /* 默认值为1,父元素的空间不够了才会产生压缩 ，前提是不进行flex项目换行*/
+            flex-shrink: 1; 
+        }
+        .inner2{
+            width: 300px;
+        }
+        p{
+            white-space:pre-line;
+        }
+        .eg{
+            background-color: lightcyan;
+        }
+        .pixel_s{
+            color:orangered
+        }
+        .value{
+            color:red
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+        <div class="inner inner2"></div>
+        <div class="inner"></div>
+    </div>
+    <hr>
+    <ul>flex-shrink(缩)父元素的空间不够了才会产生压缩 ，想观察就不进行flex项目换行
+        <li>概念:flex-shrink定义了项目的压缩比例，默认为1，即:如果空间不足，该项目会缩小</li>
+        <li>收缩项目的计算,略微复杂，举例如下
+            <div class="eg">
+                <p>
+                例如:
+                    三个收缩项目,宽度分别为<span class="pixel_s">200px、300px、200px</span>它们的flex-shrink值分别为<span class="value">1、2、3</span>
+                    若想刚好容纳三个项目，需要总宽度为<span class="pixel_s">700px</span>,但容器只有<span class="pixel_s">400px</span>还差<span class="pixel_s">300px</span>
+                    所以每个人都要收缩一下才可以放下,具体收缩的值，这样计算：
+                </p>
+                <ol>
+                    <li>计算分母:200*1+300*2+200*3=1400px</li>
+                    <li>计算比例值
+                        <ul>
+                            <li>项目1比例值: 200/1400 (比例值1)</li>
+                            <li>项目2比例值: 600/1400 (比例值2)</li>
+                            <li>项目3比例值: 600/1400 (比例值3)</li>
+                        </ul>
+                    </li>
+                    <li>计算最终收缩大小（其中的300就是差的300）
+                        <ul>
+                            <li>项目1需要收缩:比例值1 &times;300</li>
+                            <li>项目2需要收缩:比例值2 &times;300</li>
+                            <li>项目3需要收缩:比例值3 &times;300</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>

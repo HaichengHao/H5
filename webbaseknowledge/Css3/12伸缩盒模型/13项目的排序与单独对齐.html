@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目的排序与单独对齐</title>
+    <style>
+        .outer{
+            width: 600px;
+            height: 900px;
+            background-color: gray;
+            border: 1px solid black;
+            margin: 0 auto;
+            flex-direction: row;
+            display: flex;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border: 1px solid black;
+            box-sizing: border-box;
+            flex: 1 1 0;
+            transition: 0.2s all linear;
+            /* animation-name: pmd; */
+            animation: pmd 10s linear 1s infinite reverse forwards;
+        }
+
+
+        /* 排序 */
+        .inner1{
+            order:1;
+        }
+        .inner2{
+            order: 0 ; 
+            /* 大的在右边，小的在左边 */
+            /* 默认是0,即按原本的排序，如果order是-1则向前移动，如果是1则向后移动 */
+            /* 这就是修改项目的视觉顺序，当然，如果项目多，则可以指定，如有1,2,3,4四个项目，想实现4213这种效果，只需分别设置为数值n-1,n-2,n,n-3 */
+        }
+        .inner3{
+            order: 2;
+            /* 单独自我对齐inner3 */
+            align-self:flex-end;
+        }
+        .inner4{
+            order:-1 ;
+        }
+
+
+        .inner:hover{
+            background-color: orange;
+            transform: scale(1.05);
+            box-shadow: 0px 0px 10px 10px blueviolet inset;
+        }
+            /* 设置一个跑马灯效果，就当是回顾动画的知识 */
+        @keyframes pmd{
+            40%{
+                background-color: blueviolet;
+            }
+            60%{
+                background-color: yellow;
+            }
+            80%{
+                background-color: blue;
+            }
+            100%{
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner inner1">1</div>
+        <div class="inner inner2">2</div>
+        <div class="inner inner3">3</div>
+        <div class="inner inner4">4</div>
+    </div>
+    <hr>
+    
+</body>
+</html>

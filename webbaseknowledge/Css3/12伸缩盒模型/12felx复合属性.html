@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex复合属性</title>
+    <style>
+        .outer{
+            width: 1000px;
+            height: 600px;
+            background-color: gray;
+            border: 1px solid black;
+            margin: 0 auto;
+            flex-direction: row;
+            display: flex;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border: 1px solid black;
+            box-sizing: border-box;
+            /* flex: flex-grow flex-shrink flex-basis; */
+            /* flex: 1 1 auto; */
+            /* 上面的可以简写为 */
+            /* flex: auto; */
+
+            /* 可以拉伸可以压缩，设置基准长度为0，可简写为flex:1; */
+            flex: 1 1 0;
+
+            /* 可以简写为flex:none */
+            flex: 0 0 auto;
+
+            /*  flex的默认值*/
+            flex:0 1 auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+        <div class="inner inner2"></div>
+        <div class="inner"></div>
+    </div>
+    <hr>
+    <ul>flex是复合属性，复合了felx-grow、flex-shrink、felx-basis三个属性，默认为0 1 auto
+        <li>如果写flex: 1 1 auto,则可以简写为flex:auto</li>
+        <li>如果写felx: 1 1 0,则可简写为felx:1</li>
+        <li>如果写flex:0 0 auto,则可简写为flex:none</li>
+        <li>如果写felx:0 1 auto,则可简写为felx:auto--即felx默认值</li>
+    </ul>
+</body>
+</html>

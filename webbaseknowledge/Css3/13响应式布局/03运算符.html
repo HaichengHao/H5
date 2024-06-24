@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算符</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            height: 200px;
+            background-color: gray;
+            line-height: 200px;
+            text-align: center;
+            font-size: 100px;
+        }
+        table{
+            table-layout: auto;
+            border-collapse: collapse;
+            font-size: 30px;
+            background-color: blueviolet;
+            margin: 0 auto;
+            color: white;
+            text-align: center;
+
+        }
+        td{
+            border: 0.1px solid white;
+        }
+        pre{
+            background-color: hsl(31, 27%, 31%);
+            color: white;
+            font-size: 20px;
+        }
+        /* 且运算符 and */
+        /* 当视口宽度>=700且<=800时，h1背景色设置为橙色*/
+        @media(min-width:700px) and (max-width:800px){
+            h1{
+                background-color: orange;
+            }
+        }
+        /* 是屏幕，且当视口宽度>=700且<=800时，h1背景色设置为bv色*/
+        @media screen and(min-width:700px) and (max-width:800px){
+            h1{
+                background-color: blueviolet;
+            }
+        }
+
+        /* 或运算符 , or 两个都可以 */
+        /* 当宽度小于700px 或宽度大于800px，h1设置为橘红色 */
+        @media(max-width:700px),(min-width:800px){
+            h1{
+                background-color: orangered;
+            }
+        }
+        @media(max-width:700px) or (min-width:800px){
+            h1{
+                background-color: orangered;
+            }
+        }
+
+        /* 非运算符,否定运算符 */
+        /* 如果不是打印机，h1背景色就是绿色,如果是要打印，就会自动去掉背景色 */
+        @media not print{
+            h1{
+                background-color: green;
+            }
+        }
+
+        /* 肯定运算符only */
+    </style>
+</head>
+<body>
+    <h1>hello</h1>
+    <hr>
+    <table>运算符
+        <thead>
+            <td>值</td>
+            <td>含义</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>and</td>
+                <td>且</td>
+            </tr>
+            <tr>
+                <td>, 或 or</td>
+                <td>或</td>
+            </tr>
+            <tr>
+                <td>not</td>
+                <td>否定，非</td>
+            </tr>
+            <tr>
+                <td>only</td>
+                <td>肯定</td>
+            </tr>
+        </tbody>
+    </table>
+    <pre>
+    
+    /* 且运算符 and */
+    /* 当视口宽度>=700且<=800时，h1背景色设置为橙色*/
+    @media(min-width:700px) and (max-width:800px){
+        h1{
+            background-color: orange;
+        }
+    }
+    /* 是屏幕，且当视口宽度>=700且<=800时，h1背景色设置为bv色*/
+    @media screen and(min-width:700px) and (max-width:800px){
+        h1{
+            background-color: blueviolet;
+        }
+    }
+
+    /* 或运算符 , or 两个都可以 */
+    /* 当宽度小于700px 或宽度大于800px，h1设置为橘红色 */
+    @media(max-width:700px),(min-width:800px){
+        h1{
+            background-color: orangered;
+        }
+    }
+    @media(max-width:700px) or (min-width:800px){
+        h1{
+            background-color: orangered;
+        }
+    }
+
+    /* 非运算符,否定运算符 */
+    /* 如果不是打印机，h1背景色就是绿色,如果是要打印，就会自动去掉背景色 */
+    @media not print{
+        h1{
+            background-color: green;
+        }
+    }
+
+    /* 肯定运算符only */
+    </pre>
+</body>
+</html>
