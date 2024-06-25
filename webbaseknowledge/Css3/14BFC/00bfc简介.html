@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bfc简介</title>
+    <style>
+        span{
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>w3c对bfc的定义
+            <div>浮动、绝对定位元素、不是块盒子的容器(如 inline-blocks、table-cells、table-captions)<br>
+            以及overflow属性的值除visible以外的块盒，将为其内容建立新的块格式化上下文</div>
+        </li>
+        <li>MDN对bfc的描述
+            <div>
+                块格式化上下文(Block Forming Content,BFC)是web页面的可视化css渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域
+            </div>
+
+        </li>
+        <li>通俗理解
+            <div>
+                <ol>
+                    <li>BFC是块格式化上下文，可以理解为元素的一个特异功能</li>
+                    <li>该特异功能，在默认的情况下处于关闭状态；当元素满足了某些条件后，该特异功能被激活</li>
+                    <li>所谓激活特异功能，专业点就是说:钙元素创建了BFC(又称:开启了bfc)</li>
+                </ol>
+            </div>
+
+        </li>
+    </ul>
+    <hr> 
+    <ol>开启了BFC能解决什么问题?
+        <li>父元素开启BFC后，其<span>子元素</span>不会再产生margin塌陷问题</li>
+        <li>元素开启BFC后，自己不会被其他元素所覆盖</li>
+        <li>父元素开启BFC后，就算其<span>子元素</span>浮动，元素自身高度也不会塌陷。</li>
+    </ol>
+    <hr>
+    <ul>
+        如何开启BFC
+        <li>根元素</li>
+        <li>浮动元素</li>
+        <li>绝对定位、固定定位的元素</li>
+        <li>行内块元素</li>
+        <li>表格单元格:table、thead、tbody、tfoot、th、td、 tr、 caption</li>
+        <li>overflow值不为visible的元素</li>
+        <li>伸缩项目</li>
+        <li>多列容器</li>
+        <li>column-span为all的元素(即使该元素没有包裹在多列容器中)</li>
+        <li>display的值，设置为flow-root</li>
+    </ul>
+    <hr>
+    <p>凡是能共同解决margin塌陷，元素浮动覆盖、子元素浮动父元素消失的问题都是bfc </p>
+</body>
+
+</html>

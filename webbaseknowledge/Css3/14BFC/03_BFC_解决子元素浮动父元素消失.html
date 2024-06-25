@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bfc解决子元素塌陷</title>
+    <style>
+        .outer{
+            width: 400px;
+            background-color: gray;
+             /* float: left; */
+            /* position: absolute; */
+            /* display: inline-block; */
+            /* display: table; */
+            /* overflow: hidden; */
+            /* column-count: 1; */
+            display: flow-root;
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+        .inner1{
+            background-color: orange;
+        }
+        .inner2{
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner inner1"></div>
+        <div class="inner inner2"></div>
+    </div>
+</body>
+</html>

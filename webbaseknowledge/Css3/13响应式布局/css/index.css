@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    height: 200px;
+    /* background-color: gray; */
+    line-height: 200px;
+    text-align: center;
+    font-size: 100px;
+}
+table{
+    table-layout: auto;
+    border-collapse: collapse;
+    font-size: 30px;
+    background-color: blueviolet;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+
+}
+td{
+    border: 0.1px solid white;
+}
