@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小风车</title>
+    <style>
+        .box{
+            width: 650px;
+            height: 650px;
+            margin: 40vh auto;
+            background-image: url(./images/rotate.png);
+            transition: 1s all linear;
+            animation: roll 3s linear 0s infinite normal forwards;
+        }
+        /* .box:hover{
+            transform: rotate(360deg);
+        } */
+        @keyframes roll {
+            from{
+
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

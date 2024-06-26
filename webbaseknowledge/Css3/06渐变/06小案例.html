@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        .outer {
+            height: 247px;
+            width: 1200px;
+            clear: both;
+            margin: auto;
+
+        }
+
+        .img {
+            width: 350px;
+            height: 247px;
+            background-size: 350px 247px;
+            background-origin: border-box;
+            transition: 0.3s all linear;
+        }
+
+        .img1 {
+            /* width: 100%; */
+            background-image: url('./images/product.jpg');
+        }
+
+        .img2 {
+            background-image: url('./images/product.jpeg');
+        }
+
+        .img3 {
+            background-image: url('./images/huawei2.jpeg');
+            margin-right: 0px;
+        }
+
+        li {
+            width: 350px;
+            height: 247px;
+            float: left;
+            margin: 0 auto;
+            margin-right: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        li:hover .img {
+            transform: scale(1.2);
+        }
+        mask:hover.info{
+            bottom: 0;
+        }
+        .mask {
+            width: 350px;
+            height: 247px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(transparent,
+            rgba(0,0,0,.6));
+            opacity: 0;
+            transition: 0.3s all linear;
+        }
+
+        li:hover .mask{
+            opacity: 1;
+        }
+
+        .info {
+            width: 350px;
+            padding: 20px 30px;
+            height: 247px;
+            position: absolute;
+            left: 0;
+            bottom: -100px;
+            /* font-size: 20px; */
+            color: whitesmoke;
+            transition: 0.3s all linear;
+        }
+
+        h4 {
+            font-size: 20px;
+        }
+
+        h5 {
+            font-size: 30px;
+        }
+
+        @font-face {
+            font-family: 'iconfont';
+            /* Project id 4599630 */
+            src: url('//at.alicdn.com/t/c/font_4599630_ml9njidbpm.woff2?t=1719377049880') format('woff2'),
+                url('//at.alicdn.com/t/c/font_4599630_ml9njidbpm.woff?t=1719377049880') format('woff'),
+                url('//at.alicdn.com/t/c/font_4599630_ml9njidbpm.ttf?t=1719377049880') format('truetype');
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        p{
+            padding: 20px 0px;
+            font-size: 18px;
+        }
+        li:hover .info{
+            transform: translateY(-50px);
+        }
+        li:hover{
+            cursor: pointer;
+        }
+        .iconfont{
+            transition: 0.3s all linear;
+        }
+        li:hover .iconfont{
+            color: red;
+            font-weight: bold;
+        }
+
+        /* 其它蒙版解决方案--设置z-index，这里以info3来举例 */
+        .info3{
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <ul class="infolst">
+            <li>
+                <div class="img img1"></div>
+                <div class="mask"></div>
+                <div class="info info1">
+                    <h4>创文明城市</h4>
+                    <h5>建设好，团结好，选择好</h5>
+                    <p> 
+                        <span>点我查看详情</span>
+                        <span class="iconfont">&#xe60d;</span>
+                    </p>
+                </div>
+                
+            </li>
+            <li>
+                <div class="img img2"></div>
+                <div class="mask"></div>
+                <div class="info info1">
+                    <h4>创文明城市</h4>
+                    <h5>建设好，团结好，选择好</h5>
+                    <p> 
+                        <span>点我查看详情</span>
+                        <span class="iconfont">&#xe60d;</span>
+                    </p>
+                </div>
+                
+            </li>
+            <li>
+                <div class="img img3"></div>
+                
+                <div class="info info3">
+                    <h4>创文明城市</h4>
+                    <h5>建设好，团结好，选择好</h5>
+                    <p> 
+                        <span>点我查看详情</span>
+                        <span class="iconfont">&#xe60d;</span>
+                    </p>
+                </div>
+                <div class="mask"></div>
+            </li>
+
+        </ul>
+    </div>
+</body>
+
+</html>

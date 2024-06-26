@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玛莎拉蒂</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .outer{
+            width: 1366px;
+            height: 600px;
+            background-image: url('./images/bg.jpg');
+            margin: 0 auto;
+            clear: both;
+            overflow: hidden;
+        }
+        .inner{
+            width: 1366px;
+            height: 600px;
+            background-image: url(./images/fm.jpg);
+            /* display: inline-block; */
+            transition: 0.5s all linear;
+        }
+        .inner1,.inner2{
+            width: 683px;
+            /* display: inline-block; */
+            float:left;
+        }
+        .inner2{
+            background-position: 683px ;
+        }
+        .outer:hover .inner1{
+            transform: translateX(-683px);
+        }
+        .outer:hover .inner2{
+            transform: translateX(683px);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner inner1"></div>
+        <div class="inner inner2"></div>
+    </div>
+</body>
+</html>

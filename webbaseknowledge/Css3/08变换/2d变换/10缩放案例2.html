@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .outer{
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            margin: 0 auto;
+            margin-top: 40vh;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .img1{
+            width: 1280px;
+            height: 720px;
+            background-image: url(./images/party.jpeg);
+            box-sizing: border-box;
+            
+        }
+        .img2{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 1280px;
+            height: 720px;
+            background-image: url(./images/play.png);
+            background-position: 50% 50%;
+            opacity: 0;
+            transition: 0.2s all linear;
+            transform: scale(5);
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+        }
+        .img2:hover{
+            opacity: 1;
+            transform: scale(2);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="img1"></div>
+        <div class="img2"></div>
+    </div>
+</body>
+</html>
