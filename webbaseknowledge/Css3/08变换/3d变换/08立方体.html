@@ -1,62 +1,102 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>立方体</title>
+    <title>Document</title>
     <style>
-        .outer{
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style-type: none;
+        }
+
+        ul {
+            
+            /* background-color: orange; */
+            margin-top: 400px;
+            margin-left: 40vw;
+           
+        }
+
+        li{
             width: 200px;
             height: 200px;
-            /* border: 1px solid black; */
-            background-color: orange;
+            position: relative;
+            float: left;
+            transform:rotateX(-30deg) rotateY(30deg); 
             transform-style: preserve-3d;
-            perspective: 700px;
-            perspective-origin: 300px 300px;
-            margin: 0 auto;
-            margin-top: 300px;
+        }
+        a{
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            opacity: 0.4;
+            /* background-color: orange; */
+        }
+        li a:first-child{
+            background-color: orange;
+            transform: rotateX(90deg) translateZ(100px);
             
-            
         }
-        .inner{
-            width: 200px;
-            height: 200px;
-        }
-        .face1{
-            background-color: aquamarine;
-            transform-origin: left top;
-            transform: translate3d(0px ,0px, 200px);
-            opacity: 0.5;
-        }
-        .face3{
+        li a:nth-child(2){
             background-color: blueviolet;
-            transform-origin: left top;
-            transform: rotatex(90deg);
-            opacity: 0.5;
+            transform: translateZ(100px);
         }
-        .face4{
-            background-color: brown;
-            transform-origin: right top;
-            transform: rotatex(90deg);
+        
+        li a:nth-child(3){
+            
+            background-color: green;
+            transform: translateZ(-100px);
         }
-        .face5{
+        li a:nth-child(4){
+            background-color: aqua;
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+        li a:nth-child(5){
+            background-color: yellow;
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+        li a:last-child{
             background-color: blue;
-            transform-origin: left;
-            transform: rotatex(-90deg);
-            opacity: 0.5;
+            transform: rotateY(90deg) translateZ(100px);
         }
+        li:hover{
+            transform: rotateX(-90deg) translateY(200px);
+        }
+        
     </style>
 </head>
-<body>
-    <div class="outer">
-        <div class="inner face1"></div>
-        <!-- <div class="inner face3"></div> -->
-        <!-- <div class="inner face4"></div> -->
-        <div class="inner face5">5</div>
-        <!-- <div class="inner face6">6</div> -->
-        <!-- <div class="inner face7">7</div> -->
-        <!-- <div class="inner face8">8</div> -->
-    </div>
 
+<body>
+    <ul>
+        <li class="li1">
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+            
+        </li>
+        <!-- <li class="li2">
+            <a href=""></a>
+            <a href=""></a>
+        </li>
+        <li class="li3">
+            <a href=""></a>
+            <a href=""></a>
+        </li>
+        <li class="li4">
+            <a href=""></a>
+            <a href=""></a>
+        </li> -->
+    </ul>
 </body>
+
 </html>
