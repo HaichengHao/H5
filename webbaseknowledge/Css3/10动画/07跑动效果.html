@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .outer{
+            width: 140px;
+            height: 140px;
+            overflow: hidden;
+            margin: auto;
+            background-image: url(./imgs/bg.png);
+            animation: run_ 1s steps(12) 0s infinite normal forwards;
+        }
+        @keyframes run_{
+            from{
+
+            }
+            to{
+                background-position: -1680px 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+    </div>
+</body>
+</html>
