@@ -66,8 +66,19 @@
             background-color: blue;
             transform: rotateY(90deg) translateZ(100px);
         }
-        li:hover{
-            transform: rotateX(-90deg) translateY(200px);
+        ul:hover li{
+            animation: rot 3s linear 0s infinite alternate backwards;
+        }
+        @keyframes rot{
+            form{}
+            to{
+                transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+            }
+        }
+        @media screen and (min-width:400px) and (max-width:1200px){
+            li a:first-child{
+                background-color: red;
+            }
         }
         
     </style>
