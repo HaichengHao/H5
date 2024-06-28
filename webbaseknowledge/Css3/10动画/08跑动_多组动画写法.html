@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .outer{
+            width: 140px;
+            height: 140px;
+            overflow: hidden;
+            /* margin: auto; */
+            background-image: url(./imgs/bg.png);
+            /* 多组动画 */
+            animation: run_  1s steps(12) 0s infinite normal forwards,
+            toright 2s linear 0s 1 normal forwards
+            ;
+            
+        }
+        .code{
+            background-color: blueviolet;
+            color: white;
+            font-size: 20px;
+            white-space: pre-wrap;
+        }
+        span{
+            color: red;
+        }
+        @keyframes run_{
+            from{
+               
+            }
+            to{
+                background-position: -1680px 0px;
+            }
+        }
+        @keyframes toright{
+            from{
+                
+            }
+            to{
+                transform: translateX(980px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+    </div>
+    <hr>
+    <p>
+        <h3>多组动画写法,每组动画的复合属性用逗号分隔开</h3>
+        <p class="code">
+            .outer{
+                width: 140px;
+                height: 140px;
+                overflow: hidden;
+                /* margin: auto; */
+                background-image: url(./imgs/bg.png);
+                /* 多组动画 */
+               <span>
+                animation: run_  1s steps(12) 0s infinite normal forwards,
+                toright 2s linear 0s 1 normal forwards
+                ;
+                </span> 
+            }
+            @keyframes run_{
+                from{
+                    background-position: 0px 0px;
+                }
+                to{
+                    background-position: -1680px 0px;
+                }
+            }
+            @keyframes toright{
+                from{
+                    transform: translateX(0);
+                }
+                to{
+                    transform: translateX(980px);
+                }
+            }
+        </p>
+    </p>
+</body>
+</html>
