@@ -4,15 +4,16 @@
     一个元素不能指定多个id 
     一个元素可以同时有id和class*/
 /*#region*/
-#water{
+#water {
     color: aqua;
 }
+
 /*#endregion*/
 
-#bord{
+#bord {
     color: yellowgreen;
 }
 
-.wei{
+.wei {
     font-size: 40px;
 }
