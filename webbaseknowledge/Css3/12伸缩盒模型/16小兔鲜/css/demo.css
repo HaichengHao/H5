@@ -1,0 +1,237 @@
+body{
+    background-color: #f7f7f8;
+}
+/*#region公共样式 */
+.red{
+    color: #cf4444;;
+}
+.pannel{
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+/*#endregion */
+
+.main{
+    /* 设置为80是防止.pay把底部盖住 */
+    padding: 12px 11px 80px; 
+}
+
+/*#region 用户信息 */
+.usermsg{
+    padding: 15px 0px 15px 11px;
+    display: flex;
+    align-items: center;
+    height: 85px;
+}
+.location{
+	width: 30px;
+	height: 30px;
+    border-radius: 100%;
+	background-image: linear-gradient(90deg, 
+		#6fc2aa 5%, 
+		#54b196 100%);
+        margin-right: 10px;
+    
+}
+.location span{
+    display: block;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+}
+
+.user{
+    flex: 1;
+    /* background-color: rebeccapurple; */
+
+}
+.user .top{
+    display: flex;
+}
+.user .top .name{
+    width: 55px;
+    font-size: 15px;
+}
+.user .top .tel{
+    font-size: 13px;
+    align-self: flex-end;
+}
+.user .bottom{
+    font-size: 12px;
+    margin-top: 5px;
+}
+.more{
+    width: 44px;
+    height: 44px;
+    /* background-color: #2ad1ff; */
+	/* border: solid 1px #3a9cff; */
+}
+.more span{
+    display: block;
+    text-align: center;
+    line-height: 44px;
+    
+}
+
+/*#endregion */
+
+/*#region 商品内容区 */
+.content{
+    height: 106px;
+    display: flex;
+    padding: 11px;
+}
+.goodspic{
+    width: 85px;
+    height: 85px;
+    background-image:url(../images/d927fce93553f73a.jpg.avif);
+    background-size: 85px 85px;
+    background-repeat: no-repeat;
+    margin-right: 12px;
+    
+}
+.goodspic img{
+    width: 100%;
+}
+.goodsinfo{
+    flex: 1;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;;
+}
+.goodsinfo h5{
+    font-weight: normal;
+}
+.goodsinfo p{
+    margin: 5px 0;
+}
+.goodsinfo p span{
+    color: #888;
+    background-color: #f7f7f8;
+	border-radius: 2px;
+    font-size: 12px;
+    margin-right: 5px;
+   
+}
+.price span:nth-child(2){
+    margin-left: 12px;
+    /* text-decoration: line-through; */
+    color: #999;
+}
+.price span:nth-child(2) i{
+    font-size: 10px;
+    text-decoration: line-through;
+    color: #999;
+    
+    
+}
+.goodsnumber{
+    width: 44px;
+    height: 44px;
+    /* background-color: rebeccapurple; */
+    text-align: center;
+    line-height: 44px;
+    font-size: 15px;
+}
+/*#endregion */
+
+/*#region其他内容区 */
+.otherinfo{
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+}
+.passport,.applement_c,.paymethod{
+    display: flex;
+    height: 60px;
+    line-height: 60px;
+}
+.passport div:nth-child(1),.paymethod div:first-child{
+    align-self: flex-start;
+    flex: 1;
+}
+.applement_c div:nth-child(2){
+    height: 40px;
+}
+.applement_c input{
+    margin-left: 20px;
+}
+/*#endregion */
+
+/*#region底部信息区域*/
+.btinfo{
+    /* height: 150px; */
+    padding: 11px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+.totalprice,.trsprice,.discont{
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    
+}
+.totalprice div:first-child,.trsprice div:first-child,.discont div:first-child{
+    align-self: flex-start;
+    flex: 1;
+}
+/*#endregion */
+
+/*#region底部区域 */
+.pay{
+    height: 80px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;;
+    border-top: 1px solid #ededed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 22px 9px; 
+    font-size: 12px;
+    align-items: center;
+}
+.totalprice{
+    /* height: 80px; */
+    /* background-color: orange; */
+    flex: 3;
+   
+    /* line-height: 80px; */
+    /* text-align: center; */
+    
+}
+.money{
+    padding-left: 15px;  
+}
+i{
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+
+.button{
+    /* background-color: tomato; */
+    /* flex: 2; */
+    
+}
+.gopay {
+    display: block;
+	width: 90px;
+	height: 35px;
+	background-image: linear-gradient(90deg, 
+		#6fc2aa 5%, 
+		#54b196 100%);
+	border-radius: 3px;
+    line-height:35px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    
+}
+/*#endregion*/
