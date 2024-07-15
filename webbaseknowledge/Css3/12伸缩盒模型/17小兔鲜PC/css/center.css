@@ -1,0 +1,391 @@
+.disableCopyPaste {
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
+}
+.xtx_body{
+    padding: 30px 0 85px 0;
+    background-color: #f6f6f6;
+    
+}
+
+.xtx_content div{
+    background-color: #fff;
+    /* 添加一个最小高度方便我们看见div */
+    /* min-height: 500px; */
+}
+.xtx_content{
+    display: flex;
+}
+/*#region 侧边导航区域 */
+.xtx_content .aside{
+    width: 227px;
+    margin-right: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.xtx_content .aside li.top{
+    height: 227px;
+    border-bottom: 1px solid #f6f6f6;
+}
+
+/*#region 图片区域 */
+.xtx_content .aside .top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.xtx_content .aside .top .user_pic{
+    height: 85px;
+    margin-top: 44px;
+    margin-bottom: 14px;
+    /* margin: 47px 76px 14px 66px; */
+    background-color: blueviolet;
+    border-radius: 100%;
+    position: relative;
+   
+}
+.user_pic img{
+    transition: 0.2s all linear;
+}
+.user_pic .mask{
+    height: 85px;
+    width: 85px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: radial-gradient(gray 30%,blue 100%);
+    opacity: 0;
+    transition: 0.2s all linear;
+}
+.xtx_content .aside .top:hover .user_pic img{
+    transform: scale(1.1);
+    
+}
+.xtx_content .aside .top:hover .user_pic .mask{
+    opacity: 0.3;
+    transform: scale(1.1);
+}
+/*#endregion */
+/*#region 用户名区域 */
+.username{
+    /* text-align: center; */
+    font-size: 18px;
+    font-weight: bold;
+    
+}
+/*#endregion 用户名区域 */
+.vip{
+    margin-top: 4px;
+	width: 93px;
+	height: 26px;
+	background-image: linear-gradient(264deg, 
+		#e05e2f 0%, 
+		#ea745e 95%);
+	background-blend-mode: normal, 
+		normal;
+	border-radius:13px;
+    transition: 0.2s all linear;
+    
+}
+.vip img{
+    margin-top: -3px;
+    margin-left: 11px;
+    margin-right: 4px;
+    line-height: 26px;
+	width: 15px;
+	height: 16px;
+}
+.vip span{
+	width: 54px;
+	height: 14px;
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #f9f9f9;
+    line-height: 26px;
+}
+.vip:hover{
+    background-image: linear-gradient(264deg, 
+    blueviolet 0%, 
+    purple 95%);
+
+}
+/*#region 底部 */
+.xtx_content .aside .bottom{
+    flex: 1;
+}
+.mycount{
+    /* height: 454px; */
+    padding-top: 33px;
+    padding-left: 55px;
+    border-bottom: 1px solid #f6f6f6;
+}
+.moreinfo p{
+    font-size: 18px;
+    margin-bottom: 32px;
+}
+.moreinfo li {
+    height: 18px;
+    line-height: 18px;
+    margin-bottom: 23px;
+    color: #666666;
+    position: relative;
+}
+.moreinfo li a{
+    font-size: 14px;
+    transition: 0.2s all linear;
+    
+}
+.moreinfo li:hover a{
+    color: rgba(61, 147, 61, 0.784);
+    transform: scale(1.1);
+}
+.moreinfo li:hover::before{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    left: -15px;
+    width: 6px;
+    height: 6px;
+    background-color: aqua;
+    border-radius: 50%;
+    transition: 0.2s all linear;
+    
+}
+/*#endregion */
+
+
+
+/*#endregion */
+
+/*#region主内容区 */
+.xtx_content .main{
+    flex: 1;
+    background-color: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* 内容区域公共样式 */
+.usual{
+    background-color: #fff;
+    /* margin-bottom: 40px; */
+}
+/* 内容区域公共样式 */
+/*#region顶部导航 */
+.overview{
+    display: flex;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.overview div img:nth-child(-n+2){
+    width: 25px;
+}
+.leftcontent  a:last-child img{
+    width:18px;
+}
+.leftcontent,.rightcontent{
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
+.leftcontent{
+    border-right: 1px solid #f6f6f6;
+}
+.leftcontent a,.rightcontent a{
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    align-items: center;
+
+}
+.rightcontent a span{
+    font-size: 25px;
+    color: #e05e30;
+}
+.leftcontent p,.rightcontent a p{
+    margin-top: 20px;
+    text-align: center;
+}
+/*#endregion导航结束 */
+
+/* 定义一个公共样式类pannel */
+.pannel{
+    padding: 28px 20px;
+    margin-top: 20px;
+}
+
+/*#region订单开始 */
+.pannel_title{
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f4f4f4;
+}
+.pannel_title h4{
+    font-size: 22px;
+    color: #333;
+    font-weight: normal;
+    align-self: center;
+}
+.pannel_title a{
+    color: #999;
+    font-size: 16px;
+    align-self: center;
+}
+.orders div li{
+    
+    height: 137px;
+    border: 1px solid #f4f4f4;
+    margin: -1px 0px 20px 0px;
+}
+.details{
+    display: flex;
+}
+.orders div li:last-child{
+    margin-bottom: 0;
+}
+.goods_{
+    display: flex;
+    flex: 1;
+    /* border-right: 1px solid black; */
+    /* margin-right: 120px; */
+    padding: 12px 12px;
+}
+.goods_ .text{
+    /* 设置.text的宽度，这样在处理文本溢出时可以针对弹性盒模型自动伸缩导致处理溢出失败的问题 */
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+.text h5{
+    font-size: 16px;
+
+    /* 处理文本溢出 */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.text p{
+    font-size: 14px;
+    color: #999;
+}
+.goods_ img{
+    width: 107px;
+    height: 107px;
+}
+.status_{
+    width: 120px;
+    align-self: center;
+    font-size: 14;
+    color: #e05e30;
+}
+.pay{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    border-right: 1px solid #e8e8e8;
+    border-left: 1px solid #e8e8e8;
+    font-size: 14px;
+}
+.pay p:first-child{
+    
+    color: #9a2e1f;
+}
+.action{
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.action a div{
+    width: 100px;
+    height: 30px;
+    background-color: #5eb69c;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+    transition: 0.2s all linear;
+}
+.action a:hover div{
+    background-color: blueviolet;
+    transform: scale(1.1);
+}
+/*#endregion订单结束 */
+/*#region我的收藏开始 */
+.goods_info{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.goods_info a img{
+    width: 160px;
+    height: 160px;
+}
+.collect{
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    position: relative;
+    transition: 0.3s all linear;
+}
+.collect:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 5px 9px #f9f9f9 ;
+    z-index: 1;
+}
+.collect img{
+    margin-bottom: 5px;
+}
+.collect p:first-child{
+    width: 160px;
+    flex-wrap: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.collect   p:last-child{
+    color: #9a2e1f;
+}
+.collect p:last-child span{
+    font-size: 22px;
+}
+
+/* 设置伪类选择器，实现给打折的商品加标签的效果 */
+.bigsel::before{
+    content: '6折';
+    display: block;
+    width: 30px;
+    height: 50px;
+    background-color: white;
+    color: green;
+    border: 1px solid green;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    border-radius: 3px;
+    line-height:50px;
+    text-align: center;
+}
+/*#endregion我的收藏结束 */
+/*#endregion */
