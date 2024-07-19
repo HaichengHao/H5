@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初识vw和vh</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* 1 vw */
+        .box{
+            width: 50vw;
+            height: 50vw;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <h3>vw,vh为相对单位</h3>
+    <p>vw:viewport width<br>
+    1vw=1%视口宽度</p>
+    <p>vh:viewport height
+        <br>
+    1vh=1%视口高度
+    </p>
+
+    <h3>数值的确定</h3>
+    <p>vw,vh的数值可以通过 px单位数值/确定设计稿对应的vw尺寸</p>
+    <p>比如视口宽度为375px的屏幕，要有一个68px宽度的块，那么对应这个68px的块的vw=(68/375)*100<br>
+    或者也可以这样来记:68/3.75,即指定元素宽度/视口宽度的百分之一</p>
+    <div class="box">
+
+    </div>
+    <p>less写法如下</p>
+    <div class="code">
+    .box{
+        width:(68/3.75vw);
+    }
+    </div>
+</body>
+</html>

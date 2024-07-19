@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>less嵌套</title>
+</head>
+<body>
+    <code>
+.父级选择器{
+    //父级样式
+    .子级选择器{
+        //子级样式
+    }
+}
+    </code>
+    <p>注意:&不生成后代选择器，表示当前选择器，通常配合伪类或者伪元素使用</p>
+    <code>
+.father{
+    width:100px;
+    .son{
+        color:red;
+        //以下的表示.father .son:hover 以及 .father .son::before; 
+        &:hover{
+            color:green;
+        }
+        &::before{
+            content:'';
+            display:block;
+            width:10px;
+            height:10px;
+
+        }
+    }
+}
+    </code>
+</body>
+</html>

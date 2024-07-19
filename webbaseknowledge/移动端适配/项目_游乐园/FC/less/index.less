@@ -1,0 +1,128 @@
+@import './base';
+@import './normalize';
+// out: ../css/index.css
+// 一直写37.5rem太费劲，所以我们直接将其写为一个less变量
+@rootsize:37.5rem;
+body{
+    background-color: #F1F1F1;
+}
+
+// 主体内容
+.main{
+    padding-bottom: (50/@rootsize);
+    // banner区域
+    .banner{
+        height: (160/@rootsize);
+    }
+    // 活动标题区域
+    .title{
+        height:(40/@rootsize);
+        line-height: (40/@rootsize);
+        padding-left:(15/@rootsize) ;
+        h4{
+            font-size: (14/@rootsize);
+            color: #3C3C3C;
+        }
+    }
+    // 活动区域
+    .item{
+        margin-bottom: (10/@rootsize);
+        .pic{
+            height: (160/@rootsize);
+            position: relative;
+
+            // 收藏图标
+            i{
+                position: absolute;
+                font-size: (24/@rootsize);
+                right: (18/@rootsize);
+                top: (15/@rootsize);
+                color: #fff;
+            }
+            // 活动状态区域
+            .active{
+                font-size: (12/@rootsize);
+                color: #FFFFFF;
+                text-align: center;
+                position: absolute;
+                width: (68/@rootsize);
+                height: (29/@rootsize);
+                line-height:(25/@rootsize);
+                left: (15/@rootsize);
+                top: (-4/@rootsize);
+                background-image: url(../images/status_active.png);
+                background-size: cover;
+                background-repeat: no-repeat;
+
+                // 设置灰色过期的样式
+                // 下面写表示的意思就是选中.active.off即交集选择器，同时满足这两个类时样式才生效
+                &.off{
+                    background-image: url(../images/status_default.png);
+                }
+                
+            }
+            
+        }
+        .text{
+            padding: (10/@rootsize) (15/@rootsize);
+            background-color: #fff;
+            
+            .top{
+                font-size: (15/@rootsize);
+                color: #3C3C3C;
+                
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                h5{
+                    
+                    font-weight: normal;
+                    width: (290/@rootsize);
+                }
+                p{  
+                    font-size: (15/@rootsize);
+                    color: #FE6249;
+                    
+                }
+            }
+            .bottom{
+                margin-top: (10/@rootsize);
+                display: flex;
+                // justify-content: space-between;
+                // align-items: center;
+                p{
+                    font-size: (11/@rootsize);
+                    margin-right: (15/@rootsize);
+                    color: #b4b4b4;
+                    i{
+                        margin-right: (5/@rootsize);
+                        font-size: (11/@rootsize);
+                        margin-right: ;
+                    }
+                }
+            }
+
+        }
+    }
+}
+// 底部工具栏
+footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: (50/@rootsize);
+    background: #FECA49;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    i{
+        font-size: (24/@rootsize) !important;
+        color: white;
+    }
+    p{
+        font-size: (11/@rootsize);
+        color: white;
+    }
+}

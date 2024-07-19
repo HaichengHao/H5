@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>less中的运算写法</title>
+</head>
+<body>
+    <code>
+.box{
+    //加减乘都可以直接写计算表达式
+    width:100 + 50px;
+    height: 5 * 32px;
+
+    //除法另有区别 ，最好写小括号的写法
+    width:(100/4px);
+    height:100./4px; /*此为除法的另外一种写法*/
+}
+    </code>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rem移动端适配</title>
+    <style>
+        @media  screen and (width:320px) {
+            html{
+                font-size: 32px;
+            }
+        }
+        @media  screen and (width:375px) {
+            html{
+                font-size:37.5px;
+            }
+        }
+        @media  screen and (width:414px) {
+            html{
+                font-size:41.4px;
+            }
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            /* 我们设定box1为68*29px,但是我们要进行移动端适配，就必须按照rem的规则来 */
+            /* 如果视口是320px,那么根字号是32px,那么68/32=2.125,29/32=0.90625,得到的两个数就是rem值 */
+            width: 2.125rem;
+            height: 0.90625rem;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <p>看截图，发现计算结果是无误的，成功
+        <br>
+        <img src="demo2.png" alt=""></p>
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rem_媒体查询</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            background-color: rebeccapurple;
+            width: 10rem;
+            height: 10rem;
+        }
+
+        /* 如果是屏幕，且最小宽度为401px,那么根标签的字号为20px */
+        @media screen and (min-width:401px){
+            html{
+                font-size: 20px;
+            }
+
+        }
+        /* 如果是屏幕，且最大宽度为400px,那么根标签的字号为10px */
+        @media screen and (max-width:400px){
+            html{
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+
+    </div>
+</body>
+
+</html>

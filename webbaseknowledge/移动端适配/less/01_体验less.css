@@ -1,0 +1,7 @@
+.box {
+  background-color: aqua;
+  width: 1.88888889rem;
+}
+.box .son {
+  background-color: blueviolet;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rem的基本使用</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            width: 30rem;
+            height: 20rem;
+            background-color: aqua;
+        }
+        html{
+            font-size: 20px;
+        }
+        img{
+            width: 300px;
+            /* height: 200px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1">
+        rem是相对单位<br>
+        rem单位是相对于HTML标签的字号计算结果<br>
+        1rem=1HTML字号大小
+    </div>
+    <p>可以看到下图，当我们设置html标签的字号为20时，设置box1的宽度为30rem,高度为20rem<br>
+    即30*20=600px,20*20=400px</p>
+    <img src="./demo1.png" alt="">
+</body>
+</html>

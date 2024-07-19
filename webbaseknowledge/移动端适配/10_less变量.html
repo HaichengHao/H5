@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>less变量</title>
+</head>
+<body>
+    <p>变量:存储数据，方便使用和修改</p>
+    <p>定义变量<br>
+    定义变量:@变量名:值;</p>
+    <p>使用变量<br>
+    使用变量:CSS属性:@变量名;</p>
+    <code>
+@color:pink;
+.box{
+    color:@color;
+}
+.father{
+    background-color:@color;
+}
+    </code>
+</body>
+</html>

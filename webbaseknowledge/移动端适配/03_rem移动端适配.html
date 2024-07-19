@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            width: 10rem;
+            height: 10rem;
+            background-color: aqua;
+        }
+        /* 视口宽度为320px,根字号为32px */
+        @media screen and (width:320px){
+            html{
+                font-size: 32px;
+            }
+            
+        }
+    </style>
+</head>
+
+<body>
+    <p>目前的rem方案中，将网页等分成10份，HTML标签的字号为视口宽度的1/10</p>
+    <div class="box1"></div>
+</body>
+
+</html>

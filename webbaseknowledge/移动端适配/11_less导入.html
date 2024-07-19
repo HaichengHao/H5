@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>less导入</title>
+    <style>
+        .code{
+            white-space: pre;
+            color:white;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <p>目标:能够使用less导入写法引用其它less文件</p>
+    <ul>
+        思考:开发网站时，网页如何引入公共样式?
+        <li>css:书写link标签</li>
+        <li>Less:导入</li>
+    </ul>
+    <p>导入:@import '文件路径';</p>
+    <div class="code">
+@import './less/01_体验less.less';
+//如果引入的是less文件，可以省略文件后缀
+@import './less/01_体验less ';
+    </div>
+</body>
+</html>
