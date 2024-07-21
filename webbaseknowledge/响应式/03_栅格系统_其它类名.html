@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>栅格系统其它类名</title>
+    <link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <style>
+        div{
+            height: 50px;
+            background-color: aqua;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>.container是BootStrap中国专门提供的类名，所有应用该类名的盒子，默认已被指定宽度且居中</li>
+        <li>.container-fluid是BootStrap中专门提供的类名，所有应用该类名的盒子，宽度均为100%</li>
+        <li>分别用.row类名和.col类名定义栅格布局的行和列</li>
+    </ul>
+    <ol>
+        注意
+        <li>.container类自带左右padding15px</li>
+        <li>.row类自带间距-15px</li>
+    </ol>
+    <div class="container">
+        
+    </div>
+    <div class="container">
+        <!-- row类的作用就是抵消掉container类自带的左右15px的padding -->
+        <div class="row">2</div>
+    </div>
+    <!-- 默认宽度为100%，左右15px的padding -->
+    <div class="container-fluid">1</div>
+</body>
+</html>

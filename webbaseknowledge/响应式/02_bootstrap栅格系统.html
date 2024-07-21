@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <title>bootstrap栅格系统</title>
+    <style>
+        .container div{
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+    <style>
+        table{
+            border-collapse: collapse;
+            border: 1px solid blueviolet;
+            
+        }
+        thead{
+            background-color: blueviolet;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        tr:nth-child(2n){
+            background-color: antiquewhite;
+        }
+        td :not(:nth-child(2n)){
+            background-color: bisque;
+        }
+        td{
+            border: 0.1px solid black;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        目标:使用BootStrap栅格系统布局响应式网页
+        <li>栅格化是将整个网页的宽度分成若干等份</li>
+        <li>BootStrap3默认将网页分成12等份
+            <table>
+                <thead>
+                    <td></td>
+                    <td>超小屏幕</td>
+                    <td>小屏幕</td>
+                    <td>中等屏幕</td>
+                    <td>大屏幕</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>响应断点</td>
+                        <td>&lt;768px</td>
+                        <td>&gt;= 768px</td>
+                        <td>&gt;= 992px</td>
+                        <td>&gt;=1200px</td>
+                    </tr>
+                    <tr>
+                        <td>别名</td>
+                        <td>xs</td>
+                        <td>sm</td>
+                        <td>md</td>
+                        <td>lg</td>
+                    </tr>
+                    <tr>
+                        <td>容器宽度</td>
+                        <td>100%</td>
+                        <td>750px</td>
+                        <td>970px</td>
+                        <td>1170px</td>
+                    </tr>
+                    <tr>
+                        <td>类前缀</td>
+                        <td>col-xs-*</td>
+                        <td>col-sm-*</td>
+                        <td>col-md-*</td>
+                        <td>col-lg-*</td>
+                    </tr>
+                    <tr>
+                        <td>列数</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>列间隙</td>
+                        <td>30px</td>
+                        <td>30px</td>
+                        <td>30px</td>
+                        <td>30px</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+    </ul>
+
+    <!-- 需求:大屏>>一行排列4个内容；中屏:一行排列2个内容 -->
+    <div class="container">
+        <div class="col-lg-3 col-md-6">1</div>
+        <div class="col-lg-3 col-md-6">1</div>
+        <div class="col-lg-3 col-md-6">1</div>
+        <div class="col-lg-3 col-md-6">1</div>        
+    </div>
+</body>
+</html>

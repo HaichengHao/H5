@@ -1,0 +1,142 @@
+@media screen and (max-width: 992px) {
+  .item {
+    height: 400px;
+  }
+  .navbar-collapse {
+    background-color: black !important;
+  }
+  .carousel .carousel-indicators li {
+    width: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .item {
+    height: 250px;
+  }
+  .carousel .carousel-indicators li {
+    width: 30px !important;
+  }
+}
+@media (min-width: 992px) {
+  .item {
+    height: 500px;
+  }
+  .navbar-nav li a {
+    padding-top: 30px;
+    padding: right 5px;
+  }
+}
+html {
+  margin-bottom: 50px;
+}
+.carousel {
+  margin-bottom: 40px;
+}
+.carousel img {
+  height: 100% !important;
+}
+.carousel .carousel-indicators {
+  margin-bottom: 0;
+}
+.carousel .carousel-indicators .active {
+  opacity: 1;
+}
+.carousel .carousel-indicators li {
+  width: 50px;
+  padding: 5px 0;
+  margin: 0 2px;
+  opacity: 0.5;
+  border: 0;
+  background-color: inherit;
+  height: auto;
+  cursor: pointer;
+}
+.carousel .carousel-indicators li::after {
+  content: "";
+  display: block;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.carousel .carousel-indicators li:hover {
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+.navbar {
+  border-bottom: 0;
+  background-color: transparent;
+  height: 60px;
+}
+.navbar .navbar-collapse {
+  border: 0;
+  text-align: center;
+  background-color: transparent;
+}
+.navbar ul li {
+  vertical-align: middle;
+  line-height: 60px;
+}
+.navbar ul li a {
+  color: hsla(0, 0%, 100%, 0.65) !important;
+  text-align: center;
+}
+.navbar ul li a.active {
+  background-color: transparent !important;
+  color: gold !important;
+}
+.navbar ul li a.hot {
+  background-image: -webkit-linear-gradient(left, #cddc39, #ff9800 25%, #cddc39 50%, #ff9800 75%, #cddc39) !important;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-background-clip: text !important;
+  -webkit-background-size: 200% 100% !important;
+  -webkit-animation: masked-animation 2s infinite linear !important;
+}
+.navbar ul li a.hot:before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  left: -2px;
+  width: 13px;
+  height: 15px;
+  background: url(http://cdn.alloyteam.com/assets/img/hot-32d141.png) 50% no-repeat;
+  background-size: 100% 100%;
+}
+.navbar ul li img {
+  width: 13px;
+  vertical-align: middle;
+}
+.navbar .navbar-toggle {
+  border-color: transparent;
+}
+.navbar .navbar-toggle:focus {
+  background-color: transparent;
+}
+.navbar .navbar-toggle:hover {
+  background-color: transparent;
+}
+.project {
+  padding-top: 30px;
+}
+.project .container div {
+  margin-top: 30px;
+}
+.project .container div a {
+  display: block;
+  height: 200px;
+  background-color: #cddc39;
+}
+.project a.more div {
+  margin-top: 30px;
+  height: 50px;
+  width: 100px;
+  line-height: 50px;
+  background-color: #cddc39;
+  border-radius: 3px;
+}
