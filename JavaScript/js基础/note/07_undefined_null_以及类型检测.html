@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>undefined类型、null类型、类型检测</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+
+<body>
+    <ol>
+        <h3>数据类型-未定义类型</h3>
+        <li>
+            <h4>什么情况下出现未定义类型</h4>
+            <p>之生命变量，不赋值的情况下，变量的默认值为undefined,一般很少为某个变量赋值为undefined</p>
+        </li>
+        <li>
+            <h4>查看数据类型可以使用typeof(变量名)</h4>
+            <div class="code">
+                //只声明变量，未赋值，则默认就是undefined类型
+                let a
+                console.log(typeof(a))
+            </div>
+            <img src="../imgs/undefined类型.png" alt="">
+        </li>
+        <h5>开发场景</h5>
+        <p>如果检测到自己定义好的变量是undefined就说明传入数据的时候有问题，方便排错</p>
+    </ol>
+    <ol>
+        <h3>空类型</h3>
+        <p>JavaScript中的null仅仅是一个代表“无”、“空”或“值未知”的特殊值</p>
+        <ol>
+            <li>
+                <h4>null和undefined的区别</h4>
+                <ul>
+                    <li>undefined表示没有赋值</li>
+                    <li>null表示赋值了，但是内容为空</li>
+                </ul>
+            </li>
+            <li>
+                <h4>null开发中的场景</h4>
+                <p>官方解释:把null作为尚未创建的对象</p>
+                <p>白话:将来有个变量里面存放的是一个对象，但是对象还没有创建好，可以先给个null</p>
+                <div class="code">
+            let obj = null
+            console.log(obj+1) //输出为1，因为null表示空，什么都没有，注意JavaScript中的null是可以与数字进行运算操作的，这是历史遗留问题，和其他语言不同
+            console.log(undefined+1) //NaN undefined表示未定义，并不代表其为空，当然它与其它数据操作肯定是混乱的
+                </div>
+            </li>
+        </ol>
+
+
+    </ol>
+    <ol>
+        <h3>检测数据类型</h3>
+        <p>语法如下</p>
+        <div class="code">
+        let num1 = 10
+        console.log(typeof(num1)) //利用typeof(变量名) 就可以查看变量的类型,也可以不写小括号
+        </div>
+    </ol>
+</body>
+
+</html>

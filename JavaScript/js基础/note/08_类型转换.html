@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类型转换</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+<body>
+    <h3>类型转换</h3>
+    <ol>
+        <li>
+            <h4>为什么需要类型转换</h4>
+            <p>JavaScript是弱数据类型，它自己也不知道变量到底该属于哪种数据类型，只有赋值了才清楚</p>
+            <p>prompet，表单等取过来的值默认都是字符串类型，如果不好好处理，那将会发生如1+1=11这样可笑的后果</p>
+            <p>通俗来说，就是把一种数据类型的变量转换成我们需要的数据类型</p>
+        </li>
+        <li>
+            <h4>隐式转换</h4>
+            <ol>
+                <p>某些运算符被执行时，系统内部自动将数据类型进行转换，这种转换成为隐式转换</p>
+                <ul>
+                    <h5>规则</h5>
+                    <li>+号两边只要有一个是字符串，都会把另外一个转化为字符串</li>
+                    <li>除了+以外的算数运算符，比如- * / 等都会把数据类型转化为数字类型</li>
+                </ul>
+                <ul>
+                    <h5>缺点</h5>
+                    <li>数据类型不明确，考经验才能总结</li>
+                </ul>
+                <ul>
+                    <h5>技巧</h5>
+                    <li>+号作为正号解析可以转换成数字型</li>
+                    <li>任何数据和字符串相加的结果都是字符串</li>
+                </ul>
+            </ol>
+        </li>
+        <li>
+            <h4>显式转换</h4>
+        </li>
+    </ol>
+</body>
+</html>

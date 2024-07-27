@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常量</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+<body>
+    <ul>
+        <h4>常量的基本使用</h4>
+        <li>概念:使用 const 声明的变量称为"常量"</li>
+        <li>使用场景:当某个变量永远不会改变的时候，就可以使用const来声明,而不是let</li>
+        <li>命名规范:和变量一致</li>
+        <li>
+            <p>常量使用</p>
+            <div class="code">
+            //注意，常量不能够像let一样先声明再赋值
+            //声明一个常量
+            const G = 9.8
+            //输出这个常量
+            const.log(G)
+            //注意常量声明完毕后不能赋予新值
+            //G = 9.9 &times; 错误的，这样不行的，常量不是变量，不能赋予新值
+            //常量和变量一样都不能多次赋值
+            //const G = 9
+            </div>
+        </li>
+        <li>
+            <span class="warn">注意:常量不允许重新赋值，声明的时候必须赋值(初始化)</span>
+        </li>
+        <li>小技巧:不需要重新赋值的数据使用const</li>
+    </ul>
+</body>
+</html>

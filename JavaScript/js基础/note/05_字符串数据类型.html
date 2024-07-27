@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串数据类型</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+
+<body>
+    <ol>
+        
+        <li>
+            <h4>数据类型_字符串类型(string)</h4>
+            <p>通过单引号、双引号、或反引号包裹的数据都叫字符串，单引号和双引号无本质区别，推荐使用单引号</p>
+            <ol>
+                <h5>注意事项</h5>
+                <li>无论单引号或是双引号必须成对使用</li>
+                <li>单引号/双引号可以相互嵌套，但不是自己嵌套自己</li>
+                <li>必要时可以使用转义字符"\",输出单引号或者双引号</li>
+            </ol>
+        </li>
+
+        <li>
+            <h4>字符串拼接</h4>
+            <p>场景: +运算符可以实现字符串的拼接</p>
+            <p>口诀:数字相加，字符相连</p>
+            <p>还可以将数字与字符串拼接</p>
+        </li>
+
+        <li>
+            <h4>模版字符串</h4>
+            <ul>
+                <li>
+                    使用场景:<br>
+                    <p>拼接字符串和变量</p>
+                    <p>在没有它之前，要拼接变量比较麻烦</p>
+                </li>
+                <li>语法:<br>
+                    <ul>
+                        <li>反引号</li>
+                        <li>内容拼接变量时，用${}包住，可以想象一下python中格式化字符串的方法，结合fstring理解，其实就是比fstring麻烦了一点点</li>
+                        <div class="code">
+                        let name = '小明'
+                        let age = 18
+                        document.write(  <i class="letter">`</i>    我叫${name},今年${age}   <i class="letter">`</i>  )
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+    </ol>
+</body>
+
+</html>
