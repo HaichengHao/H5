@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+<body>
+    <ol>
+        <li>
+            <h4>变量是什么?</h4>
+            <p>用户输入的数据要用变量存储起来</p>
+            <p>白话:变量就是一个用来装东西的盒子</p>
+            <p>通俗:变量是计算机中用来存储数据的容器,它可以让计算机变得有记忆</p>
+            <p>注意:<span>变量不是数据本身，它仅仅是一个用于存储数值的容器。</span></p>
+        </li>
+        <li>
+            <h4>变量的基本使用</h4>
+            <ol>
+                <li>
+                    <h5>声明变量</h5>
+                    <p>语法</p>
+                    <div class="code">
+                let 变量名
+                    </div>
+                    <ul>
+                        <li>声明变量由两部分组成:声明关键字、变量名</li>
+                        <li>let即关键字(let:允许、让、要)，所谓关键字是系统提供的专门用来声明(定义)变量的语句</li>
+                    </ul>
+                    <a href="../code/02_变量/01_变量的声明和赋值.html" target="_blank">代码</a>
+                    <a href="../case/02变量练习.html" target="_blank">案例</a>
+                </li>
+                <li>
+                    <h5>变量的赋值</h5>
+                    <p>定义了一个变量后，就能够初始化它。在变量名之后跟上等号，然后是数值</p>
+                    <div class="code">
+        
+            
+                    let num = 20
+                    let uname = '张三'
+                    console.log(num)
+                    console.log(uname)
+                    
+                
+                    </div>
+                </li>
+                <li>
+                    <h5>更新变量</h5>
+                    <p>变量赋值后，还可以通过简单地给他一个不同的值来更新它</p>
+                    <div class="code">
+                    let age = 18
+                    // 变量更新
+                    age = 19
+                    </div>
+                    <span class="warn">注意，不能出现下面这样的写法,let不允许多次声名一个变量</span>
+                    <div class="code">
+                    let age = 18
+                    let age = 19
+                    </div>
+                </li>
+                <li>
+                    <h5>声明多个变量</h5>
+                    <p>let 变量名 , 变量名</p>
+                    <div class="code">
+                    let age, name, gender
+                    age = 10
+                    name = ace
+                    gender = male
+                    //此方法并不提倡，最好一行声明一个变量
+                    </div>
+                </li>
+                <a href="../case/03_变量练习_弹出姓名.html" target="_blank">小练习</a>
+                <li>
+                    <h5>变量换值</h5>
+                    <div class="code">
+                    let num1
+                    let num2
+                    let tempnum
+                    num1 = 10
+                    num2 = 20
+                    tempnum = num1
+                    num1 = num2
+                    num2 = tempnum
+            
+                    console.log('num1',num1)
+                    console.log('num2',num2)
+                    </div>
+                    <p>输出结果</p>
+                    <img src='../imgs/变量换值.png'>
+                </li>
+            </ol>
+            
+        </li>
+        <li>
+            <h4>变量的本质</h4>
+            <p>内存:计算机存储数据的地方，相当于一个空间</p>
+            <p>变量的本质:是程序在内存中申请的一块用来存放数据的小空间</p>
+        </li>
+        <li>
+            <h4>
+                变量的命名规则与规范
+            </h4>
+            <p>规则:必须遵守，不遵守就报错</p>
+            <p>规范:建议，可以遵守也可以不遵守</p>
+            <ol>
+                <li>
+                    <h5>规则</h5>
+                    <ul>
+                        <li>关键字不能作为变量名</li>
+                        <li>只能由字母数字下划线doller符组成，且不能用数字开头</li>
+                        <li>严格区分大小写</li>
+                    </ul>
+                </li>
+                <li>
+                    <h5>规范</h5>
+                    <ul>
+                        <li>起名要有意义</li>
+                        <li>遵循小驼峰命名法，即第一个单词首字母小写，后面每个单词首字母大写</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <h4>变量的拓展1</h4>
+            <p>let 和 var 的区别</p>
+            <p>在较旧的JavaScript，使用var来声明变量，而不是let</p>
+            <p>var现在在开发中一般不再使用，老版本程序可能会见到</p>
+            <p>let为了解决var的一些问题</p>
+            <ul>
+                <h5>var声明</h5>
+                <li>可以先使用再声明</li>
+                <li>var声明过的变量可以重复声明</li>
+                <li>比如变量提升、全局变量、没有块级作用域等</li>
+            </ul>
+            <p class="warn">结论:被淘汰了</p>
+        </li>
+        <li>
+            <h4>变量拓展2_数组</h4>
+            <p>数组（Array） 一种将一组数据存储在单个变量名下的优雅方式</p>
+            <ol>
+                <li>
+                    <h5>声明语法</h5>
+                    <div class="code">
+                    let 数组名 = [数据1，数据2，数据3]
+                    </div>
+                    <p>例子</p>
+                    <div class="code">
+                        // 声明数组
+                        let namelst=['周星驰','周杰伦','周芷若','周润发']
+                        // 控制台输出查看
+                        console.log(namelst)
+                        // 查看第0个
+                        console.log(namelst[0])
+                           
+                    </div>
+                    <p>数组是按顺序保存，所以每个数据都有自己的编号</p>
+                    <p>计算机中的编号从0开始，位置第1编号为0，位置为2编号为1</p>
+                    <p>数组的编号叫做数组下标</p>
+                    <p>数组中可以存储任意类型的数据</p>
+                </li>
+            </ol>
+            <ul>
+                <h5>一些术语</h5>
+                <li>
+                    元素:数组中保存的每个数据都叫数组元素
+                </li>
+                <li>下标:数组中数据的编号</li>
+                <li>长度:数组中数据的个数，通过数组的length属性获得</li>
+                <div class="code">
+                //输出数组的长度
+                console.log(数组名.length)
+                </div>
+            </ul>
+            
+        </li>
+    </ol>
+</body>
+</html>
