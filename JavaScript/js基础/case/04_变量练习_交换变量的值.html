@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04交换变量的值</title>
+
+</head>
+<body>
+    <p>需求:两个变量,num1放的10，num2放的20<br>
+    最后两个容器内的值互换，为后期学的冒泡排序打基础</p>
+
+    <script>
+        let num1
+        let num2
+        let tempnum
+        num1 = 10
+        num2 = 20
+        tempnum = num1
+        num1 = num2
+        num2 = tempnum
+
+        console.log('num1',num1)
+        console.log('num2',num2)
+        document.write("<img src='../imgs/变量换值.png'>")
+    </script>
+</body>
+</html>

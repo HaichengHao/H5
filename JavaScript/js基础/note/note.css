@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: gainsboro;
+    margin-bottom: 30px;
+
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h4{
+    color: blueviolet;
+    font-size: 20px;
+    
+}
+h5{
+    color: tomato;
+    font-size: 16px;
+}
+.code{
+    white-space: pre;
+    background-color: #3d1e85;
+    color: greenyellow;
+}
+.code::before{
+    content: '<script>';
+}
+.code::after{
+    content: '</script>';
+}
+.warn{
+    color: red;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+}

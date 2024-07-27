@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01体验js</title>
+    <style>
+        .pink {
+            background-color: pink;
+            color: white;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="pink">1</button><button>2</button><button>3</button><button>4</button>
+    <script>
+        let bts = document.querySelectorAll('button')
+        for (let i = 0; i < bts.length; i++) {
+            bts[i].addEventListener('click', function () {
+                document.querySelector('.pink').className = ''
+                this.className = 'pink'
+            })
+        }
+    </script>
+</body>
+
+</html>
