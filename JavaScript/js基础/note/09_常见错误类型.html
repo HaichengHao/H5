@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js常见错误</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+<body>
+    <ul>
+        <li>
+            <h5>常量初始化错误</h5>
+            <div class="code">
+            const age //初始化常量必须指定赋值操作
+            console.log(age) 
+            </div>
+            <img src="../imgs/常量未正确初始化.png" alt="">
+
+        </li>
+        <li>
+            <h5>变量未声明错误</h5>
+            <div class="code">
+            console.log(a)
+            </div>
+            <img src="../imgs/变量未赋值错误.png" alt="">
+        </li>
+        <li>
+            <h5>变量多次声明错误</h5>
+            <div class="code">
+                let a = 10
+                let a = 20
+
+            </div>
+            <img src="../imgs/变量多次声明错误.png" alt="">
+        </li>
+        <li>
+            <h5>常量重新赋值错误</h5>
+            <div class="code">
+                const a  = 10
+                a = 20
+            </div>
+            <img src="../imgs/常量重新赋值.png" alt="">
+        </li>
+    </ul>
+</body>
+</html>

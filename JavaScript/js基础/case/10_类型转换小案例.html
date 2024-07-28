@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../note/note.css">
+</head>
+<body>
+    <div class="code">
+        //如果这里不作类型转换，那么字符串将无法进行数值比较
+        let salary = Number(prompt('请输入您的薪水(元)'))
+        if(salary >= 1000 && salary &lt;=3000 ){
+            document.write(`您的薪水为${salary}`)
+            document.write('您的薪水低')
+        }
+        else{
+            document.write('您的薪水较高')
+        }
+        console.log(parseInt('12px')) //parseInt可以将解析到的数字转换为number型
+        console.log(parseInt('12.7678px')) //转化结果依旧是12
+        console.log(parseFloat('12.456px')) //praseFloat可以将其转化为浮点型，输出结果是12.456
+        // 注意，不能像下面这样写
+        console.log(parseInt('abc12px')) //NaN
+        console.log(parseFloat('abc12.456px')) //NaN
+
+    </div>
+    <script>
+        //如果这里不作类型转换，那么字符串将无法进行数值比较
+        let salary = Number(prompt('请输入您的薪水(元)'))
+        if(salary >= 1000 && salary <=3000 ){
+            document.write(`您的薪水为${salary}`)
+            document.write('您的薪水低')
+        }
+        else{
+            document.write('您的薪水较高')
+        }
+        console.log(parseInt('12px')) //parseInt可以将解析到的数字转换为number型
+        console.log(parseInt('12.7678px')) //转化结果依旧是12
+        console.log(parseFloat('12.456px')) //praseFloat可以将其转化为浮点型，输出结果是12.456
+
+        // 注意，不能像下面这样写
+        console.log(parseInt('abc12px')) //NaN
+        console.log(parseFloat('abc12.456px')) //NaN
+    </script>
+</body>
+</html>

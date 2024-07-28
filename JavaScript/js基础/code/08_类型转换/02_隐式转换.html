@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02隐式转换</title>
+</head>
+<body>
+    <script>
+        // 加号两边只要有一个是字符串，都会把另一个转成字符串
+        console.log('hello'+1) //hello1
+        console.log('1'+1) //11
+        //减、乘、除、取余都会把数据转换为数字类型
+        console.log(2-'2')
+        console.log(2/'2')
+        console.log(2*'2')
+        console.log(2%'2')
+        //加号作为一个正号形态出现在字符串型且为数字样式的字符串型前时，可以将数字样式字符串转化为数字
+        console.log(+'123')  //123
+        console.log(typeof '123') //string
+    </script>
+</body>
+</html>
