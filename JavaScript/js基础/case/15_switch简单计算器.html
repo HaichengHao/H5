@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch计算器</title>
+    <link rel="stylesheet" href="../note/note.css">
+</head>
+<body>
+    <script>
+        let num1 = +prompt('请输入第一个数字:')
+        let num2 = +prompt('请输入第二个数字:')
+        let opts = prompt('请输入运算符:')
+        switch(opts){
+            case '+':
+                alert(`两数相加${num1+num2}`)
+                break
+            case '-':
+                alert(`两数相减${num1-num2}`)
+                break
+            case '*':
+                alert(`两数相乘${num1*num2}`)
+                break
+            case '/':
+                alert(`两数相除${num1/num2}`)
+                break
+            // case ''            
+            default:
+                 alert('输入有误')
+        }
+    </script>
+</body>
+</html>

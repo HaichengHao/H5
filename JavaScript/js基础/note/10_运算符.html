@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算符</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+<body>
+    <h4>运算符</h4>
+    <ol>
+        <li>
+            <h5>赋值运算符</h5>
+            <p>定义:对变量进行赋值的运算符</p>
+            <p>目标:使用赋值运算符简化代码</p>
+            <p>已经学过的赋值运算符 =  将等号右边的值赋予给左边，左边必须是一个容器</p>
+            <h6>其它赋值运算符</h6>
+            <ul>
+                <li>+=</li>
+                <li>-=</li>
+                <li>/=</li>
+                <li>*=</li>
+                <li>%=</li>
+            </ul>
+        </li>
+        <li>
+            <h5>一元运算符</h5>
+            <p>一般是自增或自减，以及正负号</p>
+            <ul>
+                <li>正号</li>
+                <li>负号</li>
+                <li>
+                <p>自增num++,++num</p>
+                <p>区别:单独用倒是没区别，但是++num是先自增再运算,num++是先运算再自增</p>
+                <div class="code">
+                let a = 0
+                consloe.log(++a + 1)
+                consloe.log(a++ + 1)
+                </div>
+            </li>
+                <li>自减num--,--num</li>
+                <p>区别与自增无异</p>
+            </ul>
+        </li>
+        <li>
+            <h5>比较运算符</h5>
+            <p>比较结果是true与false</p>
+            <ul>
+                <li>></li>
+                <li>>=</li>
+                <li>&lt;</li>
+                <li>&lt;=</li>
+                <li>==</li>
+                <li>!=</li>
+                <li>===:左右两边是否类型和值都相等,即全等</li>
+                <li>!== :左右两边是否不全等</li>
+            </ul>
+            <p>字符串比较是按照ASCII码来比较的</p>
+            <p>NaN不等于任何值，甚至不等于它自己，涉及到NaN都是false</p>
+            <p>尽量不要比较小数，因为小数有精度问题</p>
+        </li>
+        <li>
+            <h5>逻辑运算符</h5>
+            <table>
+                <tr>
+                    <th>名称</th>
+                    <th>符号</th>
+                    <th>使用</th>
+                </tr>
+                <tr>
+                    <td>与运算符</td>
+                    <td>&&</td>
+                    <td>条件a&&条件b,全真则真，一假则假</td>
+                </tr>
+                <tr>
+                    <td>或运算符</td>
+                    <td>|</td>
+                    <td>一真则真，全假则假</td>
+                </tr>
+                <tr>
+                    <td>非运算符</td>
+                    <td>!</td>
+                    <td>非真则假，非假则真</td>
+                </tr>
+            </table>
+            <p>这里只说明非的使用，其余的查看<a href="../code/09_运算符/04_逻辑运算符.html">此处</a></p>
+            <div class="code">
+                let a = true
+                consloe.log(!a) //false
+            </div>
+        </li>
+        <li>
+            <h5>运算符优先级</h5>
+            <table>
+                <tr>
+                    <th>优先级</th>
+                    <th>运算符</th>
+                    <th>顺序</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>小括号</td>
+                    <td>()</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>一元运算符</td>
+                    <td>++ -- !</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>算数运算符</td>
+                    <td>先乘除取余，后加减</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>关系运算符</td>
+                    <td>> >= &lt; &lt;=</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>相等运算符</td>
+                    <td>== != === !===</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>逻辑运算符</td>
+                    <td>先&&后||</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>赋值运算符</td>
+                    <td>=</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>逗号运算符</td>
+                    <td>,</td>
+                </tr>
+            </table>
+        </li>
+    </ol>
+</body>
+</html>

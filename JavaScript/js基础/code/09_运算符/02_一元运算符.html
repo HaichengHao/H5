@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一元运算符</title>
+    <link rel="stylesheet" href="../../note/note.css">
+</head>
+<body>
+    <div class="code">
+        let a = 2
+        a++
+        console.log(a) //3
+        a--
+        console.log(a) //2
+        ++a
+        console.log(a) //3
+        --a
+        console.log(a) //2
+
+        // console.log(++a + 1)//4 相当于先进行自增，即 a从2变成3 再加上1 就是4
+        console.log(a++ + 2)//4 相当于先计算，即先让a+1直接就是 2+2 = 4，但是a的变化已经发生在了运算之后，我们看不到a进行了自增，但是a最终自己自增变成了3 如果对此不解可以看看python基础
+
+        //我们可以看看a的值发生了什么变化
+        console.log(a) //3 果然，后置的操作进行了后运算，a偷偷的自增变成了3
+
+        console.log(++a) //上面后置加加代码中a最终进行了我们看不见的自增,即a变成了3,那么到了本行再来一个前置的加加操作a就变成了4
+        //为了验证我们可以再输出a的值
+    </div>
+    <p class="warn">
+        注意，前置自增和后置自增在单独使用时产生的效果没有任何区别，只是自己+1而已<br>
+        并且在开发当中，也确实是独立使用
+    </p>
+    <div class="code">
+        let i = 1
+        console.log(i++ + ++i + i) //结果是7,先是 1 然后肉眼看不见变成了2，到了第二个++i，此时i就成了++2也就是3，到了最后一位i就成了3，相当于1+3+3 = 7
+    </div>
+    <script>
+        let a = 2
+        a++
+        console.log(a) //3
+        a--
+        console.log(a) //2
+        ++a
+        console.log(a) //3
+        --a
+        console.log(a) //2
+
+        // console.log(++a + 1)//4 相当于先进行自增，即 a从2变成3 再加上1 就是4
+        console.log(a++ + 2)//4 相当于先计算，即先让a+1直接就是 2+2 = 4，但是a的变化已经发生在了运算之后，我们看不到a进行了自增，但是a最终自己自增变成了3 如果对此不解可以看看python基础
+
+        //我们可以看看a的值发生了什么变化
+        console.log(a) //3 果然，后置的操作进行了后运算，a偷偷的自增变成了3
+
+        console.log(++a) //上面后置加加代码中a最终进行了我们看不见的自增,即a变成了3,那么到了本行再来一个前置的加加操作a就变成了4
+        //为了验证我们可以再输出a的值
+        let i = 1
+        console.log(i++ + ++i + i)
+    </script>
+</body>
+</html>

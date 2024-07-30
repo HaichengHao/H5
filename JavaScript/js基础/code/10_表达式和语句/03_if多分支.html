@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if多分支语句</title>
+</head>
+<body>
+    <p>学习成绩判断器</p>
+    <script>
+        let score = +prompt('请输入你的学习成绩:')
+        document.write(`你的成绩${score}`)
+        if(score < 0){
+            alert('输入有误，请重新输入')
+        }
+        else if(score>90){
+            alert('你的成绩非常好')
+        }
+        else if (score<=90 && score >80){
+            alert('你的成绩良好')
+        }
+        else if (score<=80 && score>70){
+            alert('你的成绩中等')
+        }
+        else{
+            alert('你的成绩差')
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while循环练习1</title>
+    <link rel="stylesheet" href="../note/note.css">
+</head>
+<body>
+    <h5>输出1-100并换行</h5>
+    <div class="code">
+        let i = 1
+        while(i&lt;=100){
+            document.write(`${i}<br>`)
+            i++
+        }
+    </div>
+    <h5>计算1-100的累加和</h5>
+    <div class="code">
+        let i = 1
+        let sum = 0
+        while(i&lt;=100){
+            sum += i
+            i++
+        }
+        document.write(`1-100的累加和为${sum}`)
+    </div>
+    <h5>输出1-100的偶数的累加和</h5>
+    <div class="code">
+        let i = 1
+        let oddsum = 0
+        while(i &lt;= 100){
+            if(i%2==0){
+                oddsum += i
+                i++
+            }else{
+                i++
+            }
+        }
+        document.write(`1-100内的偶数和为${oddsum}`)
+    </div>
+    <script>
+        // 练习1输出1-100，并换行
+        /* let i = 1
+        while(i<=100){
+            document.write(`${i}<br>`)
+            i++
+        } */
+
+        // 练习2，计算1-100的累加和并输出
+        /* let i = 1
+        let sum = 0
+        while(i<=100){
+            sum += i
+            i++
+        }
+        document.write(`1-100的累加和为${sum}`) */
+
+        // 练习3，计算1-100的偶数和
+        let i = 1
+        let oddsum = 0
+        while(i <= 100){
+            if(i%2==0){
+                oddsum += i
+                i++
+            }else{
+                i++
+            }
+        }
+        document.write(`1-100内的偶数和为${oddsum}`)
+    </script>
+</body>
+</html>

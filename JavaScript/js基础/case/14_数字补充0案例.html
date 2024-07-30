@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14数字补0案例</title>
+    <link rel="stylesheet" href="../note/note.css">
+</head>
+<body>
+    <h3>
+        需求:用户输入1个数，如果数字小于10，则前面进行补0、譬如09 08等
+    </h3>
+    <ol>
+        分析
+        <li>为后期页面显示时间做铺垫</li>
+        <li>利用三元运算符补0计算</li>
+    </ol>
+    <div class="code">
+        let num = +prompt('请输入一个数字')
+        num = num>=10? num:'0'+`${num}`
+        alert(num)
+    </div>
+    <script>
+        let num = +prompt('请输入一个数字')
+        num = num>=10? num:'0'+`${num}`
+        alert(num)
+    </script>
+</body>
+
+</html>
