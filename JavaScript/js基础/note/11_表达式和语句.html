@@ -53,6 +53,7 @@
                 <!-- if语句 -->
                 <li>
                     <h5>if语句</h5>
+                    <a href="../code/10_表达式和语句/03_if多分支.html">if语句代码</a>
                     <p>if语句有三种使用:单分支、双分支、多分支</p>
                     <p>单分支使用方法:
                         <div class="code">
@@ -86,6 +87,7 @@
                 <!-- 三元运算符 -->
                 <li>
                     <h5>三元运算符</h5>
+                    <a href="../case/13_三元运算符案例.html">案例</a>
                     <ul>
                         <li>使用场景: 其实是比if双分支更简单的写法，可以用三元表达式</li>
                         <li>符号:?与:配合使用</li>
@@ -101,6 +103,7 @@
                 <!-- switch语句 -->
                 <li>
                     <h5>Switch语句</h5>
+                    <a href="../case/15_switch简单计算器.html">switch案例</a>
                     <div class="code">
                         switch(数据){
                             case 值1:
@@ -134,6 +137,7 @@
                         
                         <li><h6 class="ttl">while循环</h6>
                             <p>在满足条件期间，重复执行代码</p>
+                            <a href="../case/16_while循环练习1.html">while循环</a>
                             <div class="code">
                                 while(循环条件){
                                     条件满足则重复执行的代码(循环体)
@@ -154,9 +158,36 @@
                         </li>
                         <li><h6 class="ttl">for循环</h6>
                             <p>掌握for循环执行代码</p>
+                            <a href="../case/19_for循环练习.html">for循环练习</a>
                             <div class="code">
                                 for(变量起始值;终止条件;变量变化量){
                                     循环体
+                                }
+                            </div>
+                            <p>for循环最有价值的用处是循环遍历数组</p>
+                            <a href="../code/10_表达式和语句/08_for循环.html">for遍历数组</a>
+                            <div class="code">
+                                数组名=[数组值,数组值,数组值,数组值,...]
+                                for(let i = 0;i&lt;数组名.length;i++){
+                                    document.write(数组名[i])
+                                }
+                            </div>
+                            <p>for嵌套循环</p>
+                            <div class="code">
+                                for(外部声明记录循环次数的变量;循环条件;变化值){
+                                    for(内部声明记录循环次数的变量;循环条件;变化值){
+                                        循环体
+                                    }
+                                }
+                            </div>
+                            <a href="../code/10_表达式和语句/09_嵌套for循环.html">99乘法表完美版</a>
+                            <div class="code">
+                                // 输出99乘法表
+                                for(let i = 1;i&lt;=9;i++){
+                                    for(j=1;j&lt;=i;j++){
+                                        document.write(`${j} × ${i} = ${j*i}     `)
+                                    }
+                                    document.write('&lt;br&gt;')
                                 }
                             </div>
                         </li>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+<body>
+    <h3>数组</h3>
+    <ul>
+        <li>
+            <h4>数组是什么</h4>
+            <p>数组是一种可以顺序保存数据的数据类型</p>
+            <p>如果有多个数据可以用数组保存起来，然后放到一个变量当中，管理非常方便</p>
+            <p>数组按顺序保存数据，所以每个数据都有自己的编号</p>
+        </li>
+        <li>
+            <h4>数组的基本使用</h4>
+            <ol>
+                <!-- 声明数组 -->
+                <li>
+                    <h5>声明数组</h5>
+                    <p>声明语法1</p>
+                    <div class="code">
+                        let 数组名  = [数据1,数据2,...]
+                    </div>
+                    <p>声明语法2</p>
+                    <div class="code">
+                        let 数组名 = new Arry(数据1,数据2,数据3)
+                    </div>
+                </li>
+                <!-- 数组取值 -->
+                <li>
+                    <h5>数组取值</h5>
+                    <p>取值语法</p>
+                    <div class="code">
+                        数组名[下标]
+                    </div>
+                    <p>获取数组长度</p>
+                    <div class="code">
+                        数组名.length
+                    </div>
+                </li>
+                <li>
+                    <h5>使用数组</h5>
+                    <ul>
+                        <li>
+                            <h6>遍历数组</h6>
+                            <div class="code">
+                                let myarr = [1,2,4,6,9,7,8]
+                                for(let i = 0;i&lt; myarr.length;i++){
+                                    console.log(myarr[i])
+
+                                }
+                            </div>    
+                        </li>
+                        <li>
+                            <h6>数组求和</h6>
+                            <div class="code">
+                                let myarr = [1,2,4,6,9,7,8]
+                                let sum = 0
+                                
+                                for(let i = 0;i&lt; myarr.length;i++){
+                                    sum+=myarr[i]
+
+                                }
+                                let avr = sum / myarr.length
+                                document.write(`数组数据的和为:${sum},平均值为${avr}`)
+                            </div>
+                        </li>
+                        <li>
+                            <h6>求最大值</h6>
+                            <div class="code">
+
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <h4>操作数组</h4>
+            <a href="../code/11_数组/03_数组的增删改查.html">数组的增删改查</a>
+            <ol>
+                <li>
+                    <h5>增</h5>
+                    <p>arr.push(末尾新增内容)</p>
+                    <p>arr.unshift(新增内容到数组开头)</p>
+                </li>
+                <li>
+                    <h5>删</h5>
+                    <p>arr.pop() 删除数组最后一个元素并返回该元素的值</p>
+                    <p>arr.shift() 删除第一个元素</p>
+                    <p>arr.splice(start,deleteCount) 从起始位置开始删除删除指定个数</p>
+                </li>
+                <li>
+                    <h5>改</h5>
+                    <p>数组[下标]=新值</p>
+                </li>
+                <li>
+                    <h5>查</h5>
+                    <p>数组[下标]</p>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <h4>数组案例</h4>
+        </li>
+    </ul>
+</body>
+</html>

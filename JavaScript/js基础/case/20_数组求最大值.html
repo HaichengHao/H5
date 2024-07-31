@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20_数组求最大值</title>
+</head>
+<body>
+    <script>
+        let myarr = [1,41,42,4,332,466,413,213]
+        let temp = myarr[0]
+        /* for(let i = 1;i<myarr.length;i++){
+            if(myarr[i]<temp){
+                continue
+            }else{
+                temp = myarr[i]
+            }
+        }
+        document.write(`最大值为:${temp}`) */
+        //三元运算符写法
+        let max = myarr[0]
+        for (let j = 1;j<myarr.length;j++){
+            max < myarr[j]? max = myarr[j] : max
+        }
+        document.write(`最大值为:${max}`)
+        // 求最小值
+        /* for(let i = 1;i<myarr.length;i++){
+            if(myarr[i]>temp){
+                continue
+            }else{
+                temp = myarr[i]
+            }
+        }
+        document.write(`最小值为:${temp}`) */
+        let min = myarr[0]
+        for (let j = 1;j<myarr.length;j++){
+            min > myarr[j]? min = myarr[j] : min
+        }
+        document.write(`最小值为:${min}`)
+    </script>
+</body>
+</html>

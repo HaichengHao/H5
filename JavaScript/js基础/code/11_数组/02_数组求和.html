@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组求和以及平均值</title>
+</head>
+<body>
+    <script>
+        let myarr = [1,2,4,6,9,7,8]
+        let sum = 0
+        
+        for(let i = 0;i<myarr.length;i++){
+            sum+=myarr[i]
+
+        }
+        let avr = sum / myarr.length
+        document.write(`数组数据的和为:${sum},平均值为${avr}`)
+    </script>
+</body>
+</html>

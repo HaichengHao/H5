@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for循环练习</title>
+    <link rel="stylesheet" href="../note/note.css">
+</head>
+<body>
+    <h4>输出1-100的奇数和</h4>
+    <div class="code">
+        let sum = 0
+        for(let i = 1;i&lt;=100;i++){
+            if(i%2!=0){
+                sum+=i
+            }
+        }
+        document.write(sum)
+    </div>
+    <h4>输出5个星号</h4>
+    <div class="code">
+        for(let j = 0 ; j&lt;=4 ; j++){
+            document.write('*')
+        }
+    </div>
+    <h4>输出99乘法表</h4>
+    <div class="code">
+        for(let i = 1;i&lt;=9;i++){
+            for(j=1;j&lt;=i;j++){
+                document.write(`${j} × ${i} = ${j*i}     `)
+            }
+            document.write('&lt;br&gt;')
+        }
+    </div>
+    <script>
+        // 输出奇数和
+        /* let sum = 0
+        for(let i = 1;i<=100;i++){
+            if(i%2!=0){
+                sum+=i
+            }
+        }
+        document.write(sum) */
+
+        // 输出小星星
+        /* for(let j = 0 ; j<=4 ; j++){
+            document.write('*')
+        } */
+        // 输出99乘法表
+        for(let i = 1;i<=9;i++){
+            for(j=1;j<=i;j++){
+                document.write(`${j} × ${i} = ${j*i}     `)
+            }
+            document.write('<br>')
+        }
+    </script>
+</body>
+</html>

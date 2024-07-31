@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌套for循环</title>
+    <style>
+        span{
+            display: inline-block;
+            padding: 5px 0px;
+            width: 64px;
+            text-align: center;
+            background-color: blueviolet;
+            color: white;
+            margin: 2px;
+            border: 1px solid black;
+            border-radius: 2px;
+            /* border: 1px solid black; */
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /* for(let i = 1 ; i <= 5 ; i++){
+            for(let j = 1 ; j <= 5 ; j++){
+                document.write('*')
+            }
+            document.write('<br>')
+        } */
+        //    打印直角三角星
+        /* for(let i = 1 ; i <= 5 ; i++){
+            for(let j = 1 ; j <= i ; j++){
+                document.write('*')
+            }
+            document.write('<br>')
+        } */
+        //打印99乘法表
+        for (let i = 1; i <= 9; i++) {
+            for (let j = 1; j <= i; j++) {
+            document.write(`<span>${j}×${i}=${i * j}</span>  `)
+            }
+            document.write('<br>')
+        }
+    </script>
+</body>
+
+</html>

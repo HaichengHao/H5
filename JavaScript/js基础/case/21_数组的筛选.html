@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21数组的筛选</title>
+    <link rel="stylesheet" href="../note/note.css">
+</head>
+<body>
+    <div class="code">
+        // 查找大于10的数据组成新数组
+        let arr = [10,34,1,43,2,6,8,88,14]
+        let temparr=[]
+        for(let i=0;i&lt;arr.length;i++){
+            if(arr[i]>10){
+                temparr.push(arr[i])
+                
+            }
+            
+        }
+        console.log(temparr)
+        //数组去0案例
+        let arr2 = [1,0,6,3,2,0,14,0,14,41,0]
+        let nozeroarry = []
+        for( let j = 0;j&lt;arr2.length;j++){
+            if(arr2[j] !==; 0){
+                nozeroarry.push(arr2[j])
+            }
+        }
+        console.log(nozeroarry)
+    </div>
+    <script>
+
+        // 查找大于10的数据组成新数组
+        let arr = [10,34,1,43,2,6,8,88,14]
+        let temparr=[]
+        for(let i=0;i<arr.length;i++){
+            if(arr[i]>10){
+                temparr.push(arr[i])
+            }
+            
+        }
+        console.log(temparr)
+        //数组去0案例
+        let arr2 = [1,0,6,3,2,0,14,0,14,41,0]
+        let nozeroarry = []
+        for( let j = 0;j<arr2.length;j++){
+            if(arr2[j] !== 0){
+                nozeroarry.push(arr2[j])
+            }
+        }
+        console.log(nozeroarry)
+    </script>
+    
+</body>
+</html>
