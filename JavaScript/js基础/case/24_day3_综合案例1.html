@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24_day3综合案例1，年龄</title>
+</head>
+<body>
+    
+    <pre>
+* 需求1：让用户输入五个有效年龄（0-100之间），**放入数组中**
+
+* 必须输入五个有效年龄年龄，如果是无效年龄，则不能放入数组中
+* 需求2：打印出所有成年人的年龄 (数组筛选)
+* 需求3：打印出所有人总年龄 （累加）
+* 需求4：打印出所有人的平均年龄 （累加）
+* 需求5：打印出最大年龄和最小年龄 （最大值）
+    </pre>
+    <script>
+        let arr = []
+        while(arr.length<5){
+            // 输入年龄
+            let age = +prompt(`请输入第${arr.length+1}个年龄`)
+            if(age>0 && age<100){
+              arr.push(age)  
+            }
+            else{
+                alert('您的输入有误，请重新输入')
+                continue
+            }
+            
+        }
+        let sum = 0
+        for(let i = 0;i<arr.length;i++){
+            sum+=arr[i]
+        }
+        document.write(`总年龄为:${sum},平均年龄为${sum/arr.length}`)
+        console.log(arr)
+        document.write(`年龄数组为:${arr}`)
+        let maxage = arr.sort()[arr.length-1]
+        let minage = arr.sort()[0]
+        document.write(`其中年龄最大的是${maxage},年龄最小的是${minage}`)
+    </script>
+</body>
+</html>

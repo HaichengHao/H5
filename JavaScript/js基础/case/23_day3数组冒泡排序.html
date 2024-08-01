@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23_冒泡排序法</title>
+</head>
+<body>
+    <script>
+        let lst = [12,34,56,77,15]
+        // for(let i = 0;i<lst.length-1;i++){
+        //     for(let j = 0 ; j<lst.length-i-1;j++){
+        //         // 开始交换，前提是第一个数大于第二个数才交换
+        //         if(lst[j]>lst[j+1]){
+        //             // 交换两个变量
+        //             let temp = lst[j]
+        //             lst[j] = lst[j+1]
+        //             lst[j+1] = temp
+        //         }
+        //     }
+        // }
+        // document.write(lst)
+
+        // 开发中直接用封装好的功能
+        /* lst.sort() */ //默认正序排序
+
+        // 也可以这样写
+        /* lst.sort(function(a,b){
+            return a - b
+        }) */
+
+        // 降序的话可以这样写
+        lst.sort(function(a,b){
+            return b - a
+        })
+        console.log(lst)
+    </script>
+    
+
+</body>
+</html>
