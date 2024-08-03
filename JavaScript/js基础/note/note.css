@@ -39,6 +39,17 @@ h6{
 .code::after{
     content: '</script>';
 }
+.code2{
+    white-space: pre;
+    background-color: #4c41e1;
+    color:goldenrod;
+}
+.code2::before{
+    content: '<body>';
+}
+.code2::after{
+    content:'</body>'
+}
 .warn{
     color: red;
     font-size: 20px;

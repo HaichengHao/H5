@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>00体验逻辑中断</title>
+    <link rel="stylesheet" href="../../note/note.css">
+
+</head>
+<body>
+    <div class="code">
+        let age = 18
+        console.log(age = age || 0)
+        console.log(age = false && age ++ )
+        console.log(age = 11 && 22) //注意，非0数值都是true,都真则执行右侧
+
+    </div>
+    <script>
+        let age = 18
+        console.log(age = age || 0)
+        console.log(age = false && age ++ )
+        console.log(age = 11 && 22) //注意，非0数值都是true,都真则执行右侧
+    </script>
+</body>
+</html>

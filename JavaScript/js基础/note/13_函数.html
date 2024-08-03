@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+<body>
+    <h3>函数</h3>
+    <p class="info">函数就是被设计为执行特定功能的代码块</p>
+    <ul>
+        <li>
+            <h4>为什么需要函数</h4>
+            <p>简化代码，易于维护，减少冗余，实现代码的复用</p>
+            
+        </li>
+        <li>
+            <h4>函数使用</h4>
+            <ul>
+                <li>
+                    <h5>函数的声明</h5>
+                    <div class="code">
+                        function 函数名(){
+                            函数体
+                        }
+                    </div>
+                </li>
+                <li>
+                    <h5>函数的调用</h5>
+                    <div class="code">
+                        函数名() // 注意一定要加小括号，结合python编程思想和c语言来记忆
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h4>函数传参</h4>
+            <p>思考(结合python和c语言)，函数如果带了参数，那么使用起来会更加灵活</p>
+            <ul>
+                <li>
+                    <h5>带参数函数的声明</h5>
+                    <div class="code">
+                        function 函数名(参数列表){
+                            函数体
+                        }
+                    </div>
+                </li>
+                <li>
+                    <h5>带参数函数的使用</h5>
+                    <p>函数参数传递可以极大提高函数的灵活性</p>
+                    <p>函数的参数分为形式参数和实际参数，参数中间用逗号分隔</p>
+                    <div class="code">
+                        先定义一个合法的参数
+                        再
+                        函数名(合法的参数) 注意 使用时可以写在定义函数代码之前
+                    </div>
+                </li>
+                <li>
+                    <h5>默认值参数</h5>
+                    <p>如果有时候没有指定参数那可能会出现函数返回值为NaN</p>
+                    <p>正确做法是指定函数的默认参数</p>
+                    <p>默认值只会在缺少实参传递时才会被执行，所有参数会优先执行传递过来的实参，否则默认为undefined</p>
+                    <a href="../code/12_函数/02_默认值函数.html">例子</a>
+                    <div class="code">
+                        function 函数名(参数1 = 默认值1,参数2 = 默认值2){
+                            函数体
+                        }
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h4>函数返回值</h4>
+            <p>函数的返回值是函数执行完毕后的操作</p>
+            <div class="code">
+                function 函数名(参数列表){
+                    函数体
+                    return 返回值//注意，return只要执行，那么函数即终止，这里与break区分，break只要执行，那么会结束一整个循环
+                }
+            </div>
+
+        </li>
+
+        <li>
+            <h4>作用域</h4>
+            <p>通常来说，一段程序代码中所用到的名字并不总是有效和可用的，而限定这个名字的可用性代码范围就是这个名字的作用域</p>
+            <p>作用域的使用提高了程序逻辑的局部性，增强了程序的可靠性，减少了名字冲突</p>
+            <p class="warn">注意，局部变量没有声明(let)则也当全局变量看，但强烈不推荐</p>
+            <p>函数内部的形参也可以看作是局部变量</p>
+            <ul>
+                <li>
+                    <h5>局部作用域</h5>
+                    <p>作用于函数内的代码环境，就是局部作用域。因为跟函数有关系，所以也称为函数作用域</p>
+
+                </li>
+                <li>
+                    <h5>全局作用域</h5>
+                    <p>作用于所有代码执行的环境(整个script标签内部)或一个独立的js文件</p>
+                </li>
+            </ul>
+
+        </li>
+        <li>
+            <h4>匿名函数</h4>
+            <p>没有名字的函数无法直接使用</p>
+            <p>注意，之前学的function 函数名()这种的叫做具名函数，可以在定义代码的前后调用</p>
+            <p>但是匿名函数必须在定义代码的后面调用</p>
+            <div class="code">
+                function(){
+                    函数体
+                }
+            </div>
+
+            <h5>两种使用方式</h5>
+            <ul>
+                <li>
+                    <h6>函数表达式</h6>
+                    <p>将匿名函数赋值给一个变量，并且通过变量名称进行调用，我们将这个称为函数表达式</p>
+                    <div class="code">
+                        let fn = function(参数列表){
+                            //函数体
+                        }
+
+                        //调用
+                        fn(参数)
+                    </div>
+                    <h6>使用场景</h6>
+                    <p>在之后要学习的webapi中将会使用</p>
+                    <div class="code2">
+                        &lt;button&gt;点击我&lt;/button&gt;
+                        &lt;script&gt;
+                            let btn = document.querySelector('button')
+                            btn.onclick = function(){
+                                alert('我是匿名函数')
+                            }
+                        &lt;/script&gt;
+                    </div>
+                </li>
+                <li>
+                    <h6>立即执行函数</h6>
+                    <p>场景介绍:避免全局变量之间的污染</p>
+                    <p class="warn">立即执行函数一定要在其后加上分号</p>
+                    <a href="../code/12_函数/04_匿名函数立即执行函数.html">示例代码</a>
+                    <div class="code">
+                        //方式1
+                        (function(){console.log(11)})();
+                        //方式2
+                        (function(){console.log(11)}());
+                        //不需要调用立即执行
+                    </div>
+                    <p>对于匿名函数的调用，对于方式1而言，其实第一个括号包住的可以理解为整个函数，
+                        后面添加了括号即为执行函数，即youdefinefunc(),所以如果想传入参数，那么可以在后面的括号内写入参数即可</p>
+                    <div class="code">
+                        (function(x,y){document.write(x + y)})(1,2);
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

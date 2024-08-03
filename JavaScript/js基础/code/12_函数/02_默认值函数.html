@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02默认值函数</title>
+</head>
+<body>
+    <script>
+        // 定义一个函数含有默认值的函数
+        function getPlus(num1 = 10, num2 = 30){
+            return num1+num2
+        }
+        // 不指定参数直接调用
+        let n1 = getPlus()
+        document.write(n1) //40 < -- 10+30
+        
+        let n2 = getPlus(9,7) //16
+        document.write(n2)
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04立即执行函数</title>
+</head>
+<body>
+    <script>
+        
+        (function(){document.write('helloworld')})();
+        // 注意，写立即执行函数一定要加分号
+
+        // 或这样写
+        (function(){document.write('hi')}());
+
+        (function(x,y){document.write(x + y)})(1,2);
+    </script>
+</body>
+</html>

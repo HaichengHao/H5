@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>00函数初体验</title>
+</head>
+<body>
+    <script>
+        // 学习本节可以结合python的思维以及c语言的语法来思考
+        // 定义一个函数，可以往页面中写入helloworld
+        function HeLlOword(){
+            document.write('hello_world<br>')
+        }
+        let sum = 0
+
+        // 定义一个函数可以传入数组并求和该数组
+        function getArrySum(yourarry){
+            for(let i = 0;i< yourarry.length;i++){
+                sum+=yourarry[i]
+            }
+            return sum
+        }
+
+        arr = [1,3,5,7,9]
+        total = getArrySum(arr)
+        document.write(`${arr}求和的值为${total}`)
+        // 调用函数
+        HeLlOword() //<--注意带小括号才是执行函数，即调用函数
+        // 思考这样的问题，我们想在页面中输入五个hello_world，
+        // 没学习函数之前实现这个操作是比较麻烦的，如果输出5w个那肯定更麻烦，
+        // 但现在我们可以使用函数
+        let i = 0
+        while(i<4){
+            HeLlOword()
+            i++
+        }
+    </script>
+</body>
+</html>

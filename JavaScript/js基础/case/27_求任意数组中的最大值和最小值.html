@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求任意数组中的最大值和最小值</title>
+</head>
+<body>
+    <script>
+        function getmax_min(arr){
+            sortedarr = arr.sort()
+            
+            let minnm = sortedarr[0]
+            let maxnm = sortedarr[arr.length - 1]
+
+            return [minnm,maxnm]
+        }
+        myArr = [1,5,2,1,7,98,3]
+        let min = getmax_min(myArr)[0]
+        let max = getmax_min(myArr)[1]
+        document.write(`最小值为:${min},最大值为${max}`)
+
+        
+        
+    </script>
+</body>
+</html>

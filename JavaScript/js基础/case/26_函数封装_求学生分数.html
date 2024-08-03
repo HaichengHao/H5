@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>26函数封装之求学生分数</title>
+</head>
+<body>
+    
+    <script>
+        let scoreArry = []
+        while(true){
+            
+            let score = +prompt(`
+            输入4040退出！！！！
+            请输入第${scoreArry.length + 1}个学生的成绩:`)
+            if(score >= 0 && score <= 100){
+                scoreArry.push(score)
+            }else if(score == 4040){
+                break
+            }else{
+                alert('输入有误请重新输入')
+                continue
+            }
+        }
+        // 定义一个函数可以返回数组数据求和的值
+        
+        function getTotal(Youarry){
+            let sum = 0
+            for(let i = 0 ;i < Youarry.length ; i++){
+                sum += Youarry[i]
+            }
+            return sum
+        }
+
+        totalscore = getTotal(scoreArry)
+        document.write(`总成绩为${totalscore},平均成绩为${totalscore/scoreArry.length}`)
+
+        // 当然也可以这样非交互式调用
+        scores = [100,75,83,44,90]
+        let anothertotal = getTotal(scores)
+        document.write(`总成绩:${anothertotal},平均成绩为${anothertotal/scores.length}`)
+    </script>
+</body>
+</html>

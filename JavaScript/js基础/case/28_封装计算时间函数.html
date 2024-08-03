@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28封装计算时间函数</title>
+</head>
+
+<body>
+    <p>需求:用户输入秒数，可以自动转化为时分秒</p>
+    <h5>分析:</h5>
+    <ol>
+        <li>用户输入总秒数</li>
+        <li>计算时分秒</li>
+        <li>打印输出</li>
+    </ol>
+    <p>1h = 60m = 60*60 = 3600s</p>
+    <script>
+        // 定义一个函数实现自动补全0
+        function addZero(standbytime){
+            if(standbytime<10){
+                standbytime = '0' + standbytime
+            }
+            return standbytime
+
+        }
+        let seconds = +prompt('请输入秒数')
+        function getHMS(youSecond) {
+            let hour = 0
+            let min = 0
+            let sec = 0
+            hour = addZero(parseInt( youSecond / 3600))
+            min = addZero(parseInt(youSecond/60%60))
+            sec = addZero(youSecond%60)
+            let timearr = [hour,min,sec]
+            return timearr
+        }
+        
+    youts = getHMS(seconds)
+    let youh = youts[0]
+    let youm = youts[1]
+    let yous = youts[2]
+    document.write(`${seconds}秒可以转化为${youh}时${youm}分${yous}秒`)
+    </script>
+</body>
+
+</html>

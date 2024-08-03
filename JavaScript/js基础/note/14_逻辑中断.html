@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14逻辑中断</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+<body>
+    <h3>逻辑中断</h3>
+    <p>其实是类似实现了默认值参数的功能</p>
+    <p>短路:只存在与&& 和 || 中，当满足一定条件会让右边代码不执行</p>
+    <a href="../code/13_逻辑中断/00_体验逻辑中断.html">体验逻辑中断</a>
+    <table>
+        <tr>
+            <th>符号</th>
+            <th>短路事件</th>
+        </tr>
+        <tr>
+            <td>&&</td>
+            <td>左边为false就短路两侧都为真则执行右侧</td>
+            
+        </tr>
+        <tr>
+            <td>||</td>
+            <td>左边为true就短路</td>
+        </tr>
+    </table>
+    <div class="code">
+        function fn(x,y){
+            x = x || 0 // 可以理解为如果x没有实参传入，则x的实参指定为默认的参数为0
+            y = y || 0
+            console.log(x+y)
+        }
+        fn(1,2)//3
+        fn() //NaN
+    </div>
+</body>
+</html>

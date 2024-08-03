@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_带参函数</title>
+</head>
+<body>
+    
+    <script>
+        // num*(num-1)
+        //定义一个函数实现阶乘效果
+        function getMUlti(num){
+            if(num == 1){
+                return 1
+            }else if(num == 2){
+                return 2
+            }else if(num > 2){
+                return num*getMUlti(num - 1)
+            }
+           
+        }
+        let jiecheng5 = getMUlti(4)
+        document.write(jiecheng5)
+
+        // 定义一个含有两个参数的函数并调用它
+        function prtLst(num1,num2){
+            let lst = []
+            for(let i=num1;i<=num2;i++){
+                lst.push(i)
+            }
+            return(lst)
+        }
+        let number1 = prompt('请输入第一个数:')
+        let number2 = prompt('请输入第二个数:')
+        youLst = prtLst(number1,number2)
+        document.write(youLst)
+    </script>
+</body>
+</html>
