@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day5练习题2</title>
+</head>
+<body>
+    <script>
+        let flag = true
+        function RandNum(x,y){
+            return Math.floor(Math.random()*(y-x+1))+x
+        }
+        let randomnumber = RandNum(10,20)
+        for(let i = 0;i<8;i++){
+            let youans = +prompt('请输入你猜的数')
+            if(youans == randomnumber){
+                flag = false
+                alert('回答正确')
+                break
+            }else if(youans > randomnumber){
+                alert('你猜的数大了')
+            }else if(youans < randomnumber){
+                alert('你猜得数小了')
+            }
+        }
+        if(flag){
+            alert('菜就多练')
+        }
+    </script>
+</body>
+</html>

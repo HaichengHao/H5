@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拓展之术语解释</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+<body>
+    <h3>术语解释</h3>
+    <p>知道一些术语，提高自身水平</p>
+    <table>
+        <tr>
+            <th>术语</th>
+            <th>解释</th>
+            <th>举例</th>
+        </tr>
+        <tr>
+            <td>关键字</td>
+            <td>在JavaScript中有特殊意义的词汇</td>
+            <td>let、var、function、if、else、····</td>
+        </tr>
+        <tr>
+            <td>保留字</td>
+            <td>在目前的JavaScript中没有意义，但是未来可能会出现的具有特殊意义的词汇</td>
+            <td>int、long、short、char</td>
+        </tr>
+        <tr>
+            <td>标识(标识符)</td>
+            <td>变量名、函数名的另一种写法</td>
+            <td>无</td>
+        </tr>
+        <tr>
+            <td>表达式</td>
+            <td>能产生值的代码，一般配合运算符出现</td>
+            <td>10+3、age>=18</td>
+        </tr>
+        <tr>
+            <td>语句</td>
+            <td>一段可以执行的代码</td>
+            <td>if() for()</td>
+        </tr>
+    </table>
+    <ul>
+
+        <li>
+            <h4>
+                基本数据类型和引用数据类型
+            </h4>
+            <p>目标:了解基本数据类型和引用数据类型的存储方式</p>
+            <p>简单类型又叫基本数据类型或者值类型，复杂类型又叫引用类型</p>
+            <ul>
+                <li>
+                    <h5>值类型</h5>
+                    <p>简单数据类型/基本数据类型，在存储变量时变量中存储的是值本身，因此叫做值类型</p>
+                    <p>如string,number,boolean,undefined,null</p>
+                </li>
+                <li>
+                    <h5>引用类型</h5>
+                    <p>复杂数据类型</p>
+                    <p>在存储时变量中仅存储地址，因此叫引用数据类型</p>
+                    <p>通过new关键字创建的对象(系统对象、自定义对象)，如Object(对象)、Array、Data等</p>
+                    <p>栈(stack)存储的是简单数据类型，堆(heap)存储的是复杂数据类型</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

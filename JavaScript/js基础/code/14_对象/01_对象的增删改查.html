@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01对象的增删改查</title>
+    <link rel="stylesheet" href="../../note/note.css">
+</head>
+<body>
+    <p>打开控制台查看</p>
+    <div class="code">
+        let goods = {
+            name : '汪汪碎冰冰',
+            num : '202408031177',
+            weight: '300g',
+            address: 'CN'
+        }
+        console.log(goods)
+        // 增
+        goods.price = '1元'
+        console.log(goods)
+
+        // 删
+        delete goods.weight
+        console.log(goods)
+
+        // 改
+        goods.name = '旺旺碎碎冰'
+        console.log(goods)
+
+        // 查
+        console.log(goods.address)
+    </div>
+    <script>
+         let goods = {
+            name : '汪汪碎冰冰',
+            num : '202408031177',
+            weight: '300g',
+            address: 'CN'
+        }
+        console.log(goods)
+        // 增
+        goods.price = '1元'
+        console.log(goods)
+
+        // 删
+        delete goods.weight
+        console.log(goods)
+
+        // 改
+        goods.name = '旺旺碎碎冰'
+        console.log(goods)
+
+        // 查
+        console.log(goods.address)
+        // 查的另一种写法可以理解为python中字典以键取值法
+        console.log(goods['name'])
+    </script>
+</body>
+</html>

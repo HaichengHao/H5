@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+    <link rel="stylesheet" href="./note.css">
+</head>
+<body>
+    <h3>对象</h3>
+    <p>知道对象的数据类型，利用对象来操作数组来渲染界面</p>
+    <p>注意，学习本节时利用python中字典类型的思维来理解即可</p>
+    <ol>
+        <li>
+            <h4>什么是对象</h4>
+            <p>对象也是JavaScript的一种数据类型</p>
+            <p>可以理解为一种无序的数据集合，注意数组是有序的数据集合</p>
+            <p>用来描述某个事物，例如描述一个人</p>
+            <div class="code">
+                let obj = {
+                    uname : '张三',
+                    age : 18,
+                    gender : '女'
+                }
+            </div>
+            
+        </li>
+        <li>
+            <h4>对象的使用</h4>
+            <ol>
+                <li>
+                    <h5>对象的声明语法</h5>
+                    <div class="code">
+                        let 对象名 = {}
+                        //方法2
+                        let 对象名 = new Object()
+                    </div>
+                </li>
+                <li>
+                    <h5>对象由属性和方法组成</h5>
+                    <ul>
+                        <li>属性:信息或特征叫属性(名词)。比如手机尺寸、颜色、重量等</li>
+                        <li>方法:功能或行为(动词)。比如打电话、发短信、玩游戏</li>
+                        <div class="code">
+                            let 对象名 ={
+                                属性名: 属性值,
+                                //属性都是成对出现，
+                                方法名: 函数
+                            }
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <h5>对象的使用</h5>
+                    <p>对象本质是无序的数据集合，操作数据无非就是增删改查</p>
+                    <table>
+                        <tr>
+                            <th>操作</th>
+                            <th>语法</th>
+                        </tr>
+                        <tr>
+                            <td>增</td>
+                            <td>对象.新的属性名 = 属性值</td>
+                        </tr>
+                        <tr>
+                            <td>删</td>
+                            <td>delete 对象名.属性名</td>
+                        </tr>
+                        <tr>
+                            <td>改</td>
+                            <td>对象.属性名  = 新指定的属性值</td>
+                        </tr>
+                        <tr>
+                            <td>查</td>
+                            <td>对象名.属性名<br>
+                            或者: 对象名['属性名']</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <h5>对象中的方法</h5>
+                    <p>数据行为性的信息称为方法，比如跑步、唱歌等，一般都是动词性的，其本质是函数</p>
+                    <div class="code">
+                        let person = {
+                            name : 'rucy',
+                            sayHi : function(){
+                                document.write('hi~~')
+                            }
+                        }
+                        //方法调用
+                        对象名.方法名(实参)
+                        person.sayHi()
+                        //注意，可以传入参数
+                    </div>
+                    <ol>
+                        <li>方法是由方法名和函数两部分构成，用冒号分隔</li>
+                        <li>多个属性之间使用英文逗号分隔</li>
+                        <li>方法是依附在对象中的函数</li>
+                        <li>方法名可以使用""或''，一般情况下省略，除非名称遇到特殊符号如空格、中横线等</li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <h4>遍历对象</h4>
+            <p>对象是无序的，是键值对的形式</p>
+            <p>那么如何遍历对象呢?(结合py中对字典的遍历)</p>
+            <div class="code">
+                let obj = {
+                    name : 'andy',
+                    age : 18,
+                    gender : '男'
+                }
+                for(let k in obj){
+                    console.log(k)
+                    console.log(obj[k])
+                    //这里可以结合python，for k  in dict: print(k,dict[k])
+                }
+            </div>
+        </li>
+        <li>
+            <h4>内置对象</h4>
+            <p>目标:学会调用JavaScript为我们准备好的内置对象</p>
+            <p>思考:我们之前接触过的内置对象如console.log()、document.write()这些都是内置对象</p>
+            <h5>学习路径</h5>
+            <ol>
+                <li>
+                    <h6>内置对象是什么</h6>
+                </li>
+                <li>
+                    <h6>内置对象Math</h6>
+                    <p>Math对象是JavaScript提供的一个“数学”对象</p>
+                    <p>作用:提供了一系列做数学运算的方法</p>
+                    <ul>
+                        <h6 class="ttl">
+                            Math对象包含的方法有:</h6>
+                            <li>random:生成0-1之间的随机数(包含0不包含1)</li>
+                            <li>ceil:向上取整，天花板</li>
+                            <li>floor:向下取整，地板</li>
+                            <li>max:找最大数</li>
+                            <li>min:找最小数</li>
+                            <li>pow:幂运算</li>
+                            <li>abs:绝对值</li>
+                            <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math" target="_blank">
+                                官方参考文档
+                            </a></li>
+                        
+                    </ul>
+                </li>
+                <li>
+                    <h6>生成任意范围随机数</h6>
+                    <p>Math.random()随机函数，返回0-1之间但不包括1的随机小数</p>
+                    <ul>
+                        <li><h6 class="ttl">如何生成0-10之间的随机数</h6>
+                        <div class="code">
+                            Math.floor(Math.random()*11) //因为生成的是0-1之间的小数，所以要想生成0-10之间且包含10，需要乘上11再向下取整即可
+                        </div></li>
+
+                        <li><h6 class="ttl">生成5-10的随机数</h6>
+                        <div class="code">
+                            Math.floor(Math.random()*6)+5 //加号之前生成的是0-5之间的随机数，所以加上5就是5-10之间的随机数
+                        </div></li>
+                        <li>
+                            <h6>生成N-M之间的随机数</h6>
+                            <div class="code">
+                                Math.floor(Math.random()*(M-N+1))+N
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+
+        </li>
+    </ol>
+</body>
+</html>

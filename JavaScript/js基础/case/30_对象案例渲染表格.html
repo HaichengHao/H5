@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30对象案例之渲染表格</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        td,th{
+            text-align: center;
+            border: 0.1px solid black;
+        }
+        tr:not(:first-child):hover{
+            background-color: green;
+            color: aliceblue;
+        }
+        th{
+            background-color: blueviolet;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>家乡</th>
+        </tr>
+        
+        <tr>
+            <script>
+                // 数组对象
+                let students = [
+                    {name:'小北',age:18,gender:'男',hometown:'河北'},
+                    {name:'小南',age:16,gender:'女',hometown:'河南'},
+                    {name:'小西',age:18,gender:'女',hometown:'山西'},
+                    {name:'小东',age:15,gender:'男',hometown:'山东'}
+            ]
+                for (let i = 0 ;i<students.length;i++){
+                        name = students[i].name
+                        age = students[i].age
+                        gender = students[i].gender
+                        hometown = students[i].hometown
+                        document.write(`
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${name}</td>
+                            <td>${age}</td>
+                            <td>${gender}</td>
+                            <td>${hometown}</td>
+                        </tr>
+                        `)
+
+                }
+            </script>
+        </tr>
+    </table>
+
+</body>
+</html>

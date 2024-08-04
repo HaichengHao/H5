@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>32随机点名优化</title>
+</head>
+<body>
+    <script>
+        
+        // 先定义一个数组存储名字
+        let namearr = ['张三','李四','王五','赵六','钱七','孙八']
+        let randindex = Math.floor(Math.random()*namearr.length)
+
+        let bechoiced = namearr[randindex]
+        console.log(bechoiced)
+        document.write(`哪里不会点哪里，点的就是你${bechoiced}`)
+        namearr.splice(randindex , 1)
+        console.log(namearr)
+    </script>
+</body>
+</html>

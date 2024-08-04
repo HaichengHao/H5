@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day4拓展题，封装一个函数返回查找元素在数组中的索引号</title>
+    <link rel="stylesheet" href="../note/note.css">
+</head>
+<body>
+    <div class="code">
+        function getIndex(youelement,arr){
+            let indexnum = 0;
+            for(let i = 0;i&lt;arr.length;i++){
+                if(youelement == arr[i]){
+                    indexnum = i
+                    break
+                }
+            }
+            return indexnum
+        }
+        let standbyarr = [1,4,5,1,3,5,6]
+        let indexnm = getIndex(3,standbyarr)
+        console.log(indexnm)
+    </div>
+    <script>
+        function getIndex(youelement,arr){
+            let indexnum = 0;
+            for(let i = 0;i<arr.length;i++){
+                if(youelement == arr[i]){
+                    indexnum = i
+                    break
+                }
+            }
+            return indexnum
+        }
+        let standbyarr = [1,4,5,1,3,5,6]
+        let indexnm = getIndex(3,standbyarr)
+        console.log(indexnm)
+    </script>
+</body>
+</html>

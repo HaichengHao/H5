@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>31随机点名案例</title>
+</head>
+<body>
+    <script>
+        //先定义一个能够获取传入的数组长度并能随机返回其中一个索引下标的函数
+        function getRandom(arr){
+            let randindex =  Math.floor(Math.random()*(arr.length)) 
+            //这里其实用到的还是Math.floor(Math.random()*(M-N+1))+N的变种形式 
+            //为什么这么说呢？因为我们指定的是返回下标，所以必定从0开始到长度-1的位置结束
+            return arr[randindex]
+        }
+
+        // 现在开始使用函数
+        // 先定义一个数组存储名字
+        let namearr = ['张三','李四','王五','赵六','钱七','孙八']
+        //这里长度为6，m-n = 6 m-n+1 = 7 random()*7 取得范围为0-7左闭右开，又因为floor所以取得实际范围为0-6的闭集合，刚好索引下标是0-6
+        // 使用函数实现点名效果
+        let bechoiced = getRandom(namearr)
+        console.log(bechoiced)
+        document.write(`哪里不会点哪里，点的就是你${bechoiced}`)
+    </script>
+</body>
+</html>

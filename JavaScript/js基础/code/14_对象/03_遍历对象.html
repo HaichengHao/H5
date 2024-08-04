@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03遍历对象</title>
+    <link rel="stylesheet" href="../../note/note.css">
+</head>
+<body>
+    <div class="code">
+        let obj = {
+            name : 'andy',
+            age : 18,
+            gender : '男'
+        }
+        for(let k in obj){
+            console.log(k)
+            console.log('---------------')
+            console.log(obj[k])
+            //这里可以结合python，for k  in dict: print(k,dict[k])
+            /* for k in dict:
+                print(k)
+                print(dict[k])  这里写的是python的写法，就当是回忆*/
+        }
+        // 数组也可以使用类似的遍历方式
+        let arr = [1,4,13,441,41,33]
+        for(let k in arr){
+            console.log(k,typeof(k))//这样控制台打印的是数组下标,但是它的类型是string,这也是我们不适用这种方式遍历数组的原因
+            console.log('---------------------')
+            console.log(arr[k])//这样打印的就是数组对应下标的元素
+        }
+    </div>
+    <script>
+        
+        let obj = {
+                    name : 'andy',
+                    age : 18,
+                    gender : '男'
+                }
+                for(let k in obj){
+                    console.log(k)
+                    console.log('---------------')
+                    console.log(obj[k])
+                    //这里可以结合python，for k  in dict: print(k,dict[k])
+                    
+                }
+        // 数组也可以使用类似的遍历方式
+        let arr = [1,4,13,441,41,33]
+        for(let k in arr){
+            console.log(k,typeof(k))//这样控制台打印的是数组下标,但是它的类型是string,这也是我们不适用这种方式遍历数组的原因
+            console.log('---------------------')
+            console.log(arr[k])//这样打印的就是数组对应下标的元素
+        }
+    </script>
+</body>
+</html>

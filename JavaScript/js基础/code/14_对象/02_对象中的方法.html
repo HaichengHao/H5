@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_对象中的方法</title>
+    <link rel="stylesheet" href="../../note/note.css">
+</head>
+<body>
+    <script>
+        let singer ={
+            name : '刘德华',
+            canSing : function(songname){
+                console.log(`我会唱${songname}`)
+            }
+        }
+        // 方法调用
+        singer.canSing('回家的路')
+    </script>
+</body>
+</html>
