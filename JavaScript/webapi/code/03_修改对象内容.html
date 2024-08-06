@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_修改对象内容</title>
+</head>
+<body>
+    <div class="box">我是文字的内容</div>
+    <div class="box1">iamcontentofword</div>
+    <script>
+        //innerText
+        const box = document.querySelector('.box')
+        console.log(box.innerText) //获取其中的内容
+        // 指定新的内容
+        box.innerText = "哈哈哈，笑死"
+
+        const box1 = document.querySelector('.box1')
+        console.log(box1.innerHTML)
+        box1.innerHTML = `<span style="color:red">被换掉了，说什么洋文</span>`
+        console.log(box1.innerHTML)
+    </script>
+</body>
+</html>

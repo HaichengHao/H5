@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_页面随机更换背景图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            /* width: 100vw; */
+            /* height: 56.25vw; */
+            /* background-image: url(./images/bg01.jpg); */
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    function randindex(n,m){
+        return Math.floor(Math.random()*((m-n)+1))+n
+    }
+    //body元素只有一个，所以我们可以直接通过document.body.style这样来指定，不需要查询
+    document.body.style.backgroundImage = `url(./images/slider0${randindex(1,4)}.jpg)`
+</script>
+</html>

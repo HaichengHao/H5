@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02刷新切换图片</title>
+</head>
+<body>
+    <img src="./images/1.webp" alt="">
+    <script>
+        /* const srclst=[
+            "./images/1.webp",
+            "./images/2.webp",
+            "./images/3.webp",
+            "./images/4.webp",
+            "./images/5.webp",
+            "./images/6.webp",
+        ]
+        const img = document.querySelector('img')
+        const randindex = Math.floor(Math.random()*srclst.length)
+        img.src = srclst[randindex]
+ */
+// 写法2
+        function randomindex(n,m){
+            return Math.floor(Math.random()*(m-n)+1)+n
+        }
+        // 获取图片对象
+        const img = document.querySelector('img')
+        img.src=`./images/${randomindex(1,6)}.webp`
+    </script>
+</body>
+</html>

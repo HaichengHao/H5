@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04修改元素属性</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <img src="../../case/day1/images/1.webp" alt="">
+    <div class="box">
+
+    </div>
+    <script>
+        const pic = document.querySelector('img')
+        pic.src = '../../case/day1/images/2.webp'
+        pic.title = "淡淡的忧桑"
+    </script>
+</body>
+</html>

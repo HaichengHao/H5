@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02获取DOM对象</title>
+</head>
+<body>
+    <div class="box">123</div>
+    <div class="box">abc</div>
+    <p id="nav">导航栏</p>
+    <ul>
+        <li>tst1</li>
+        <li>tst2</li>
+        <li>tst3</li>
+    </ul>
+    <script>
+        // 获取匹配的第一个元素
+        // const box = document.querySelector('div')
+        // 也可以这样写
+        const box = document.querySelector('.box')
+        console.log(box)
+        // 也可以用id选择器
+        const p = document.querySelector('#nav')
+        console.log(p)
+
+        const li = document.querySelector('ul li')
+        // 可以使用 对象.属性.方法 = 指定值 来修改对象的表现形式
+        li.style.color = 'red'
+        console.log(li)
+        const li2 = document.querySelector('ul li:nth-child(2)')
+        console.log(li2)
+
+        const allli = document.querySelectorAll('ul li')
+        console.log(allli)
+        allli[2].style.color = 'blue'
+
+        // 获取伪数组中的所有对象
+        for(let i =0;i<allli.length;i++){
+            console.log(allli[i])
+        }
+    </script>
+</body>
+
+</html>

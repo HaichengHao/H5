@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06_通过类名修改样式表</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+            border: 1px solid blue;
+            margin: 0 auto;
+        }
+        .nav{
+            color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">123</div>
+    <script>
+        //1获取元素
+        const box = document.querySelector('div')
+        //2 元素.className = '样式'
+        box.className = 'nav box'
+    </script>
+</body>
+</html>

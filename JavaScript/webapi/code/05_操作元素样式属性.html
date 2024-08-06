@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04操作元素样式属性</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        const box = document.querySelector('.box')
+        //修改样式属性 对象.style.样式属性 = 值
+        box.style.width = "300px"
+        // 多组单词的css样式指定一般变换为小驼峰命名法
+        box.style.backgroundColor = "blueviolet"
+        box.style.border = "10px solid green"
+        box.style.borderTop = "10px solid red"
+        box.style.borderRadius = "5px 10px 5px 10px"
+        box.style.boxShadow = "0px 0px 12px 8px black inset"
+    </script>
+</body>
+</html>
