@@ -221,6 +221,15 @@
                 </li>
                 <li>
                     <h5>通过classList操作css</h5>
+                    <p>为了解决className容易覆盖以前的类名，我们可以通过classList方式追加和删除类名</p>
+                    <div class="code">
+                        //追加一个类
+                        元素.classList.add('类名')
+                        //删除一个类
+                        元素.classList.remove('类名')
+                        //切换一个类
+                        元素.classList.toggle('类名')
+                    </div>
                 </li>
             </ol>
             <ul>
@@ -230,16 +239,139 @@
         </li>
         <li>
             <h4>操作表单元素属性</h4>
-            <div class="box">
-
-            </div>
+            <ul>
+                <li>表单很多情况下也需要修改属性，比如点击眼睛可以看到密码，本质是把表单转换为文本框</li>
+                <li>正常的取值和其它标签属性没有任何区别</li>
+                <div class="code">
+                    获取: DOM对象名.属性名
+                    设置: DOM对象名.属性名 = 新值
+                    表单.value = '用户名'
+                    表单.type = 'password'
+                </div>
+                <li>
+                    表单属性中添加就有效果，移除就没有效果，一律使用布尔值表示，如果为true代表添加了该属性，如果是false代表移除了该属性
+                </li>
+                <li>比如:disabled(禁用表单控件)、checked(默认勾选复选框)、selected(默认勾选单选框)</li>
+            </ul>
         </li>
         <li>
             <h4>自定义属性</h4>
+            <ul>
+                <li>
+                    <h5>标准属性:</h5>标签天生自带的属性比如class id title等，可以直接使用点语法操作
+                </li>
+                <li>
+                    <h5>自定义属性</h5>
+                    <ul>
+                        <li>在html5中推出了专门的data-自定义属性</li>
+                        <li>在标签上一律以data-开头</li>
+                        <li>在DOM对象上一律以对象名.dataset.要查找的自定义属性横杠后的名称 的方式获取</li>
+                        <div class="code2">
+                            &lt;div class="box" data-id="10" data-class="c1"&gt;盒子&lt;/div&gt;
+                            &lt;script&gt;
+                            const box = document.querySelector('.box')
+                            //查看box对象中自定义属性中的id属性
+                            console.log(box.dataset.id)
+                            //获取box的所有自定义属性
+                            console.log(box.dataset)
+                            &lt;/script&gt;
+                        </div>
+                    </ul>
+                </li>
+            </ul>
         </li>
     </ul>
+    <a href="../case/day1/04_案例随机轮播图.html">随机轮播图案例</a>
     <a name="dsq"></a>
+    <h3>定时器，间歇函数</h3>
+    <ul>
+        <li>
+            <h4>定时器的介绍</h4>
+            <ul>
+                <li>网页中经常需要一种功能：每隔一段时间需要自动执行一段代码，不需要我们手动触发</li>
+                <li>例如:网页中的倒计时</li>
+                <li>要实现这种需求需要定时器函数</li>
+                <li>定时器函数有两种，一种是间歇函数</li>
+            </ul>
+        </li>
+        <li>
+            <h4>定时器-间歇函数的使用</h4>
+            <p>目标:能够使用定时器函数重复执行代码</p>
+            <p>定时器函数可以开启和关闭定时器</p>
+            <ol>
+                <li>
+                    <h5>开启定时器</h5>
+                    <div class="code">
+                        setInterval(函数,间隔时间)
+                    </div>
+                    <p>作用:每隔一段时间就调用这个函数</p>
+                    <p>间隔时间单位是毫秒</p>
+                    <p>定时器其实有返回值，是一个id数字</p>
+                    <div class="code">
+                        // 设置一个定时器间隔函数interval每过1s执行一次前面的函数一次
+                        // setInterval(function(){document.write('你好')},1000)
+                
+                        //当然正经的写个函数也是极好的
+                        function printHello(){
+                            document.write('hello')
+                        }
+                        setInterval(printHello,1000)//注意别带小括号，老生常谈的话题了，加了括号代表立即执行函数，即为函数执行的结果，而不是函数本身
+                        // 当然，如果实在是想加上括号，那就在外层套一个引号
+                        setInterval('printHello()',1000)
+                    </div>
+                </li>
+                <li>
+                    <h5>关闭定时器</h5>
+                    <div class="code">
+                        let 变量名 = setInterval(函数,间隔时间)
+                        clearInterval(变量名) //简便记忆:清除计时器
+                        function printHello(){
+                            document.write('hello')
+                        }
+                        let n = setInterval(printHello,1000)
+                        clearInterval(n)
+                    </div>
+                </li>
+            </ol>
+        </li>
+    </ul>
     <a name="al"></a>
+    <h3>综合案例</h3>
+    <div class="code2">
+        // 1查询对象
+        const img = document.querySelector('div.slider-wrapper img')
+        
+        const title = document.querySelector('div.slider-footer p')
+        const color = document.querySelector('div.slider-footer')
+
+        let i = 0
+        let n = setInterval(function () {
+            i++
+            // 实现无缝衔接，如果i=7,则再回到i++就是8了，所以i=8时让i=0,此时回到第一行i就变回了0
+            if(i==8){
+                 i = 0
+            }
+            // 更换图片路径
+            img.src = sliderData[i].url
+            // 先去掉之前的li的active属性
+            document.querySelector(`.slider-indicator .active`).classList.remove('active')
+            // 再给指定位置的加上
+            document.querySelector(`.slider-indicator li:nth-child(${i+1})`).classList.add('active')
+            
+            // 更换图片文字标题
+            title.innerText = sliderData[i].title
+            // 更换底部颜色
+            color.style.backgroundColor = sliderData[i].color
+
+            // 无缝衔接方案2，在i已经等于7之后重新设置i=-1,这样i++就为0
+            // if(i==7){
+            //      i = -1
+            // }
+            
+            
+        }, 1000)
+    </script>
+    </div>
 </body>
 
 </html>

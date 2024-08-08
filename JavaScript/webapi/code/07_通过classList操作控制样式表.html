@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通过classList操作css</title>
+    <style>
+        .box{
+            background-color: blueviolet;
+            width: 200px;
+            height: 200px;
+
+        }
+        .nav{
+            border: 10px solid green;
+            box-shadow: 0px 0px 10px 4px greenyellow inset;
+        }
+        .nav2{
+            border-top:10px solid goldenrod ;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        const box = document.querySelector('div')
+        // 添加两个类
+        box.classList.add('box')
+        box.classList.add('nav')
+        // 移除类nav
+        box.classList.remove('nav')
+        // 切换类
+        box.classList.toggle('nav2')
+    </script>
+</body>
+</html>

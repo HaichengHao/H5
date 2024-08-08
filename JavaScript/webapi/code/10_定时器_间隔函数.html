@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10定时器_间隔函数</title>
+</head>
+<body>
+    <script>
+        // 设置一个定时器间隔函数interval每过1s执行一次前面的函数一次
+        // setInterval(function(){document.write('你好')},1000)
+
+        //当然正经的写个函数也是极好的
+        function printHello(){
+            document.write('hello')
+        }
+        function bonjour(){
+            document.write('bonjour')
+        }
+        // setInterval(printHello,1000)//注意别带小括号，老生常谈的话题了，加了括号代表立即执行函数，即为函数执行的结果，而不是函数本身
+        // 当然，如果实在是想加上括号，那就在外层套一个引号
+        // setInterval('printHello()',1000)
+
+        // 获取定时器的返回值即定时器的唯一id，用定义的变量来接收
+        let n = setInterval(printHello,2000)
+        // let n2 = setInterval(bonjour,1000)
+        console.log(n)
+        // console.log(`bonjour定时器的id为${n2}`)
+
+        // 关闭计时器
+        // clearInterval(n)
+    </script>
+</body>
+</html>

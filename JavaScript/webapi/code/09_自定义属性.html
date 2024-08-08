@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09自定义属性</title>
+    <link rel="stylesheet" href="../../css/note.css">
+</head>
+
+<body>
+    <div class="box" data-id="10" data-class="abox">盒子</div>
+    <div class="box2" data-class="red"></div>
+    <div class="code2">
+        &lt;div class="box" data-id="10" data-class="abox"&gt;盒子&lt;/div&gt;
+        &lt;div class="box2" data-class="red"&gt;&lt;/div&gt;
+    </div>
+    <div class="code">
+        const box = document.querySelector('.box')
+        console.log(box.dataset.id)
+        const box2 = document.querySelector('.box2')
+        console.log(box2.dataset.class)
+        // 查看box所有的自定义属性
+        console.log(box.dataset)
+    </div>
+    <img src="../image/Snipaste_2024-08-07_16-46-04.png" alt="">
+    <script>
+        const box = document.querySelector('.box')
+        console.log(box.dataset.id)
+        const box2 = document.querySelector('.box2')
+        console.log(box2.dataset.class)
+        // 查看box所有的自定义属性
+        console.log(box.dataset)
+
+    </script>
+</body>
+</html>

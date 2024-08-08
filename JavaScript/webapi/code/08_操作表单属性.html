@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08操作表单属性</title>
+</head>
+<body>
+    <form action="#">
+        <input type="text" value="请输入用户名" autofocus>
+        <input type="password" placeholder="请输入密码" >
+        <input type="checkbox">
+        <input type="button" name="点击" value="点击" id="">
+    </form>
+    <script>
+        //1获取元素
+        const username = document.querySelector('input:nth-child(2)')
+        //获取值
+        console.log(username.value)
+        // 修改类型
+        username.type='text'
+        username.value = '笑死'
+        const checkbox = document.querySelector('form input:last-child')
+        console.log(checkbox)
+        console.log('checkbox.checked')
+        checkbox.checked = 'true'
+        const btn = document.querySelector('input:nth-child(4)')
+        btn.disabled = 'true'
+    </script>
+</body>
+</html>
