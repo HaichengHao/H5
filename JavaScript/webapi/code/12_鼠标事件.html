@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_鼠标事件</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        const box = document.querySelector('.box')
+        box.addEventListener('mouseenter',function(){
+            box.style.backgroundColor = 'red'
+        })
+        box.addEventListener('mouseleave',function(){
+            box.innerText = '大傻春，你在干什么'
+            box.style.backgroundColor = 'blue'
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02随机问题</title>
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            width: 300px;
+            height: 200px;
+            border: 1px solid black;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quiz {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <p>随机问题</p>
+        <div class="quiz">
+            <p>问题是:<span></span></p>
+        </div>
+        <div class="btns">
+            <button class="btn1">开始</button>
+            <button class="btn2">结束</button>
+        </div>
+
+    </div>
+    <div class="info">
+        <p>业务分析</p>
+        <ol>
+            <li>点击开始按钮随机抽取数组中的一个数据，放到页面中</li>
+            <li>点击结束按钮删除数组当前的抽取的一个数据</li>
+            <li>当抽取到最后一个数据的时候，两个按钮同时禁用(并提示问题回答完毕了)</li>
+            <p>核心:利用定时器快速展示，停止定时器结束展示</p>
+        </ol>
+    </div>
+    <script>
+        const arr = ['马超是谁', '黄忠的爸爸叫什么名字', '赵云的老家在什么地方', '关羽的后人在何处', '张飞有躁郁症么']
+        const quz = document.querySelector('span')
+        const stbtn = document.querySelector('.btn1')
+        const stpbtn = document.querySelector('.btn2')
+        // 注意把定时器id声明为全局变量，不然在清除定时器时会出现函数未定义的情况!!!
+        let n = 0
+        // 把随机数也声明为全局变量，这样我们删除提问过的问题就不会遇到变量未定义的情况
+        let randnum
+        // 添加点击事件 开始按钮
+        stbtn.addEventListener('click', function () {
+            n = setInterval(function () {
+                randnum = Math.floor(Math.random() * arr.length)
+                quz.innerText = arr[randnum]
+            },100)
+
+        })
+        // 添加点击事件 结束按钮
+        stpbtn.addEventListener('click', function () {
+            // arr.splice(randnum,1)
+            clearInterval(n)
+            // 结束了可以删除当前抽到的问题
+            arr.splice(randnum,1)
+            // 如果全部都结束了就禁用所有按钮并提示回答完毕
+            if(arr.length == 0){
+                stbtn.disabled = 'true'
+                stpbtn.disabled = 'true'
+                quz.innerText = '问题完毕'
+                alert('全部问题结束')
+            }
+        })
+    </script>
+</body>
+
+</html>

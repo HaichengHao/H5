@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01点击叉号关闭广告</title>
+    <style>
+        .wrapper{
+            box-sizing: border-box;
+            margin: 0 auto;
+            width: 200px;
+            height: 100px;
+            padding: 10px;
+            background-color: yellow;
+            position: relative;
+            text-align: center;
+        }
+        button{
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        p{
+            line-height: 60px;
+        }
+        .closead{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <button>x</button>
+        <p>我是广告</p>
+    </div>
+    <script>
+        const btn = document.querySelector('button')
+        const ad = document.querySelector('div')
+        btn.addEventListener('click',function(){
+            // ad.classList.add('closead')
+            // 或者这样写
+            ad.style.display = 'none'
+        })
+    </script>
+</body>
+</html>

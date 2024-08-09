@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>评论字数统计</title>
+    <style>
+        .wrapper{
+            width: 300px;
+            height: 48px;
+            font-size: 24px;
+            display: flex;
+            
+        }
+        .inner1{
+            margin-right: 10px;position: relative;
+        }
+        .altpls{
+            font-size: 10px;
+            position: absolute;
+            left: 0;
+            color: red;
+            /* display: none; */
+            opacity: 0;
+            transition: 1s all linear;
+        }
+        .numinfo{
+            font-size: 10px;
+            position: absolute;
+            right: 0;
+            opacity: 0;
+            transition: 0.2s all linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="inner1">
+            <!-- 设置最大长度 maxlength,注意这是H5的新增特性，如果忘记记得去看回忆一下-->
+            <input type="text" maxlength="10">
+            <div class="altpls">最多输入十个字</div>
+            <div class="numinfo"><span>0</span>/10字</div>
+        </div>
+        <div class="inner2">
+            <button class="psh">发布</button>
+        </div>
+    </div>
+    <script>
+        const input = document.querySelector('input')
+        const numinfo = document.querySelector('.numinfo')
+        console.log(numinfo)
+        const sp = document.querySelector('.numinfo span')
+        const alt = document.querySelector('.altpls')
+        input.addEventListener('focus',function(){
+            numinfo.style.opacity = '1'
+        })
+        input.addEventListener('blur',function(){
+            numinfo.style.opacity = '0'
+        })
+        input.addEventListener('input',function(){
+            // 设置变量，对应的值为输入的文本的值的长度
+            let num = input.value.length
+            //如果超出文字限制则提示显示出来
+            if(num==10){
+                alt.style.opacity = '1'
+            }else{
+                alt.style.opacity = '0'
+                
+            }
+            sp.innerText = num
+        })
+    </script>
+</body>
+</html>

@@ -78,3 +78,9 @@ th,td{
     font-weight: bold;
     font-style: italic;
 }
+.anchor{
+    display: flex;
+}
+.anchor a{
+    margin-right: 5px; ;
+}

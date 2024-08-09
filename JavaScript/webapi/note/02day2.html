@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day2笔记</title>
+    <link rel="stylesheet" href="../../css/note.css">
+</head>
+<style>
+    .anchor{
+        display: flex;
+    }
+    .anchor a{
+        margin-right: 5px; ;
+    }
+</style>
+
+<body>
+    <div class="anchor">
+        <li><a href="#sjjt">事件监听</a></li>
+        <li><a href="#sjlx">事件类型</a></li>
+        <li><a href="#sjdx">事件对象</a></li>
+        <li><a href="#hjdx">环境对象</a></li>
+        <li><a href="#hdhs">回调函数</a></li>
+    </div>
+
+    <a class="anchor" name="sjjt"></a>
+    <h3>事件监听</h3>
+    <ul>
+        <li>
+            <h4>事件监听</h4>
+            <p>目标:能够给dom元素添加事件监听</p>
+            <ul>
+                <h5>什么是事件?</h5>
+                <li>
+                    事件是在编程时系统内发生的动作或发生的事情，比如用户在网页上单击一个按钮
+                </li>
+                <h5>什么是时间监听</h5>
+                <li>就是让程序检测是否有事件产生，一旦有事件触发，就立即调用一个函数做出响应，也称为绑定事件或注册事件<br>
+                    比如鼠标经过时显示下拉菜单，比如点击可以播放轮播图等等</li>
+                <h5>语法</h5>
+                <div class="code">
+                    元素对象.addEventListener('事件类型',要执行的函数)
+                    //注意事件类型一定要加上引号
+                </div>
+                <h5>事件监听三要素</h5>
+                <ul>
+                    <li><span class=".warn">事件源:</span>哪个dom元素被事件触发了，要获取dom元素</li>
+                    <li><span class=".warn">事件类型:</span>用什么方式触发，比如鼠标点击，鼠标经过等</li>
+                    <li><span class=".warn">事件调用的函数:</span>事件触发时要做什么</li>
+
+                </ul>
+
+            </ul>
+
+        </li>
+        <li>
+            <h4>拓展-事件监听版本</h4>
+            <ul>
+                <li>
+                    <h5>DOM L0</h5>
+                    <div class="code">
+                        事件源.on事件
+                    </div>
+                </li>
+                <li>
+                    <h5>DOM L2</h5>
+                    <div class="code">
+                        事件源.addEventListener(事件，时间处理函数)
+                    </div>
+                </li>
+                <li>
+                    <h5>区别</h5>
+                    <p>on方式会被覆盖，addEventListener方式可以绑定多次，拥有事件更多特征，推荐使用</p>
+                </li>
+                <li>
+                    <h5>DOM L3</h5>
+                    <p>DOM 3级时间模块在DOM2级时间的基础上重新定义了这些事件，也添加了一些新事件类型</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <a name="sjlx"></a>
+    <h3>事件类型</h3>
+    <ul>
+        <li>
+            <h4>鼠标事件(鼠标触发)</h4>
+            <a href="../code/13_轮播图参考版.html">重要案例</a>
+            <ul>
+                <li>click鼠标点击</li>
+                <li>mouseenter 鼠标经过</li>
+                <li>mouseleave 鼠标离开</li>
+            </ul>
+        </li>
+        <li>
+            <h4>焦点事件(表单获得光标)</h4>
+            <a href="../code/14_焦点事件.html">实例代码</a>
+            <ul>
+                <li>focus 焦点/获得焦点</li>
+                <li>blur 失焦/模糊</li>
+            </ul>
+        </li>
+        <li>
+            <h4>键盘事件(键盘触发)</h4>
+            <a href="../code/15_键盘事件.html">实例代码</a>
+            <ul>
+                <li>keydown 键盘按下触发</li>
+                <li>keyup 键盘抬起出发</li>
+            </ul>
+        </li>
+        <li>
+            <h4>文本事件(表单输入触发)</h4>
+            <a href="../code/16_文本事件.html">实例代码</a>
+            <ul>
+                <li>input 用户输入事件</li>
+            </ul>
+        </li>
+    </ul>
+    <a name="sjdx"></a>
+    <h3>事件对象</h3>
+    <div class="code">
+        //语法：如何获取
+        >在事件绑定的回调函数的第一个参数就是事件对象
+        >一般命名为event、evt、ev、e
+        元素.addEventListener('click',function(e){
+
+        })
+    </div>
+    <ul>
+        <li>
+            <h4>获取事件对象</h4>
+            <ul>
+                <li>
+                    <h5>事件对象是什么?</h5>
+                    <ul>
+                        <li>也是个对象，这个对象里有事件触发时的相关信息</li>
+                        <li>例如:鼠标点击事件中，事件对象就存了鼠标点在哪个位置等信息</li>
+                    </ul>
+                </li>
+                <li>
+                    <h5>使用场景</h5>
+                    <ul>
+                        <li>可以判断用户按下哪个案件，比如回车键可以发布新闻</li>
+                        <li>可以判断鼠标点击了那个元素，从而做出相应的操作</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h4>事件对象常用的属性</h4>
+            <h5>部分常用属性</h5>
+            <ul>
+                <li>type:获取当前的事件类型</li>
+                <li>clientX/clientY:获取光标相对于浏览器在可见窗口左上角的位置</li>
+                <li>offsetX/offsetY:获取光标相对于当前dom元素左上角的位置</li>
+                <li>key: 用户按下的键盘键的值。现在不提倡使用keyCode</li>
+            </ul>
+        </li>
+    </ul>
+    <a name="hjdx"></a>
+    <h3>环境对象</h3>
+    <p>目标:能够分析判断函数运行在不同环境中this(它代表当前函数运行时所处的环境)所指代的对象</p>
+    <p>环境对象:指的是函数内部特殊的变量this,它代表着当前函数运行时所处的环境</p>
+    <p>利用环境对象可以使代码更加简洁</p>
+    <p>函数的调用方式不同，this指向的对象也不同，直接调用函数，那么其实是相当于调用window函数</p>
+    <p class="warn">[谁调用，this就是谁]这是判断this指向的粗略规则</p>
+    
+    <a name="hdhs"></a>
+    <h3>回调函数</h3>
+    <p>什么是回调函数?</p>
+    <p>如果将函数A作为参数传递给B时，我们称函数A为回调函数，即函数作为参数被调用</p>
+    <div class="code">
+        //一个常见的使用场景即回调函数
+        function fn(){}
+        //fn传递给了定时器，此时fn就是回调函数
+        setInterval(fn,1000)
+    </div>
+    <div class="code">
+        //还有我们学过的事件监听，本质上后一个匿名函数也是个回调函数
+        box.addEventListener('click',function(){})
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18trim方法</title>
+</head>
+<body>
+    <p>学习本节时可以理解为python中的.strip()方法，即去掉左右的空格</p>
+    <textarea name="" id=""></textarea>
+    <script>
+        const txa = document.querySelector('textarea')
+        const str = 'pink'
+        const str2 = '       pink        '
+        console.log(str)
+        console.log(str2.trim())
+        txa.addEventListener('keyup',function(e){
+            if(e.key == 'Enter'){
+                console.log(txa.value.trim())
+            }
+        })
+    </script>
+</body>
+</html>

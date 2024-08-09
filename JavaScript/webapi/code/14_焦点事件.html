@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14_焦点事件</title>
+    <style>
+        .bacc{
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <script>
+        
+        const inp = document.querySelector('input')
+        inp.addEventListener('focus',function(){
+            inp.classList.add('bacc')
+        })
+        
+        inp.addEventListener('blur',function(){
+           inp.classList.remove('bacc')
+        })
+        
+    </script>
+</body>
+</html>
