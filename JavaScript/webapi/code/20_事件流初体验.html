@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20事件流初体验</title>
+    <style>
+        .father{
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+        }
+        .son{
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <p>// 注意，自己多注释掉true试试，看看添加了捕获和不添加捕获的情况有何区别</p>
+    <script>
+        // 注意，自己多注释掉true试试，看看添加了捕获和不添加捕获的情况有何区别
+        document.addEventListener('click',function(){
+            alert('爷')
+        },true)
+        const father = document.querySelector('.father')
+        const son = document.querySelector('.son')
+        father.addEventListener('click',function(){
+            alert('父')
+        },true)
+        son.addEventListener('click',function(){
+            alert('子')
+            
+        },true)
+    </script>
+</body>
+</html>

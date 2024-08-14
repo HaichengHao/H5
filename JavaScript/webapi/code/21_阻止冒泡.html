@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21阻止冒泡</title>
+    <style>
+        .father{
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+        }
+        .son{
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        
+        document.addEventListener('click',function(){
+            alert('爷')
+            
+        })
+        const father = document.querySelector('.father')
+        const son = document.querySelector('.son')
+        father.addEventListener('click',function(){
+            alert('父')
+            
+        })
+        son.addEventListener('click',function(e){
+            alert('子')
+            // 阻止冒泡
+            e.stopPropagation()
+            
+        })
+    </script>
+</body>
+</html>

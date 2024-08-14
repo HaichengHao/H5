@@ -36,6 +36,7 @@
         .allCheck {
             width: 80px;
         }
+        
     </style>
 </head>
 
@@ -67,13 +68,14 @@
         </tr>
         <tr>
             <td>
-                <input type="checkbox" name="check" class="ck">
+                <input type="checkbox" name="check" class="ck" unchecked>
             </td>
             <td>小米电视</td>
             <td>小米</td>
             <td>￥5999</td>
         </tr>
     </table>
+    <p>新增的内容：如果小复选框勾选完毕，那么全选框也勾上</p>
     <script>
         // 1查询定位全选按钮
         const checkALL = document.querySelector('#checkAll')
@@ -85,11 +87,25 @@
         checkALL.addEventListener('click', function () {
             // 给每一个小复选框都添加上选中状态，让小复选框的状态等于大复选框的状态!!!最关键的一个思路
             for (let i = 0; i < cks.length; i++) {
-                cks[i].checked = checkALL.checked
-                // 也可以用环境对象this
-                // cks[i].checked = this.checked
+                cks[i].checked = this.checked
             }
         })
+
+
+        // 小复选框控制大复选框
+     
+        // 循环遍历
+        for(let j=0;j<cks.length;j++){   
+            // 给所有的小复选框添加点击事件
+            cks[j].addEventListener('click',function(){
+                // 判断选中的小复选框的个数是否等于总的小复选框的个数
+                // 一定要写到点击里面，因为每次都要获取最先的个数
+                console.log(document.querySelectorAll('.ck:checked').length)
+                // 如果小复选框勾选的个数等于总的小复选框的个数，那就给checkALL全选框也勾上
+                // 右边的等式返回的结果为布尔值，如果是true则语句就称为checkALL.checked=true，否则不为false
+                checkALL.checked = document.querySelectorAll('.ck:checked').length == cks.length
+            })
+        }
     </script>
 </body>
 

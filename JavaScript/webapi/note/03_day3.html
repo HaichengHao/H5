@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day3笔记</title>
+    <link rel="stylesheet" href="../../css/note.css">
+</head>
+<body>
+    <div class="anchor">
+        <li><a href="#sjl">事件流</a></li>
+        <li><a href="#sjwt">事件委托</a></li>
+        <li><a href="#qtsj">其他事件</a></li>
+        <li><a href="#szloc">元素尺寸与位置</a></li>
+        <li><a href="#mix">综合案例</a></li>
+    </div>
+    <a name="sjl"></a>
+    <h3>事件流</h3>
+    <ul>
+        <li>
+            <h4>事件流与两个阶段说明</h4>
+            <p>事件流指的是事件完整执行过程中的流动路径</p>
+            <p>说明:假设页面里有个div，当触发事件时，会经历两个阶段、分别是捕获阶段和冒泡阶段</p>
+            <p>简单来说：捕获是从父元素到子元素，冒泡则反过来</p>
+            <p class="wran">实际开发当中使用事件以冒泡为主</p>
+        </li>
+        <li>
+            <h4>事件捕获</h4>
+            <p>目标:简单了解事件捕获执行过程</p>
+            <ul>
+                <li>
+                    <h5>事件捕获的概念</h5>
+                    从dom的跟元素开始区执行对应的事件(从外到里)
+                </li>
+                <li>
+                    <h5>捕获需要对应的代码才能看到效果</h5>
+                    <h5 class="ttl">代码</h5>
+                    <div class="code">
+                        DOM.addEvenListener(事件类型,事件处理函数,是否使用捕获机制)
+                    </div>
+                </li>
+                <li><h5>说明</h5>
+                    <p>addEvenListener第三个参数传入true代表是捕获阶段触发(很少使用),默认是false,也就是冒泡</p>
+                    <p>若传入false代表冒泡阶段的触发，默认值就是false</p>
+                    <p>若是用L0事件监听，则只有冒泡阶段，没有捕获</p>
+
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <h4>事件冒泡</h4>
+            <p>目标:能够说出事件冒泡的执行过程</p>
+            <h5 class="ttl">事件冒泡的概念</h5>
+            <p>当一个事件被触发的时候，同样的事件将会在该元素的所有祖先元素中依次被触发。这一过程称为事件冒泡</p>
+
+            <ul>
+                <li>简单理解:当一个元素触发事件后，会依次向上调用所有父级元素的同名事件</li>
+                <li>事件冒泡是默认存在的</li>
+                <li>L2事件监听第三个参数是false,或默认不写都是冒泡</li>
+            </ul>
+        </li>
+        <li>
+            <h4>阻止冒泡</h4>
+            <p>目标:因为默认就有冒泡模式的存在，所以容易导致事件影响到父级元素</p>
+            <p>需求:若想把事件就限制在当前元素内，就需要阻止事件冒泡</p>
+            <p>前提:阻止事件冒泡要拿到事件对象</p>
+            <p>语法:
+                <div class="code">
+                    事件对象.stopPropagation() //阻止流动传播
+                    //注意:此方法可以阻断事件流动传播，不光在冒泡阶段有效，捕获阶段也有效
+                </div>
+            </p>
+        </li>
+        <li>
+            <h4>解绑事件</h4>
+            <p>on事件方式，直接用null覆盖就可以实现事件的解绑</p>
+            <p>
+                语法:
+                <div class="code">
+                    //绑定事件
+                    btn.onclick=function(){
+                        alert('点击了')
+                    }
+                    //解绑事件
+                    btn.onclick=null
+                </div>
+            </p>
+            <p>addEvenListener方式的解绑，必须使用removeEvenlistener</p>
+            <p>
+                例如:
+                <div class="code">
+                    function fn(){
+                        alert('hello')
+                    }
+                    btn.addEvenListener('click',fn)
+                    //解绑事件
+                    btn.removeListener('click',fn)
+                </div>
+            </p>
+            <p class="warn">注意:匿名函数无法被解绑</p>
+        </li>
+        <li>
+            <h4>鼠标经过事件的区别</h4>
+            <ul>
+                <li>mouseover 和 mouseout会有冒泡效果</li>
+                <li>mouseenter和mouseleave 没有冒泡效果(推荐)</li>
+            </ul>
+        </li>
+    </ul>
+    <a name="sjwt"></a>
+    <a name="qtsj"></a>
+    <a name="szloc"></a>
+    <a name="mix"></a>
+</body>
+</html>

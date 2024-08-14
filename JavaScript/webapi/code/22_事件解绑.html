@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22事件解绑</title>
+</head>
+<body>
+    <button>按钮</button>
+    <button id="b2">按钮</button>
+    <script>
+        const btn = document.querySelector('button')
+
+        
+        btn.onclick = function(){
+            alert('大傻春你在干什么！')
+
+        }
+        // 事件解绑
+        btn.onclick = null //解绑后点击按钮发现已经不会有alert窗口了
+        const btn2 = document.querySelector('#b2')
+        function fn(){
+            alert('hello')
+        }
+        btn2.addEventListener('click',fn)
+        // 解绑事件
+        btn2.removeEventListener('click',fn)
+
+    </script>
+</body>
+</html>

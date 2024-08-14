@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23鼠标经过事件的区别</title>
+    <style>
+        .dad{
+            box-sizing: border-box;
+            width: 400px;
+            height: 400px;
+            background-color: blueviolet;
+            overflow: hidden;
+        }
+        .baby{
+            width: 200px;
+            height: 200px;
+            background-color: tomato;
+            margin-left: 100px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dad">
+        <div class="baby"></div>
+    </div>
+    <script>
+        const dad = document.querySelector('.dad')
+        const baby = document.querySelector('.baby')
+        // mouseover和mouseout会产生冒泡，滑动到baby上就会触发冒泡
+        // dad.addEventListener('mouseover',function(){
+        //     dad.style.backgroundColor='red'
+        //     console.log('鼠标经过')
+        // })
+        // dad.addEventListener('mouseout',function(){
+        //     dad.style.backgroundColor='blue'
+        //     console.log('鼠标离开')
+        // })
+        
+        // 所以为了避免出现这样的问题，我们使用mouseenter和mouseleave
+        dad.addEventListener('mouseenter',function(){
+            dad.style.backgroundColor='red'
+            console.log('鼠标经过')
+        })
+        dad.addEventListener('mouseleave',function(){
+            dad.style.backgroundColor='blue'
+            console.log('鼠标离开')
+        })
+    </script>
+</body>
+</html>
