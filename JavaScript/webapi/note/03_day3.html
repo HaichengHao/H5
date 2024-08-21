@@ -107,8 +107,64 @@
                 <li>mouseenter和mouseleave 没有冒泡效果(推荐)</li>
             </ul>
         </li>
+        <li>
+            <h4>两种注册事件的区别</h4>
+            <ul>
+                <li><h5>传统on事件(L0)</h5>
+                    <ul>
+                        <li>同一个对象，后面注册的事件会覆盖前面注册的事件(同一个事件)</li>
+                        <li>直接使用null覆盖就可以实现事件的解绑</li>
+                        <li>都是冒泡阶段执行的</li>
+                    </ul>
+                </li>
+                <li><h5>事件监听注册(L2)</h5>
+                <ul>
+                    <li>语法:addEvenListener(事件类型，事件处理函数，是否使用捕获)</li>
+                    <li>后面注册的事件不会覆盖前面注册的事件(同一个事件)</li>
+                    <li>可以通过第三个参数去确定是否在冒泡阶段执行</li>
+                    <li>必须使用removeEventListener(事件类型，事件处理函数，获取捕获或者冒泡阶段)</li>
+                    <li>匿名函数无法被解绑</li>
+                </ul></li>
+            </ul>
+        </li>
     </ul>
     <a name="sjwt"></a>
+    <h3>事件委托</h3>
+    <p>如果同时给多个元素注册事件，照我们之前的做法就是用for循环来做</p>
+    <p>有没有一种技巧注册一次事件就能完成以上效果呢</p>
+    <p>那就是用事件委托</p>
+    <p>事件委托时利用事件流的特征解决一些开发需求的知识技巧</p>
+    <ul>
+        <li>优点:减少注册次数，可以提高程序性能</li>
+        <li>原理:事件委托其实是利用事件冒泡的特点<br>
+        给父元素注册事件，当我们触发子元素的时候，会冒泡到父元素身上，从而触发父元素的事件</li>
+        <li>案例:
+            <div class="code">
+                // 需求，点击每个小li,那么文字变为红色
+                // 事件委托给了ul
+                // 1获取父元素
+                const ul = document.querySelector('ul')
+                ul.addEventListener('click', function (e) {
+                    // 让li变颜色
+                    // 利用事件对象
+                    console.log(e)
+                    //console.log(e.target)就是我们点击的那个对象，但是p也会受影响，我们要加上判断
+                    // 可以利用dir查看到localName和tagName，p元素和li元素都是不一样的
+                    console.dir(e.target)
+                    if(e.target.localName=='li'){ //也可以写为e.target.tagName='LI'
+                       e.target.style.color = 'red' 
+                    }
+                    
+        
+        
+                })
+            </div>
+        </li>
+        <li>如何找到真正触发的元素？利用事件对象.target.tagName 或者localName</li>
+    </ul>
+    <ul>
+
+    </ul>
     <a name="qtsj"></a>
     <a name="szloc"></a>
     <a name="mix"></a>
