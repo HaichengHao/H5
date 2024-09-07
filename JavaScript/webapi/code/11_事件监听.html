@@ -26,8 +26,11 @@
         btn.addEventListener('click',function(){
             alert('别点了')
         })
-        div.addEventListener('MouseHover',function(){
+        box.addEventListener('mouseenter',function(){
             box.classList.add('cc')
+        })
+        box.addEventListener('mouseleave',function(){
+            box.classList.remove('cc')
         })
     </script>
 </body>
