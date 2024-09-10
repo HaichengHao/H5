@@ -48,7 +48,7 @@
             console.log(e)
             //console.log(e.target)就是我们点击的那个对象，但是p也会受影响，我们要加上判断
             // 可以利用dir查看到localName和tagName，p元素和li元素都是不一样的
-            console.dir(e.target)
+            console.dir(e.target) //利用.target可以查看到当前事件的信息(忘记就去翻到day2笔记事件对象的常用属性)
             if(e.target.localName=='li'){ //也可以写为e.target.tagName='LI'
                e.target.style.color = 'red' 
             }
