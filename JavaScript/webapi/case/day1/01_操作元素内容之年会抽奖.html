@@ -31,7 +31,8 @@
         const first = personArr[random]
         const one = document.querySelector('#one')
         one.innerHTML=`${first}`
-        personArr.splice(random,1)
+        // 删除第一名，这样之后数组会改变长度,不会出现第一名第二名相同的情况
+        personArr.splice(random,1) //这里补充回顾一下splice()第一个参数指定的是要删除的数组元素的索引位置,第二个参数控制的是删几个
         // 二等奖
         const random2 = Math.floor(Math.random()*personArr.length)
         const second = personArr[random2]
