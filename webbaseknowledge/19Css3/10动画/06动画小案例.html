@@ -12,7 +12,7 @@
             margin: 0 auto;
             margin-top: 40vh;
             background-image: url(/webbaseknowledge/others/bike.png);
-            animation: bike 1.5s steps(31) infinite;
+            animation: bike 1.5s steps(31) infinite; /*纵向运动的动画的步长设置为图片的宽度/每个帧的宽度 再减去1*/
             overflow: hidden;
         }
         @keyframes bike{
@@ -26,5 +26,6 @@
 <body>
     
     <div></div>
+    <p>纵向运动的动画的步长设置为图片的宽度/每个帧的宽度 再减去1</p>
 </body>
 </html>
