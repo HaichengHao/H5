@@ -268,7 +268,8 @@ ul.msg-list li {
 }
 
 .other-nav-lst:nth-child(2) {
-    margin: 17px 0;
+    margin: 17px 0; 
+    /* 外边距上下17px,左右0 */
 }
 
 .other-nav-lst li {
@@ -291,6 +292,7 @@ div.other-nav .picture{
 
 .other-nav-lst:nth-child(1) li:nth-child(2) .picture{
     background-position: -48px 0;
+    /* 想象成一个小框，坐标系为上为正下为负左为正右为负 */
 }
 .other-nav-lst:nth-child(1) li:nth-child(3) .picture{
     background-position: -96px 0;
