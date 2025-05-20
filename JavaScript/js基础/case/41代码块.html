@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <style>
+    .code-container pre {
+      position: relative;
+      padding-left: 3em;
+    }
+
+    .code-container pre::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      color: gray;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", function() {
+      const codeBlocks = document.querySelectorAll(".code-container pre");
+
+      codeBlocks.forEach(function(block) {
+        const lines = block.innerHTML.split("\n");
+        const lineCount = lines.length;
+
+        let lineNumbers = "";
+        for (let i = 1; i <= lineCount; i++) {
+          lineNumbers += i + "\n";
+        }
+
+        block.innerHTML = lineNumbers + block.innerHTML;
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="code-container">
+    <pre><code>// 这是一段示例代码
+    function helloWorld() {
+      console.log("Hello, World!");
+    }
+
+    helloWorld();</code></pre>
+  </div>
+</body>
+</html>

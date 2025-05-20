@@ -50,7 +50,7 @@
             float: left;
             margin: 0 auto;
             margin-right: 30px;
-            overflow: hidden;
+            /* overflow: hidden; 如果想看看文字向上移动的逻辑的话就注释掉这个 */
             position: relative;
         }
 
@@ -68,7 +68,7 @@
             left: 0;
             background-image: linear-gradient(transparent,
             rgba(0,0,0,.6));
-            opacity: 0;
+            opacity: 0;  /* 透明度为0，隐藏 */
             transition: 0.3s all linear;
         }
 
@@ -82,7 +82,7 @@
             height: 247px;
             position: absolute;
             left: 0;
-            bottom: -100px;
+            bottom: -100px; /* 初始位置在底部隐藏，注意启用了绝对定位，其父元素li为父元素，即相对于li向下移100px*/
             /* font-size: 20px; */
             color: whitesmoke;
             transition: 0.3s all linear;

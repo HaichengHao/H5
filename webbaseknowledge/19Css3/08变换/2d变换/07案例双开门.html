@@ -30,7 +30,8 @@
             float:left;
         }
         .inner2{
-            background-position: 683px ;
+            /* background-repeat: no-repeat; */ /*背景图不重复如果设置的话，那么消失的右边不会再出现*/
+            background-position: 683px ; /*右边图片的背景左侧边缘距离父容器边缘683像素,也就是让其向右移动但是默认的背景图是有repeat的，所以消失的左边又转过来*/
         }
         .outer:hover .inner1{
             transform: translateX(-683px);
