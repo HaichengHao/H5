@@ -19,9 +19,10 @@
         const box = document.querySelector('.box')
         box.addEventListener('mouseenter',function(){
             box.style.backgroundColor = 'red'
+            box.innerText = '大傻春，你在干什么'
         })
         box.addEventListener('mouseleave',function(){
-            box.innerText = '大傻春，你在干什么'
+            box.innerText = ''
             box.style.backgroundColor = 'blue'
         })
     </script>
