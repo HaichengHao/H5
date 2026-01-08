@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除节点</title>
+</head>
+<body>
+    <ul>
+        <li>若一个节点在页面中已经不需要的时候，可以删除它</li>
+        <li>在js原生dom操作中，要删除元素必须通过父元素删除</li>
+        <li>
+            语法
+            <pre>
+                父元素.removeChild(要删除的元素)
+            </pre>
+        </li>
+        <li>
+            注:
+            <li>如不存在父子关系则删除不成功</li>
+            <li>删除节点和隐藏节点有区别的：<br>
+            隐藏节点还是存在的，但是删除，则从html中删除节点</li>
+        </li>
+    </ul>
+
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+    <script>
+        const ol=document.querySelector('ol')
+        ol.removeChild(ol.children[2])
+        
+    </script>
+</body>
+</html>

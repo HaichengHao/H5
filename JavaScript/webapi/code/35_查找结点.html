@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查找结点</title>
+    <style>
+        #ref{
+            height: 300px;
+            width: 300px;
+            padding: 20px;
+        }
+        li{
+            color: rebeccapurple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ref">
+        <div>
+            <p>以往查找结点都是通过qs的方式来查找
+                <br>
+                这次是利用节点树的关系来查找
+            </p>
+        </div>
+
+    </div>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </div>
+    <script>
+        const div = document.querySelector('p').parentNode //获取其父节点
+        console.log(div)
+        div.style.backgroundColor = 'red'
+        const div1 = div.parentNode //获取爷爷节点
+        console.log(div1)
+        div1.style.backgroundColor='yellow'
+
+        // const li2 = document.querySelector('ul').childNodes //获取所有子节点元素 这个例子中是li和li内的文本都获取
+        const li = document.querySelector('ul').children //获取最近一级的标签，也就是ul下的lli
+        console.log(li)
+        // li.style.color='orange'
+
+        const bro = document.querySelector('li:nth-child(2)').previousElementSibling
+        console.log(bro)
+        bro.style.color='red'
+
+        const ybro = document.querySelector('li:nth-child(2)').nextElementSibling  //获取下一个兄弟元素节点
+        ybro.style.color='yellow'
+    </script>
+</body>
+
+</html>

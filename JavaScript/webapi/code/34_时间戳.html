@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间戳</title>
+</head>
+<body>
+    <script>
+        const timestamp = + new Date() //实例化时间戳对象,只需加上+号转为数字
+        console.log(timestamp)
+
+
+        //获取时间戳的三种方法
+        //1.getTime()方法，必须实例化
+        const date = new  Date() 
+        console.log(date.getTime())  
+        //2.简写 +new Date()
+
+        //3.使用Date.now(),不需要实例化,但是只能获取当前时间的时间戳
+        console.log(Date.now())
+
+        //获取指定时间的时间戳
+        console.log(+new Date('2026-1-5 9:32:0'))
+
+        //根据日期
+        const arr=['星期天','星期一','星期二','星期三','星期四','星期五','星期六']
+        console.log(new Date().getDay())
+        console.log(arr[new Date().getDay()])
+    </script>
+</body>
+</html> 

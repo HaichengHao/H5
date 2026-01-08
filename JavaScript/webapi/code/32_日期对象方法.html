@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div></div>
+    <script>
+        const date = new Date()
+
+        //因为是方法，所以我们上面要先获得日期对象，然后才可以用其中的方法
+
+        const year = date.getFullYear()
+        console.log(year)
+
+        //获取月份，注意其是0-11，所以输出正确的月份是需要+1的
+        console.log(date.getMonth() + 1)
+
+        //获取日,表示周1到周日的哪一天,注意周日是0
+        console.log(date.getDay())
+
+        //获取时
+        console.log(date.getHours())
+
+        //获取分钟
+        console.log(date.getMinutes())
+
+        //获取秒
+        console.log(date.getSeconds())
+
+        //获取年月日时分秒
+        console.log(`${date.getFullYear()}年\-${date.getMonth() + 1}月\-星期${date.getDay()}  ${date.getHours()}时:${date.getMinutes()}分:${date.getSeconds()}秒`)
+
+
+        function judgement(v) {
+            if (v < 10) {
+                return '0' + v
+            } else {
+                return v
+            }
+        }
+
+        // const years = date.getDate()
+        // let mounth = date.getMonth() + 1
+        // mounth = mounth < 10 ? '0' + mounth : mounth //这样写可以，也可以用我们自己定义的函数
+        // const day = date.getDay()
+
+        // let hours = date.getHours()
+        // hours = judgement(hours)
+
+        // let minutes = date.getMinutes()
+        // const seconds = judgement(date.getSeconds())
+
+        // console.log(
+        //     `${year}\-${mounth}\-${day} ${hours}:${minutes}:${seconds}`
+        // )
+
+
+
+        function getMydate() {
+            const date = new Date()
+            const years = date.getDate()
+            let mounth = date.getMonth() + 1
+            mounth = mounth < 10 ? '0' + mounth : mounth //这样写可以，也可以用我们自己定义的函数
+            const day = date.getDay()
+
+            let hours = date.getHours()
+            hours = judgement(hours)
+
+            let minutes = date.getMinutes()
+            const seconds = judgement(date.getSeconds())
+
+            return  `${year}\-${mounth}\-${day} ${hours}:${minutes}:${seconds}`
+        }
+
+        const div = document.querySelector('div')
+        setInterval(
+            function () {
+                div.innerHTML = getMydate()
+            }, 1000
+        )
+    </script>
+</body>
+
+</html>

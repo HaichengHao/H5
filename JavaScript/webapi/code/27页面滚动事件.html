@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 1000px;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px  solid black;
+            overflow:scroll;
+            margin: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing 
+        elit. Doloremque corporis repudiandae provident 
+        quos illum odit illo excepturi obcaecati? 
+        Quisquam explicabo aliquam labore autem quidem 
+        inventore est illo. Porro, molestias! Iste nam 
+        sapiente, ipsam sed vitae ex praesentium quisquam 
+        nulla facere voluptatem dignissimos iusto mollitia 
+        perferendis quidem alias quibusdam labore hic adipisci
+         ad error suscipit sunt dolorem doloremque voluptatum.
+          Quae sapiente rem reprehenderit repudiandae
+    </div>
+    <p>document.documentElement返回的是我们的整个html标签</p>
+    <pre>
+        //监听整个页面的滚动,当然也可以给document加
+    
+    /*window.addEventListener('scroll',function(){
+        alert('页面滚动了')
+    })*/ 
+   
+
+    //可以根据scrollLeft和scrollTop来检测卷去的块的像素数量
+//    const div = document.querySelector('div')
+//    div.addEventListener('scroll',function(){
+//     console.log(div.scrollTop)
+//    })
+
+
+    //根据页面滚动来知道页面卷去了多少像素
+    //但是注意，是有点特殊的
+    //获取html元素的写法
+    //document.documentElement
+
+
+    const div = document.querySelector('div')
+
+    window.addEventListener('scroll',function(){
+        console.log(document.documentElement.scrollTop)
+        const n = document.documentElement.scrollTop //还需要注意的是这个必须写到内部，它是可读写的
+        if(n>=100){
+            div.style.display='none'
+        }else{
+            div.style.display='block'
+        }
+    })
+    </pre>
+</body>
+<script>
+    //监听整个页面的滚动,当然也可以给document加
+    
+    /*window.addEventListener('scroll',function(){
+        alert('页面滚动了')
+    })*/ 
+   
+
+    //可以根据scrollLeft和scrollTop来检测卷去的块的像素数量
+//    const div = document.querySelector('div')
+//    div.addEventListener('scroll',function(){
+//     console.log(div.scrollTop)
+//    })
+
+
+    //根据页面滚动来知道页面卷去了多少像素
+    //但是注意，是有点特殊的
+    //获取html元素的写法
+    //document.documentElement
+    //这样理解:因为页面一拉动，是整个html元素在动,所以需要document.documentElement
+
+    const div = document.querySelector('div')
+    document.documentElement.scrollTop=200  //它是无单位的
+    console.log(document.documentElement.scrollTop)
+    window.addEventListener('scroll',function(){
+        console.log(document.documentElement.scrollTop)
+        // const n = document.documentElement.scrollTop //还需要注意的是这个必须写到内部
+        // if(n>=100){
+        //     div.style.display='none'
+        // }else{
+        //     div.style.display='block'
+        // }
+    })
+
+    //还有一种scrollTo
+    
+</script>
+</html>

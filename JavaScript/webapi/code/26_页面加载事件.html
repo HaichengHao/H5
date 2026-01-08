@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        //当我们把js代码写到上方的时候可能就会出现未加载导致脚本失效的问题
+        // 这时候我们就需要加载事件
+        //这里需要window对象，给其添加加载事件，一般现在用的比较少
+        window.addEventListener(
+            'load',
+            function () {
+                const btn = document.querySelector('button')
+                btn.addEventListener('click', function () {
+                    alert('别点了')
+                })
+            }
+        )
+
+        //当然，它还有别的用途，譬如有一张图片很大，那可以给其添加图片加载事件
+        // img.addEventListener('load',function(){})
+
+        //DOMContentLoaded事件 ，不需要等待，只要有html结构就可以
+        //它是给dom添加
+        document.addEventListener('DOMContentLoaded',function(){
+            
+        })
+    </script>
+</head>
+
+<body>
+    <button>点击</button>
+</body>
+
+</html>

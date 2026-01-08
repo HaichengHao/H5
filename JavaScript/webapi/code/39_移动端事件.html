@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端事件</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <h3>移动端事件</h3>
+    <p>移动端也有自己独特的地方，比如触屏事件touch,android和ios都有</p>
+    <ul>
+        <li>touch对象代表一个触摸点，可以是一根手指，也可以是触控笔，触屏事件可响应用户手指对屏幕或者触摸板操作</li>
+        <li>常见的触摸事件如下</li>
+        <table>
+            <thead>
+                <tr>
+                    <th>触屏touch事件</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>touchstart</td>
+                    <td>手指触摸到一个dom元素时触发</td>
+                </tr>
+                <tr>
+                    <td>touchmove</td>
+                    <td>手指在一个dom元素上滑时触发</td>
+                </tr>
+                <tr>
+                    <td>touchend</td>
+                    <td>手指从一个DOM元素上移开时触发</td>
+                </tr>
+            </tbody>
+        </table>
+    </ul>
+
+    <div>
+
+    </div>
+    <script>
+        const div = document.querySelector('div')
+        div.addEventListener('touchstart',function(){
+            console.log('div被触摸')
+        })
+        div.addEventListener('touchend',function(){
+            console.log('离开')
+        })
+        div.addEventListener('touchmove',function(){
+            console.log('触摸并移动')
+        })
+    </script>
+</body>
+</html>

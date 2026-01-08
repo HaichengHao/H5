@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .code{
+            margin: 0 auto;
+            background-color: orange;
+            border: 10px  rebeccapurple ;
+            border-radius: 3%;
+            padding: 3px;
+            font-size: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<ol>
+    <li>1</li>
+</ol>
+
+<div class="code">
+        <pre>
+
+        
+            const div = document.createElement('div') //创建节点
+            div.innerHTML = `&lt;p&gt;被创建出来了&lt;/p&gt;`
+            //创建之后必须将其添加进去 append为追加,insert为插入
+            document.body.appendChild(div)
+
+
+            const ul = document.createElement('ul')
+            const li = document.createElement('li')
+            li.innerHTML = '哈哈'
+            ul.appendChild(li)
+
+            document.body.append(ul)
+
+            const ol = document.querySelector('ol')
+            const li1 = document.createElement('li')
+            li.innerText = '2'
+            ol.appendChild(li1)
+
+            //上面都为在后面追加,接下来说一下在上面追加 insertBefore
+            const li2 = document.createElement('li')
+            li2.innerText = '0'
+            ol.insertBefore(li2, li1)  //父元素.insertBefore(要插入的元素,在哪个元素之前)
+    </pre>
+
+<body>
+
+    <script>
+        const div = document.createElement('div') //创建节点
+        div.innerHTML = `<p>被创建出来了</p>`
+        //创建之后必须将其添加进去 append为追加,insert为插入
+        document.body.appendChild(div)
+
+
+        const ul = document.createElement('ul')
+        const li = document.createElement('li')
+        li.innerHTML = '哈哈'
+        ul.appendChild(li)
+
+        document.body.append(ul)
+
+        const ol = document.querySelector('ol')
+        const li1 = document.createElement('li')
+        li.innerText = '2'
+        ol.appendChild(li1)
+
+        //上面都为在后面追加,接下来说一下在上面追加 insertBefore
+
+        //实现永远都插入到第一个li之前
+        const firstli = document.querySelector('li:nth-child(1)')
+        const linew = document.createElement('li')
+        linew.innerText = '我会一直在第一位'
+        // ol.insertBefore(linew, firstli)  //父元素.insertBefore(要插入的元素,在哪个元素之前)
+
+        //或者还有一个超级简单的办法
+        ol.insertBefore(linew,ol.children[0]) //也就是利用父元素的第一个孩子
+
+    </script>
+</body>
+
+</html>

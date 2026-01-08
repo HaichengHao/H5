@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            margin: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    const div = document.querySelector('div')
+    const n = document.documentElement.scrollTop //获取卷进去上方的高度，可读写
+    console.log(div.getBoundingClientRect()) //注意它是一个方法，想要调用就得加上括号
+    console.log(div.clientWidth,div.clientHeight) //获取元素的宽高，不包含padding,border,滚动条等，只读
+    console.log(div.offsetHeight,div.offsetWidth) //获取元素的宽高，包含padding,border,滚动条等，只读
+    console.log(div.offsetLeft,div.offsetTop) //获取元素距离自己父元素的左上距离
+    console.log(n)
+
+
+</script>
+</html>

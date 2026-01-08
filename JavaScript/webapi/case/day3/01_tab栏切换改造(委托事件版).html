@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,57 +74,51 @@
     <div class="tab-nav">
       <h3>每日特价</h3>
       <ul>
-        <li><a class="active" href="javascript:;">精选</a></li>
-        <li><a href="javascript:;">美食</a></li>
-        <li><a href="javascript:;">百货</a></li>
-        <li><a href="javascript:;">个护</a></li>
-        <li><a href="javascript:;">预告</a></li>
+        <li><a class="active" href="javascript:;" data-id="0">精选</a></li>
+        <li><a href="javascript:;" data-id="1">美食</a></li>
+        <li><a href="javascript:;" data-id="2">百货</a></li>
+        <li><a href="javascript:;" data-id="3">个护</a></li>
+        <li><a href="javascript:;" data-id="4">预告</a></li>
       </ul>
     </div>
     <div class="tab-content">
-      <div class="item active"><img src="../day2/images/tab00.png" alt="" /></div>
-      <div class="item"><img src="../day2/images/tab01.png" alt="" /></div>
-      <div class="item"><img src="../day2/images/tab02.png" alt="" /></div>
-      <div class="item"><img src="../day2/images/tab03.png" alt="" /></div>
-      <div class="item"><img src="../day2/images/tab04.png" alt="" /></div>
+      <div class="item active"><img src="./images/tab00.png" alt="" /></div>
+      <div class="item"><img src="./images/tab01.png" alt="" /></div>
+      <div class="item"><img src="./images/tab02.png" alt="" /></div>
+      <div class="item"><img src="./images/tab03.png" alt="" /></div>
+      <div class="item"><img src="./images/tab04.png" alt="" /></div>
     </div>
   </div>
   <script>
-   
-    
-    // // 1获取所有a返回的是一个列表对象
-    // const as = document.querySelectorAll('ul a')
-    // // 循环遍历，拿出所有的小a给每个a都添加上鼠标事件
-    // for(let i = 0;i<=4;i++){
-    //     as[i].addEventListener('mouseenter',function(){
-    //         // 先去除掉所有有active类的对象
-    //         document.querySelector('.active').classList.remove('active')
-    //         // 再加上有active类的对象，这里我们利用环境对象来做
-    //         this.classList.add('active')
-    //         document.querySelector('.tab-content .active').classList.remove('active')
-    //         document.querySelector(`.tab-content div:nth-child(${i+1})`).classList.add('active')
-    //     })
-    // }
-//  利用事件委托
-// 1获取ul
+    // 采取事件委托的形式 tab栏切换
+    // 1. 获取 ul 父元素 因为 ul只有一个
     const ul = document.querySelector('.tab-nav ul')
-    ul.addEventListener('click',function(e){
-        // 查看点击事件
-        // 我们只有点了a标签才会进行添加类和删除类操作
-        console.log(e.target)
-        // 获取事件对象的名称 ,发现为a标签的大写A
-        console.log(e.target.tagName)
-        // console.dir(e)
-        
-        if(e.target.tagName == 'A'){
-            document.querySelector('.active').classList.remove('.active')
-            e.target.classList.add('active')
-            document.querySelector('.tab-content .active').classList.remove('active')
-            document.querySelector(`.tab-content div:nth-child(${i+1})`).classList.add('active')
-        }
+    // 获取 5个 item 
+    const items = document.querySelectorAll('.tab-content .item')
+    // 2. 添加事件
+    ul.addEventListener('click', function (e) {
+      // console.log(e.target)  // e.target是我们点击的对象
+      // 我们只有点击了 a 才会 进行 添加类和删除类操作 
+      // console.log(e.target.tagName)  // e.target.tagName 点击那个对象的 标签名
+      if (e.target.tagName === 'A') {
+        // console.log('我选的是a')
+        // 排他思想 ，先移除原来的active  
+        document.querySelector('.tab-nav .active').classList.remove('active')
+        //当前元素添加 active  是 e.target
+        // this 指向ul 不能用this 
+        e.target.classList.add('active')
+
+        // 下面大盒子模块
+        // console.log(e.target.dataset.id)
+        const i = +e.target.dataset.id
+        // 排他思想 ，先移除原来的active 
+        document.querySelector('.tab-content .active').classList.remove('active')
+        // 对应的大盒子 添加 active 
+        // document.querySelector(`.tab-content .item:nth-child(${i + 1})`).classList.add('active')
+        items[i].classList.add('active')
+      } 
     })
-    
   </script>
 </body>
-
+ 
 </html>

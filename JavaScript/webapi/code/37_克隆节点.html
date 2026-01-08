@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>克隆节点t</title>
+</head>
+<body>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <script>
+        //克隆节点
+        const ul = document.querySelector('ul')
+
+        //克隆节点,元素.cloneNode(true)
+        const li1=ul.children[0].cloneNode(true)
+        //克隆后追加
+        ul.appendChild(li1)
+
+        //或者简单写
+        // ul.append(ul.children[0].cloneNode(true))
+
+
+        //深克隆和浅克隆
+        //深克隆克隆标签并克隆标签内的元素
+        //浅克隆只克隆标签
+        //譬如下面不加true就是浅克隆
+        ul.append(ul.children[2].cloneNode())
+        ul.append(ul.children[2].cloneNode(true)) //深克隆
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #d1 {
+            height:60px;
+            width:60px;
+            background-color: rebeccapurple;
+            border: 1px solid orangered;
+        }
+
+        #d2{
+            position: relative;
+            background-color: orange;
+            width: 100px;
+            height: 100px;
+        }
+        #d3{
+            margin: 20px;
+            height: 30px;
+            width: 30px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        offsetWidth和offsetHeight是得到元素内容+padding+border的宽高
+        <hr>
+        offsetLeft和offsetTop得到的位置以其带有定位的父级元素为准<br>
+        如果都没有则以文档左上角为准
+    </p>
+    <div id="d1">
+        
+    </div>
+
+    <div id="d2">
+        <div id="d3">
+
+        </div>
+    </div>
+    <script>
+        const div1 = document.querySelector('#d1')
+
+        const div2 = document.querySelector('#d2')
+        const div3 = document.querySelector('#d3')
+        console.log('div1的偏移'+div1.offsetLeft) //外边框默认有8像素,所以显示为8,表示距离其父元素的相对位置
+        console.log('div2的偏移'+div2.offsetLeft)
+        console.log('div3的偏移'+div3.offsetLeft)
+    </script> 
+</body>
+
+</html>
