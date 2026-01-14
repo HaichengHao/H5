@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj={
+            uname:'张三',
+            age:12,
+            gender:'女'
+        }
+        //存储复杂数据类型,不能直接存对象
+        // 需要将复杂类型转换为json字符串再存进去
+
+        //JSON.stringfy可用将对象转换为字符串类型
+        localStorage.setItem('obj',JSON.stringify(obj)) //这样就拿到了
+        
+
+        //利用json.parse将字符串类型转回对象类型
+        console.log(JSON.parse(localStorage.getItem('obj')))
+           
+    </script>
+</body>
+</html> 

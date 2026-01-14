@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #q{
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <p>之前的setInterval是执行多次的,但是这次的是执行一次的</p>
+    <p>但是类似开屏广告这种的应当只执行一次倒计时结束不再执行</p>
+    <p>js内置的一个用来让代码延迟执行的函数,叫做setTimeout</p>
+    <p>语法:setTimeout(回调函数,等待的毫秒数)</p>
+    <p>setTimeout只执行一次,所以可以理解为就是把一段代码延迟执行,平时省略window</p>
+    <p>清除延时函数
+        <div>
+            <pre>
+                let n = setTimeout(回调函数,等待的毫秒数)
+                clearTimeout(n)
+            </pre>
+        </div>
+    </p>
+    <p>注意点
+        <li>延时器需要等待，所以后面的代码先执行</li>
+        <li>每一次调用延时器都会产生一个新的延时器</li>
+    </p>
+
+    <h4>两种定时器对比</h4>
+    <ul>
+        <li>延时函数：执行一次</li>
+        <li>间歇函数：每隔一段时间就执行一次,除非手动清除</li>
+    </ul>
+    <div id="q">
+
+    </div>
+    <script>
+        const div = document.querySelector('#q')
+        setTimeout(
+            function(){
+                div.style.backgroundColor='red'
+            },2000
+        )
+
+
+        //清除延时函数
+        let n = setTimeout(
+            function(){
+                console.log('被调用了')
+            },2000
+        )
+        clearTimeout(n)
+    </script>
+
+    
+</body>
+</html>

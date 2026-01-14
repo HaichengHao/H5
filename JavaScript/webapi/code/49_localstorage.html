@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        语法:
+        存储数据:
+        localStorage.setItem(key,value)
+    </pre>
+    <script>
+        //增
+        localStorage.setItem('uname','nikofox')
+        //清除指定的 删
+        // localStorage.removeItem('uname')
+        
+        //拿出指定的 查
+        console.log(localStorage.getItem('uname'))
+
+        //改
+        localStorage.setItem('uname','missli')
+
+
+        localStorage.setItem('age',19) //本地存储只能存储字符串数据类型,所以这个age其实是字符型的
+        localStorage.getItem('age')
+        localStorage.removeItem('age')
+    </script>
+</body>
+</html>

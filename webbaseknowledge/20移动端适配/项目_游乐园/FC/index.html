@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,23 +9,76 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./lib/iconfont/iconfont.css">
     <link rel="stylesheet" href="./css/index.css">
-    
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .swiper-pagination-bullet{
+            background-color: rebeccapurple;
+        }
+    </style>
 </head>
+
 <body>
     <!-- 主内容 -->
-     <div class="main">
+    <div class="main">
         <!-- banner区域 -->
         <div class="banner">
-            <ul>
-                <li><a href="#"><img src="./uploads/banner_1.png" alt=""></a></li>
-            </ul>
+            <!--轮播图模块-->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><a><img src="uploads/content_1.png" alt=""></a></div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                    <div class="swiper-slide">Slide 5</div>
+                    <div class="swiper-slide">Slide 6</div>
+                    <div class="swiper-slide">Slide 7</div>
+                    <div class="swiper-slide">Slide 8</div>
+                    <div class="swiper-slide">Slide 9</div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
         <!-- 活动标题区域 -->
-         <div class="title">
+        <div class="title">
             <h4>乐园活动</h4>
-         </div>
+        </div>
 
-         <!-- 活动 -->
+        <!-- 活动 -->
         <section class="item">
             <div class="pic">
                 <a href="#">
@@ -34,7 +88,7 @@
                 <i class="iconfont">&#xe660;</i>
                 <!-- 活动状态 -->
                 <div class="active">
-                   进行中
+                    进行中
                 </div>
             </div>
             <div class="text">
@@ -57,7 +111,7 @@
                 <i class="iconfont">&#xe660;</i>
                 <!-- 活动状态 -->
                 <div class="active off">
-                   已截止
+                    已截止
                 </div>
             </div>
             <div class="text">
@@ -80,7 +134,7 @@
                 <i class="iconfont">&#xe660;</i>
                 <!-- 活动状态 -->
                 <div class="active off">
-                   已结束
+                    已结束
                 </div>
             </div>
             <div class="text">
@@ -94,11 +148,11 @@
                 </div>
             </div>
         </section>
-     </div>
+    </div>
     <!-- 主内容 -->
- 
+
     <!-- 底部工具栏 -->
-     <footer>
+    <footer>
         <a href="#">
             <i class="iconfont">&#xe622;</i>
             <p>首页</p>
@@ -111,10 +165,24 @@
             <i class="iconfont">&#xe614;</i>
             <p>我的</p>
         </a>
-       
-       
-     </footer>
+
+
+    </footer>
     <!-- 底部工具栏 -->
+    <script src="js/swiper-bundle.min.js"></script>
     <script src="./js/flexible.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            autoplay: {
+                delay: 2000,
+                diableOnInteraction: false
+            }
+        });
+    </script>
 </body>
+
 </html>

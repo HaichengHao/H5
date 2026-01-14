@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h4>location对象</h4>
+    <ul>
+        <li>location的数据类型是对象，它拆分并保存了URL地址的各个组成部分</li>
+        <li>
+            常用属性和方法：
+            <li>
+                href属性获取的是完整的url和地址,对其赋值时用于地址的跳转
+            </li>
+            <li>
+                search属性获取地址中携带的参数,也就是符号?后面的部分,
+                就像在做get请求时候后面跟着的参数
+            </li>
+            <li>
+                hash属性在SPA中遇到的最多,譬如网易云音乐,整体页面不变只是点击了不同分块之后后面的hash会变   
+                <br>
+                譬如music.163.com/#/friend   music.163.com/#/download
+            </li>
+
+            <li>常用方法:reload方法用来刷新当前页面,传入参数true时表示强制刷新
+                <img src="../image/image4.png" alt="">
+            </li>
+        </li>
+    </ul>
+    <div>
+
+    </div>
+
+    <button></button>
+</body>
+<script>
+    const div = document.querySelector('div')
+
+    const btn = document.querySelector('button')
+    div.addEventListener('click',function(){
+        
+        location.href='https://www.baidu.com'; 
+    })
+
+
+    //实现五秒钟之后自动跳转页面
+    setTimeout(function(){
+        location.href='https://www.bilibili.com'
+
+    },5000)
+
+    console.log(location.search)
+
+    btn.addEventListener('click',function(){
+        location.reload(true)  //相当于ctrl + f5强制刷新
+    })
+</script>
+</html>
