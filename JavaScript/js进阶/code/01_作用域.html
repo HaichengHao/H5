@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>局部作用域</h2>
+    <pre>
+        1.函数作用域 
+        在函数内部声明的变量只能在函数内部被访问,外部无法直接访问  
+
+        总结:
+        1.函数内部声明的变量在函数外部无法访问
+        2.函数的参数也是函数内部的局部变量
+        3.不同函数内部声明的变量无法相互访问
+        4.含糊执行完毕后，函数内部的变量实际被清空了
+
+
+        2.块作用域
+        在js中被花括号包裹的代码块就是块作用域
+
+        1.let和const声明的会产生块作用域,var不会产生块作用域
+        2.const声明的常量也会产生块作用域
+        3.不同代码块之间的变脸无法互相访问
+        4.推荐使用let和const
+    </pre>
+</body>
+<script>
+    function getSum(){
+        const num = 10
+        var numb = 20
+    }
+    console.log(num)    //因为num在代码块中,无法被花括号外部的直接访问
+    console.log(numb)  //这里两个都会标红报错
+</script>
+
+</html>

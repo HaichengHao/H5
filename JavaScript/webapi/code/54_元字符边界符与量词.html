@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        th,tr,td{
+            border:0.2px solid  black
+        }
+    </style>
+</head>
+<body>
+    <h3>元字符</h3>
+    <ul>
+        <li>元字符是一些具有特殊含义的字符,可以极大提高灵活性并具有强大的匹配功能<br>比如,[a-z,A-Z]可匹配所有英文字母</li>
+    </ul>
+    <h3>边界符:表示位置，开头和结尾</h3>
+    <table>
+        <thead>
+            <th>边界符
+                
+                
+            </th>
+            <th>说明</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>^</td>
+                <td>表示匹配行首文本(以谁开始)</td>
+            </tr>
+            <tr>
+                <td>$</td>
+                <td>表示匹配匹配行尾的文本(以谁结束)</td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>量词(表示重复次数)</h3>
+    <table>
+        <thead>
+          
+            <th>量词</th>
+            <th>说明 </th>
+     
+        </thead>
+        <tbody>
+            <tr>
+                <td>*</td>
+                <td>零次或多次</td>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>一次或多次</td>
+            </tr>
+            <tr>
+                <td>?</td>
+                <td>零次或一次</td>
+            </tr>
+            <tr>
+                <td>{n}</td>
+                <td>重复n次</td>
+            </tr>
+            <tr>
+                <td>{n,}</td>
+                <td>重复n次或多次</td>
+            </tr>
+            <tr>
+                <td>{n,m}</td>
+                <td>重复n-m次</td>
+            </tr>
+        </tbody>
+        
+    </table>
+    <p>如匹配数字验证码,其验证码只能出现6次那就写/\d{6}/</p>
+    <h3>字符类,比如\d表示0-9</h3>
+    <script>
+        const str1 = 'next level is  100'
+        const ptn = /^[a-z,A-Z].*\d{3}$/
+        console.log(ptn.test(str1))
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>语法</h3>
+    <ul>
+        <li>js中定义正则表达式的语法有两种</li>
+        <li>1.
+            <pre>
+                const regObj = /表达式/
+                regObj.test(被检测的字符串)
+
+                还有另一种语法叫exec(),在一个指定字符串中执行一个搜索匹配
+                语法
+                regObj.exec(被检测字符串)
+            </pre>
+        </li>
+    </ul>
+
+    <script>
+        const demostr = 15502233468
+        //定义规则
+        const ptn = /^1[3-9]\d{9}/
+        //进行匹配,利用规则去检测
+        ptn.test(demostr) //有返回值,返回的是布尔值
+        console.log(ptn.test(demostr)) //返回的是true或者false
+        
+        const matchstr = ptn.exec(demostr)
+        console.log(ptn.exec(demostr))//返回的是一个数组包含被匹配到的元素,没匹配到就返回null
+        console.log(ptn.exec(demostr)[0]) //按索引取第0位索引看看
+        console.log(JSON.stringify(matchstr))
+
+
+        
+
+    </script>
+</body>
+</html>

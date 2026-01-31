@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修饰符</title>
+</head>
+<body>
+    <ol>
+        <li>修饰符约束正则执行的某些细节行为,如是否区分大小写,是否支持多行匹配等</li>
+        <li>
+            语法: /正则表达式/修饰符
+        </li>
+        <li>
+            i是ignore,正则匹配时字母不区分大小写
+        </li>
+        <li>
+            g是单词global的缩写,匹配所有满足正则表达式的结果
+        </li>
+    </ol>
+    <script>
+        console.log(/a/i.test('a'))
+        console.log(/a/i.test('A'))
+    </script>
+</body>
+</html>

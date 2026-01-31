@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>change事件是内容发生变化</p>
+    <textarea name="" id=""></textarea>
+    <script>
+        const tx = document.querySelector('textarea')
+        tx.addEventListener('change',function(){
+             console.log(this.value)
+        })
+    </script>
+</body>
+</html>

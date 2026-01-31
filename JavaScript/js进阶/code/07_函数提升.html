@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        fn()  //函数可以在声明前调用,因为函数也有提升
+        function fn(){
+            console.log('函数提升')
+        }
+
+        //还是那句话，只提升声明，不提升赋值
+
+        //下面这个就不会被调用  
+        fun1()  
+        var fun1 = function(){  //这里是赋值操作而不是声明操作,所以不会被调用
+
+            console.log('函数表达式')
+        }
+
+        //函数表达式必须先声明和赋值，而后再调用，否则报错
+    </script>
+</body>
+</html>

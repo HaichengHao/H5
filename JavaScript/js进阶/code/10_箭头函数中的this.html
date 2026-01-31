@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>点我</button>
+    <script>
+        //箭头函数中的this
+        //箭头函数不会创建自己的this,它只会从自己的作用域的上一层沿用this
+
+        console.log(this)
+
+        const sayHi = function () {
+            console.log(this) //普通函数指向调用者,此处为window
+        }
+
+        const btn = document.querySelector('button')
+
+        btn.addEventListener('click', function () {
+            console.log(this) //当前this,指向btn 
+        })
+
+
+        //箭头函数中的this
+
+        const fn = () => {
+            console.log(this)
+            //这个this指向window，因为当前作用域没人调用它，它就往上找,结果外层有人调用它，刚好外层调用它的在script直接包裹,而script指向的是window
+        }
+        fn()
+
+        const obj = {
+            username: 'nikofox',
+            sayHi: () => {
+                console.log(this);//1还是指向window，因为当前一层没人调用它
+            }
+        }
+        //调用
+        obj.sayHi()   //2而是在这里调用它，这里可是在script包裹的了，所以这里指向的还是window
+
+
+        //在传统函数中内嵌箭头函数
+        const obj2 = {
+            uname: 'jjbong',
+            sayhi: function () {
+                let i = 10
+                const count = () => {
+                    console.log(i)
+                    console.log(this)//这里指向的是obj2,因为本函数内没调用
+                }
+            }
+        }
+        obj2.sayhi()//然后obj2调用了,指向被调用者,所以是obj2
+
+
+    </script>
+</body>
+
+</html>

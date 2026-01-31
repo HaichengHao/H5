@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>变量提升</h2>
+    <pre>
+        是js中奇怪的现象,允许把当前作用域下var声明的变量提升到当前作用域的最前面
+    </pre>
+    <script>
+
+        //1.把所有var声明的变量提升到当前作用域的最前面
+        //只提升声明,不提升赋值
+        function fn(){
+            console.log(num)
+            var num = 10
+        }
+        fn()
+
+    </script>
+</body>
+</html>

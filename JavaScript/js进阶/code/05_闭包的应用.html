@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>闭包:实现数据的私有</h2>
+    <pre>
+        比如,做统计函数调用的次数,函数调用一次就++   
+
+
+        <script>
+
+            //闭包的应用,统计函数被调用的次数  
+            let i = 1 
+            function fn(){
+                i++
+                console.log(i)
+            }
+
+            //像上面的写法其实是很容易被修改的，所以考虑将其转换成闭包的形式   
+
+
+           //采用闭包的方式   
+           function outer(){
+            let i = 1  //这样内部声明的外部就没办法对i进行直接修改
+            function fn(){
+                i++
+                console.log(`函数被调用了${i}次 `)
+            }
+            return fn
+           }
+
+           func1 = outer() 
+           
+        </script>
+        
+
+    </pre>
+</body>
+</html>     

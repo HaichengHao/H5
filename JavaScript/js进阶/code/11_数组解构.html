@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构赋值</title>
+</head>
+<body>
+    <pre>
+        数组解构就是将数组的单元值快速批量赋值给一系列变量的简介语法  
+        基本语法:
+        1.赋值运算符=左侧的[]用于批量声明变量,右侧数组的单元值给左侧的变量
+        2.变量的顺序对应数组单元值的位置依次进行赋值操作 
+
+        js中有哪两种情况需要加分号？
+        1.立即执行函数(func)();
+        2.数组解构;
+    </pre>
+    <script>
+        //之前获取数组中值的方式
+        const arr = [100,60,80]
+        const max = 100
+        const min = 60
+        const avg = 80
+        
+        //现在利用数组解构赋值可以让这样的操作变得非常简单
+        const [min1,max1,avg1] =  [100,60,80] //就很像python中的多变量赋值
+
+        //交换变量
+        let a = 1
+        let b = 2; //❗❗❗❗注意俩都是变量因为下面还要交换，所以别用const,不然就会报错,还有必须加上分号,因为它会拼到一起  
+        [b,a]=[a,b]  
+        console.log(`a=${a},b=${b}`)
+
+
+        const pc=['华硕','联想','小米','惠普']
+        const [asus,lenovo,xiaomi,hp] = pc
+        console.log(asus)
+
+
+        //小例子:将最大值和最小值函数返回值解构max和min两个变量
+        const getvalue=()=>{
+            return [100,60]
+        }
+        //要求max变量里面存100，min变量里边存60
+
+        const [maxmum,minimum]  = getvalue()
+        console.log(maxmum)
+        console.log(minimum)
+
+
+        //变量多单元值少的情况:
+        const [x,y,z,q]=[1,2,3]
+        console.log(q)  //这样的话q就是undefined
+
+        //变量少单元值多的情况:
+        const [g,h,j] = [3,5,7,9]
+        console.log(j)
+
+    </script> 
+</body>
+</html>

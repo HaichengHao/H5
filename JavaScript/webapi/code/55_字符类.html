@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>字符类</h3>
+    <ol>
+        <li>[]匹配字符集合<br>
+            后面的字符串只要包含方括号中的任意一个字符就都返回true
+        </li>
+        <li>
+            [^]<br> 
+            表示取反括号内的,即括号内的全不匹配 
+        </li>
+        <li>
+            . 
+            <br>
+            匹配除了换行符之外的任何单个字符
+        </li>
+
+    </ol>
+
+    <script>
+        const str1 = 'y'
+        const str2 = 'nginx'
+        const regptn = /^[a-z,A-Z]$/  //由于[]只匹配括号中的字符一次,所以如果是一个单词的话它就匹配错误
+        const regptn2 = /^[a-z]{5}/ //可以利用量词,这样写表示匹配五个字母
+        console.log(regptn.test(str1))    //true
+        console.log(regptn.test(str2))    //  false
+        console.log(regptn2.test(str2))  //true
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        闭包
+    </h2>
+    <pre>
+        概念:一个函数对周围状态的引用捆绑在一起,内层函数中访问到其外层函数的作用域   
+        简单理解:闭包=内层函数+外层函数的变量
+    </pre>
+
+    <script>
+        function outer(){
+            const a = 1
+            function f(){     //内层函数
+                console.log(a)  //内层函数用到了外层函数的变量,这时候才会产生闭包
+            }
+            f()
+        }
+
+        outer()
+
+
+        //闭包的基本格式其实应该是下面这样
+        //其实很类似python中的装饰器的设计
+        function outer1(){
+            let i = 1
+            function fn(){
+                console.log(i)
+            }
+            return fn  
+        }
+
+        const fun = outer1()      //outer1()会得到fn 
+        fun()   //这里就是相当于执行了fn()
+    </script>
+</body>
+  
+</html>

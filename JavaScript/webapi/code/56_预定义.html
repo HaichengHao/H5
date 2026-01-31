@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>预定义:指的是某些常见模式的简写方式</h3>
+    <table>
+        <thead>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>\d</td>
+                <td>匹配0-9之间的任意一个数字,相当于[0-9]</td>
+            </tr>
+            <tr>
+                <td>\D</td>
+                <td>匹配所有0-9以外的字符,相当于[^0-9]</td>
+            </tr>
+            <tr>
+                <td>\w</td>
+                <td>匹配任意的字母、数字和下划线,相当于[A-Za-z0-9]</td>
+            </tr>
+            <tr>
+                <td>\W</td>
+                <td>匹配任意的字母、数字和下划线，相当于[^A-Za-z0-9]</td>
+            </tr>
+            <tr>
+                <td>\s</td>
+                <td>匹配空格(包含换行符、制表符、空格等),相当于[\t\r\n\v\f]</td>
+            </tr>
+            <tr>
+                <td>\S</td>
+                <td>匹配非空格的字符,相当于[^\t\r\n\v\f]</td>
+            </tr>
+        </tbody>
+
+        <script>
+            //匹配日期格式
+            // ^\d{4}-\d{1,2}-\d{1,2}
+        </script>
+    </table>
+</body>
+</html>
