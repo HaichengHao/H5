@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实例成员和静态成员</title>
+</head>
+<body>
+    <pre>
+        实例成员:
+        说明:
+        1.为构造函数传入参数，创建解构相同但是值不同的对象
+        2.构造函数创建的实例对象彼此独立互不影响
+
+        静态成员:
+        构造函数的属性和方法被称为静态成员(静态属性和方法)
+        说明:
+        1.静态成员只能构造函数来访问
+        2.静态方法中的this指向构造函数
+        比如Date.now() ,Math.PI,Math.random()
+
+
+        总结
+        实例成员(属性和方法)写在谁身上？
+        实例对象的属性和方法即为实例成员
+        实例对象相互独立，实例成员当前实例对象使用
+
+        静态成员(属性和方法)写在谁身上？
+        构造函数的属性和方法被成为静态成员
+        静态成员只能通过构造函数来访问
+    </pre>
+    
+    <script>
+         //创建构造函数
+        function Pig(name,age,gender,sayHi){
+            this.name=name
+            this.age=age 
+            this.gender=gender
+            this.sayHi=function(){
+                console.log(`我是${this.name}`)
+            }
+        }
+        
+        //peppa是实例对象
+        const peppa=new Pig('佩奇') //佩奇是对应name的实例属性
+        const George=new  Pig('乔治') //佩奇和乔治是结构相同但是值不同的对象
+        console.log(peppa)
+        console.log(peppa.sayHi()) //调用实例方法
+
+        peppa.name='小猪佩奇' //对一个实例对象的修改不会影响别的实例对象
+        peppa.SayHello=()=>{
+            console.log('Hello~~') //箭头函数中是没有this的
+        }
+        peppa.SayHello2=function(){
+            console.log(`Hello,my name is ${this.name}`)
+        }  //不用箭头函数的话就可以使用this了 
+        console.log(peppa)
+        console.log(peppa.SayHello())
+        console.log(peppa.SayHello2())
+
+
+        //静态成员
+        function Person(name,age){
+            //省略实例成员
+        }
+
+        //静态属性
+        Person.eyes=2
+        Person.arms=2
+        //静态方法
+        Person.walk=function(){
+            console.log('人会走')
+            //this指向person
+            console.log(this.eyes)  
+        }
+
+
+        console.log(Person.walk()) //调用静态方法
+    </script>
+</body>
+</html>

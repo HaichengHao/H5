@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多级对象解构</title>
+</head>
+
+<body>
+
+
+    <script>
+        const pig = {
+            name: '佩奇',
+            family: {
+                mom: '猪妈妈',
+                dad: '猪爸爸',
+                brother: '乔治'
+            },
+            age: 6
+        }
+
+        //下面这样写是必要的，因为对象可能会有多个,要告诉解构的是哪一个对象才行,否则将会报错
+        const {name:pname,family:{mom:pmom,dad:pdad,brother:pbro},age:page}=pig
+
+        console.log(pname,pmom,pdad,pbro,page)
+    </script>
+
+</body>
+
+</html> 

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        th{
+            color: white;
+            background-color: rebeccapurple;
+        }
+        th,tr,td{
+            border: 0.8px solid black;
+        }
+        tbody tr:first-child{
+            background-color: brown;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+          <tr>
+            <th>方法</th>
+            <th>作用</th>
+            <th>说明</th>
+        </tr>  
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>forEach</td>
+                <td>遍历数组</td>
+                <td>不返回数组，经常用于查找遍历数组元素</td>
+            </tr>
+             <tr>
+                <td>filter</td>
+                <td>过滤数组</td>
+                <td>返回新数组，返回的是筛选满足条件的数组元素</td>
+            </tr>
+             <tr>
+                <td>map</td>
+                <td>迭代数组</td>
+                <td>返回新数组，返回的是处理之后的数组元素，想要使用返回的新数组</td>
+            </tr>
+            <tr>
+                <td>reduce</td>
+                <td>累计器</td>
+                <td>返回累计处理的结果，经常用于求和等</td>
+            </tr>
+            <tr>
+                <td>join</td>
+                <td>拼接数组为字符串</td>
+                <td>返回指定拼接字符的新数组</td>
+            </tr>
+        </tbody>
+        
+
+    </table>
+
+    <pre>
+        之前我们就已经学过arr.forEach(function(){})
+        和arr.map(function(){})以及
+        arr.filter(function(){})这样的,接下来补全arr.reduce(function(){})
+
+        reduce
+        作用:reduce返回累计处理的结果，经常用于求和
+        基本语法:
+        arr.reduce(function(){},起始值)
+        arr.reduce(function(上一次值,当前值){},初始值)  
+        参数:
+        如果有起始值，则把初始值累加到里面
+
+
+        reduce的执行过程
+        1.如果没有起始值,则上一次值以数组的第一个数组元素的值
+        2.每一次循环,把返回值给作为下一次循环的上一次值
+        3.如果有起始值，那么起始值作为上一次值
+    </pre>
+
+    <script>
+        const arr = [1,3,5,7,9] 
+        //没有初始值
+
+        const total = arr.reduce(function(prev,current){
+            return prev+current
+        })
+
+        console.log(total) //25  
+
+        //有初始值
+        const total2 = arr.reduce(function(prev,current){
+            return prev+current
+        },10)
+
+        console.log(total2)//25+10 = 35
+
+
+        //用箭头函数的写法
+        const total3 = arr.reduce((prev,current)=>{
+            return prev+current
+        })
+        console.log(total3)
+
+        const total4 = arr.reduce((prev,current)=>{
+            return prev+current
+        },10)
+        console.log(total4)
+
+
+
+    </script>
+</body>
+
+</html>

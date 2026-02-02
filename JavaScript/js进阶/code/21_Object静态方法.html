@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object静态方法</title>
+</head>
+
+<body>
+    <pre>
+        引用类型 
+        Object,Array,RegExp,Date等
+        包装类型
+        String,Number,Boolean等
+
+        1.Object是内置构造函数，用于创建普通对象
+        const user=new Object({name:'小明',age:15})
+
+        推荐使用字面量方式声明对象，而不是Object构造函数
+
+        语法1:
+        Object.keys(xx)静态方法获取对象中所有属性(键)
+        Object.values(xx)静态方法获得对象中所有属性值
+        语法2:
+        Object.assign(xx,yy)把yy对象拷贝给xx
+        使用场景:经常使用在给回想添加属性
+
+    </pre>
+
+    <script>
+        const o = {
+            name: 'peppa',
+            age: 6
+        }
+
+        //静态方法是构造函数才有,别给他用在实例对象上
+        //1.获得所有的属性名
+        const arr = Object.keys(o)
+        console.log(arr)
+
+        //或者直接写
+        console.log(Object.keys(o))
+        //注意：返回的是一个数组
+
+        //2.获得所有的属性值
+        console.log(Object.values(o))
+        //返回的也是一个数组
+
+
+        //对象的浅拷贝
+        const oo = {
+
+        }
+        Object.assign(oo, o)
+        console.log(oo)
+
+        //给对象新增属性，利用assign就可以批量给对象增加多个属性了
+        const peepa={
+            name:'佩奇',
+            age:6
+        }
+        Object.assign(peepa,{gender:'女'})
+        console.log(peepa)
+
+    </script>
+</body>
+
+</html>

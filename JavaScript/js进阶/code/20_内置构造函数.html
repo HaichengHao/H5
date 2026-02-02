@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        内置构造函数
+        Object 
+        Arry
+        String
+        Number
+
+
+        在js中最主要的数据类型有6种
+        基本数据类型:
+        字符串、数值、布尔、undefined，null
+        引用数据类型
+        对象  
+
+        但是也有特殊情况
+        const str = 'peppa' 
+        console.log(str.length)//5
+
+        其实字符串、数值、布尔等基本类型也有专门的构造函数，这些我们成为包装类型
+        js中几乎所有的数据都可以基于构成函数创建
+
+    </pre>
+    <script>
+        const str = 'nikofox'
+        console.log(str.length) //按道理说只有对象才有属性和方法，但是为什么简单数据类型也有属性或者方法呢
+        const num = 12 
+        console.log(num.toFixed(2))//保留两位小数
+        //虽然都属于简单数据类型，但是底层是js做了包装的
+        //原理
+        new String('nikofox') //这个就是const str = 'nikofox'的底层
+        //js底层把简单的数据类型包装为了引用数据类型
+
+        
+    </script>
+</body>
+</html>

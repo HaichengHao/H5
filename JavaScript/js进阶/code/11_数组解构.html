@@ -15,6 +15,9 @@
         js中有哪两种情况需要加分号？
         1.立即执行函数(func)();
         2.数组解构;
+
+        变量的数量大于单元值数量时,多余的变量将会被赋值为undefined
+        变量的数量小于单元值数量时,可以通过剩余参数...获取单元值,但是只能置于最末位
     </pre>
     <script>
         //之前获取数组中值的方式
@@ -56,6 +59,29 @@
         //变量少单元值多的情况:
         const [g,h,j] = [3,5,7,9]
         console.log(j)
+
+        //卡这种情况
+        const [r,t, ...o]=[1,2,4,8,6]
+        console.log(o) //返回的将是[4,8,6]返回的是一个真数组
+
+        //默认参数
+        const [aa=0,kk=0] = []
+        console.log(aa) //数组中没有值但是指定有默认值的话那么就返回默认值
+
+        //按需导入赋值
+        const [xx,yy,,zz] = [1,0,8,9]
+        console.log(xx) //1
+        console.log(yy)//0
+        console.log(zz)  //9
+
+        //多维数组解构
+        const arrm = [1,2,[3,4]]
+        const [am,bm,[cm1,cm2]]=arrm
+        console.log(am)
+        console.log(bm)
+        console.log(cm1)
+        console.log(cm2)
+
 
     </script> 
 </body>

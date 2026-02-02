@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        对象解构是将对象属性和恶方法快速批量赋值给一系列变量的简洁语法
+
+        基本语法:
+        1.赋值运算符 = 左侧的{}用于批量声明变量，右侧对象的属性值将被赋值给左侧的变量
+        2.对象属性的值将被赋值给与属性名相同的变量
+        3.注意解构的变量名不要和外面的变量名冲突否则会报错
+        4.对象中找不到与变量名一致的属性时变量值为undefined
+
+        <script>
+            //普通对象
+            const user = {
+                uname:'nikofox',
+                age:25,
+
+            }
+
+            //解构的语法和数组解构的差不多
+
+            //注意数组用中括号,而对象则用花括号
+            const {uname,age} = user  //对象属性的值一定要和变量名相同
+            console.log(uname)
+
+
+
+            //对象解构的变量名，可以重新改名
+            //譬如已经有一个被用过的名称，那么再次出现在对象解构中就不行了
+            const username  = 'hero'
+            
+            //就在之后给一个别名
+            const {username:usrname,gender}={username:'jobs',gender:'male'}
+            console.log(username) //hero
+            console.log(usrname)  //jobs
+
+
+
+            //数组对象的解构
+            //数组对象的解构需要自己设置一个列表包含的格式
+            //相当于对象解构和数组解构的结合,然后接收的时候也是按照此格式进行设置
+            const pig=[{
+                pigname :'佩奇',
+                pigage:10
+            }]
+
+            const [{pigname:pname,pigage}]=pig
+            // console.log(pigname)
+            console.log(pname)
+
+             
+        </script>
+    </pre>
+</body>
+</html>

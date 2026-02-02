@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter方法</title>
+</head>
+<body>
+    <pre>
+        filter()方法创建一个新的数组,新数组中的元素是通过检查指定数组中符合条件的所有元素
+        主要使用场景:筛选数组符合条件的元素,并返回筛选之后元素的新数组
+        语法:
+            arr.filter(function(item){
+                //函数体
+            })
+        返回值:返回数组，包含了符合条件的所有元素,如果没有符合条件的元素则返回空数组
+        参数:item必须(当然也可以叫别的名字),index可选
+        因为返回新数组，所以不会影像原来的数组！！
+
+    </pre>
+
+    <script>
+        const arr = [10,20,30]
+        const gt20arr = arr.filter(function(item,index){
+            // console.log(item)
+            return item>=20  //返回的是满足条件的新数组  
+        })
+
+        console.log(gt20arr)
+        
+    </script>
+</body>
+</html>

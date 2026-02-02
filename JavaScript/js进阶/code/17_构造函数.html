@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        构造函数是一种特殊的函数,主要用来初始化对象
+        使用场景:常规的{...}语法允许创建一个对象,比如创建一个佩奇对象，继续创建乔治对象还需要重新写一遍，
+        此时可以通过构造函数来快速创建多个类似的对象
+
+        构造函数有两个约定
+        1.首字母大写
+        2.它们只能以new操作符来执行
+
+        使用new关键字调用函数的行为被称为实例化
+        实例化构造函数时没有参数时可以省略()
+        构造函数内部无需写Return,返回值即为新创建的对象
+        构造函数内部的return返回的值无效，所以不要写return
+        new Object()和new Date()也是实例化构造函数
+    </pre>
+    <script>
+        //构建属性相同而值不同的对象那就可以构造一个公共的对象将其封装
+        //其实很像python中的类声明和实例类对象的写法
+
+        function Pig(name,age,gender){
+            this.name =  name  //就像python中self.name=name这样的写法
+            this.age = age
+            this.gender = gender
+        }
+        const Peppa = new Pig('佩奇',6,'女')
+        const George = new Pig('乔治',3,'男')
+        
+        //小例子
+        function Goods(name,price,count){
+            this.name=name
+            this.price=price
+            this.count=count
+        }
+        //实例化商品对象
+        const xiaomi = new Goods(name='小米',price=1999,count=20)
+        const huawei = new Goods(name='华为',price=3999,count=59)
+        const vivo = new Goods('vivo',1888,100)
+        console.log(xiaomi,huawei,vivo)
+    </script>
+</body>
+</html>
