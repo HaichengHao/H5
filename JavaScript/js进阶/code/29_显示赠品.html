@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="name">
+        <!-- <span class="tag">
+            【赠品】50g茶叶
+        </span> -->
+    </p>
+
+    <script>
+        //原始数据如
+        const gift = '50g茶叶,清洗球'
+        //要求渲染为html中注释部分的格式
+        //利用str的split将其拆分为一个数组
+        //然后再进行渲染
+        const giftarr = gift.split(',')
+        console.log(giftarr)  //['50g茶叶','清洗球']
+
+        let giftstr = ''
+        const p = document.querySelector('.name')
+        giftarr.forEach((item) => {
+            console.log(item)
+            giftstr += `
+                <span class="tag">
+                    【赠品】${item}
+                </span>
+            `
+        })
+        // p.innerHTML = giftstr
+
+
+
+        //另外的写法，用map
+        const str = giftarr.map(function(item){
+            return`
+                <span class="tag">
+                    【赠品】${item}
+                </span><br>
+            `
+        }).join('')    //利用join将返回值构成的数组拼接为字符串
+        console.log(str)
+        // p.innerHTML=str
+
+
+        //最终转换为es6写法
+        const str1 = gift.split(',').map(item=>` 
+                <span class="tag">
+                    【赠品】${item}
+                </span><br>`).join(' ')
+        console.log(str1)
+        p.innerHTML=str1
+
+
+
+
+
+    </script>
+</body>
+
+</html>

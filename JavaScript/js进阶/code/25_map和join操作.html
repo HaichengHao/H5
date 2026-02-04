@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const arr1 = ['apple', 'banana', 'cherry'];
+
+        // arr1.forEach((item, index, array) => {
+        //     console.log(index, item);
+        // });
+        //forEach没有返回值,而map重点在于又返回值
+
+        //map 可以遍历数组处理数据,并且返回新的数组
+        //和python中的map也差不多,就像for那样的遍历但是又返回了索引
+        const arr = ['red', 'blue', 'green']
+        const newArr = arr.map(function (ele, index) {
+            console.log(ele)
+            console.log(index)
+            return `${index}` + ele + '颜色'
+
+        })
+        console.log(newArr)
+        console.log(typeof(newArr))
+
+        const arr2 = ['you','me','we']
+        console.log(typeof(arr2)) //object类型
+        console.log(arr2.join('')) //youmewe  
+        console.log(arr2.join('❤️')) //you❤️me❤️we
+        //和python中的拼接字符串很像,join中可以指定拼接要用的分隔符
+    </script>
+</body>
+
+</html>

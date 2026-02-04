@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //需求:
+        //根据数据计算当月指出薪资
+        const arr=[
+            {
+                name:'张三',
+                salary:10000
+            },{
+                name:'李四',
+                salary:13000,
+            },{
+                name:'王五',
+                salary:23000
+            }
+        ]
+
+        //先解构数组,拿到其中对象的数
+        let salary_arr=[]
+        arr.forEach((item)=>{  //然后遍历对其进行解构
+            const {salary}=item
+            salary_arr.push(+salary)
+        })
+        console.log(salary_arr) //得到salary_arr
+
+        //最后利用reduce进行计算
+
+        const salary_all=salary_arr.reduce((prev,current)=>{
+            return prev+current
+        })
+        console.log(salary_all)
+
+
+        //还有不进行解构的简单办法
+        const total = arr.reduce(function(prev,current){
+
+            return prev+current.salary 
+             //至于这里为什么这么写呢？
+             // 因为是对象形式,如果我们不设置初始值，
+             // 那么它就会拿第一个数组元素作为初始值，
+             // 可是第一个元素可是对象{}啊！！不是对象中的salary,
+             // 所以按照约定我们需要设置初始值为0，
+             // 这样prev=0,current我们指定的又是.salary,
+             // 这样一来就ok了
+
+        },0)
+
+        console.log(total)
+
+
+        //多人薪资提薪计算需求
+        //每个人都涨薪%30
+
+        const total2=arr.reduce(
+            (prev,current)=>{
+                return prev+current.salary*1.3
+            },0
+        )
+
+        console.log(total2)//59800  = (10000+13000+23000)*1.3=4600*1.3=59800
+    </script>
+</body>
+</html>

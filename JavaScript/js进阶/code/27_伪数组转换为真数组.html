@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <script>
+        const lis = document.querySelectorAll('ul>li')
+
+        console.log(lis)  //这样是一个伪数组
+        //lis.pop()  //这样是一个伪数组，所以它没有真数组的一些常用方法
+        //但是我们确实想利用那种数组的方式来进行操作该怎么办呢？
+        //那就是将伪数组转换为真数组
+        const liss = Array.from(lis)
+
+        //这样一来伪数组就转换成了一个真数组
+        liss.pop() //也能用真数组的方法了
+        console.log(liss)
+
+    </script>
+</body>
+
+</html>

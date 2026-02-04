@@ -59,6 +59,51 @@
                 <td>拼接数组为字符串</td>
                 <td>返回指定拼接字符的新数组</td>
             </tr>
+            <tr>
+                <td>find</td>
+                <td>查找元素</td>
+                <td>返回符合测试条件的第一个数组元素值<br>如果没有符合条件的则返回undefined</td>
+            </tr>
+            <tr>
+                <td>every</td>
+                <td>检测数组</td>
+                <td>检测数组所有元素是否都符合指定条件<br>如果所有元素都通过检测返回true,否则返回false</td>
+            </tr>
+            <tr>
+                <td>some</td>
+                <td>检测数组</td>
+                <td>检测数组中的元素是否满足指定条件<br>如果数组中有元素满足条件返回true,否则返回false</td>
+            </tr>
+            <tr>
+                <td>concat</td>
+                <td>合并数组</td>
+                <td>合并两个数组,返回生成新数组</td>
+            </tr>
+            <tr>
+                <td>sort</td>
+                <td>排序</td>
+                <td>对原数组单元值进行排序</td>
+            </tr>
+            <tr>
+                <td>splice</td>
+                <td>删除与替换数组单元</td>
+                <td>删除单元或替换原数组单元</td>
+            </tr>
+            <tr>
+                <td>reverse</td>
+                <td>反转</td>
+                <td>反转数组</td>
+            </tr>
+            <tr>
+                <td>findIndex</td>
+                <td>查找和索引</td>
+                <td>查找元素的索引值</td>
+            </tr>
+            <tr>
+                <td>fill</td>
+                <td>填充和替换</td>
+                <td>指定填充单元以及索引起始下标对原数组进行修改和填充</td>
+            </tr>
         </tbody>
         
 
@@ -113,7 +158,24 @@
         },10)
         console.log(total4)
 
+        
+        //map 可以遍历数组处理数据,并且返回新的数组
+        //和python中的map也差不多,就像for那样的遍历但是又返回了索引
+        const arr1 = ['red', 'blue', 'green']
+        const newArr = arr1.map(function (ele, index) {
+            console.log(ele)
+            console.log(index)
+            return `${index}` + ele + '颜色'
 
+        })
+        console.log(newArr)
+        console.log(typeof(newArr))
+
+        const arr2 = ['you','me','we']
+        console.log(typeof(arr2)) //object类型
+        console.log(arr2.join('')) //youmewe  
+        console.log(arr2.join('❤️')) //you❤️me❤️we
+        //和python中的拼接字符串很像,join中可以指定拼接要用的分隔符
 
     </script>
 </body>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            color: white;
+            background-color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+
+        //这里用到了21Object静态方法中的内容，可以回顾一下
+        //Object.keys(arr)和Object.values(arr)都是将数组的键和值返回为数组中去
+        const spec ={
+            size:'48cm*48cm',
+            color:'黑色'
+        }
+        const specarr=Object.values(spec)  //返回的是values组成的数组
+        console.log(specarr)//['48cm*48cm','黑色']
+
+        //然后利用数组的join方法进行拼接,指定拼接字符为/
+        const arr = specarr.join('/')
+        console.log(arr)  //48cm*48cm/黑色
+        
+
+        //了解整体思路后简单写
+        document.querySelector('div').innerHTML = Object.values(spec).join('/')
+
+
+
+    </script>
+</body>
+</html>

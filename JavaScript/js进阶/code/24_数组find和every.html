@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // arr=['red','green','blue']
+        // const res= arr.find((item)=>{
+        //     return item==='blue'
+        // })
+        // console.log(res) //blue 
+
+        //find最大的使用场景
+
+        const arr = [
+            {
+                name:'小米',
+                price:1999
+            },{
+                name:'华为',
+                price:3999
+            }
+        ]
+
+        //实例:筛选商品,譬如有很多手机产品信息，但是单独只想选择小米的
+
+        const xiaomi=arr.find((item)=>{
+            // if(item.name==='小米'){
+            //     return item
+            // }
+
+            //或者这样写
+            return item.name==='小米' //这样写的意思和上面的一样,都是返回item的name是小米的
+        })
+        console.log(xiaomi)
+
+
+        //every   
+        const  arr2 = [10,2,3,4,7]
+        const res2 = arr2.every((item)=>{
+            item >= 0
+        })
+        console.log(res2)
+
+        const res3 = arr2.every((item)=>{
+            item>=0
+        })
+        console.log(res3)
+    </script>
+</body>
+</html>
