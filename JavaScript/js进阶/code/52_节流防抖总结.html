@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        tr,td,th{
+            border: 0.5px solid black;
+        }
+        th{
+            color: white;
+            background-color:rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>性能优化</th>
+            <th>说明</th>
+            <th>使用场景</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>防抖</td>
+                <td>单位时间内，频繁触发事件，只执行最后一次</td>
+                <td>搜索框输入、手机号、邮箱验证输入检测</td>
+            </tr>
+            <tr>
+                <td>节流</td>
+                <td>单位时间内，频繁触发事件，只执行一次</td>
+                <td>高频事件：鼠标移动mousemove、页面尺寸缩放resize、滚动条scroll等</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

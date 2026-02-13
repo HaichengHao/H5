@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+        48的例子中没有使用防抖操作, 
+        要将其改造为利用防抖的形式
+
+        实现方式
+        1.lodash提供的防抖处理
+
+            _.debounce(func,[wait=0],[options=])
+        2.手写一个防抖函数来处理
+
+        
+    </pre>
+    <div>
+
+    </div>
+    <img src="../imgs/demo3.gif" alt="">
+
+
+    <script src="lodash.min.js"></script>
+    <script>
+        const box = document.querySelector('div')
+        let i = 1
+        function mouseMove() {
+            box.innerHTML = i++
+        }
+        // box.addEventListener('mousemove',mouseMove)
+
+        //实现500ms之后再执行mouseMove
+
+        box.addEventListener('mousemove', _.debounce(mouseMove, 500))
+
+
+
+    </script>
+</body>
+
+</html>

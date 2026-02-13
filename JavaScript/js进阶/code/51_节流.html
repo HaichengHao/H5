@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+        节流:单位时间内，频繁触发事件，只执行一次
+        简单理解:在500ms内,不管触发多少次事件，只执行一次
+
+        有什么使用场景:
+        高频事件:鼠标移动,也米娜尺寸缩放，滚动条滚动
+
+        1.使用lodash
+        语法  _.throttle(fun,时间)
+
+    </pre>
+    <div class="box">
+
+    </div>
+    <script src="lodash.min.js"></script>
+    <script>
+        //要求:鼠标在盒子上移动，不管移动多少次，每隔500ms才+1
+        const box = document.querySelector('.box')
+        let i = 1
+        function mouseMove(){
+            box.innerHTML=i++
+        }
+        // box.addEventListener('mousemove',mouseMove)
+        //实现方式:
+        //1 lodash提供的节流函数来处理
+        // _.throttle()
+        box.addEventListener('mousemove',_.throttle(mouseMove,500))
+        //2 手写一个节流函数来处理
+
+
+    </script>
+</body>
+
+</html>

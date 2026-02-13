@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        apply方法调用函数，同时指定被调用函数中this的值
+        语法:
+            fun.apply(thisArg,[argsArray])
+
+        - thisArg:在fun函数运行时指定this的值
+        - argsArray:传递的值，必须包含在数组里面
+        - 返回值就是函数的返回值，因为它就是调用函数
+        - 因此apply主要跟数组有关系，比如使用Math.max()求数组的最大值
+    </pre>
+
+    <script>
+        const obj={
+            age:18
+        }
+        function fn(x,y){
+            console.log(this)
+            console.log(x+y)
+        }
+        console.log(fn()) //window
+
+        fn.apply(obj,[1,2])//{age:18}  说明this的指向改到了obj身上
+        // console.log()
+
+
+        //使用场景:求数组最大值
+
+        //新方式,利用apply
+        const arr = [100,44,77]
+        const max = Math.max.apply(Math,arr)
+        const min = Math.min.apply(Math,min)
+
+        console.log(min,max)
+
+        //方式2，使用展开运算符
+        console.log(Math.max(...arr))
+        //方式3，使用之前的遍历操作拿到最大值最小值
+    </script>
+</body>
+</html>

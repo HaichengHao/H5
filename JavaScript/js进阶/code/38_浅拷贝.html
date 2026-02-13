@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        首先浅拷贝和深拷贝之针对引用类型  
+        浅拷贝:拷贝的是地址
+
+        常见方法:
+        1.拷贝对象:Object.assign()  /展开运算符{...obj}拷贝对象
+        2.拷贝数组:Array.prototype.concat()或者[...arr]
+        但还是有问题.....
+
+        浅拷贝只适合单层
+    </pre>
+    <script>
+
+        //声明一个对象
+        const obj={
+            uname:"niko",
+            age:22,
+            
+        }
+        const o = obj
+        console.log(o) 
+        o.age=20
+        console.log(o)   //20
+
+        console.log(obj)//本来这个是22,但是下面对age重新赋值之后就会影响这个obj.age导致变成20
+
+        //所以我们本来的意愿是想复制一个对象，用对象的备份进行操作，但是操作后却影响了原来的数据,与我们的意愿相违背
+
+        //直接赋值是将obj的存储地址给了o,所以o本质进行的操作就是对obj进行操作,这不是我们想要的
+
+
+        //浅拷贝
+        const niko={
+            name:'nikofox',
+            age:19,
+            family:{
+                baby:'moeka'
+            }
+        }
+        const vimin={}
+        Object.assign(vimin,niko)
+        console.log(vimin)
+
+        vimin.name='sim'
+      
+        console.log(vimin)
+//       {
+        //     "name": "sim",
+        //     "age": 19
+        // }
+        console.log(niko)
+        // {
+        //     "name": "nikofox",
+        //     "age": 19
+        // } 
+
+          //问题就在下面这里
+        //如果我们对拷贝后的对象中的对象进行修改，就会影响原来的对象中的对象了
+        vimin.family.baby='mizuki'
+        console.log(vimin)
+        console.log(niko)
+
+    </script>
+</body>
+</html>

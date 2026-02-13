@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        throw 抛异常 (和python中的raise理念一样)
+        try/catch 捕获异常  (和python中的try..except异常理念一样)
+        debugger  ()
+        了解js中程序异常处理的方法，提升代码运行的健壮性
+    </pre>
+    <script>
+        //异常处理是指预估代码执行
+        function fn(x,y){
+            if(!x || !y){
+                throw  new Error('没有参数传递进来')
+            }
+            return x+y
+        }
+    </script>
+</body>
+</html>

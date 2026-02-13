@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        面向对象变成的特性:比如封装性、继承性等，可以借助于构造函数来实现  
+        前面我们虚的构造函数的方法很好用，但是存在浪费内存的问题  
+        我们希望所有的对象使用同一个函数,
+
+        原型:
+        - 构造函数通过原型分配的函数是所有对象所共享的
+        - js规定,每个构造函数都有一个prototype属性,指向另一个对象，所以我们也称为原型对象  
+        - 这个对象可以挂载函数，对象实例化不会多次创建原型上函数，节约内存  
+        - 我们可以把那些不变的方法，直接定义在prototype对象上，这样所有对象的实例就可以共享这些方法  
+        - 构造函数和原型对象中的this都指向实例化的对象  
+
+        重点:公共的属性写在构造函数里面，公共的方法写在原型对象身上
+
+        原型是什么？
+        一个对象，我们也称为prototype为原型对象
+        原型的作用是什么？
+        共享方法
+        可以把那些不变的方法写在原型对象上
+
+        构造函数和原型里面的this指向谁？
+        实例化的对象
+    </pre>
+    <script>  
+        function Star(name,age){
+            this.name= name
+            this.age = age
+            // this.sing=()=>console.log(`${this.name}会唱歌`)
+
+        }
+        //原型要写在构造函数身上而不是实例对象身上  
+        Star.prototype.sing = function(){
+            console.log('唱歌')
+        }
+        const ldh = new Star('刘德华',18)
+        const zxy = new Star('张学友',19)
+        // console.log(ldh.sing===zxy.sing) //false,结果是Faslse,说明俩函数不一样  
+
+        //那么接下来用prototype
+        ldh.sing() //调用  
+        zxy.sing() //调用
+        console.log(ldh.sing===zxy.sing) //true
+
+    </script>
+</body>
+</html>

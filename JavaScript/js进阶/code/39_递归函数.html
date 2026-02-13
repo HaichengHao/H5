@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        深拷贝
+        首先浅拷贝和深拷贝只针对引用数据类型
+        深拷贝:拷贝的是对象，不是地址
+
+        常见方法:
+        1.通过递归实现深拷贝
+        2.lodash/cloneDeep
+        3.通过JSON.stringify()实现
+
+        1.通过递归实现深拷贝  
+        函数递归:
+        如果一个函数在内部可以调用其本身，那么这个函数就是递归函数
+        - 简单理解:函数内部自己调用自己
+        - 递归函数的作用和循环效果类似
+        - 由于递归很容易发生“栈溢出”错误(stack overflow),所以必须要加入退出条件return
+
+
+
+
+    </pre>
+    <div>
+
+    </div>
+
+    <script>
+
+        //运行直接爆炸!!!
+        // function fn(){
+        //     fn()
+        // }
+        // fn()
+
+        function getTime(){
+            document.querySelector('div').innerHTML=new Date().toLocaleString()
+            setTimeout(getTime,1000) //这里使用递归+延时函数
+
+        }
+
+        // setInterval(getTime,1) //这个是之前使用的间隔函数的写法
+
+        //执行该函数
+        getTime()
+
+        
+        
+
+    </script>
+</body>
+</html>

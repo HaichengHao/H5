@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instanceof</title>
+</head>
+<body>
+     <pre>
+        和python中的isinstanceof很像
+        都是判断一个实例对象是否属于某个类
+        语法 待判别的实例对象A instanceof 指定的构造函数(当成python中的类的概念)
+     </pre>
+     <script>
+        function Person(name,gender){
+            this.name=name 
+            this.gender = gender
+        }
+
+        //实例对象
+        const manba = new Person('manba','male')
+
+        console.log(manba instanceof Person) //true
+     </script>
+</body>
+</html>

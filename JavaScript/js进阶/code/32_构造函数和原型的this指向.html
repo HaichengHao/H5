@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let that
+        function Star(name){
+            that = this
+            this.name = name
+        }
+
+        Star.prototype.sing = function(){
+            console.log('唱歌')
+        }
+        //实例对象ldh
+        const ldh =  new Star('刘德华')
+
+        console.log(that === ldh) //true,所以this指向的是调用它的ldh
+        
+    </script>
+</body>
+</html>

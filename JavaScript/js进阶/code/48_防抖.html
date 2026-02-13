@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:100px;
+            height: 100px;
+            background-color: gray;
+            font-size: 20px;
+            
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        防抖:
+        单位时间内，频繁触发事件，只执行最后一次
+        使用场景:
+        搜索框输入，只需用户最后一次输入完再发送请求
+        手机号、邮箱验证输入检测
+    </pre>
+
+    <div></div>
+    <script>
+        const box = document.querySelector('div')
+        let i = 1
+        function mouseMove(){
+            box.innerHTML=i++
+        }
+        //添加事件,未做防抖
+        box.addEventListener('mousemove',mouseMove)
+
+
+        //
+    </script>
+</body>
+</html>

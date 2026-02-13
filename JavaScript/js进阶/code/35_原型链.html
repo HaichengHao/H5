@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链以及instance</title>
+</head>
+<body>
+    <pre>
+        基于原型对象的继承使得不同构造函数的原型对象关联在一起，并且这种关联的关系是一种链状的结构，  
+        我们将原型对象的链状结构关系称为原型链 
+        原型链其实就是一个查找规则
+
+        只要是对象就有__proto__只要是原型对象就有.constructor
+    </pre>
+    <script>
+        console.log(Object.prototype)
+        function Person(){
+
+        }
+        const ldh = new Person()
+        console.log(ldh.__proto__===Person.prototype)
+        console.log(Person.prototype.__proto__===Object.prototype)
+    </script>
+</body>
+</html>

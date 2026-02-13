@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        给数组扩展最大值方法和求和方法
+        以前学过  
+        const arr = [1,2,3]  
+        arr.reverse()    
+        扩展完毕之后:
+        arr.sum() 返回的结果是6
+    </pre>
+    <script>
+
+        const arr = [1,2,3]
+        //自己定义的方法，要写到数组.prototype身上
+        Array.prototype.max = function(){
+            return Math.max(...this) //利用展开运算符,利用展开运算让其指向调用它的人
+        }
+        console.log(arr.max())  //数组arr调用了.max()那么max的原型函数利用数学方法Math.max(...this)就用展开运算符来运算   
+                                // 也就是返回的是数组的最大值
+
+
+        //实现数组求和
+        Array.prototype.sum = function(){
+            return this.reduce((prev,current)=>{
+                return prev+current
+            },0)
+        }
+
+        console.log(arr.sum())
+
+        
+        
+    </script>
+</body>
+</html>

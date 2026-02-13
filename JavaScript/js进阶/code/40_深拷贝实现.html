@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+
+    </pre>
+    <script>
+        const obj = {
+            uname:'nikofox',
+            age:18,
+
+            //遇到数组该如何处理呢?
+            hobby:['乒乓球','足球'],
+            family:{
+                baby:'sanrio'
+            }
+        }
+        const o ={}
+
+        //拷贝函数
+        function deepCopy(newObj,oldObj){  
+            for(let k in oldObj){
+
+                //利用之前学的instanceof来判断属性值是否属于Array,即数组类型
+                if(oldObj[k] instanceof Array){//如果是数组那就需要对数组进行操作
+                    newObj[k]=[]
+                    deepCopy(newObj[k],oldObj[k])  //如果数组传入的话那么k就是数组的索引好
+
+                }else if(oldObj[k] instanceof Object){
+                    newObj[k]={}
+                    deepCopy(newObj[k],oldObj[k])
+
+                }
+                else{  //如果不是数组那就将旧对象的键值赋予给新的对象
+                    newObj[k] = oldObj[k]   //将旧对象的值赋值给新的对象
+                }
+                
+            }
+        }
+        deepCopy(o,obj)  //函数调用,o是新对象,obj是旧对象
+        console.log(o)
+        // {
+        //     uname:'nikofox',
+        //     age:18
+        // }
+
+        //然后给新的对象赋值
+        o.uname='mins'
+        console.log(o)
+        // {
+        //     "uname": "mins",
+        //     "age": 18
+        // }
+        console.log(obj)  
+        // {
+        //     "uname": "nikofox",
+        //     "age": 18
+        // } 可以看到旧数组并未受到影响
+
+    </script>
+</body>
+</html>

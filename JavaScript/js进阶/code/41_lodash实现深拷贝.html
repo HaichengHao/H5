@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        js库lodash里面cloneDeep内部实现了深拷贝
+    </pre>
+    <script src="lodash.min.js"></script>
+    <script>
+       const obj = {
+            uname:'nikofox',
+            age:18,
+
+            //遇到数组该如何处理呢?
+            hobby:['乒乓球','足球'],
+            family:{
+                baby:'sanrio'
+            }
+        }
+
+        //使用lodash来做
+        const o = _.cloneDeep(obj)  //深拷贝
+        console.log(o)
+
+        //修改拷贝对象的属性值
+        o.family.baby='mirine'
+
+        console.log(o)  
+
+        console.log(obj)
+
+        //确实不受影响
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        bind()方法不会调用函数，但是能改变函数内部this指向
+        语法:   
+            fun.bind(thisArg,arg1,arg2,...)
+
+        - thisArg:在fun函数运行时指定的this值
+        - arg1,arg2:传递的其他参数
+        - 返回由指定的this值和初始化参数改造的 原函数拷贝(新函数)
+
+        - 因此当我们只是想改变this指向，并且不想调用这个函数的时候，可以使用bind,比如改变定时器内部的this指向
+    </pre>
+    <button>发送短信</button>
+
+    <script>
+        const obj={
+            age:18
+        }
+        function fn(){
+            console.log(this)
+        }
+
+        //1.bind不会调用函数
+        //2.能改变this指向
+        //3.返回值是个函数,但这个函数里面的this是更改过的obj
+        const fun = fn.bind(obj)
+        fun()
+
+        //需求，一个按钮点击立马就禁用,两秒钟后开启
+        // const btn = document.querySelector('button')
+        // btn.addEventListener('click',function(){
+        //     this.disabled=true //禁用按钮   
+        //     window.setInterval(function(){
+        //         btn.disabled=false
+        //     },2000)
+        // })
+
+
+        //bind写法我们就可以不用单独考虑this的指向了
+        const btn = document.querySelector('button')
+        btn.addEventListener('click',function(){
+            this.disabled=true //禁用按钮   
+            window.setInterval(function(){
+                this.disabled=false
+            }.bind(btn),2000)  //.bind(btn)也就是让this的值指向btn,如果不这么做的话this将会指向window而不是我们想指定的this
+        })
+    </script>
+</body>
+</html>

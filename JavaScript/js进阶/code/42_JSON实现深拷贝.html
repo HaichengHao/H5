@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            uname:'nikofox',
+            age:18,
+
+            //遇到数组该如何处理呢?
+            hobby:['乒乓球','足球'],
+            family:{
+                baby:'sanrio'
+            }
+        }
+
+        //JSON.stringify()是将对象转换为字符串
+        //转换为字符串之后就不需要考虑那么多问题了!!!
+        console.log(JSON.stringify(obj))
+
+        //还有一个是将字符串转换为对象的JSON.parse()可以将字符串转化为对象
+        //由于转换后就和原来的没有什么关系了，所以其是一个简单数据类型
+
+        console.log(JSON.parse(JSON.stringify(obj)))
+
+        const o = JSON.parse(JSON.stringify(obj))  
+        o.family.baby='moeka'
+
+        console.log(o)
+    </script>
+</body>
+</html>
