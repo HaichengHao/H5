@@ -10,7 +10,7 @@
         //箭头函数中没有arguments，它对于动态参数的定义叫做剩余参数
 
         //实现一个求和函数
-        const getSum = (...args)=>{
+        const getSum = (...args)=>{//...xxx这是展开运算符,有点像python中的可变位置参数
             let sum=0
             for(let i=0;i<args.length;i++){
                 sum+=args[i]

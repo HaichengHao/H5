@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            margin: 0 auto;
+            border-collapse: collapse;
+            border: 1px solid orange;
+        }
+        th,td{
+            border: 0.3px solid black;
+        }
+        th{
+            text-align: center;
+            color: white;
+            background-color: rebeccapurple;
+        }
+        tbody tr td:first-child{
+            background-color: orangered;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>事件</th>
+            <th>触发条件</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ontimeupdate</td>
+                <td>事件在视频/音频(video/audio)当前的播放位置发生改变时触发</td>
+            </tr>
+            <tr>
+                <td>onloadeddate</td>
+                <td>事件在当前帧的数据加载完成且还没有足够的数据播放视频/音频(audio/video)的下一帧时触发</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <pre>
+        记录上次视频的播放位置
+        1.在ontimeupdate事件触发的时候，每隔1秒钟，就记录当前时间到本地存储
+        2.下次打开页面时,onloadeddata事件触发，就可以从本地存储取出事件，让视频从取出的时间播放,如果没有就默认为0s
+        3.获得当前时间 video.currentTime
+    </pre>
+</body>
+</html>
