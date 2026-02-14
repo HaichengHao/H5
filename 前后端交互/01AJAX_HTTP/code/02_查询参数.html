@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查询参数</title>
+</head>
+<body>
+    <pre>
+        定义:浏览器提供给服务器的额外信息,让服务器返回浏览器想要的数据
+        和python中所学的后端框架那时候学的一样,就是?后面跟着的一堆  
+        写法
+        axios({
+            url:'目标资源地址',
+            params:{
+                参数名:值  //查询参数
+            }
+        }).then((result)=>{
+            //对返回数据的后续处理
+        })
+
+    </pre>
+    <div class="citylst">
+
+    </div>
+    <script src="axios.min.js"></script>
+    <script>
+        // axios({url:'http://hmajax.itheima.net/api/city?pname=河北省'}).then((result)=>{
+        //     console.log(result)
+        //     document.querySelector('.citylst').innerHTML=result.data.list.map(
+        //         (item)=>{
+        //             return `
+        //             <div>${item}</div>
+        //             `
+        //         }
+        //     ).join(' ')
+        // })
+
+        axios({url:'http://hmajax.itheima.net/api/city',params:{pname:'河北省'}}).then((result)=>{
+            console.log(result)
+            document.querySelector('.citylst').innerHTML=result.data.list.map(
+                (item)=>{
+                    return `
+                    <div>${item}</div>
+                    `
+                }
+            ).join(' ')
+        })  
+    </script>
+</body>
+</html>

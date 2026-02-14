@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="newslst">
+        <!-- <h3 class="title"></h3>
+        <p class="idc"></p>
+        <img src="" alt="">
+        <span class="source"></span>
+        <span class="time"></span> -->
+    </div>
+</body>
+<script src="../code/axios.min.js"></script>
+<script>
+
+    axios({ url: 'http://hmajax.itheima.net/api/news' }).then((result) => {
+        // console.log(result)
+        const newsinfo = result.data['data']
+        console.log(newsinfo)
+        // console.log(newsinfo[0])
+        // console.log(typeof(newsinfo))
+        // document.querySelector('.outter').innerHTML =  newsinfo.map((item)=>{
+        //     const {id,title,source,cmtcount,imgsrc:img,time}=item
+        //     return
+        //     `
+        //      <h3 class="title">${title}</h3>
+        //     <p class="idc">${id}</p>
+        //     <img src="${imgsrc}" alt="">
+        //     <span class="source">${source}</span>
+        //     <span class="time">${time}</span>
+        //     `
+        // }).join(' ')
+
+        document.querySelector('.newslst').innerHTML = newsinfo.map(
+            (item) => {
+                const { id, title, source, cmtcount, img:imgsrc, time } = item
+                return `
+                    <div>
+                        <h3 class="title">${title}</h3>
+                        <p class="idc">${id}</p>
+                        <img src="${imgsrc}" alt="">
+                        <span class="source">${source}</span>
+                        <span class="time">${time}</span>
+                    </div>
+            `
+            }
+        ).join(' ')
+
+    })
+</script>
+
+</html>
