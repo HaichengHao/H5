@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            margin: 0 auto;
+
+        }
+        th,td{
+            border: 0.3px solid black;
+        }
+        thead{
+            background-color: orange;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        学这个不用有压力，这个和学过的三个python后端框架有相通之处且语法相对简单
+    </pre>
+    <table>
+        <thead>
+            <th>请求方法</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>获取数据</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>提交数据</td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td>修改数据(全部)</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>删除数据</td>
+            </tr>
+            <tr>
+                <td>PATCH</td>
+                <td>修改数据(局部)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <pre>
+        axios请求配置  
+        url:网址
+        method:请求的方法
+        data:提交数据
+        axios({
+            url:'目标资源地址',
+            method:'请求方法',
+            data:{
+                参数名:值
+            }
+        }).then((result)=>{})
+
+
+        1.请求方法表明对服务器资源的操作,最常用的2个是
+        - post提交数据,get查询数据
+        2.axios的核心配置
+        url:请求url网址
+        method:请求方法,GET可以省略(不区分大小写)
+        params:查询参数
+        data:提交数据
+    </pre>
+
+    <script src="axios.min.js"></script>
+    <script>
+
+        //完成一个注册的功能
+        axios({
+            url:'https://hmajax.itheima.net/api/register',
+            method:'POST',
+            data:{
+                'username':'nikofox123',
+                'password':'justapwd123'
+            }
+        }).then(
+            result=>{
+                console.log(result.data.message)
+            }
+        )
+    </script>
+</body>
+</html>

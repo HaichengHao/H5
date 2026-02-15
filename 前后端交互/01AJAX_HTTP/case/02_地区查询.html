@@ -68,9 +68,10 @@
         axios({
             url:'http://hmajax.itheima.net/api/area',
             params:{
-                pname:pname,
+                pname:pname, //还有就是属性名和变量名相同的时候可以只写一个,也就是说只写pname,这样也可
                 cname:cname
-            }
+            }  
+            //其实有了多个params就会这样拼接http://hmajax.itheima.net/api/area?pname=xxx&cname=xxx 这就是多个查询参数的情况咯！！！
         }).then(result=>{
                 console.log(result.data.list)
                 document.querySelector('.list-group').innerHTML=result.data.list.map((item)=>{
