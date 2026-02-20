@@ -64,20 +64,21 @@
         </div>
         <!-- 表单 -->
         <div class="form_wrap">
-            <form>
+            <form class="login-form">
                 <div class="mb-3">
                     <label for="username" class="form-label">账号名</label>
-                    <input type="text" class="form-control username">
+                    <input type="text" class="form-control username" name="username">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">密码</label>
-                    <input type="password" class="form-control password">
+                    <input type="password" class="form-control password" name="password">
                 </div>
                 <button type="button" class="btn btn-primary btn-login"> 登 录 </button>
             </form>
         </div>
     </div>
     <script src="/axios.min.js"></script>
+    <script src="/form-serialize.js"></script>
     <script>
         // 目标1：点击登录时，用户名和密码长度判断，并提交数据和服务器通信
 
@@ -106,10 +107,21 @@
         //1.登录按钮添加点击事件
         document.querySelector('button').addEventListener(
             'click', () => {
-                const username = document.querySelector('.username').value
-                const password = document.querySelector('.password').value
 
-                console.log(username, password)
+                //不再使用原来的qs获取
+                // const username = document.querySelector('.username').value
+                // const password = document.querySelector('.password').value
+
+                //用serialize
+                const form = document.querySelector('form')  
+                const data = serialize(form,{hash:true,empty:true})
+                console.log(data)
+
+                // console.log(username, password)
+                
+
+                //然后直接解构,最小改动
+                const {username,password} = data
 
 
                 //判断长度

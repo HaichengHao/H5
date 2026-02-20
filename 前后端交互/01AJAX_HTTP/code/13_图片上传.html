@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <pre>
+        1.获取图片文件对象
+        2.使用FormData携带图片文件
+
+        const fd = new FormData()
+        fd.append(参数名,值)
+        3.提交表单数据到服务器,使用图片url网址
+
+    </pre>
+    <!-- <form action="" type="FormData"></form> -->
+    <input type="file" name=""  class="upload">
+    <img src="" alt="" class="my-img">
+    
+<script src="axios.min.js"></script>
+<script>
+    //文件选择元素->change事件绑定
+    document.querySelector('.upload').addEventListener(
+        'change',(e)=>{
+            //1.获取图片文件
+            console.log(e.target.files[0]) //❗❗❗❗❗注意这里使用的是e.target.files这个事件对象的属性,它可以获得上传文件的信息
+
+            //2.利用FormData携带图片文件
+            const fd = new FormData()
+            fd.append('img',e.target.files[0])
+
+            axios({
+                url:'https://hmajax.itheima.net/api/uploadimg',
+                method:'post',
+                data:fd
+                
+            }).then(result=>{
+                console.log(result)
+                document.querySelector('.my-img').src=result.data.data.url
+            }).catch(error=>{
+                console.log(error)
+            })
+            
+
+             
+        }
+    )
+    
+</script>
+</body>
+
+  
+</html>
