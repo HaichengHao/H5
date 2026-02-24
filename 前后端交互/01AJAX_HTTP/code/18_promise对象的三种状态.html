@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="../imgs/过程.svg" alt="">
+    <pre>
+        promise的三种状态
+        作用:了解Promise对象如何关联的处理函数,以及代码执行顺序
+
+        概念:一个Promise对象,必然处于以下几种状态之一  
+
+        待定(pending)     :初始状态,既没有被兑现,也没有拒绝
+        已兑现(fulfilled) : 意味着,操作成功完成
+        已拒绝(rejected)  : 意味着,操作失败         
+        
+        
+        注意:Promise对象一旦被兑现/拒绝 就是已经敲定了,状态无法再被改变
+
+
+    </pre>
+    <script>
+
+        //1 创建promise对象(pending-待定状态)
+        const p = new Promise((resolve,reject)=>{
+            console.log('promise对象内开始执行')
+            setTimeout(()=>{
+                //当resolve()被调用=>'fulfilled状态-已兑现' => then()
+                // resolve('模拟ajax请求成功结果 ')
+
+                //当reject()被调用=>'rejected状态-已拒绝' => catch()
+                reject(new Error('模拟Ajax请求失败结果'))
+            },2000)
+        })
+        console.log(p)
+        p.then(result=>{
+            console.log(result)
+        }).catch(error=>{
+            console.log(error)
+        })
+    </script>
+</body>
+</html>

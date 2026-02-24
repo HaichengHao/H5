@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        步骤:
+        1.创建XMLHttpRequest对象
+        2.配置请求方法和请求url地址
+        3.监听loadend事件,接收响应结果
+        4.发起请求
+
+        const xhr = new XMLHttpRequest()
+        xhr.open('请求方法','请求url网址')
+        xhr.addEventlistener('loadend',()=>{
+            //响应结果   
+            console.log(xhr.response)
+        })
+        xhr.send()  //发送请求
+    </pre>
+    <ul>
+
+    </ul>
+    <script>
+        const xhr = new XMLHttpRequest()
+        xhr.open('get','https://hmajax.itheima.net/api/province')
+        xhr.addEventListener('loadend',()=>{
+            console.log(xhr.response)  //得到的是一个字符串对象
+
+            //由于xhr不像axios那样给我们封装好将json字符串转为js对象,所以我们很多时候都需要自己处理JSON的序列化
+            const plist = JSON.parse(xhr.response)   //所以要使用json序列化parse
+            console.log(plist)
+            console.log(plist.list)
+            const provinceslst = plist.list
+            document.querySelector('ul').innerHTML =  provinceslst.map((item)=>{
+                return `
+                    <li>${item}</li>
+                `
+            }).join(' ')
+        })
+        xhr.send()
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04.案例_地区查询</title>
+  <link href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      font-size: 15px;
+    }
+
+    body {
+      padding-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form id="editForm" class="row">
+      <!-- 输入省份名字 -->
+      <div class="mb-3 col">
+        <label class="form-label">省份名字</label>
+        <input type="text" value="北京" name="province" class="form-control province" placeholder="请输入省份名称" />
+      </div>
+      <!-- 输入城市名字 -->
+      <div class="mb-3 col">
+        <label class="form-label">城市名字</label>
+        <input type="text" value="北京市" name="city" class="form-control city" placeholder="请输入城市名称" />
+      </div>
+    </form>
+    <button type="button" class="btn btn-primary sel-btn">查询</button>
+    <br><br>
+    <p>地区列表: </p>
+    <ul class="list-group">
+      <!-- 示例地区 -->
+      <li class="list-group-item">东城区</li>
+    </ul>
+  </div>
+  
+  <script src="/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+  <script src="../code/axios.min.js"></script>
+  <script>
+    /*
+      获取地区列表: http://hmajax.itheima.net/api/area
+      查询参数:
+        pname: 省份或直辖市名字
+        cname: 城市名字
+    */
+   document.querySelector('button').addEventListener('click',function(){
+    const pname=document.querySelector('[name="province"]').value 
+    const cname=document.querySelector('[name="city"]').value
+    if(pname && cname){
+    //   console.log(pname,cname)  
+      getlst(pname,cname)
+    }else{
+        alert('未填写完整')
+    }
+    
+   })
+
+   function getlst(pname,cname){
+
+        const xhr = new XMLHttpRequest()
+        const paramsObj = new URLSearchParams({
+            pname,
+            cname
+        })
+        //构造查询字符串
+        const queryString = paramsObj.toString()
+        // console.log(queryString)
+        xhr.open('get',`https://hmajax.itheima.net/api/area?${queryString}`)
+        xhr.addEventListener('loadend',()=>{
+            // console.log(xhr.response)
+            const resp = JSON.parse(xhr.response)
+            console.log(resp.list)
+            const clst = resp.list //获取城市列表
+            document.querySelector('.list-group').innerHTML=clst.map((item)=>{
+                    return `
+                    <li class="list-group-item">${item}</li>
+                    `
+                }).join(' ')
+
+        })
+        xhr.send()
+       
+   }
+
+  </script>
+ 
+</body>
+
+</html>

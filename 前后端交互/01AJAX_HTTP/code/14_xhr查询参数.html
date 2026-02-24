@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        xhr查询参数
+    </pre>
+    <ul></ul>
+    <script>
+        const xhr = new XMLHttpRequest()
+        xhr.open('get', 'https://hmajax.itheima.net/api/city?pname=河南省') //原生xhr只能通过这样自己填写查询参数到url上来实现
+        xhr.addEventListener('loadend', () => {
+            console.log(xhr.response)
+            const city_lst = JSON.parse(xhr.response)
+            console.log(city_lst.list)
+            document.querySelector('ul').innerHTML = city_lst.list.map((item) => {
+                return `
+                    <li>${item}</li>
+                `
+            }).join(' ')
+        })
+        xhr.send()
+    </script>
+</body>
+
+</html>

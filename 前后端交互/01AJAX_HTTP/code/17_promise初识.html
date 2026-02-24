@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        什么是Promise?
+        表示(管理)一个异步操作最终状态和结果的对象  
+
+        为什么学Promise?
+        成功和失败的状态,可以关联对应处理程序
+        了解axios内部原理
+
+        
+
+        Promise对象用于表示一个异步操作的最终完成(或失败)及其结果值
+
+        好处:
+        1.逻辑更清晰
+        2.了解axios函数内部运作机制
+        3.能解决回调函数地狱问题
+
+        语法:
+        1 创建promise对象 
+        const p = new Promise((resolve,reject)=>{
+            //2.执行异步任务并传递结果
+            //成功调用:resolve(值)触发then()执行  
+            //失败调用:resolve(值)触发catch()执行
+        })
+        3.接收结果
+        p.then(result=>{
+            //成功
+        }).catch(error=>{
+            //失败
+        })
+    </pre>
+    <script>
+        const p = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                // resolve('模拟ajax请求成功的结果') 
+                reject( new Error('模拟ajax请求失败的结果'))
+            },2000)
+        })
+
+        //3.获取结果
+        p.then(result=>{
+            console.log(result)
+        }).catch(error=>{
+            console.log(error)
+        })
+    </script>
+</body>
+</html>

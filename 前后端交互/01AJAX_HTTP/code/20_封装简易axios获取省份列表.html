@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        需求:基于Promise+XHR封装myAxios函数,获取省份列表展示
+        步骤:
+        1.定义myAxios函数,接收配置对象,返回Promise对象
+
+        语法:
+        function myAxios(config){
+            return new Promise((resolve,reject)=>{
+                //xhr请求
+                //调用成功/失败的处理程序
+            })
+        }
+        myAxios({
+            url:'目标资源地址'
+        }).then(result=>{
+
+        }).catch(error=>{
+
+        })
+    </pre>
+    <p></p>
+    <script>
+        function myAxios(config){
+            return new Promise((resolve,reject)=>{
+                const xhr = new XMLHttpRequest()
+                xhr.open(config.method || 'get',config.url)
+                xhr.addEventListener('loadend',()=>{
+                    if(xhr.status>=200 && xhr.status<300){
+                        resolve(JSON.parse(xhr.response))
+                    }else{
+                        reject(new Error(xhr.response))
+                    }
+                })
+                xhr.send()
+            })
+        }
+
+        myAxios({
+            url:'https://hmajax.itheima.net/api/province'
+
+        }).then(
+            result=>{
+                console.log(result)
+                document.querySelector('p').innerHTML = result.list.join('<br>')
+            }
+        ).catch(error=>{
+            console.log(error)
+            document.querySelector('.my-p').innerHTML = error.message
+        })
+    </script>
+</body>
+</html>

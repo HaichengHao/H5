@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        需求:通过xhr提交用户名和密码,完成注册功能
+        核心:
+        请求头设置Content-Type:application/json
+        请求体携带JSON字符串
+
+        const xhr = new XMLHttpRequest()
+        xhr.open('请求方法','请求url网址')
+        xhr.addEventListener('loadend',()=>{
+            console.log(xhr.response)
+        })
+        xhr.setRequestHeader('Content-Type','application/json')
+
+        //准备数据并将其转换为JSON字符串(序列化,Json字符串化)
+        const user = {username:'xxx',password:'xxx'}
+        const userStr = JSON.stringfy(user)  
+
+        //发送请求体数据  
+        xhr.send(userStr)
+    </pre>
+    <script>
+        const xhr = new XMLHttpRequest()
+        xhr.open('post',url='https://hmajax.itheima.net/api/register')
+        xhr.addEventListener('loadend',()=>{
+            console.log(xhr.response)
+        })
+        xhr.setRequestHeader('Content-Type','application/json')
+        const user = {
+            username:'nikoko123',
+            password:'121212'
+        }
+        const userstr = JSON.stringify(user)
+        xhr.send(userstr)
+    </script>
+</body>
+</html>
