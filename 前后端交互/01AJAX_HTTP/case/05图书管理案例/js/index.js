@@ -97,7 +97,7 @@ document.querySelector('.add-btn').addEventListener('click', () => {
  * 3.刷新图书列表
  */
 
-//由于数据是动态获取的,所以要想获取可以使用事件委托给父级元素
+//由于数据是动态获取的,所以要想获取可以使用事件委托给父级元素❗❗❗❗❗❗❗❗❗❗❗❗
 //利用事件对象来获取触发事件的目标元素
 document.querySelector('tbody').addEventListener('click', e => {
     console.log(e.target.classList) //获取目标事件的类

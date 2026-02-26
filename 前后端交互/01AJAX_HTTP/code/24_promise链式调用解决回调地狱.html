@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <span>省份</span>
+        <select name="" id="" >
+            <option value="" class="province" ></option>
+        </select>
+        <span>城市</span>
+        <select name="" id="">
+            <option value="" class="city"></option>
+        </select>
+        <span>地区</span>
+        <select name="" id="">
+            <option value="" class="area"></option>
+        </select>
+    </form>
+    <pre>
+        目标:使用Promise链式调用,解决回调函数地狱问题   
+        做法:每个Promise对象中管理一个异步任务,使用then返回Promise对象,串联起来
+
+    </pre>
+
+    <img src="../imgs/回调.svg" alt="">
+    <img src="../imgs/链式调用解决回调地狱.svg" alt="">
+    <img src="../imgs/流程.svg" alt="">
+    <script src="/axios.min.js"></script>
+    <script>
+    /**
+     * 目标:把会带哦函数嵌套代码,改成Promise链式调用结构
+     * 需求:获取默认第一个省,第一个市,第一个地区并展示在下拉菜单中
+    */
+    
+    
+    //定义全局变量 
+
+    let pname = ''
+
+    //1.获取省份信息
+    
+    axios({
+        url:'https://hmajax.itheima.net/api/province'
+    }).then(result=>{
+        pname = result.data.list[0]
+        document.querySelector('.province').innerHTML = pname
+
+        //2.得到-获取城市的Promise对象   
+        return axios({  //按照流程图,第一次return的是Promise
+            url:'https://hmajax.itheima.net/api/city',
+            params:{
+                pname
+            }
+        }).then(result=>{
+            const cname = result.data.list[0]
+            document.querySelector('.city').innerHTML = cname
+
+
+            //3.得到-获取地区的Promise对象
+            return axios({  //按照流程图,第二次return的也是Promise
+                url:'https://hmajax.itheima.net/api/area',
+                params:{
+                    pname,
+                    cname
+                }
+            })
+        })
+    }).then(result=>{  //最后一次就是直接写不用返回了
+            const areaname = result.data.list[0]
+            console.log(areaname)
+            document.querySelector('.area').innerHTML = areaname
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <span>省份</span>
+        <select name="" id="" >
+            <option value="" class="province" ></option>
+        </select>
+        <span>城市</span>
+        <select name="" id="">
+            <option value="" class="city"></option>
+        </select>
+        <span>地区</span>
+        <select name="" id="">
+            <option value="" class="area"></option>
+        </select>
+    </form>
+    <pre>
+        定义:
+        async 函数是使用async关键字声明的函数。async函数是AsyncFunction构造函数的实例,  
+        并且其中允许使用await关键字。async和await关键字让我们可以用一种更简洁的方式写出  
+        基于Promise的异步行为,而无需刻意地链式调用promise  
+
+        概念:  
+        在async函数内,使用await关键字取代then函数,等待获取Promise对象成功状态的结果值
+    </pre>
+    <img src="../imgs/思路.jpeg" alt="">
+
+    <script src="/axios.min.js"></script>
+    <script>
+        console.log(axios({url:'https://hmajax.itheima.net/api/province'}))
+        //获取默认省市区的函数
+        async function getDefaultArea(){
+            const pObj = await axios({url:'https://hmajax.itheima.net/api/province'})
+            const pname = pObj.data.list[0]
+            const cObj = await axios({url:'https://hmajax.itheima.net/api/city',params:{pname}})
+            const cname = cObj.data.list[0]
+            const aObj = await axios({url:'https://hmajax.itheima.net/api/area',params:{pname,cname}})  
+            const aname = aObj.data.list[0]
+
+            //赋予到页面上   
+
+            document.querySelector('.province').innerHTML = pname
+            document.querySelector('.city').innerHTML = cname
+            document.querySelector('.area').innerHTML = aname
+
+        }
+        //调用  
+        getDefaultArea()
+
+
+    </script>
+</body>
+</html>

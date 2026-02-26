@@ -164,7 +164,7 @@ function getWeather(city) {
 }
 
 //首页默认获取北京的天气
-getWeather('110100')
+getWeather('110100') 
 
 //接下来实现输入城市名称
 

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        th{
+            background-color: rebeccapurple;
+        }
+        td,tr{
+            border: 0.3px solid black;
+        }
+        tr:nth-child(n-1){
+            background-color: brown;
+            color: white;
+        }
+        tr:last-child{
+            background-color: orange;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h3>
+        宏任务与微任务
+    </h3>
+    <p>ES6之后引入了Promise对象,让JS引擎也可以发起异步任务</p>
+    <h4>异步任务分为</h4>
+    <ul>
+        <li>宏任务:由浏览器环境执行的异步代码</li>
+        <li>微任务:由JS引擎环境执行的异步代码</li>
+    </ul>
+
+    <table>
+        <thead>
+            <th>任务(代码)</th>
+            <th>执行所在环境</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>JS脚本执行事件(script)</td>
+                <td>浏览器</td>
+            </tr>
+            <tr>
+                <td>setTimeout/setInterval</td>
+                <td>浏览器</td>
+            </tr>
+            <tr>
+                <td>AJAX请求完成事件</td>
+                <td>浏览器</td>
+            </tr>
+            <tr>
+                <td>用户交互事件等</td>
+                <td>浏览器</td>
+            </tr>
+            <tr>
+                <td>Promise对象.then()</td>
+                <td>JS引擎</td>
+            </tr>
+        </tbody>
+    </table>
+<pre>
+    Promise对象.then()是微任务
+    Promise本身是同步的,而then和catch回调函数是异步的
+
+
+    1.什么是宏任务？
+    浏览器执行的异步代码
+    例如:JS执行脚本事件,setTimeout/setinterval,AJAX请求完成事件,用户交互事件等   
+    2.什么是微任务?
+    JS引擎执行的异步代码   
+    例如:Promise对象.then()的回调
+    3.JavaScript内代码如何执行 
+    执行第一个script脚本事件宏任务,里面同步代码   
+    遇到宏任务/微任务交给宿主环境,有结果回调函数进入对应队列
+    当执行栈空闲时,清空微任务队列,再执行下一个宏任务,从1再来
+</pre>
+     
+    <img src="../imgs/宏任务微任务.svg" alt="">
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        async函数和await捕获错误  
+        使用 try...catch 
+            try...catch语句标记要尝试的语句块,并指定一个出现异常时抛出的响应  
+
+        语法:
+            try{
+                //要执行的代码
+            }catch(error){
+                //error接收的是错误信息
+                //try里代码,如果有错误,直接进入这里执行
+            }
+    </pre>
+        <form action="">
+        <span>省份</span>
+        <select name="" id="" >
+            <option value="" class="province" ></option>
+        </select>
+        <span>城市</span>
+        <select name="" id="">
+            <option value="" class="city"></option>
+        </select>
+        <span>地区</span>
+        <select name="" id="">
+            <option value="" class="area"></option>
+        </select>
+    </form>
+    <script src="/axios.min.js"></script>
+    
+    <script>
+        console.log(axios({url:'https://hmajax.itheima.net/api/province'}))
+        //获取默认省市区的函数
+        async function getDefaultArea(){
+            //1 try包裹可能产生错误的代码
+            try{
+            const pObj = await axios({url:'https://hmajax.itheima.net/api/province'})
+            const pname = pObj.data.list[0]
+            const cObj = await axios({url:'https://hmajax.itheima.net/api/city',params:{pname}})
+            const cname = cObj.data.list[0]
+            const aObj = await axios({url:'https://hmajax.itheima.net/api/area',params:{pname,cname}})  
+            const aname = aObj.data.list[0]
+
+            //赋予到页面上   
+
+            document.querySelector('.province').innerHTML = pname
+            document.querySelector('.city').innerHTML = cname
+            document.querySelector('.area').innerHTML = aname
+            }catch(error){
+                //2 接着调用catch这块儿,接收错误信息
+                //如果try里面代码报错后,try中剩余的代码就不会执行了
+                console.dir(error)
+                
+            }
+        }
+        //调用  
+        getDefaultArea()
+
+
+    </script>
+</body>
+</html>
