@@ -190,9 +190,7 @@ document.querySelector('.search-city').addEventListener('input',function(e){
                 `
                 
             }).join(' ')
-           
-               
-        
+
         }
     )
 

@@ -113,6 +113,7 @@ document.querySelector('.submit').addEventListener('click',()=>{
     console.log(result)
 
     //成功后显示提示框  
+    //烤面包机的吐司面包ding~~~~~
 
     const toastDom = document.querySelector('.my-toast')
     const toast = new bootstrap.Toast(toastDom)
