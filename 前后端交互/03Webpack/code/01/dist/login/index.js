@@ -1,0 +1,1 @@
+(()=>{var e={769(e){e.exports={checkCode:e=>6===e.length,checkPhone:e=>11===e.length}}},o={};const c=function c(r){var n=o[r];if(void 0!==n)return n.exports;var t=o[r]={exports:{}};return e[r](t,t.exports,c),t.exports}(769);console.log(c.checkCode("112233")),console.log(c.checkPhone("16655443321"))})();
