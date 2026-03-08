@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子家谱制作器 (导出纯文字版)</title>
+    <style>
+        body { font-family: 'Microsoft YaHei', sans-serif; margin: 0; padding: 0; display: flex; height: 100vh; overflow: hidden; background-color: #f9f9f9; }
+        
+        /* --- 侧边栏折叠样式 --- */
+        #sidebar {
+            width: 320px;
+            background: #ffffff;
+            border-right: 1px solid #e0e0e0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+            z-index: 10;
+            overflow-y: auto;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        #sidebar.collapsed {
+            width: 0;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+            overflow: hidden;
+        }
+
+        #toggle-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 28px;
+            height: 28px;
+            background: #f0f2f5;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #666;
+            transition: all 0.2s;
+            z-index: 20;
+        }
+        #toggle-btn:hover {
+            background: #e6f7ff;
+            border-color: #1890ff;
+            color: #1890ff;
+        }
+
+        #open-sidebar-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        #open-sidebar-btn:hover {
+            transform: scale(1.1);
+            background: #2980b9;
+        }
+
+        h2 { margin: 0 0 10px 0; color: #2c3e50; font-size: 1.4rem; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h3 { margin: 15px 0 5px; font-size: 1rem; color: #555; }
+        
+        .control-group { background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
+        
+        label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.9rem; color: #444; }
+        input, textarea, select { 
+            width: 100%; padding: 10px; margin-bottom: 12px; 
+            border: 1px solid #ddd; border-radius: 6px; 
+            box-sizing: border-box; font-size: 0.95rem; transition: border 0.3s;
+        }
+        input:focus, textarea:focus, select:focus { border-color: #3498db; outline: none; }
+        
+        button {
+            width: 100%; padding: 12px; 
+            background: #3498db; color: white; border: none; 
+            border-radius: 6px; cursor: pointer; 
+            font-size: 1rem; font-weight: 600;
+            transition: all 0.2s; margin-bottom: 8px;
+        }
+        button:hover { background: #2980b9; transform: translateY(-1px); }
+        button:active { transform: translateY(0); }
+        
+        button.secondary { background: #95a5a6; }
+        button.secondary:hover { background: #7f8c8d; }
+        
+        button.svg-btn { background: #8e44ad; }
+        button.svg-btn:hover { background: #732d91; }
+
+        button.edit-btn { background: #27ae60; display: none; }
+        button.edit-btn:hover { background: #219150; }
+
+        button.danger { background: #e74c3c; display: none; }
+        button.danger:hover { background: #c0392b; }
+
+        #chart-container {
+            flex-grow: 1;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+        }
+        #chart-container:active { cursor: grabbing; }
+
+        svg { width: 100%; height: 100%; }
+        
+        /* 节点样式 - 保持有圆圈 */
+        .node circle { fill: #fff; stroke-width: 3px; transition: all 0.3s; }
+        .node-bg { fill: #ffffff; stroke: none; }
+        
+        .node text { font-family: sans-serif; pointer-events: none; }
+        .node .name { font-size: 16px; font-weight: bold; fill: #333; text-anchor: middle; }
+        .node .birth { font-size: 12px; fill: #666; text-anchor: middle; }
+        
+        /* 线条样式 */
+        .link { fill: none; stroke: #ccc; stroke-width: 2px; transition: all 0.3s; }
+
+        .selected-node circle { stroke: #e67e22 !important; filter: drop-shadow(0 0 5px rgba(230, 126, 34, 0.6)); }
+        .selected-node .name { fill: #e67e22; }
+
+        #status-area { font-size: 0.9rem; min-height: 20px; text-align: center; }
+        .msg-success { color: #27ae60; font-weight: bold; }
+        .msg-error { color: #c0392b; font-weight: bold; }
+        .msg-info { color: #2980b9; font-weight: bold; }
+        
+        .hint { font-size: 0.85rem; color: #7f8c8d; line-height: 1.4; background: #fff3cd; padding: 10px; border-radius: 6px; border-left: 4px solid #f1c40f; }
+        
+        #auto-save-indicator {
+            font-size: 0.8rem;
+            color: #27ae60;
+            text-align: right;
+            height: 15px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+<button id="open-sidebar-btn" onclick="toggleSidebar()" title="打开菜单">☰</button>
+
+<div id="sidebar">
+    <button id="toggle-btn" onclick="toggleSidebar()" title="隐藏菜单">«</button>
+
+    <h2>🏠 电子家谱制作</h2>
+    <div id="auto-save-indicator">✅ 已自动保存</div>
+
+    <div class="control-group">
+        <label>📂 数据管理</label>
+        <input type="file" id="file-input" accept=".json" style="display:none">
+        <button onclick="document.getElementById('file-input').click()">📂 打开本地 JSON</button>
+        <button class="secondary" onclick="saveData()">💾 下载 JSON 备份</button>
+        <button class="svg-btn" onclick="exportSVG()">🖼️ 导出为 SVG (无圆圈版)</button>
+        <button class="secondary" onclick="downloadTemplate()">⬇️ 下载空白模板</button>
+        <button class="danger" style="display:block; background:#e74c3c; font-size:0.8rem; padding:8px;" onclick="clearAutoSave()">🗑️ 清除自动保存记录</button>
+        <div id="status-area"></div>
+    </div>
+
+    <div class="control-group">
+        <h3>✏️ 成员管理</h3>
+        <div class="hint">
+            1. <strong>点击</strong>图中圆圈选中成员。<br>
+            2. 修改信息后点绿色按钮保存。<br>
+            3. 输入新名字点蓝色按钮添加子女。<br>
+            <strong>💡 提示：导出的 SVG 图片将自动去除圆圈，仅保留文字。</strong>
+        </div>
+        
+        <div id="selection-display" style="margin: 10px 0; padding: 8px; background: #eef2f7; border-radius: 4px; color: #2980b9; font-weight: bold; text-align: center;">
+            👆 请先在图中点击选择成员
+        </div>
+
+        <label>姓名</label>
+        <input type="text" id="inp-name" placeholder="例如：李四">
+        
+        <label>出生年份</label>
+        <input type="text" id="inp-birth" placeholder="例如：1995">
+        
+        <label>性别</label>
+        <select id="inp-gender">
+            <option value="male">男 (蓝色)</option>
+            <option value="female">女 (粉色)</option>
+        </select>
+
+        <label>备注</label>
+        <textarea id="inp-note" rows="2" placeholder="职业、生平简介等"></textarea>
+
+        <button class="edit-btn" id="btn-edit" onclick="updateNode()">💾 修改此人信息</button>
+        <button onclick="addChild()">➕ 添加子女到此人</button>
+        <button class="danger" id="btn-delete" onclick="deleteNode()">🗑️ 删除此人及其后代</button>
+    </div>
+    
+    <div class="control-group">
+        <h3>💡 操作指南</h3>
+        <ul style="font-size: 0.85rem; color: #555; padding-left: 20px; margin: 0;">
+            <li><strong>移动视图</strong>：按住鼠标左键拖拽空白处。</li>
+            <li><strong>缩放视图</strong>：滚动鼠标滚轮。</li>
+            <li><strong>导出特色</strong>：编辑时有圆圈辅助，导出时无圆圈更清爽。</li>
+        </ul>
+    </div>
+</div>
+
+<div id="chart-container"></div>
+
+<script>
+/**
+ * 电子家谱制作器 (导出纯文字版)
+ * 核心逻辑：
+ * 1. 编辑界面：保持有圆圈、有遮罩、防重叠。
+ * 2. 导出功能：克隆 SVG -> 删除所有 circle -> 为每个文字组添加透明 rect 作为锚点 -> 调整连线连接到 rect -> 移除 rect -> 输出。
+ */
+
+// --- 全局变量 ---
+let treeData = {
+    id: 1,
+    name: "始祖",
+    birth: "未知",
+    gender: "male",
+    note: "家族起点",
+    children: []
+};
+
+let selectedNodeId = null; 
+let nextId = 2; 
+let transform = { x: 0, y: 80, k: 1 }; 
+let isDragging = false;
+let startDrag = { x: 0, y: 0 };
+
+const container = document.getElementById('chart-container');
+const sidebar = document.getElementById('sidebar');
+const openBtn = document.getElementById('open-sidebar-btn');
+const toggleBtn = document.getElementById('toggle-btn');
+const statusArea = document.getElementById('status-area');
+const selectionDisplay = document.getElementById('selection-display');
+const btnEdit = document.getElementById('btn-edit');
+const btnDelete = document.getElementById('btn-delete');
+const autoSaveIndicator = document.getElementById('auto-save-indicator');
+
+const inpName = document.getElementById('inp-name');
+const inpBirth = document.getElementById('inp-birth');
+const inpGender = document.getElementById('inp-gender');
+const inpNote = document.getElementById('inp-note');
+
+const STORAGE_KEY = 'family_tree_auto_save_v1';
+
+// 配置常量
+const CIRCLE_RADIUS = 25;
+const BG_RADIUS = 28;
+const NODE_GAP_Y = 150;
+
+// --- 侧边栏切换 ---
+function toggleSidebar() {
+    sidebar.classList.toggle('collapsed');
+    if (sidebar.classList.contains('collapsed')) {
+        openBtn.style.display = 'flex';
+        toggleBtn.innerHTML = '»';
+    } else {
+        openBtn.style.display = 'none';
+        toggleBtn.innerHTML = '«';
+    }
+}
+
+// --- 自动保存逻辑 ---
+function autoSave() {
+    try {
+        const dataToSave = {
+            tree: treeData,
+            nextId: nextId,
+            transform: transform
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
+        
+        autoSaveIndicator.style.opacity = '1';
+        setTimeout(() => {
+            autoSaveIndicator.style.opacity = '0';
+        }, 2000);
+    } catch (e) {
+        console.error("自动保存失败", e);
+    }
+}
+
+function loadAutoSave() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        try {
+            const data = JSON.parse(saved);
+            treeData = data.tree;
+            nextId = data.nextId || 2;
+            if(data.transform) {
+                transform = {
+                    x: data.transform.x,
+                    y: data.transform.y,
+                    k: Math.max(0.2, Math.min(3, data.transform.k))
+                };
+            }
+            showStatus("🔄 已恢复上次编辑的进度", false, true);
+            return true;
+        } catch (e) {
+            console.error("读取存档失败", e);
+            return false;
+        }
+    }
+    return false;
+}
+
+function clearAutoSave() {
+    if(confirm("确定要清除浏览器中的自动保存记录吗？刷新后将无法恢复当前进度。")) {
+        localStorage.removeItem(STORAGE_KEY);
+        showStatus("🗑️ 自动保存记录已清除", false);
+    }
+}
+
+// --- 初始化 ---
+function init() {
+    const hasSaved = loadAutoSave();
+    
+    const width = container.clientWidth;
+    if (!hasSaved) {
+        transform.x = width / 2;
+        transform.y = 80;
+        transform.k = 1;
+    }
+    
+    render();
+    setupEvents();
+}
+
+// --- 核心渲染逻辑 (保持有圆圈) ---
+function render() {
+    container.innerHTML = '';
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+    svg.setAttribute("id", "family-tree-svg");
+    
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("transform", `translate(${transform.x}, ${transform.y}) scale(${transform.k})`);
+    svg.appendChild(g);
+    container.appendChild(svg);
+
+    const nodes = [];
+    const links = [];
+    
+    // 1. 计算布局
+    function calculateWidth(node) {
+        if (!node.children || node.children.length === 0) {
+            node._width = 200;
+            return node._width;
+        }
+        let totalWidth = 0;
+        node.children.forEach(child => {
+            totalWidth += calculateWidth(child);
+        });
+        const minWidth = node.children.length * 220; 
+        node._width = Math.max(totalWidth, minWidth);
+        return node._width;
+    }
+
+    function assignCoordinates(node, xCenter, yLevel) {
+        node._x = xCenter;
+        node._y = yLevel;
+        
+        if (!node.children || node.children.length === 0) return;
+
+        let currentX = xCenter - (node._width / 2);
+        
+        node.children.forEach(child => {
+            const childCenter = currentX + (child._width / 2);
+            assignCoordinates(child, childCenter, yLevel + NODE_GAP_Y);
+            currentX += child._width;
+            
+            // 记录连线：从父节点圆圈底部 到 子节点圆圈顶部
+            links.push({ 
+                source: node, 
+                target: child,
+                startX: node._x,
+                startY: node._y + CIRCLE_RADIUS, 
+                endX: child._x,
+                endY: child._y - CIRCLE_RADIUS
+            });
+        });
+    }
+
+    calculateWidth(treeData);
+    assignCoordinates(treeData, 0, 0);
+
+    function collectNodes(node) {
+        nodes.push(node);
+        if (node.children) node.children.forEach(collectNodes);
+    }
+    collectNodes(treeData);
+
+    // 2. 【第一步】先绘制所有连线
+    links.forEach(link => {
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        const cpY = (link.startY + link.endY) / 2;
+        const d = `M ${link.startX} ${link.startY} C ${link.startX} ${cpY}, ${link.endX} ${cpY}, ${link.endX} ${link.endY}`;
+        path.setAttribute("d", d);
+        path.setAttribute("class", "link");
+        g.appendChild(path);
+    });
+
+    // 3. 【第二步】绘制节点 (包含背景遮罩)
+    nodes.forEach(node => {
+        const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        group.setAttribute("transform", `translate(${node._x}, ${node._y})`);
+        group.setAttribute("class", "node");
+        if (node.id === selectedNodeId) {
+            group.classList.add("selected-node");
+        }
+
+        group.addEventListener("click", (e) => {
+            e.stopPropagation(); 
+            selectNode(node);
+        });
+
+        // A. 绘制白色背景圆 (遮罩层)
+        const bgCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        bgCircle.setAttribute("r", BG_RADIUS);
+        bgCircle.setAttribute("class", "node-bg");
+        bgCircle.setAttribute("fill", "#ffffff");
+        group.appendChild(bgCircle);
+
+        // B. 绘制装饰圆圈
+        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        circle.setAttribute("r", CIRCLE_RADIUS);
+        circle.setAttribute("fill", "#fff");
+        circle.setAttribute("stroke", node.gender === 'female' ? '#e83e8c' : '#3498db');
+        group.appendChild(circle);
+
+        // C. 绘制文字
+        const textName = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        textName.setAttribute("dy", 45);
+        textName.setAttribute("class", "name");
+        textName.textContent = node.name;
+        group.appendChild(textName);
+
+        const textBirth = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        textBirth.setAttribute("dy", 65); 
+        textBirth.setAttribute("class", "birth");
+        textBirth.textContent = node.birth || "";
+        group.appendChild(textBirth);
+
+        g.appendChild(group);
+    });
+}
+
+// --- 交互逻辑 ---
+
+function selectNode(node) {
+    selectedNodeId = node ? node.id : null;
+    
+    if (node) {
+        selectionDisplay.innerHTML = `🎯 当前选中：<span style="color:#e67e22">${node.name}</span>`;
+        selectionDisplay.style.background = "#fff3cd";
+        inpName.value = node.name;
+        inpBirth.value = node.birth || "";
+        inpGender.value = node.gender;
+        inpNote.value = node.note || "";
+        btnEdit.style.display = 'block';
+        btnDelete.style.display = (node.id === treeData.id) ? 'none' : 'block';
+    } else {
+        selectionDisplay.innerHTML = "👆 请先在图中点击选择成员";
+        selectionDisplay.style.background = "#eef2f7";
+        inpName.value = '';
+        inpBirth.value = '';
+        inpNote.value = '';
+        btnEdit.style.display = 'none';
+        btnDelete.style.display = 'none';
+    }
+    render();
+}
+
+function updateNode() {
+    if (!selectedNodeId) { showStatus("❌ 请先选择要修改的成员", true); return; }
+    const name = inpName.value.trim();
+    if (!name) { showStatus("❌ 姓名不能为空", true); return; }
+
+    const node = findNode(treeData, selectedNodeId);
+    if (node) {
+        node.name = name;
+        node.birth = inpBirth.value.trim();
+        node.gender = inpGender.value;
+        node.note = inpNote.value.trim();
+        showStatus(`✅ 已更新：${name}`, false);
+        render();
+        autoSave();
+    }
+}
+
+function addChild() {
+    if (!selectedNodeId) { showStatus("❌ 请先选择一位成员作为父母", true); return; }
+    const name = inpName.value.trim();
+    if (!name) { showStatus("❌ 请输入子女的姓名", true); return; }
+    
+    const parent = findNode(treeData, selectedNodeId);
+    if (!parent) { showStatus("❌ 未找到父节点", true); return; }
+    if (!parent.children) parent.children = [];
+
+    const newNode = {
+        id: nextId++,
+        name: name,
+        birth: inpBirth.value.trim(),
+        gender: inpGender.value,
+        note: inpNote.value.trim(),
+        children: []
+    };
+
+    parent.children.push(newNode);
+    inpName.value = '';
+    inpBirth.value = '';
+    inpNote.value = '';
+    showStatus(`✅ 成功添加子女：${name}`, false);
+    render();
+    autoSave();
+}
+
+function deleteNode() {
+    if (!selectedNodeId) return;
+    if (selectedNodeId === treeData.id) { showStatus("❌ 不能删除始祖", true); return; }
+
+    const node = findNode(treeData, selectedNodeId);
+    if (!confirm(`确定要删除 "${node.name}" 及其所有后代吗？`)) return;
+
+    const parent = findParent(treeData, selectedNodeId);
+    if (parent) {
+        parent.children = parent.children.filter(child => child.id !== selectedNodeId);
+        selectedNodeId = null;
+        selectNode(null);
+        showStatus("🗑️ 删除成功", false);
+        autoSave();
+    }
+}
+
+function findNode(root, id) {
+    if (root.id === id) return root;
+    if (root.children) {
+        for (let child of root.children) {
+            const found = findNode(child, id);
+            if (found) return found;
+        }
+    }
+    return null;
+}
+
+function findParent(root, childId) {
+    if (!root.children) return null;
+    for (let child of root.children) {
+        if (child.id === childId) return root;
+        const found = findParent(child, childId);
+        if (found) return found;
+    }
+    return null;
+}
+
+// --- 文件操作 ---
+
+function saveData() {
+    const dataStr = JSON.stringify(treeData, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `家谱备份_${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showStatus("💾 文件已下载", false);
+}
+
+// --- 终极修复版 SVG 导出功能 (文字真正成为节点) ---
+function exportSVG() {
+    const svgElement = document.getElementById('family-tree-svg');
+    if (!svgElement) {
+        showStatus("❌ 无法找到图表", true);
+        return;
+    }
+
+    const clone = svgElement.cloneNode(true);
+    
+    // 1. 获取线条样式
+    const computedStyle = window.getComputedStyle(document.querySelector('.link'));
+    const strokeColor = computedStyle.getPropertyValue('stroke');
+    const strokeWidth = computedStyle.getPropertyValue('stroke-width');
+
+    // 2. 清理选中状态
+    const selectedNodes = clone.querySelectorAll('.selected-node');
+    selectedNodes.forEach(node => {
+        node.classList.remove('selected-node');
+        const circle = node.querySelector('circle:not(.node-bg)');
+        if(circle) circle.setAttribute('stroke', '#3498db'); 
+        const text = node.querySelector('.name');
+        if(text) text.setAttribute('fill', '#333');
+    });
+
+    // 3. 【关键步骤】删除所有圆圈
+    const allCircles = clone.querySelectorAll('circle');
+    allCircles.forEach(c => c.remove());
+
+    // 4. 【关键步骤】为每个文字组添加透明 rect 作为锚点，并调整连线
+    const nodeGroups = clone.querySelectorAll('.node');
+    const paths = clone.querySelectorAll('path');
+
+    // 首先，为每个节点组添加一个透明的 rect，用于后续计算锚点
+    nodeGroups.forEach(group => {
+        const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        rect.setAttribute("x", "-40"); // 半宽
+        rect.setAttribute("y", "-20"); // 半高
+        rect.setAttribute("width", "80");
+        rect.setAttribute("height", "40");
+        rect.setAttribute("fill", "transparent");
+        rect.setAttribute("stroke", "none");
+        // 插入到 group 的最前面，确保它在文字下面（虽然透明，但逻辑上如此）
+        group.insertBefore(rect, group.firstChild);
+    });
+
+    // 然后，调整每条连线，使其连接到对应节点的透明 rect 的上下边缘
+    paths.forEach(path => {
+        const d = path.getAttribute('d');
+        const match = d.match(/M\s+([\d.-]+)\s+([\d.-]+)\s+C\s+[\d.-]+\s+[\d.-]+\s+[\d.-]+\s+[\d.-]+\s+([\d.-]+)\s+([\d.-]+)/);
+        if (match) {
+            let startX = parseFloat(match[1]);
+            let startY = parseFloat(match[2]);
+            let endX = parseFloat(match[3]);
+            let endY = parseFloat(match[4]);
+
+            // 找到对应的父节点和子节点组
+            // 由于我们不知道哪个 group 对应哪个坐标，这里采用近似匹配：
+            // 在 clone 中，node groups 的顺序和原始数据一致，但我们没有原始数据。
+            // 所以，我们通过 X 坐标来匹配最近的 node group。
+            
+            // 查找父节点组 (startX 附近)
+            let parentNodeGroup = null;
+            let minDistStart = Infinity;
+            nodeGroups.forEach(group => {
+                const transform = group.getAttribute('transform');
+                const translateMatch = transform.match(/translate\(([^,]+),\s*([^)]+)\)/);
+                if (translateMatch) {
+                    const gx = parseFloat(translateMatch[1]);
+                    const gy = parseFloat(translateMatch[2]);
+                    const dist = Math.abs(gx - startX);
+                    if (dist < minDistStart) {
+                        minDistStart = dist;
+                        parentNodeGroup = group;
+                    }
+                }
+            });
+
+            // 查找子节点组 (endX 附近)
+            let childNodeGroup = null;
+            let minDistEnd = Infinity;
+            nodeGroups.forEach(group => {
+                const transform = group.getAttribute('transform');
+                const translateMatch = transform.match(/translate\(([^,]+),\s*([^)]+)\)/);
+                if (translateMatch) {
+                    const gx = parseFloat(translateMatch[1]);
+                    const gy = parseFloat(translateMatch[2]);
+                    const dist = Math.abs(gx - endX);
+                    if (dist < minDistEnd) {
+                        minDistEnd = dist;
+                        childNodeGroup = group;
+                    }
+                }
+            });
+
+            // 如果找到了对应的节点组，就调整连线端点
+            if (parentNodeGroup && childNodeGroup) {
+                // 父节点出线：连接到其透明 rect 的底部 (y + 20)
+                const parentTransform = parentNodeGroup.getAttribute('transform');
+                const parentTranslateMatch = parentTransform.match(/translate\(([^,]+),\s*([^)]+)\)/);
+                const parentY = parseFloat(parentTranslateMatch[2]);
+                startY = parentY + 20; // rect 高度一半
+
+                // 子节点入线：连接到其透明 rect 的顶部 (y - 20)
+                const childTransform = childNodeGroup.getAttribute('transform');
+                const childTranslateMatch = childTransform.match(/translate\(([^,]+),\s*([^)]+)\)/);
+                const childY = parseFloat(childTranslateMatch[2]);
+                endY = childY - 20; // rect 高度一半
+
+                // 控制点 Y 也要相应调整
+                const newCpY = (startY + endY) / 2;
+
+                const newPathD = `M ${startX} ${startY} C ${startX} ${newCpY}, ${endX} ${newCpY}, ${endX} ${endY}`;
+                path.setAttribute('d', newPathD);
+            }
+        }
+    });
+
+    // 5. 【最后一步】移除所有临时添加的透明 rect
+    const tempRects = clone.querySelectorAll('rect[fill="transparent"]');
+    tempRects.forEach(r => r.remove());
+
+    const serializer = new XMLSerializer();
+    let source = serializer.serializeToString(clone);
+
+    if(!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)){
+        source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+    }
+    if(!source.match(/^<svg[^>]+xmlns:xlink/)){
+        source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+    }
+
+    // 内联线条样式
+    source = source.replace(/class="link"/g, `style="fill:none; stroke:${strokeColor}; stroke-width:${strokeWidth}"`);
+    
+    // 内联文字样式
+    source = source.replace(/class="name"/g, `style="font-size:16px; font-weight:bold; fill:#333; text-anchor:middle; font-family:sans-serif"`);
+    source = source.replace(/class="birth"/g, `style="font-size:12px; fill:#666; text-anchor:middle; font-family:sans-serif"`);
+
+    // 添加白色大背景
+    const bgRect = `<rect x="-5000" y="-5000" width="10000" height="10000" fill="#ffffff" />`;
+    source = source.replace(/<g transform="([^"]+)">/, `<g transform="$1">${bgRect}`);
+
+    const blob = new Blob([source], {type: "image/svg+xml;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `家谱图_${new Date().toISOString().slice(0,10)}_无圆圈版.svg`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showStatus("🖼️ SVG 图片已下载 (文字即节点版)", false);
+}
+
+function downloadTemplate() {
+    const template = {
+        "id": 1,
+        "name": "始祖",
+        "birth": "XXXX",
+        "gender": "male",
+        "note": "从此开始",
+        "children": []
+    };
+    const dataStr = JSON.stringify(template, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "家谱模板.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+document.getElementById('file-input').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const json = JSON.parse(e.target.result);
+            if (!json.name || !json.id) throw new Error("格式不正确");
+            
+            treeData = json;
+            let maxId = 0;
+            function scanMax(n) {
+                if(n.id > maxId) maxId = n.id;
+                if(n.children) n.children.forEach(scanMax);
+            }
+            scanMax(treeData);
+            nextId = maxId + 1;
+
+            selectedNodeId = null;
+            selectNode(null);
+            
+            const width = container.clientWidth;
+            transform.x = width / 2;
+            transform.y = 80;
+            transform.k = 1;
+            
+            render();
+            showStatus(`✅ 成功加载：${file.name}`, false);
+            autoSave();
+        } catch (err) {
+            showStatus("❌ 文件读取失败：" + err.message, true);
+        }
+    };
+    reader.readAsText(file);
+    this.value = ''; 
+});
+
+// --- 拖拽与缩放 ---
+
+function setupEvents() {
+    container.addEventListener('mousedown', (e) => {
+        if (e.target.tagName === 'svg' || e.target.id === 'chart-container') {
+            isDragging = true;
+            startDrag = { x: e.clientX - transform.x, y: e.clientY - transform.y };
+            container.style.cursor = 'grabbing';
+        }
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            transform.x = e.clientX - startDrag.x;
+            transform.y = e.clientY - startDrag.y;
+            render();
+        }
+    });
+
+    window.addEventListener('mouseup', () => {
+        if(isDragging) {
+            isDragging = false;
+            container.style.cursor = 'grab';
+            autoSave();
+        }
+    });
+
+    container.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const scaleAmount = -e.deltaY * 0.001;
+        const newScale = Math.min(Math.max(0.2, transform.k + scaleAmount), 3);
+        transform.k = newScale;
+        render();
+    }, { passive: false });
+    
+    let wheelTimeout;
+    container.addEventListener('wheel', () => {
+        clearTimeout(wheelTimeout);
+        wheelTimeout = setTimeout(autoSave, 500);
+    }, { passive: true });
+}
+
+function showStatus(msg, isError = false, isInfo = false) {
+    statusArea.textContent = msg;
+    if (isInfo) {
+        statusArea.className = 'msg-info';
+    } else {
+        statusArea.className = isError ? 'msg-error' : 'msg-success';
+    }
+    
+    setTimeout(() => {
+        if (statusArea.textContent === msg) {
+            statusArea.textContent = '';
+            statusArea.className = '';
+        }
+    }, 3000);
+}
+
+// 启动
+init();
+
+</script>
+</body>
+</html>

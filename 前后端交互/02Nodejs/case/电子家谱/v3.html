@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子家谱制作器 (完美 SVG 版)</title>
+    <style>
+        body { font-family: 'Microsoft YaHei', sans-serif; margin: 0; padding: 0; display: flex; height: 100vh; overflow: hidden; background-color: #f9f9f9; }
+        
+        /* --- 侧边栏折叠样式 --- */
+        #sidebar {
+            width: 320px;
+            background: #ffffff;
+            border-right: 1px solid #e0e0e0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+            z-index: 10;
+            overflow-y: auto;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        #sidebar.collapsed {
+            width: 0;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+            overflow: hidden;
+        }
+
+        #toggle-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 28px;
+            height: 28px;
+            background: #f0f2f5;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #666;
+            transition: all 0.2s;
+            z-index: 20;
+        }
+        #toggle-btn:hover {
+            background: #e6f7ff;
+            border-color: #1890ff;
+            color: #1890ff;
+        }
+
+        #open-sidebar-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        #open-sidebar-btn:hover {
+            transform: scale(1.1);
+            background: #2980b9;
+        }
+
+        h2 { margin: 0 0 10px 0; color: #2c3e50; font-size: 1.4rem; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h3 { margin: 15px 0 5px; font-size: 1rem; color: #555; }
+        
+        .control-group { background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
+        
+        label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.9rem; color: #444; }
+        input, textarea, select { 
+            width: 100%; padding: 10px; margin-bottom: 12px; 
+            border: 1px solid #ddd; border-radius: 6px; 
+            box-sizing: border-box; font-size: 0.95rem; transition: border 0.3s;
+        }
+        input:focus, textarea:focus, select:focus { border-color: #3498db; outline: none; }
+        
+        button {
+            width: 100%; padding: 12px; 
+            background: #3498db; color: white; border: none; 
+            border-radius: 6px; cursor: pointer; 
+            font-size: 1rem; font-weight: 600;
+            transition: all 0.2s; margin-bottom: 8px;
+        }
+        button:hover { background: #2980b9; transform: translateY(-1px); }
+        button:active { transform: translateY(0); }
+        
+        button.secondary { background: #95a5a6; }
+        button.secondary:hover { background: #7f8c8d; }
+        
+        button.svg-btn { background: #8e44ad; }
+        button.svg-btn:hover { background: #732d91; }
+
+        button.edit-btn { background: #27ae60; display: none; }
+        button.edit-btn:hover { background: #219150; }
+
+        button.danger { background: #e74c3c; display: none; }
+        button.danger:hover { background: #c0392b; }
+
+        #chart-container {
+            flex-grow: 1;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+        }
+        #chart-container:active { cursor: grabbing; }
+
+        svg { width: 100%; height: 100%; }
+        .node circle { fill: #fff; stroke-width: 3px; transition: all 0.3s; }
+        .node text { font-family: sans-serif; pointer-events: none; }
+        .node .name { font-size: 16px; font-weight: bold; fill: #333; text-anchor: middle; }
+        .node .birth { font-size: 12px; fill: #666; text-anchor: middle; }
+        /* 这里定义了线条的样式，导出时会用到 */
+        .link { fill: none; stroke: #ccc; stroke-width: 2px; transition: all 0.3s; }
+
+        .selected-node circle { stroke: #e67e22 !important; filter: drop-shadow(0 0 5px rgba(230, 126, 34, 0.6)); }
+        .selected-node .name { fill: #e67e22; }
+
+        #status-area { font-size: 0.9rem; min-height: 20px; text-align: center; }
+        .msg-success { color: #27ae60; font-weight: bold; }
+        .msg-error { color: #c0392b; font-weight: bold; }
+        .msg-info { color: #2980b9; font-weight: bold; }
+        
+        .hint { font-size: 0.85rem; color: #7f8c8d; line-height: 1.4; background: #fff3cd; padding: 10px; border-radius: 6px; border-left: 4px solid #f1c40f; }
+        
+        #auto-save-indicator {
+            font-size: 0.8rem;
+            color: #27ae60;
+            text-align: right;
+            height: 15px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+<button id="open-sidebar-btn" onclick="toggleSidebar()" title="打开菜单">☰</button>
+
+<div id="sidebar">
+    <button id="toggle-btn" onclick="toggleSidebar()" title="隐藏菜单">«</button>
+
+    <h2>🏠 电子家谱制作</h2>
+    <div id="auto-save-indicator">✅ 已自动保存</div>
+
+    <div class="control-group">
+        <label>📂 数据管理</label>
+        <input type="file" id="file-input" accept=".json" style="display:none">
+        <button onclick="document.getElementById('file-input').click()">📂 打开本地 JSON</button>
+        <button class="secondary" onclick="saveData()">💾 下载 JSON 备份</button>
+        <button class="svg-btn" onclick="exportSVG()">🖼️ 导出为 SVG 图片</button>
+        <button class="secondary" onclick="downloadTemplate()">⬇️ 下载空白模板</button>
+        <button class="danger" style="display:block; background:#e74c3c; font-size:0.8rem; padding:8px;" onclick="clearAutoSave()">🗑️ 清除自动保存记录</button>
+        <div id="status-area"></div>
+    </div>
+
+    <div class="control-group">
+        <h3>✏️ 成员管理</h3>
+        <div class="hint">
+            1. <strong>点击</strong>图中圆圈选中成员。<br>
+            2. 修改信息后点绿色按钮保存。<br>
+            3. 输入新名字点蓝色按钮添加子女。<br>
+            <strong>💡 系统会自动保存您的进度。</strong>
+        </div>
+        
+        <div id="selection-display" style="margin: 10px 0; padding: 8px; background: #eef2f7; border-radius: 4px; color: #2980b9; font-weight: bold; text-align: center;">
+            👆 请先在图中点击选择成员
+        </div>
+
+        <label>姓名</label>
+        <input type="text" id="inp-name" placeholder="例如：李四">
+        
+        <label>出生年份</label>
+        <input type="text" id="inp-birth" placeholder="例如：1995">
+        
+        <label>性别</label>
+        <select id="inp-gender">
+            <option value="male">男 (蓝色)</option>
+            <option value="female">女 (粉色)</option>
+        </select>
+
+        <label>备注</label>
+        <textarea id="inp-note" rows="2" placeholder="职业、生平简介等"></textarea>
+
+        <button class="edit-btn" id="btn-edit" onclick="updateNode()">💾 修改此人信息</button>
+        <button onclick="addChild()">➕ 添加子女到此人</button>
+        <button class="danger" id="btn-delete" onclick="deleteNode()">🗑️ 删除此人及其后代</button>
+    </div>
+    
+    <div class="control-group">
+        <h3>💡 操作指南</h3>
+        <ul style="font-size: 0.85rem; color: #555; padding-left: 20px; margin: 0;">
+            <li><strong>移动视图</strong>：按住鼠标左键拖拽空白处。</li>
+            <li><strong>缩放视图</strong>：滚动鼠标滚轮。</li>
+            <li><strong>导出图片</strong>：点击紫色按钮，获得高清矢量图。</li>
+        </ul>
+    </div>
+</div>
+
+<div id="chart-container"></div>
+
+<script>
+/**
+ * 电子家谱制作器 (完美 SVG 版)
+ * 修复了导出 SVG 时线条样式丢失的问题
+ */
+
+// --- 全局变量 ---
+let treeData = {
+    id: 1,
+    name: "始祖",
+    birth: "未知",
+    gender: "male",
+    note: "家族起点",
+    children: []
+};
+
+let selectedNodeId = null; 
+let nextId = 2; 
+let transform = { x: 0, y: 80, k: 1 }; 
+let isDragging = false;
+let startDrag = { x: 0, y: 0 };
+
+const container = document.getElementById('chart-container');
+const sidebar = document.getElementById('sidebar');
+const openBtn = document.getElementById('open-sidebar-btn');
+const toggleBtn = document.getElementById('toggle-btn');
+const statusArea = document.getElementById('status-area');
+const selectionDisplay = document.getElementById('selection-display');
+const btnEdit = document.getElementById('btn-edit');
+const btnDelete = document.getElementById('btn-delete');
+const autoSaveIndicator = document.getElementById('auto-save-indicator');
+
+const inpName = document.getElementById('inp-name');
+const inpBirth = document.getElementById('inp-birth');
+const inpGender = document.getElementById('inp-gender');
+const inpNote = document.getElementById('inp-note');
+
+const STORAGE_KEY = 'family_tree_auto_save_v1';
+
+// --- 侧边栏切换 ---
+function toggleSidebar() {
+    sidebar.classList.toggle('collapsed');
+    if (sidebar.classList.contains('collapsed')) {
+        openBtn.style.display = 'flex';
+        toggleBtn.innerHTML = '»';
+    } else {
+        openBtn.style.display = 'none';
+        toggleBtn.innerHTML = '«';
+    }
+}
+
+// --- 自动保存逻辑 ---
+function autoSave() {
+    try {
+        const dataToSave = {
+            tree: treeData,
+            nextId: nextId,
+            transform: transform
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
+        
+        autoSaveIndicator.style.opacity = '1';
+        setTimeout(() => {
+            autoSaveIndicator.style.opacity = '0';
+        }, 2000);
+    } catch (e) {
+        console.error("自动保存失败", e);
+    }
+}
+
+function loadAutoSave() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        try {
+            const data = JSON.parse(saved);
+            treeData = data.tree;
+            nextId = data.nextId || 2;
+            if(data.transform) {
+                transform = {
+                    x: data.transform.x,
+                    y: data.transform.y,
+                    k: Math.max(0.2, Math.min(3, data.transform.k))
+                };
+            }
+            showStatus("🔄 已恢复上次编辑的进度", false, true);
+            return true;
+        } catch (e) {
+            console.error("读取存档失败", e);
+            return false;
+        }
+    }
+    return false;
+}
+
+function clearAutoSave() {
+    if(confirm("确定要清除浏览器中的自动保存记录吗？刷新后将无法恢复当前进度。")) {
+        localStorage.removeItem(STORAGE_KEY);
+        showStatus("🗑️ 自动保存记录已清除", false);
+    }
+}
+
+// --- 初始化 ---
+function init() {
+    const hasSaved = loadAutoSave();
+    
+    const width = container.clientWidth;
+    if (!hasSaved) {
+        transform.x = width / 2;
+        transform.y = 80;
+        transform.k = 1;
+    }
+    
+    render();
+    setupEvents();
+}
+
+// --- 核心渲染逻辑 ---
+function render() {
+    container.innerHTML = '';
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+    svg.setAttribute("id", "family-tree-svg");
+    
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("transform", `translate(${transform.x}, ${transform.y}) scale(${transform.k})`);
+    svg.appendChild(g);
+    container.appendChild(svg);
+
+    const nodes = [];
+    const links = [];
+    
+    function calculateWidth(node) {
+        if (!node.children || node.children.length === 0) {
+            node._width = 200;
+            return node._width;
+        }
+        let totalWidth = 0;
+        node.children.forEach(child => {
+            totalWidth += calculateWidth(child);
+        });
+        const minWidth = node.children.length * 220; 
+        node._width = Math.max(totalWidth, minWidth);
+        return node._width;
+    }
+
+    function assignCoordinates(node, xCenter, yLevel) {
+        node._x = xCenter;
+        node._y = yLevel;
+        
+        if (!node.children || node.children.length === 0) return;
+
+        let currentX = xCenter - (node._width / 2);
+        
+        node.children.forEach(child => {
+            const childCenter = currentX + (child._width / 2);
+            assignCoordinates(child, childCenter, yLevel + 150);
+            currentX += child._width;
+            links.push({ source: node, target: child });
+        });
+    }
+
+    calculateWidth(treeData);
+    assignCoordinates(treeData, 0, 0);
+
+    function collectNodes(node) {
+        nodes.push(node);
+        if (node.children) node.children.forEach(collectNodes);
+    }
+    collectNodes(treeData);
+
+    links.forEach(link => {
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        const startX = link.source._x;
+        const startY = link.source._y + 25;
+        const endX = link.target._x;
+        const endY = link.target._y - 25;
+        const cpY = (startY + endY) / 2;
+        const d = `M ${startX} ${startY} C ${startX} ${cpY}, ${endX} ${cpY}, ${endX} ${endY}`;
+        path.setAttribute("d", d);
+        path.setAttribute("class", "link");
+        g.appendChild(path);
+    });
+
+    nodes.forEach(node => {
+        const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        group.setAttribute("transform", `translate(${node._x}, ${node._y})`);
+        group.setAttribute("class", "node");
+        if (node.id === selectedNodeId) {
+            group.classList.add("selected-node");
+        }
+
+        group.addEventListener("click", (e) => {
+            e.stopPropagation(); 
+            selectNode(node);
+        });
+
+        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        circle.setAttribute("r", 25);
+        circle.setAttribute("fill", "#fff");
+        circle.setAttribute("stroke", node.gender === 'female' ? '#e83e8c' : '#3498db');
+        group.appendChild(circle);
+
+        const textName = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        textName.setAttribute("dy", 45);
+        textName.setAttribute("class", "name");
+        textName.textContent = node.name;
+        group.appendChild(textName);
+
+        const textBirth = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        textBirth.setAttribute("dy", 65); 
+        textBirth.setAttribute("class", "birth");
+        textBirth.textContent = node.birth || "";
+        group.appendChild(textBirth);
+
+        g.appendChild(group);
+    });
+}
+
+// --- 交互逻辑 ---
+
+function selectNode(node) {
+    selectedNodeId = node ? node.id : null;
+    
+    if (node) {
+        selectionDisplay.innerHTML = `🎯 当前选中：<span style="color:#e67e22">${node.name}</span>`;
+        selectionDisplay.style.background = "#fff3cd";
+        inpName.value = node.name;
+        inpBirth.value = node.birth || "";
+        inpGender.value = node.gender;
+        inpNote.value = node.note || "";
+        btnEdit.style.display = 'block';
+        btnDelete.style.display = (node.id === treeData.id) ? 'none' : 'block';
+    } else {
+        selectionDisplay.innerHTML = "👆 请先在图中点击选择成员";
+        selectionDisplay.style.background = "#eef2f7";
+        inpName.value = '';
+        inpBirth.value = '';
+        inpNote.value = '';
+        btnEdit.style.display = 'none';
+        btnDelete.style.display = 'none';
+    }
+    render();
+}
+
+function updateNode() {
+    if (!selectedNodeId) { showStatus("❌ 请先选择要修改的成员", true); return; }
+    const name = inpName.value.trim();
+    if (!name) { showStatus("❌ 姓名不能为空", true); return; }
+
+    const node = findNode(treeData, selectedNodeId);
+    if (node) {
+        node.name = name;
+        node.birth = inpBirth.value.trim();
+        node.gender = inpGender.value;
+        node.note = inpNote.value.trim();
+        showStatus(`✅ 已更新：${name}`, false);
+        render();
+        autoSave();
+    }
+}
+
+function addChild() {
+    if (!selectedNodeId) { showStatus("❌ 请先选择一位成员作为父母", true); return; }
+    const name = inpName.value.trim();
+    if (!name) { showStatus("❌ 请输入子女的姓名", true); return; }
+    
+    const parent = findNode(treeData, selectedNodeId);
+    if (!parent) { showStatus("❌ 未找到父节点", true); return; }
+    if (!parent.children) parent.children = [];
+
+    const newNode = {
+        id: nextId++,
+        name: name,
+        birth: inpBirth.value.trim(),
+        gender: inpGender.value,
+        note: inpNote.value.trim(),
+        children: []
+    };
+
+    parent.children.push(newNode);
+    inpName.value = '';
+    inpBirth.value = '';
+    inpNote.value = '';
+    showStatus(`✅ 成功添加子女：${name}`, false);
+    render();
+    autoSave();
+}
+
+function deleteNode() {
+    if (!selectedNodeId) return;
+    if (selectedNodeId === treeData.id) { showStatus("❌ 不能删除始祖", true); return; }
+
+    const node = findNode(treeData, selectedNodeId);
+    if (!confirm(`确定要删除 "${node.name}" 及其所有后代吗？`)) return;
+
+    const parent = findParent(treeData, selectedNodeId);
+    if (parent) {
+        parent.children = parent.children.filter(child => child.id !== selectedNodeId);
+        selectedNodeId = null;
+        selectNode(null);
+        showStatus("🗑️ 删除成功", false);
+        autoSave();
+    }
+}
+
+function findNode(root, id) {
+    if (root.id === id) return root;
+    if (root.children) {
+        for (let child of root.children) {
+            const found = findNode(child, id);
+            if (found) return found;
+        }
+    }
+    return null;
+}
+
+function findParent(root, childId) {
+    if (!root.children) return null;
+    for (let child of root.children) {
+        if (child.id === childId) return root;
+        const found = findParent(child, childId);
+        if (found) return found;
+    }
+    return null;
+}
+
+// --- 文件操作 ---
+
+function saveData() {
+    const dataStr = JSON.stringify(treeData, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `家谱备份_${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showStatus("💾 文件已下载", false);
+}
+
+// --- 修复后的 SVG 导出功能 ---
+function exportSVG() {
+    const svgElement = document.getElementById('family-tree-svg');
+    if (!svgElement) {
+        showStatus("❌ 无法找到图表", true);
+        return;
+    }
+
+    // 1. 克隆 SVG
+    const clone = svgElement.cloneNode(true);
+    
+    // 2. 获取计算后的样式 (解决线条变黑变粗的问题)
+    const computedStyle = window.getComputedStyle(document.querySelector('.link'));
+    const strokeColor = computedStyle.getPropertyValue('stroke');
+    const strokeWidth = computedStyle.getPropertyValue('stroke-width');
+
+    // 3. 清理克隆的 SVG
+    const selectedNodes = clone.querySelectorAll('.selected-node');
+    selectedNodes.forEach(node => {
+        node.classList.remove('selected-node');
+        const circle = node.querySelector('circle');
+        if(circle) {
+            // 恢复默认描边颜色 (根据性别判断有点复杂，这里统一设为默认蓝或根据原始数据)
+            // 简单起见，我们移除特殊样式，让它继承默认或设为白色
+             circle.setAttribute('stroke', '#3498db'); 
+        }
+        const text = node.querySelector('.name');
+        if(text) text.setAttribute('fill', '#333');
+    });
+
+    // 4. 序列化
+    const serializer = new XMLSerializer();
+    let source = serializer.serializeToString(clone);
+
+    // 5. 添加必要的命名空间
+    if(!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)){
+        source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+    }
+    if(!source.match(/^<svg[^>]+xmlns:xlink/)){
+        source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+    }
+
+    // 6. 【关键步骤】将 CSS 类样式转换为内联样式，确保导出一致
+    // 我们手动替换 class="link" 为 style="..."
+    // 注意：这里假设只有一种线条样式。如果有多种，需要更复杂的逻辑。
+    source = source.replace(/class="link"/g, `style="fill:none; stroke:${strokeColor}; stroke-width:${strokeWidth}"`);
+    
+    // 同时移除其他可能引起歧义的 class，只保留必要的结构
+    // 这里我们选择保留 node class 用于定位，但移除 selected-node 已经做过了
+    
+    // 7. 添加白色背景矩形，防止透明背景在某些查看器中显示为黑色
+    // 插入到 <g> 标签之后，作为第一个子元素
+    const bgRect = `<rect x="-5000" y="-5000" width="10000" height="10000" fill="#ffffff" />`;
+    source = source.replace(/<g transform="([^"]+)">/, `<g transform="$1">${bgRect}`);
+
+    // 8. 创建 Blob 并下载
+    const blob = new Blob([source], {type: "image/svg+xml;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `家谱图_${new Date().toISOString().slice(0,10)}.svg`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showStatus("🖼️ SVG 图片已下载 (线条已修复)", false);
+}
+
+function downloadTemplate() {
+    const template = {
+        "id": 1,
+        "name": "始祖",
+        "birth": "XXXX",
+        "gender": "male",
+        "note": "从此开始",
+        "children": []
+    };
+    const dataStr = JSON.stringify(template, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "家谱模板.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+document.getElementById('file-input').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const json = JSON.parse(e.target.result);
+            if (!json.name || !json.id) throw new Error("格式不正确");
+            
+            treeData = json;
+            let maxId = 0;
+            function scanMax(n) {
+                if(n.id > maxId) maxId = n.id;
+                if(n.children) n.children.forEach(scanMax);
+            }
+            scanMax(treeData);
+            nextId = maxId + 1;
+
+            selectedNodeId = null;
+            selectNode(null);
+            
+            const width = container.clientWidth;
+            transform.x = width / 2;
+            transform.y = 80;
+            transform.k = 1;
+            
+            render();
+            showStatus(`✅ 成功加载：${file.name}`, false);
+            autoSave();
+        } catch (err) {
+            showStatus("❌ 文件读取失败：" + err.message, true);
+        }
+    };
+    reader.readAsText(file);
+    this.value = ''; 
+});
+
+// --- 拖拽与缩放 ---
+
+function setupEvents() {
+    container.addEventListener('mousedown', (e) => {
+        if (e.target.tagName === 'svg' || e.target.id === 'chart-container') {
+            isDragging = true;
+            startDrag = { x: e.clientX - transform.x, y: e.clientY - transform.y };
+            container.style.cursor = 'grabbing';
+        }
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            transform.x = e.clientX - startDrag.x;
+            transform.y = e.clientY - startDrag.y;
+            render();
+        }
+    });
+
+    window.addEventListener('mouseup', () => {
+        if(isDragging) {
+            isDragging = false;
+            container.style.cursor = 'grab';
+            autoSave();
+        }
+    });
+
+    container.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const scaleAmount = -e.deltaY * 0.001;
+        const newScale = Math.min(Math.max(0.2, transform.k + scaleAmount), 3);
+        transform.k = newScale;
+        render();
+    }, { passive: false });
+    
+    let wheelTimeout;
+    container.addEventListener('wheel', () => {
+        clearTimeout(wheelTimeout);
+        wheelTimeout = setTimeout(autoSave, 500);
+    }, { passive: true });
+}
+
+function showStatus(msg, isError = false, isInfo = false) {
+    statusArea.textContent = msg;
+    if (isInfo) {
+        statusArea.className = 'msg-info';
+    } else {
+        statusArea.className = isError ? 'msg-error' : 'msg-success';
+    }
+    
+    setTimeout(() => {
+        if (statusArea.textContent === msg) {
+            statusArea.textContent = '';
+            statusArea.className = '';
+        }
+    }, 3000);
+}
+
+// 启动
+init();
+
+</script>
+</body>
+</html>
