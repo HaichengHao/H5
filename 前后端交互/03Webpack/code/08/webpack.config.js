@@ -36,7 +36,8 @@ module.exports = {
     entry: path.resolve(__dirname, 'src/login/index.js'),
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: './login/index.js'
+        filename: './login/index.js',
+
     },
     optimization: {
         minimizer: [
@@ -48,7 +49,8 @@ module.exports = {
     plugins: [//然后引入我们要调用的插件
         new HtmlWebPackPlugin({
             template: path.resolve(__dirname, 'public/login.html'), //模板文件
-            filename: path.resolve(__dirname, 'dist/login/index.html')//输出文件
+            // filename: path.resolve(__dirname, 'dist/login/index.html')//输出文件
+            filename:'login/index.html'
         }
 
         ),

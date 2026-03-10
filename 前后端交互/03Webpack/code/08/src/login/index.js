@@ -21,15 +21,15 @@ document.querySelector('.btn').addEventListener('click',()=>{
 
 
 //引入bootstrap
-require('bootstrap/dist/css/bootstrap.min.css')
-require('bootstrap/dist/js/bootstrap.min.js')
-
-
-//引入css文件
-require('./index.css')
+require('bootstrap/dist/css/bootstrap.css')
+require('bootstrap/dist/js/bootstrap.js')
 
 //引入less文件  
 require('./index.less')
+//引入css文件
+require('./index.css')
+
+
 
 
 //js引入本地图片资源要用import方式(ECMAScript标准),如果是http地址,字符串可以直接写
